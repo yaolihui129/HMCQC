@@ -1,0 +1,113 @@
+<layout name="layout" />  
+<div class="container-fluid">
+	<div class="row">
+  		<div class="col-md-9">
+  			<div class="panel-body addmod">
+  			<h3>项目-编辑 <small ><{$p.moder}> 更新于<{$p.updatetime}></small></h3>
+  		     	<form action="__URL__/update" method="post" class="form-horizontal" role="form" >
+  		     	 	<input type="hidden" name="id" value="<{$p.id}>" />
+  		     	 	  
+					  <div class="form-group">
+					    <label for="prono" class="col-sm-2 control-label">编号:</label>
+					    <div class="col-sm-4">
+					      <input type="text" class="form-control" name="prono" value="<{$p.prono}>" readonly>
+					    </div>
+					    <label for="prono" class="col-sm-2 control-label">类型:</label>
+					    <div class="col-sm-2">
+					     <{$selectptype}>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="program" class="col-sm-2 control-label">项目:</label>
+					    <div class="col-sm-4">
+					      <input type="text" class="form-control" name="program" value="<{$p.program}>" placeholder="项目">
+					    </div>
+					    <label for="program" class="col-sm-2 control-label">状态:</label>
+					    <div class="col-sm-2">
+					      <{$select}>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="prod" class="col-sm-2 control-label">产品:</label>
+					    <div class="col-sm-4">
+					     <input type="text" class="form-control"  value="<{$p.prodid|getProd=###}>" readonly>					      
+					    </div>
+					    <label for="testgp" class="col-sm-2 control-label">分组:</label>
+					    <div class="col-sm-2">
+					     	<input type="text" class="form-control" name="testgp" value="<{$p.testgp}>" readonly>
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="start" class="col-sm-2 control-label">开始:</label>
+					    <div class="col-sm-4">
+					      <input type="date" class="form-control" name="start" value="<{$p.start}>" >
+					    </div>
+					    <label for="end" class="col-sm-2 control-label">结束:</label>
+					    <div class="col-sm-2">
+					      <input type="date" class="form-control" name="end" value="<{$p.end}>" >
+					    </div>
+					  </div>
+					  <div class="form-group">
+					    <label for="exponline" class="col-sm-2 control-label">期望上线:</label>
+					    <div class="col-sm-4">
+					      <input type="date" class="form-control" name="exponline" value="<{$p.exponline}>" >
+					    </div>
+					    <label for="end" class="col-sm-2 control-label">测试:</label>
+					    <div class="col-sm-2">
+					      <{$selectgpuer}>
+					    </div>
+					  </div>
+					  <div class="form-group">					    
+					    <label for="develop" class="col-sm-2 control-label">研发:</label>
+					    <div class="col-sm-4">
+					     	<input type="text" class="form-control" name="develop" value="<{$p.develop}>" placeholder="研发负责人">
+					    </div>
+					    <label for="pm" class="col-sm-2 control-label">PM:</label>
+					    <div class="col-sm-2">
+					      <input type="text" class="form-control" name="pm" value="<{$p.pm}>" placeholder="产品经理">
+					    </div>
+					  </div>
+					  <div class="form-group">					    
+					    <label for="develop" class="col-sm-2 control-label">需求:</label>
+					    <div class="col-sm-4">
+					     	<{$retype}>
+					    </div>
+					    <label for="pm" class="col-sm-2 control-label">级别:</label>
+					    <div class="col-sm-2">
+					      <{$relevel}>
+					    </div>
+					  </div>
+					  <div class="form-group" >
+					  <label for="pm" class="col-sm-2 control-label">简介:</label>
+					   <div class="col-sm-9">
+					 	 <textarea name="profile" rows="10"  style="width:100%;text-align: left;" >
+							<{$p.profile}>
+						</textarea>
+					  </div>
+					  </div>
+		  
+					  <button type="submit" class="btn btn-info btn-lg pull-left " style="margin-left:20%;">提 交</button>
+                </form>
+                     <a href="__URL__" type="button"  class="btn btn-warning btn-lg pull-right" >返 回</a>
+                 
+  		     	</div>	
+            
+  		</div>
+ 		 <div class="col-md-3 hidden-xs hidden-sm">
+ 		 	<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">项目</h3>
+            </div>            
+            <ul class="list-group">
+  			 <volist name='data' id='vo' empty="没有数据">
+  			 <li class="list-group-item" >
+            	<a href="__URL__/mod/id/<{$vo.id}>"><{$vo.prono}>:<{$vo.program}></a>
+				</li>
+        	</volist>
+        	</ul>
+        	</div>
+                   
+         	
+  		</div>
+	</div>           
+</div><!-- container -->
