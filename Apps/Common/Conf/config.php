@@ -10,13 +10,13 @@ return array(
     'TMPL_L_DELIM'=>'<{',
     'TMPL_R_DELIM'=>'}>',
     'SESSION_AUTO_START' => true,//开启SESSION
-    'DB_TYPE'   => 'mysql', // 数据库类型
-    'DB_HOST'   => 'localhost', // 服务器地址
-    'DB_NAME'   => 'tuocai', // 数据库名
-    'DB_USER'   => 'root', // 用户名
-    'DB_PWD'    => '', // 密码
-    'DB_PORT'   => 3306, // 端口
-    'DB_PREFIX' => 'tuoc_', // 数据库表前缀
+    'DB_TYPE'=>'mysql',
+    'DB_HOST'=>'192.168.87.40',
+    'DB_NAME'=>'tpTest',
+    'DB_USER'=>'root',
+    'DB_PWD'=>'root',
+    'DB_PORT'=>'3306',
+    'DB_PREFIX'=>'tp_',
     'DB_CHARSET'=> 'utf8', // 字符集
 
 //     'DB_DEPLOY_TYPE'        =>  0, // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)

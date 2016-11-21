@@ -20,6 +20,7 @@ class TestController extends Controller {
         ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
         ->join('tp_exescene ON tp_stagetester.id=tp_exescene.stagetesterid')
         ->join('tp_exefunc ON tp_exescene.id=tp_exefunc.exesceneid')
+        ->order('tp_exefunc.updateTime desc')
         ->select();
         $this->assign('arr',$arr);
 
