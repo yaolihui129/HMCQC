@@ -3,9 +3,10 @@ namespace TAdmin\Controller;
 
 class ProductController extends CommonController {
     public function index(){
+        $where[state]='正常';
         /* 实例化模型*/
     	 $m=M('product');
-    	 $arr=$m->select();
+    	 $arr=$m->where($where)->select();
 
 	     $this->assign('data',$arr);
 // 	     $this -> assign("state", formselect());

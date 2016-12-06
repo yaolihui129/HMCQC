@@ -4,17 +4,17 @@ return array(
 	'SHOW_PAGE_TRACE'=>false,//显示页面Trace信息
     'URL_MODEL' => '1',//URL模式
     'MODULE_ALLOW_LIST' => array('Home','Admin','TAdmin',"Test"),//设置允许模块
-    'DEFAULT_MODULE' => 'Test',//设置默认模块设置
+    'DEFAULT_MODULE' => 'Home',//设置默认模块设置
     'MODULE_DENY_LIST' => array('Common','Runtime'), // 禁止访问的模块列表
     //修改定界符
     'TMPL_L_DELIM'=>'<{',
     'TMPL_R_DELIM'=>'}>',
     'SESSION_AUTO_START' => true,//开启SESSION
     'DB_TYPE'=>'mysql',
-    'DB_HOST'=>'192.168.87.40',
+    'DB_HOST'=>'127.0.0.1',
     'DB_NAME'=>'tpTest',
     'DB_USER'=>'root',
-    'DB_PWD'=>'root',
+    'DB_PWD'=>'',
     'DB_PORT'=>'3306',
     'DB_PREFIX'=>'tp_',
     'DB_CHARSET'=> 'utf8', // 字符集

@@ -1,0 +1,43 @@
+<layout name="layout" />
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><{$w.proid|getPro=###}></h3>
+  </div>
+  <div class="panel-body table-responsive">
+  	 <{$arr.prono}>:<{$arr.program}><br>
+	 <{$arr.retype}>:<{$arr.relevel}>，产品经理：<{$arr.pm}><br>
+	 <div class="well well-sm"><{$arr.profile}></div>
+  
+    	<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" ><a href="__APP__/Home/Stage/index/proid/<{$w.proid}>">里程碑<span class="badge"><{$w.proid|countStage=###}></span></a></li>
+		  <li role="presentation"  class="active"><a href="__APP__/Test/Risk/index/proid/<{$w.proid}>">风险<span class="badge"><{$w.proid|countRisk=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/Home/Func/func/proid/<{$w.proid}>">功能点</a></li>
+		  <li role="presentation"><a href="__APP__/Home/Func/range/proid/<{$w.proid}>">范围<span class="badge"><{$w.proid|countRange=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/Home/Scene/index/proid/<{$w.proid}>">场景<span class="badge"><{$w.proid|countScene=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/Home/Case/procase/proid/<{$w.proid}>">用例<span class="badge"><{$w.proid|countCase=###}></span></a></li>
+		  
+		</ul>
+		
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <br>
+                <volist name='data' id='st' empty="暂时没有已记录的风险">
+                    <div class="panel panel-default">
+					    <div class="panel-heading" role="tab" id="heading<{$st.id}>">
+					      	<h4 class="panel-title">
+					        <a data-toggle="collapse" data-parent="#accordion" href="#<{$st.id}>" aria-expanded="true" aria-controls="<{$st.id}>">
+					        <{$st.sn}>.<{$st.risk}> <span class="pull-right"><{$st.state}></span></a>
+					      </h4>
+					    </div>
+					    <div id="<{$st.id}>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<{$st.id}>">
+					      	<div class="panel-body">						        
+						        <{$st.amethod}><br>
+						        <{$st.moder}>&nbsp;更新于:<{$st.updatetime}><br>
+					      	</div>
+					   </div>
+  					</div>
+                      
+             </volist>
+      </div>
+		
+   </div>
+</div>

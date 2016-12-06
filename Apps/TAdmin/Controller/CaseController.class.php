@@ -3,202 +3,30 @@ namespace TAdmin\Controller;
 class CaseController extends CommonController {
 public function index(){
         /* 接收参数*/
-         $prodid=$_GET['prodid'];
-         $sysid=$_GET['sysid'];
-         $pathid=$_GET['pathid'];
          $funcid=$_GET['funcid'];
          /* 实例化模型*/
-         $m=M('func');
-         $where=array("pathid"=>$pathid);
+         $m=D('func');
+         $arr=$m->find($funcid);
+         $this->assign('arr',$arr);
+         $where['pathid']=$arr['pathid'];
          $data=$m->where($where)->select();
          $this->assign('data',$data);
-    	 $m=M('case');
-    	 $where=array("funcid"=>$funcid);
+         
+    	 $m=D('case');
+    	 $where['funcid']=$funcid;
     	 $cases=$m->where($where)->select();
 	     $this->assign('cases',$cases);
-	     $where=array("prodid"=>$prodid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-	     $this->assign('w',$where);
-
-
+	     
+	     /* 添加*/
+	     $count=$m->where($where)->count()+1;
+	     $this->assign("c",$count);
+	     $this -> assign("state", formselect());	     
+	     $this->assign("caozuo",PublicController::editor("steps"));
+	     
 	     $this->display();
     }
 
 
-    public function indexp(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('func');
-        $where=array("pathid"=>$pathid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $cases=$m->where($where)->select();
-        $this->assign('cases',$cases);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-
-        $this->display();
-    }
-
-    public function indexf(){
-        /* 接收参数*/
-
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('func');
-        $where=array("pathid"=>$pathid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $cases=$m->where($where)->select();
-        $this->assign('cases',$cases);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-        $this->display();
-    }
-
-
-    public function indexr(){
-        /* 接收参数*/
-
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('func');
-        $where=array("pathid"=>$pathid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $cases=$m->where($where)->select();
-        $this->assign('cases',$cases);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-
-        $this->display();
-    }
-
-    public function indexe(){
-        /* 接收参数*/
-
-
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('func');
-
-        $data=$m->select();
-        $this->assign('data',$data);
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $cases=$m->where($where)->select();
-        $this->assign('cases',$cases);
-        $where=array("funcid"=>$funcid);
-        $this->assign('w',$where);
-
-
-        $this->display();
-    }
-
-
-    public function add(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("prodid"=>$prodid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-
-        $this->assign("caozuo",PublicController::editor("steps"));
-
-        $this->display();
-    }
-
-    public function addp(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-        $this -> assign("fproid", proselect($proid,"fproid"));
-        $this->assign("caozuo",PublicController::editor("steps"));
-
-        $this->display();
-    }
-
-    public function addf(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-        $this -> assign("fproid", proselect($proid,"fproid"));
-        $this->assign("caozuo",PublicController::editor("steps"));
-
-        $this->display();
-    }
-
-    public function addr(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-        $this -> assign("fproid", proselect($proid,"fproid"));
-        $this->assign("caozuo",PublicController::editor("steps"));
-
-        $this->display();
-    }
 
     public function insert(){
         /* 实例化模型*/
@@ -220,20 +48,17 @@ public function index(){
 
     public function mod(){
         /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
+
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
         $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("prodid"=>$prodid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
         $case=$m->find($id);
         $this->assign("case",$case);
+        
+        $where['funcid']=$case['funcid'];
+        $data=$m->where($where)->select();
+        $this->assign('data',$data);        
+                
         $this -> assign("state", formselect($case['state']));
         $this -> assign("fproid", proselect($case['fproid'],"fproid"));
         $this->assign("caozuo",PublicController::editor("steps",$case['steps']));
@@ -241,74 +66,6 @@ public function index(){
         $this->display();
     }
 
-    public function modp(){
-
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $case=$m->find($id);
-        $this->assign("case",$case);
-        $this -> assign("state", formselect($case['state']));
-        $this -> assign("fproid", proselect($case['fproid'],"fproid"));
-        $this->assign("caozuo",PublicController::editor("steps",$case['steps']));
-
-        $this->display();
-    }
-
-    public function modf(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $case=$m->find($id);
-        $this->assign("case",$case);
-        $this -> assign("state", formselect($case['state']));
-        $this -> assign("fproid", proselect($case['fproid'],"fproid"));
-        $this->assign("caozuo",PublicController::editor("steps",$case['steps']));
-
-        $this->display();
-    }
-
-    public function modr(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
-        $m=M('case');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $case=$m->find($id);
-        $this->assign("case",$case);
-        $this -> assign("state", formselect($case['state']));
-        $this -> assign("fproid", proselect($case['fproid'],"fproid"));
-        $this->assign("caozuo",PublicController::editor("steps",$case['steps']));
-
-        $this->display();
-    }
 
     public function update(){
         /* 实例化模型*/

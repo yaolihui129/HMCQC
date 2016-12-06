@@ -20,7 +20,7 @@
 		  <li role="presentation"><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>copy/<{$arr.id}>">场景<span class="badge"><{$arr.id|countScene=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Case/library/proid/<{$arr.id}>">用例<span class="badge"><{$arr.id|countCase=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Element/library/proid/<{$arr.id}>">控件库</a></li>
-		  <li role="presentation"><a href="#">上线结果</a></li>
+		  
 	</ul>
 	<div class="row">
 	  <div class="col-md-6">
@@ -32,7 +32,7 @@
 			              <{$st.sysno}>:<{$st.system}>
 			              <!-- Split button -->
 			              <div class="btn-group pull-right">
-			                <button type="button" class="btn btn-info btn-xs">路径<{$st.sysid|countPath=###}></button>
+			                <a target="_blank" href="__APP__/TAdmin/Path/index/sysid/<{$st.sysid}>/proid/<{$arr.id}>" type="button" class="btn btn-info btn-xs">路径<{$st.sysid|countPath=###}></a>
 			                <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
 			                  <span class="caret"></span>
 			                  <span class="sr-only">Toggle Dropdown</span>
@@ -61,7 +61,7 @@
 			              <{$st.sysno}>:<{$st.system}>【<{$st.state}>】
 			              <!-- Split button -->
 			              <div class="btn-group pull-right">
-			                <button type="button" class="btn btn-danger btn-xs">关联</button>
+			                <a href="__URL__/insert/proid/<{$arr.id}>/sysid/<{$st.id}>" type="button" class="btn btn-danger btn-xs">关联</a>
 			                <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
 			                  <span class="caret"></span>
 			                  <span class="sr-only">Toggle Dropdown</span>

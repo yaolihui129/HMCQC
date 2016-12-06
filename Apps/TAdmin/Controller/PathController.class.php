@@ -64,49 +64,6 @@ class PathController extends CommonController {
 
     public function mod(){
         /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $sysid=$_GET['sysid'];
-        $id=$_GET['id'];
-        /* 实例化模型*/
-        $m=D('path');
-        $where=array("sysid"=>"$sysid");
-        $data= $m->where($where)->order("sn")->select();
-        $this->assign("data",$data);
-        //编辑内容
-        $path=$m->find($id);
-        $this->assign("path",$path);
-        $this -> assign("pstate", formselect($path['pstate'],"pstate"));
-        $where=array("prodid"=>"$prodid","sysid"=>"$sysid");
-        $this->assign("w",$where);
-
-        $this->display();
-    }
-
-    public function modf(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $id=$_GET['id'];
-//         echo $proid;
-        /* 实例化模型*/
-        $m=D('path');
-        $where=array("sysid"=>"$sysid");
-        $data= $m->where($where)->order("sn")->select();
-        $this->assign("data",$data);
-        //编辑内容
-        $path=$m->find($id);
-        $this->assign("path",$path);
-        $this -> assign("pstate", formselect($path['pstate'],"pstate"));
-        $where=array("proid"=>"$proid","sysid"=>"$sysid");
-        $this->assign("w",$where);
-
-        $this->display();
-    }
-
-
-    public function modp(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
         $proid=$_GET['proid'];
         $sysid=$_GET['sysid'];
         $id=$_GET['id'];
@@ -118,12 +75,15 @@ class PathController extends CommonController {
         //编辑内容
         $path=$m->find($id);
         $this->assign("path",$path);
-        $this -> assign("pstate", formselect($path['pstate'],"pstate"));
-        $where=array("prodid"=>"$prodid","proid"=>"$proid","sysid"=>"$sysid");
-        $this->assign("w",$where);
+        $this -> assign("pstate", formselect($path['pstate'],"pstate"));      
+        $this->assign("proid",$proid);
 
         $this->display();
     }
+
+   
+
+
 
 
     public function update(){

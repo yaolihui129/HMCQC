@@ -6,7 +6,7 @@ class FuncController extends CommonController{
          /* 接收参数*/
         $pathid=$_GET['pathid'];
         $proid=$_SESSION['proid'];
-//         dump($_SESSION);
+
         /* 实例化模型*/
         $m=D('path');
         $arr=$m->find($pathid);
@@ -50,87 +50,24 @@ class FuncController extends CommonController{
     }
 
     public function mod(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
+        /* 接收参数*/        
         $id=$_GET['id'];
         /* 实例化模型*/
         $m= D("func");
-        $where=array("pathid"=>"$pathid");
-        $data=$m->where($where)->order("sn")->select();
-        $this->assign("data",$data);
-        $where=array("prodid"=>$prodid,"sysid"=>$sysid,"pathid"=>"$pathid");
-        $this->assign("w",$where);
         $func=$m->find($id);
         $this->assign("func",$func);
+        $where['pathid']=$func['pathid'];
+        $data=$m->where($where)->order("sn")->select();
+        $this->assign("data",$data);
+        
+
         $this -> assign("state", formselect($func['state']));
         $this -> assign("fproid", proselect($func['fproid'],"fproid"));
 
         $this->display();
     }
 
-    public function modf(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $id=$_GET['id'];
-        /* 实例化模型*/
-        $m= D("func");
-        $where=array("pathid"=>"$pathid");
-        $data=$m->where($where)->order("sn")->select();
-        $this->assign("data",$data);
-        $where=array("proid"=>$proid,"pathid"=>"$pathid");
-        $this->assign("w",$where);
-        $func=$m->find($id);
-        $this->assign("func",$func);
-        $this -> assign("state", formselect($func['state']));
-        $this -> assign("fproid", proselect($func['fproid'],"fproid"));
-
-        $this->display();
-    }
-
-    public function modp(){
-        /* 接收参数*/
-       $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        $id=$_GET['id'];
-        /* 实例化模型*/
-        $m= D("func");
-        $where=array("pathid"=>"$pathid");
-        $data=$m->where($where)->order("sn")->select();
-        $this->assign("data",$data);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>"$pathid");
-        $this->assign("w",$where);
-        $func=$m->find($id);
-        $this->assign("func",$func);
-        $this -> assign("state", formselect($func['state']));
-        $this -> assign("fproid", proselect($func['fproid'],"fproid"));
-
-        $this->display();
-    }
-
-    public function modr(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $id=$_GET['id'];
-        /* 实例化模型*/
-        $m= D("func");
-        $where=array("pathid"=>"$pathid");
-        $data=$m->where($where)->order("sn")->select();
-        $this->assign("data",$data);
-        $where=array("proid"=>$proid,"pathid"=>"$pathid");
-        $this->assign("w",$where);
-        $func=$m->find($id);
-        $this->assign("func",$func);
-        $this -> assign("state", formselect($func['state']));
-        $this -> assign("fproid", proselect($func['fproid'],"fproid"));
-
-        $this->display();
-    }
+   
 
     public function update(){
         $db=D('func');
@@ -226,7 +163,6 @@ class FuncController extends CommonController{
         /* 接收参数*/
         $proid=$_GET['proid'];
         $sceneid=$_GET['sceneid'];
-//         echo $proid,$sceneid;
         /* 实例化模型*/
         $m= D("prosys");
         $where=array("tp_prosys.proid"=>"$proid");
@@ -236,7 +172,7 @@ class FuncController extends CommonController{
         ->order("tp_system.sysno,tp_path.sn,tp_path.id")
         ->select();
         $this->assign("data",$data);
-//         dump($data);
+
         $m= D("func");
         $pathid=!empty($_GET['pathid'])?$_GET['pathid']:$data[0]['id'];
         $where=array("pathid"=>"$pathid");

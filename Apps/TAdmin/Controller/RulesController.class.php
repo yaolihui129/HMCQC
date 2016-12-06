@@ -4,244 +4,34 @@ namespace TAdmin\Controller;
 class RulesController extends CommonController {
     public function index(){
         /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
+
         $funcid=$_GET['funcid'];
         /* 实例化模型*/
         $m=M('func');
-        $where=array("pathid"=>$pathid);
+        $arr=$m->find($funcid);
+        $this->assign('arr',$arr);
+
+        $where['pathid']=$arr['pathid'];
         $data=$m->where($where)->select();
         $this->assign('data',$data);
-        /* 实例化模型*/
+        
         $m=M('rules');
-        $where=array("funcid"=>$funcid);
+        $where['funcid']=$funcid;
         $rules=$m->where($where)->select();
         $this->assign('rules',$rules);
-        $where=array("prodid"=>$prodid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-
-        $this->display();
-    }
-
-    public function indexp(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('func');
-        $where=array("pathid"=>$pathid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $rules=$m->where($where)->select();
-        $this->assign('rules',$rules);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-
-        $this->display();
-    }
-
-    public function indexf(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('func');
-        $where=array("pathid"=>$pathid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $rules=$m->where($where)->select();
-        $this->assign('rules',$rules);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-
-        $this->display();
-    }
-
-
-    public function indexr(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('func');
-        $where=array("pathid"=>$pathid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $rules=$m->where($where)->select();
-        $this->assign('rules',$rules);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-
-        $this->display();
-    }
-
-    public function indexs(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $sceneid=$_GET['sceneid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('func');
-        $where=array("pathid"=>$pathid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $rules=$m->where($where)->select();
-        $this->assign('rules',$rules);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid,"sceneid"=>$sceneid);
-        $this->assign('w',$where);
-
-
-        $this->display();
-    }
-
-    public function indexe(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $rules=$m->where($where)->select();
-        $this->assign('rules',$rules);
-        $where=array("proid"=>$proid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-
-        $this->display();
-    }
-
-    public function add(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $sysid=$_GET['sysid'];
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
+        /* add*/
         $count=$m->where($where)->count()+1;
         $this->assign("c",$count);
         $this -> assign("state", formselect());
         $this -> assign("fproid", proselect($proid,"fproid"));
         $this->assign("beizhu",PublicController::editor("remark"));
+        
+
 
         $this->display();
     }
 
-    public function addp(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-        $this -> assign("fproid", proselect($proid,"fproid"));
-        $this->assign("beizhu",PublicController::editor("remark"));
 
-        $this->display();
-    }
-
-    public function addf(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-        $this -> assign("fproid", proselect($proid,"fproid"));
-        $this->assign("beizhu",PublicController::editor("remark"));
-
-        $this->display();
-    }
-
-    public function addr(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-        $this -> assign("fproid", proselect($proid,"fproid"));
-        $this->assign("beizhu",PublicController::editor("remark"));
-
-        $this->display();
-    }
-
-    public function adds(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $sceneid=$_GET['sceneid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid,"sceneid"=>$sceneid);
-        $this->assign('w',$where);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-        $this -> assign("fproid", proselect($proid,"fproid"));
-        $this->assign("beizhu",PublicController::editor("remark"));
-
-        $this->display();
-    }
 
     public function insert(){
         $m=D('rules');
@@ -262,21 +52,17 @@ class RulesController extends CommonController {
 
     public function mod(){
         /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
+
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
         $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
         $rule=$m->find($id);
         $this->assign("rule",$rule);
+        
+        $where['funcid']=$rule['funcid'];
+        $data=$m->where($where)->select();
+        $this->assign('data',$data);
+                
         $this -> assign("state", formselect($rule['state']));
         $this -> assign("fproid", proselect($rule['fproid'],"fproid"));
         $this->assign("beizhu",PublicController::editor("remark",$rule['remark']));;
@@ -284,97 +70,6 @@ class RulesController extends CommonController {
         $this->display();
     }
 
-    public function modp(){
-        /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $rule=$m->find($id);
-        $this->assign("rule",$rule);
-        $this -> assign("state", formselect($rule['state']));
-        $this -> assign("fproid", proselect($rule['fproid'],"fproid"));
-        $this->assign("beizhu",PublicController::editor("remark",$rule['remark']));;
-
-        $this->display();
-    }
-
-    public function modf(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $rule=$m->find($id);
-        $this->assign("rule",$rule);
-        $this -> assign("state", formselect($rule['state']));
-        $this -> assign("fproid", proselect($rule['fproid'],"fproid"));
-        $this->assign("beizhu",PublicController::editor("remark",$rule['remark']));;
-
-        $this->display();
-    }
-
-    public function modr(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-        $rule=$m->find($id);
-        $this->assign("rule",$rule);
-        $this -> assign("state", formselect($rule['state']));
-        $this -> assign("fproid", proselect($rule['fproid'],"fproid"));
-        $this->assign("beizhu",PublicController::editor("remark",$rule['remark']));;
-
-        $this->display();
-    }
-
-
-    public function mods(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $sceneid=$_GET['sceneid'];
-        $pathid=$_GET['pathid'];
-        $funcid=$_GET['funcid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
-        $m=M('rules');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->select();
-        $this->assign('data',$data);
-        $where=array("proid"=>$proid,"pathid"=>$pathid,"funcid"=>$funcid,"sceneid"=>$sceneid);
-        $this->assign('w',$where);
-        $rule=$m->find($id);
-        $this->assign("rule",$rule);
-        $this -> assign("state", formselect($rule['state']));
-        $this -> assign("fproid", proselect($rule['fproid'],"fproid"));
-        $this->assign("beizhu",PublicController::editor("remark",$rule['remark']));;
-
-        $this->display();
-    }
     public function update(){
         $db=D('rules');
         $_POST['moder']=$_SESSION['realname'];
