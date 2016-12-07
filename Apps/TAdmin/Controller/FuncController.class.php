@@ -161,7 +161,7 @@ class FuncController extends CommonController{
 
     public function library(){
         /* 接收参数*/
-        $proid=$_GET['proid'];
+        $proid=$_SESSION['proid'];
         $sceneid=$_GET['sceneid'];
         /* 实例化模型*/
         $m= D("prosys");

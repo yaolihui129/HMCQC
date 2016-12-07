@@ -4,7 +4,7 @@
   		<div class="col-md-7">	
   		<h3>用例-编辑</h3>	
   			<div class="panel-body">
-  		     	<form action="__URL__/update" method="post" class="form-horizontal" role="form" >
+  		     	<form action="__APP__/TAdmin/Case/update" method="post" class="form-horizontal" role="form" >
   		     	  <input type="hidden" name="id" value="<{$case.id}>" />  		     	  
   		     	    <div class="form-group">
   		     	      <div class="col-sm-2">
@@ -48,7 +48,7 @@
 					  <button type="submit" class="btn btn-info btn-lg pull-left" style="margin-left:20%;">提 交</button>
                 </form>
                  <div class="btn-group pull-right">                       
-                        <a href="__URL__/index/funcid/<{$case.funcid}>" type="button"  class="btn btn-warning btn-lg pull-right " >返 回</a>                        
+                        <a href="__APP__/TAdmin/<{$p}>/index/funcid/<{$case.funcid}>" type="button"  class="btn btn-warning btn-lg pull-right " >返 回</a>                        
                   </div>
   		     	</div>	
             
@@ -61,7 +61,7 @@
             <ul class="list-group">
   			 <volist name='data' id='vo' empty="没有数据">
   			 <li class="list-group-item" >
-            	<a href="__URL__/mod/id/<{$vo.id}>/funcid/<{$w.funcid}>"><{$vo.sn}>.【<{$vo.state}>】<{$vo.main}></a>
+            	<a href="__URL__/mod/id/<{$vo.id}>/p/<{$p}>"><{$vo.sn}>.【<{$vo.state}>】<{$vo.main}></a>
 				</li>
         	</volist>
         	</ul>

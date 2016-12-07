@@ -9,12 +9,12 @@ public function index(){
          $arr=$m->find($funcid);
          $this->assign('arr',$arr);
          $where['pathid']=$arr['pathid'];
-         $data=$m->where($where)->select();
+         $data=$m->where($where)->order('sn,id')->select();
          $this->assign('data',$data);
          
     	 $m=D('case');
     	 $where['funcid']=$funcid;
-    	 $cases=$m->where($where)->select();
+    	 $cases=$m->where($where)->order('sn,id')->select();
 	     $this->assign('cases',$cases);
 	     
 	     /* 添加*/
@@ -48,7 +48,9 @@ public function index(){
 
     public function mod(){
         /* 接收参数*/
-
+        $p=$_GET['p'];
+        $this -> assign("p", $p);
+        
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
         $m=M('case');
@@ -58,14 +60,20 @@ public function index(){
         $where['funcid']=$case['funcid'];
         $data=$m->where($where)->select();
         $this->assign('data',$data);        
-                
+        
+        
         $this -> assign("state", formselect($case['state']));
         $this -> assign("fproid", proselect($case['fproid'],"fproid"));
-        $this->assign("caozuo",PublicController::editor("steps",$case['steps']));
+        $this -> assign("caozuo",PublicController::editor("steps",$case['steps']));
 
         $this->display();
     }
-
+    
+    public function data(){
+        
+        $this->display();
+    
+    }
 
     public function update(){
         /* 实例化模型*/
@@ -93,7 +101,7 @@ public function index(){
             $this->error("重新排序失败...");
         }
     }
-
+   
 
     public function library(){
         /* 接收参数*/

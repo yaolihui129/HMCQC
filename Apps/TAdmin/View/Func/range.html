@@ -17,7 +17,7 @@
 		  <li role="presentation"><a href="__APP__/TAdmin/Prosys/index/proid/<{$arr.id}>">涉及系统<span class="badge"><{$arr.id|countProsys=###}></span> </a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Func/func/proid/<{$arr.id}>">功能点</a></li>
 		  <li role="presentation" class="active"><a href="__APP__/TAdmin/Func/range/proid/<{$arr.id}>">范围<span class="badge"><{$arr.id|countRange=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>copy/<{$arr.id}>">场景<span class="badge"><{$arr.id|countScene=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>/copy/<{$arr.id}>">场景<span class="badge"><{$arr.id|countScene=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Case/library/proid/<{$arr.id}>">用例<span class="badge"><{$arr.id|countCase=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Element/library/proid/<{$arr.id}>">控件库</a></li>
 		  <li role="presentation"><a href="#">上线结果</a></li>
@@ -27,7 +27,7 @@
              <th width=2% bgcolor="#ccc">ID</th>                                                         
              <th width=14% bgcolor="#ccc">功能</th>
              <th width=3%  bgcolor="#ccc">结果</th>
-             <th width=5% bgcolor="#ccc">操作 </th> 
+             <th width=5% bgcolor="#ccc">失败/测试次数 </th> 
              <th width=14% bgcolor="#ccc">路径</th>  
          </tr>
          <volist name='data' id='st' empty="没有数据">
@@ -45,21 +45,21 @@
 							用例 <span class="badge"><{$st.id|countFCase=###}></span><span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu " role="menu">
-							<li ><a href="__APP__/TAdmin/Case/indexr/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>">用例
+							<li ><a target="_blank" href="__APP__/TAdmin/Case/index/funcid/<{$st.id}>">用例
 							 <span class="badge pull-right"><{$st.id|countFCase=###}></span></a></li>
-							
-							<li ><a href="__APP__/TAdmin/Rules/indexr/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>">规则
-							<span class="badge pull-right"><{$st.id|countFRules=###}></span></a></li>	
-							
-							<li ><a href="__APP__/TAdmin/Element/indexr/funcid/<{$st.id}>/proid/<{$w.proid}>">数据模板</a></li>
 							<li class="divider "></li>
-							<li ><a href="__APP__/TAdmin/Func/modr/id/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>">修改</a></li>					    
+							<li ><a target="_blank" href="__APP__/TAdmin/Rules/index/funcid/<{$st.id}>">规则
+							<span class="badge pull-right"><{$st.id|countFRules=###}></span></a></li>	
+							<li class="divider "></li>
+							<li ><a target="_blank" href="__APP__/TAdmin/Element/index/funcid/<{$st.id}>">数据模板</a></li>
+							<!--  <li class="divider "></li>
+							<li ><a href="__APP__/TAdmin/Func/mod/id/<{$st.id}>">修改</a></li>-->					    
 						</ul>
 					</div>
                </td>
                <td align="center" ><{$st.result}></td>
                <td align="center" >
-                  <a href="__APP__/TAdmin/TAdmin/Test/index/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>">失败
+                  <a target="_blank" href="__APP__/TAdmin/Test/index/funcid/<{$st.id}>/pathid/<{$st.pathid}>/proid/<{$w.proid}>">失败
                   <{$st.id|countFResult=###}>/<{$st.id|countFQResult=###}></a>
                </td>
                <td align="left" >【<{$st.pstate}>】<{$st.system}>-<{$st.path}></td>                                   
@@ -74,7 +74,7 @@
   <div class="col-md-3 hidden-xs hidden-sm">
   	<div class="panel panel-default">
 	  <div class="panel-heading">
-	    <h3 class="panel-title"><{$_SESSION['testgp']}>组测试项目</h3>
+	    <h3 class="panel-title"><{$_SESSION['testgp']}>测试项目</h3>
 	  </div>
 	  <ul class="list-group">
 	    <volist name='pros' id='pro' empty="没有数据"> 			

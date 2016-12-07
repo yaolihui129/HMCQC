@@ -12,7 +12,7 @@ class RulesController extends CommonController {
         $this->assign('arr',$arr);
 
         $where['pathid']=$arr['pathid'];
-        $data=$m->where($where)->select();
+        $data=$m->where($where)->order('sn,id')->select();
         $this->assign('data',$data);
         
         $m=M('rules');

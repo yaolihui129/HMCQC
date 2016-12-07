@@ -1,45 +1,91 @@
- <layout name="layout" />
-        <div class="place">
-                                 所在位置：
-             <a href="__APP__/TAdmin/Program">项目</a>
-             > <a href="__URL__/index/proid/<{$w.proid}>">场景</a>
-             >编辑
-            <span style="float:right;margin-right:60px;">
-             <a href="__URL__/index/proid/<{$w.proid}>"> 返回</a>
-            </span>
-        </div>
-        <div class="content">
-           <div class="main">
-              <div class="top" style="margin-left:30%;">场景编辑</div>
-              <div class="left"align="left" style="width:30%">
-                    <volist name='data' id='vo' empty="没有数据">
-                       <a href="__URL__/mod/id/<{$vo.id}>/proid/<{$w.proid}>"><{$vo.sn}>.<{$vo.type}>-<{$vo.swho}>[<{$vo.swhen}>]<{$vo.scene}>:<{$vo.state}></a><br>
-                    </volist>
-              </div>
-              <div class="midd" width="50%" align="right" >
-                  <table border="0" width="500" align="left">
-                  <form action="__URL__/update" method="post" >
-                  <input type="hidden" name="id" value="<{$scene.id}>" />
-                  <input type="hidden" name="proid" value="<{$w.proid}>"  />
-                  <tr><td>更新：</td><td><{$scene.moder}>更新于:<{$scene.updateTime}></td></tr>
-                     <tr><td> 顺序：</td>
-                         <td><input type="text" name="sn" value="<{$scene.sn}>"  class="input60"/>
-                                                                            级别:<input type="text" name="level" value="<{$scene.level}>"  class="input60"/>
-                                                                            类型：<{$type}>
-                         </td>
-                     </tr>
-                     <tr><td>角色:</td><td><input type="text" name="swho" value="<{$scene.swho}>"  class="input200"/>状态:<{$state}></td></tr>
-                     <tr><td>时间:</td><td><input type="text" name="swhen" value="<{$scene.swhen}>"  class="input300"/></td></tr>
-                     <tr><td>场景:</td><td><input type="text" name="scene" value="<{$scene.scene}>"  class="input300"/></td></tr>
-                     <tr><td>流程:</td><td><input type="text" name="flow" value="<{$scene.flow}>"  class="input300"/></td></tr>
-                     <tr><td>地址</td><td><input type="text" name="testip" value="<{$scene.testip}>"  class="input300"/></td></tr>
-                     <tr><td></td>
-                         <td><input type="submit" class="btn" name="do_submit" value="提 交"></form>
-                             <a href="__URL__/add/proid/<{$w.proid}>"><button  class="btn" >添加</button> </a>
-                             <a href="__URL__/index/proid/<{$w.proid}>"><button  class="btn" >返回</button></a>
-                         </td>
-                     </tr>
-                  </table>
-              </div><!-- midd -->
-           </div><!-- main -->
+<layout name="layout" />        
+ <div class="container">
+	<div class="row">
+  		<div class="col-md-7">	
+  		<h3>场景编辑</h3>	
+  			<div class="panel-body">
+  		     	<form action="__URL__/update" method="post" class="form-horizontal" role="form" >
+  		     	  <input type="hidden" name="id" value="<{$scene.id}>" />  		     	  
+  		     	    <div class="form-group">
+  		     	      <div class="col-sm-2">
+  		     	      </div>
+  		     	      <div class="col-sm-10">
+  		     	       <{$scene.moder}> 更新于:<{$scene.updatetime}>
+  		     	      </div>
+  		     	    </div>
+					  <div class="form-group">					   
+					    <label for="short" class="col-sm-2 control-label">顺序:</label>
+					    <div class="col-sm-10">
+					      <input type="text" class="form-control" name="sn" value="<{$scene.sn}>" placeholder="顺序">
+					    </div>
+					  </div>
+					  <div class="form-group">
+					<label for="product" class="col-sm-2 control-label">类型:</label>
+					<div class="col-sm-10"><{$type}></div>						
+				</div>
+				<div class="form-group">
+					<label for="state" class="col-sm-2 control-label">状态:</label>
+					<div class="col-sm-10"><{$state}></div>
+				</div>
+				<div class="form-group">
+					<label for="state" class="col-sm-2 control-label">级别:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="level" value="<{$scene.level}>" placeholder="级别">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="state" class="col-sm-2 control-label">角色:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="swho" value="<{$scene.swho}>" placeholder="角色">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="state" class="col-sm-2 control-label">时间:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="swhen" value="<{$scene.swhen}>" placeholder="时间">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="state" class="col-sm-2 control-label">场景:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="scene" value="<{$scene.scene}>" placeholder="场景">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="state" class="col-sm-2 control-label">流程:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="flow" value="<{$scene.flow}>" placeholder="大致流程">
+					</div>
+				</div>
+				<!--  <div class="form-group">
+					<label for="state" class="col-sm-2 control-label">地址:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" name="testip" value="<{$scene.testip}>" placeholder="测试地址URL">
+					</div>
+				</div>-->
+					  
+					  <button type="submit" class="btn btn-info btn-lg pull-left" style="margin-left:20%;">提 交</button>
+                </form>
+                 <div class="btn-group pull-right">                       
+                        <a href="__URL__/index/proid/<{$_SESSION['proid']}>" type="button"  class="btn btn-warning btn-lg pull-right " >返 回</a>                        
+                  </div>
+  		     	</div>	
+            
+  		</div>
+ 		 <div class="col-md-5 hidden-xs hidden-sm">
+ 		 	<div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">场景</h3>
+            </div>            
+            <ul class="list-group">
+  			 <volist name='data' id='vo' empty="没有数据">
+  			 <li class="list-group-item" >
+            	<a href="__URL__/mod/id/<{$vo.id}>"><{$vo.sn}>.<{$vo.type}>-<{$vo.swho}>[<{$vo.swhen}>]<{$vo.scene}>:<{$vo.state}></a>
+				</li>
+        	</volist>
+        	</ul>
+        	</div>                            	
+  		</div>
+	</div>           
+</div><!-- container -->   
 

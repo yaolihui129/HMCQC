@@ -1,46 +1,46 @@
 <layout name="layout" />
 <div class="row"> 
   <div class="col-md-9">
-  		<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-    	<{$arr.sn}>.<{$arr.id|getSPFunc=###}>
-    	<a target="_blank" href="__APP__/TAdmin/Element/index/funcid/<{$arr.id}>" type="button" class=" btn btn-info btn-xs pull-right">模板</a>
-    	<a data-toggle="modal" href="#tianjcase" class=" btn btn-info btn-xs pull-right" >添加</a>
-    	<span class="pull-right">当前项目：<{$_SESSION['proid']|getProNo=###}></span>
-    </h3>
-  </div>
-  <div class="panel-body table-responsive"> 
-	<table class="table table-striped table-bordered table-hover table-condensed ">
-          <tr >
-          	<th width=3% align="center" bgcolor="#ccc">顺序</th>
-            <th width=40% align="left"  bgcolor="#ccc">意图</th> 
-            <th width=40% align="left"  bgcolor="#ccc">预期</th> 
-         </tr>
-         <form action="__URL__/order" method="post" >
-         <volist name='cases' id='case' empty="没有用例">
-            <tr>             	
-                <td align="center" ><input type="text" name="sn[<{$case.id}>]" value="<{$case.sn}>"  class="input40"/></td>
-                <td ><{$case.id}>:【<{$case.state}>】<{$case.main}>-<{$case.level}>(<{$case.fproid|getProNo=###}>)</td>
-                 <td><{$case.expected}>
-                 	<a  href="__URL__/mod/id/<{$case.id}>/funcid/<{$arr.id}>" type="button" class="btn btn-info btn-xs pull-right">修改</a>
-		               
-                 
-                 </td>                             
-            </tr>
-            </volist>
-            	<tr><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
-            </form>
-       </table>
-    </div>
-  </div>
+  <h2>用例<span class="pull-right">当前：<{$_SESSION['proid']|getProNo=###}></span></h2>
+  	<div class="panel panel-default">
+	  <!-- Default panel contents -->
+	  <div class="panel-heading">
+	      <{$arr.sn}>.<{$arr.id|getSPFunc=###}>
+	      <div class="btn-group pull-right">
+			  <a type="button" data-toggle="modal" href="#tianjcase" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-plus"></span> 添加</a>
+			  <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
+			    <span class="caret"></span>
+			    <span class="sr-only">Toggle Dropdown</span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a target="_blank" href="__APP__/TAdmin/Element/index/funcid/<{$arr.id}>" >模板</a></li>						    
+			  </ul>
+			</div>
+	  </div>  
+	  <!-- List group -->
+	  <ul class="list-group">
+	    <form action="__URL__/order" method="post" >
+	        <volist name='cases' id='case' empty="没有用例">
+	            <li class="list-group-item">
+	                <input type="text" name="sn[<{$case.id}>]" value="<{$case.sn}>"  class="input40"/>
+	                <a  href="__URL__/mod/id/<{$case.id}>/p/Case">
+		                <{$case.main}>(<{$case.fproid|getProNo=###}>)
+		                <b>预期：</b><{$case.expected}>
+	                </a>
+	                <span class="badge"><{$case.state}>-<{$case.level}></span>
+	            </li>
+	        </volist>
+	        <input type="submit" name="do_submit" value="批量排序" class="btn">
+	    </form>
+	  </ul>
+	</div>
   
   
   </div>
   <div class="col-md-3 hidden-xs">
   	<div class="panel panel-default">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">功能点</h3>
+	    <h3 class="panel-title"><b>路径：</b><{$arr.pathid|getPath=###}></h3>
 	  </div>
 	  <ul class="list-group">
 	    <volist name='data' id='vo' empty="没有数据"> 			

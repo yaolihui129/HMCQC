@@ -5,7 +5,7 @@ class SceneController extends CommonController {
     public function index(){
         /* 接收参数*/
         $proid=$_GET['proid'];
-        $_SESSION['proid']=$proid;
+        $proid=$_SESSION['proid'];
     	$gp=$_SESSION['testgp'];
     	$copy=$_GET['copy'];
          /* 实例化模型*/
@@ -56,21 +56,18 @@ class SceneController extends CommonController {
 
     public function mod(){
         /* 接收参数*/
-        $proid=$_GET['proid'];
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
         $m= D("scene");
-        $where=array("proid"=>$proid);
-        $pros=$m->where($where)->select();
-
+        $where['proid']=$_SESSION['proid'];
+        $pros=$m->where($where)->order('sn,id')->select();
         $this->assign("data",$pros);
+        
         $scene=$m->find($id);
-        $this->assign('w',$where);
-        $this -> assign("state", formselect($scene['state']));
-        $this -> assign("type", formselect($scene['type'],"type","sceneType"));
         $this->assign("scene",$scene);
 
-
+        $this -> assign("state", formselect($scene['state']));
+        $this -> assign("type", formselect($scene['type'],"type","sceneType"));
 
         $this->display();
     }
@@ -99,9 +96,6 @@ class SceneController extends CommonController {
             $this->error("重新排序失败...");
         }
     }
-
-
- 
 
 
     public function copy(){

@@ -4,166 +4,48 @@ namespace TAdmin\Controller;
 class ElementController extends CommonController{
     public function index(){
         /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
+        $p=$_GET['p'];
         $funcid=$_GET['funcid'];
         /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
+        $m=D('func');
+        $arr=$m->find($funcid);
+        $this->assign('arr',$arr);
+        
+        $m=D('element');
+        $where['funcid']=$funcid;
+        $data=$m->where($where)->order('sn,id')->select();
         $this->assign('data',$data);
-        $m=M('case');
-        $dcases=$m->where($where)->select();
-        $this->assign('dcases',$dcases);
-
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-
-        $this->assign('w',$where);
-
+        
+        
+        $m=D('case');
+        $cases=$m->where($where)->order('sn,id')->select();
+        $this->assign('cases',$cases);
+        $count=$m->where($where)->count()+1;
+        $this->assign("cc",$count);
+        $this->assign("caozuo",PublicController::editor("steps"));
 	     $this->display();
-    }
-
-    public function indexr(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
-        $this->assign('data',$data);
-//         dump($data);
-        $m=M('case');
-        $dcases=$m->where($where)->select();
-        $this->assign('dcases',$dcases);
-        $where=array("proid"=>$proid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-        $this->display();
-    }
-
-
-    public function indexf(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
-        $this->assign('data',$data);
-        $m=M('case');
-        $dcases=$m->where($where)->select();
-        $this->assign('dcases',$dcases);
-        $where=array("proid"=>$proid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-        $this->display();
-    }
-
-    public function indexs(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $sceneid=$_GET['sceneid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
-        $this->assign('data',$data);
-        $m=M('case');
-        $dcases=$m->where($where)->select();
-        $this->assign('dcases',$dcases);
-        $where=array("proid"=>$proid,"funcid"=>$funcid,"sceneid"=>$sceneid);
-        $this->assign('w',$where);
-
-        $this->display();
     }
 
     public function add(){
         /* 接收参数*/
-        $prodid=$_GET['prodid'];
-        $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
-        $pathid=$_GET['pathid'];
         $funcid=$_GET['funcid'];
+        $this->assign('funcid',$funcid);
+        $p=$_GET['p'];
+        $this -> assign("p", $p);
         /* 实例化模型*/
         $m=M('element');
-        $where=array("funcid"=>$funcid);
+        $where['funcid']=$funcid;
         $data=$m->where($where)->order('sn')->select();
         $this->assign('data',$data);
+        
         $count=$m->where($where)->count()+1;
         $this->assign("c",$count);
-        $this -> assign("state", formselect());
-       // $this -> assign("typeset", formselect($element['typeset'],"typeset","typeset"));
-        $where=array("prodid"=>$prodid,"proid"=>$proid,"sysid"=>$sysid,"pathid"=>$pathid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-
+        $this -> assign("state", formselect());              
+        $this -> assign("typeset", formselect($element['typeset'],"typeset","typeset"));
+        
         $this->display();
     }
-
-    public function addr(){
-        /* 接收参数*/
-
-        $proid=$_GET['proid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
-        $this->assign('data',$data);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-        //$this -> assign("typeset", formselect($arr['typeset'],"typeset","typeset"));
-        $where=array("proid"=>$proid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-        $this->display();
-    }
-
-    public function addf(){
-        /* 接收参数*/
-
-        $proid=$_GET['proid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
-        $this->assign('data',$data);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-        // $this -> assign("typeset", formselect($element['typeset'],"typeset","typeset"));
-        $where=array("proid"=>$proid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-        $this->display();
-    }
-
-    public function adds(){
-        /* 接收参数*/
-
-        $proid=$_GET['proid'];
-        $sceneid=$_GET['sceneid'];
-        $funcid=$_GET['funcid'];
-        /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
-        $this->assign('data',$data);
-        $count=$m->where($where)->count()+1;
-        $this->assign("c",$count);
-        $this -> assign("state", formselect());
-        $where=array("proid"=>$proid,"funcid"=>$funcid,"sceneid"=>$sceneid);
-        $this->assign('w',$where);
-
-        $this->display();
-    }
+   
 
     public function insert(){
         $m=D('element');
@@ -184,85 +66,26 @@ class ElementController extends CommonController{
 
     public function mod(){
         /* 接收参数*/
-        $funcid=$_GET['funcid'];
+        $p=$_GET['p'];
+        $this -> assign("p", $p);
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
-        $this->assign('data',$data);
+        $m=D('element');
         $element=$m->find($id);
         $this->assign('element',$element);
+        
+        $where['funcid']=$element['funcid'];
+        $data=$m->where($where)->order('sn')->select();
+        $this->assign('data',$data);
+        
         $this -> assign("state", formselect($element['state']));
         $this -> assign("typeset", formselect($element['typeset'],"typeset","typeset"));
         
 
-
-
         $this->display();
     }
 
-    public function modr(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $funcid=$_GET['funcid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
-        $this->assign('data',$data);
-        $element=$m->find($id);
-        $this->assign('element',$element);
-        $this -> assign("state", formselect($element['state']));
-        $this -> assign("typeset", formselect($element['typeset'],"typeset","typeset"));
-        $where=array("proid"=>$proid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-        $this->display();
-    }
-
-    public function modf(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $funcid=$_GET['funcid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
-        $this->assign('data',$data);
-        $element=$m->find($id);
-        $this->assign('element',$element);
-        $this -> assign("state", formselect($element['state']));
-        $this -> assign("typeset", formselect($element['typeset'],"typeset","typeset"));
-        $where=array("proid"=>$proid,"funcid"=>$funcid);
-        $this->assign('w',$where);
-
-        $this->display();
-    }
-
-
-    public function mods(){
-        /* 接收参数*/
-        $proid=$_GET['proid'];
-        $sceneid=$_GET['sceneid'];
-        $funcid=$_GET['funcid'];
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        /* 实例化模型*/
-        $m=M('element');
-        $where=array("funcid"=>$funcid);
-        $data=$m->where($where)->order('sn')->select();
-        $this->assign('data',$data);
-        $element=$m->find($id);
-        $this->assign('element',$element);
-        $this -> assign("state", formselect($element['state']));
-        $this -> assign("typeset", formselect($element['typeset'],"typeset","typeset"));
-        $where=array("proid"=>$proid,"funcid"=>$funcid,"sceneid"=>$sceneid);
-        $this->assign('w',$where);
-
-        $this->display();
-    }
+  
 
     public function update(){
         $db=D('element');
@@ -285,7 +108,7 @@ class ElementController extends CommonController{
         if($num) {
             $this->success("重新排序成功!");
         }else{
-            $this->error("重新排序失败...");
+            $this->error("没有修改，无需排序");
         }
     }
 
@@ -335,8 +158,7 @@ class ElementController extends CommonController{
 
         $m=D("prosys");
         $where=array("proid"=>$proid);
-        $elements=$m
-        ->join('inner JOIN tp_system ON tp_system.id = tp_prosys.sysid')
+        $elements=$m->join('inner JOIN tp_system ON tp_system.id = tp_prosys.sysid')
         ->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
         ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
         ->join(' inner JOIN tp_element ON tp_func.id = tp_element.funcid')
@@ -353,8 +175,7 @@ class ElementController extends CommonController{
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('element');
-        $id=$_GET['id'];
+        $m=D('element');        
         $count =$m->delete($id);
         if ($count>0) {
             $this->success('删除成功');

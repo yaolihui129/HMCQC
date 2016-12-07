@@ -1,47 +1,57 @@
-      <layout name="layout" />
-        <div class="place">
-                                 所在位置：
-              <a href="__APP__/TAdmin/Product">产品</a>
-              ><a href="__APP__/TAdmin/System/index/prodid/<{$w.prodid}>">系统</a>
-              ><a href="__APP__/TAdmin/Path/index/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">路径</a>
-              ><a href="__APP__/TAdmin/Func/index/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">功能点</a>
-              ><a href="__URL__/index/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">数据模板</a>
-              >控件添加
-               <span style="float:right;margin-right:60px;">
-                 <a href="__URL__/index/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>"> 返回</a>
-               </span>
-        </div>
-        <div class="content">
-           <div class="main">
-              <div class="top" >控件添加
-              <span>(功能点：<{$w.funcid|getSPFunc=###}>)</span>
-              </div>
-              <div class="left" align="left" style="widtht:15%;">
-               <h1>功能控件</h1>
-                    <volist name='data' id='vo' empty="没有数据">
-                      <ur>
-                         <li><a href="__URL__/mod/id/<{$vo.id}>/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>">
-                         <{$vo.sn}>.<{$vo.typeset}>:<{$vo.control}>-<{$vo.data}></a>:<{$vo.state}>
-
-                         </li>
-                       </ur>
-                    </volist>
-              </div>
-              <div class="midd"  align="right" >
-
-                  <table border="0" width="300" align="left">
-                  <form action="__URL__/insert" method="post" >
-                  <input type="hidden" name="funcid" value="<{$w.funcid}>" />
-                     <tr><td> 顺序：</td><td><input type="text" name="sn" value="<{$c}>"  class="input200"/></td></tr>
-                     <tr><td>控件：</td><td><input type="text" name="control" value=""  class="input200"/></td></tr>
-                     <tr><td> 数据：</td><td><input type="text" name="data" value="num<{$c}>"  class="input200"/></td></tr>
-                     <tr><td>状态：</td><td><{$state}>类型：<{$typeset}></td></tr>
-                     <tr><td></td>
-                         <td>
-                            <input type="submit" class="btn" name="do_submit" value="提 交">  </form>
-                             <a href="__URL__/index/funcid/<{$w.funcid}>/pathid/<{$w.pathid}>/sysid/<{$w.sysid}>/prodid/<{$w.prodid}>"><button  class="btn" >返回</button></a>
-                         </td>
-                     </tr>
-                  </table>
-              </div><!-- midd -->
-           </div><!-- main -->
+<layout name="layout" />
+<div class="container">
+<div class="row">
+  	<div class="col-md-7">	
+  	<h3>控件-添加</h3>	
+  		<div class="panel-body">
+  		<form action="__APP__/TAdmin/Element/insert" method="post" class="form-horizontal" role="form" > 
+  		 	<input type="hidden" name="funcid" value="<{$funcid}>" />
+  		 	<input type="hidden" name="fproid" value="<{$_SESSION['proid']}>" />	     	  
+			<div class="form-group">					   
+				<label for="short" class="col-sm-2 control-label">顺序:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="sn" value="<{$c}>" placeholder="顺序">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="product" class="col-sm-2 control-label">控件:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="control" value="" placeholder="控件">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="product" class="col-sm-2 control-label">类型:</label>
+				<div class="col-sm-10"><{$typeset}></div>
+			</div>
+			<div class="form-group">
+				<label for="state" class="col-sm-2 control-label">状态:</label>
+				<div class="col-sm-10"><{$state}></div>
+			</div>	
+			<div class="form-group">
+				<label for="product" class="col-sm-2 control-label">数据:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="data" value="num<{$c}>" placeholder="数据">
+				</div>
+			</div>
+					
+				<button type="submit" class="btn btn-info btn-lg pull-left" style="margin-left:20%;">提 交</button>
+                </form>
+            <div class="btn-group pull-right">                       
+                 <a href="__APP__/TAdmin/<{$p}>/index/funcid/<{$case.funcid}>" type="button"  class="btn btn-warning btn-lg pull-right " >返 回</a>                        
+            </div>
+  		 </div>	            
+	</div>
+ 	<div class="col-md-5 hidden-xs hidden-sm">
+ 		<div class="panel panel-primary">
+           <div class="panel-heading"><h3 class="panel-title"><{$funcid|getSPFunc=###}></h3></div>            
+            <ul class="list-group">
+  				<volist name='data' id='vo' empty="没有数据">
+  			 		<li class="list-group-item" >
+            			<a href="__URL__/mod/id/<{$vo.id}>/p/<{$p}>"><{$vo.sn}>.<{$vo.typeset}>:<{$vo.control}>-<{$vo.data}></a>:<{$vo.state}>
+					</li>
+        		</volist>
+        	</ul>
+        </div>                            	
+  	</div>
+</div>           
+</div><!-- container -->   

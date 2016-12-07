@@ -17,7 +17,7 @@
 		  <li role="presentation" class="active"><a href="__APP__/TAdmin/Prosys/index/proid/<{$arr.id}>">涉及系统<span class="badge"><{$arr.id|countProsys=###}></span> </a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Func/func/proid/<{$arr.id}>">功能点</a></li>
 		  <li role="presentation" ><a href="__APP__/TAdmin/Func/range/proid/<{$arr.id}>">范围<span class="badge"><{$arr.id|countRange=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>copy/<{$arr.id}>">场景<span class="badge"><{$arr.id|countScene=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>/copy/<{$arr.id}>">场景<span class="badge"><{$arr.id|countScene=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Case/library/proid/<{$arr.id}>">用例<span class="badge"><{$arr.id|countCase=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Element/library/proid/<{$arr.id}>">控件库</a></li>
 		  
@@ -37,11 +37,10 @@
 			                  <span class="caret"></span>
 			                  <span class="sr-only">Toggle Dropdown</span>
 			                </button>
-			                <ul class="dropdown-menu" role="menu">
-			                  <li><a target="_blank" href="__APP__/TAdmin/Path/index/sysid/<{$st.sysid}>/proid/<{$arr.id}>" >路径<{$st.sysid|countPath=###}></a></li>
-			                  <li><a href="__APP__/TAdmin/System/test/id/<{$st.id}>/proid/<{$arr.id}>">环境</a></li>                 
+			                <ul class="dropdown-menu" role="menu">			                  
+			                  <li><a href="__APP__/TAdmin/System/test/id/<{$st.id}>/proid/<{$arr.id}>"><span class="glyphicon glyphicon-cloud"> 环境</span></a></li>                 
 			                  <li class="divider"></li>
-			                  <li><a href="__URL__/del/prosysid/<{$st.prosysid}>"  onclick="return confirm('你确定要从项目中移除：<{$st.system}>系统吗？')">移除</a></li>
+			                  <li><a href="__URL__/del/prosysid/<{$st.prosysid}>"  onclick="return confirm('你确定要从项目中移除：<{$st.system}>系统吗？')"><span class="glyphicon glyphicon-remove"> 移除</span></a></li>
 			                </ul>
 			              </div>
 			            </li>
@@ -51,9 +50,8 @@
 	  </div>
 	  <div class="col-md-6">
 	  		<div class="panel panel-default">
-			  <div class="panel-heading">
-			  备选系统
-			  		<button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#tianjsystem">添加</button>
+			  <div class="panel-heading">备选系统
+			  	<button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#tianjsystem"><span class="glyphicon glyphicon-plus"> 添加  </span></button>
 			  </div>
 			      <ul class="list-group">
 			        <volist name='syses' id='st' empty="没有数据">
@@ -61,16 +59,16 @@
 			              <{$st.sysno}>:<{$st.system}>【<{$st.state}>】
 			              <!-- Split button -->
 			              <div class="btn-group pull-right">
-			                <a href="__URL__/insert/proid/<{$arr.id}>/sysid/<{$st.id}>" type="button" class="btn btn-danger btn-xs">关联</a>
+			                <a href="__URL__/insert/proid/<{$arr.id}>/sysid/<{$st.id}>" type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-link"> 关联 </span></a>
 			                <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
 			                  <span class="caret"></span>
 			                  <span class="sr-only">Toggle Dropdown</span>
 			                </button>
 			                <ul class="dropdown-menu" role="menu">
-			                  <li><a href="__URL__/insert/proid/<{$arr.id}>/sysid/<{$st.id}>" >关联</a></li>
+			                  <li><a href="__URL__/insert/proid/<{$arr.id}>/sysid/<{$st.id}>" ><span class="glyphicon glyphicon-link"> 关联</span></a></li>
 			                               
 			                  <li class="divider"></li>
-			                  <li><a href="__APP__/TAdmin/System/mod/id/<{$st.id}>/proid/<{$arr.id}>">修改</a></li>
+			                  <li><a href="__APP__/TAdmin/System/mod/id/<{$st.id}>/proid/<{$arr.id}>"><span class="glyphicon glyphicon-edit"> 修改</span></a></li>
 			                </ul>
 			              </div>
 			            </li>
