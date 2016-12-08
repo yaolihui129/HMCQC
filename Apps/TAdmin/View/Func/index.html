@@ -18,8 +18,7 @@
          <volist name='funcs' id='st' empty="没有数据">
             <tr>             	
                 <td align="center" ><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/></td>
-                <td ><a href="__APP__/TAdmin/Case/index/funcid/<{$st.id}>" ><{$st.id}>:<{$st.func}></a>
-                	【<{$st.state}>】<{$st.fproid|getProNo=###}>
+                <td ><{$st.id}>:<{$st.func}>【<{$st.state}>】<{$st.fproid|getProNo=###}>
                    <div class="btn-group pull-right">
 		               <a target="_blank" href="__APP__/TAdmin/Case/index/funcid/<{$st.id}>" type="button" class="btn btn-info btn-xs">用例  <{$st.id|countFCase=###}></a>
 		               <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">

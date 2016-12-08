@@ -22,12 +22,21 @@
 	    <form action="__URL__/order" method="post" >
 	        <volist name='cases' id='case' empty="没有用例">
 	            <li class="list-group-item">
+	            <span>
 	                <input type="text" name="sn[<{$case.id}>]" value="<{$case.sn}>"  class="input40"/>
-	                <a  href="__URL__/mod/id/<{$case.id}>/p/Case">
-		                <{$case.main}>(<{$case.fproid|getProNo=###}>)
-		                <b>预期：</b><{$case.expected}>
-	                </a>
+	                <{$case.main}>(<{$case.fproid|getProNo=###}>)<b>预期：</b><{$case.expected}>	               
 	                <span class="badge"><{$case.state}>-<{$case.level}></span>
+	                <div class="btn-group pull-right">
+		               <a href="__URL__/mod/id/<{$case.id}>/p/Case" type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-edit"> 修改</span></a>
+		               <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
+			               <span class="caret"></span>
+			               <span class="sr-only">Toggle Dropdown</span>
+		               </button>
+		               <ul class="dropdown-menu" role="menu">		                  		                  
+		                  <li><a href="__URL__/del/id/<{$case.id}>"  onclick="return confirm('你确定要删除用例：<{$case.main}>？')"><span class="glyphicon glyphicon-remove"> 删除</span></a></li>
+		               </ul>
+		            </div>
+	            </span>
 	            </li>
 	        </volist>
 	        <input type="submit" name="do_submit" value="批量排序" class="btn">

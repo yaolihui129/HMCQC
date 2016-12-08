@@ -1,0 +1,341 @@
+<!doctype html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+
+<title>美国移民</title>
+
+<link type="text/css" href="http://m.pacificimmi.com/zhuanti/20160727-meiguo-yd-1/style.css" rel="stylesheet" />
+
+
+
+
+
+</head>
+
+
+
+<body>
+
+<!--头部 开始-->
+
+<div style=" margin:0px auto; width:100%; max-width:640px; height:50px; position:fixed; z-index:99; background:#551903 url(http://m.pacificimmi.com/image/rexian.gif) no-repeat top center;"><a href="tel:4006108118" style="display:block; width:100%; height:50px;"></a></div>
+
+<div style="height:50px; width:100%; display:block;"></div>
+
+<!--头部 结束-->
+
+
+
+
+
+
+
+
+
+<div style="font-size:12px; max-width:640px; width:100%; text-align:right; margin-top:20px;">*投资有风险，需专业机构提供保障</div>
+
+<!--底部代码开始-->
+
+<div style="display:none;">
+
+
+
+</div>
+
+<!--底部代码结束-->
+
+
+
+<div class="box">
+
+  <div class="jrtt-1">
+
+      <img src="http://m.pacificimmi.com/zhuanti/20160727-meiguo-yd-1/jrtt---1_01.jpg">
+
+    </div>
+
+    <div class="jrtt-2">
+
+      <dl class="surface">
+
+  <dd>姓名：<input id="formName" placeholder="输入姓名"></dd>
+
+  <dd>电话：<input id="formTel" type="number" placeholder="输入电话"></dd>
+
+  <dd style="display:none;"><span class="formTitle" ></span></dd>
+
+  <dd style="display:none;"><textarea class="formSelect" placeholder="如有其他意见或者疑问请输入"></textarea></dd>
+
+</dl>
+
+<div id="formBtn" class="formBtn">提交</div>
+
+    </div>
+
+    <div class="jrtt-1">
+
+      <img src="http://m.pacificimmi.com/zhuanti/20160727-meiguo-yd-1/jrtt---1_03.jpg">
+
+    </div>
+
+    <div class="jrtt-1">
+
+      <img src="http://m.pacificimmi.com/zhuanti/20160727-meiguo-yd-1/jrtt---1_04.jpg">
+
+    </div>
+
+    <div class="jrtt-1">
+
+      <img src="http://m.pacificimmi.com/zhuanti/20160727-meiguo-yd-1/jrtt---1_05.jpg">
+
+    </div>
+
+    <div class="jrtt-1">
+
+      <img src="http://m.pacificimmi.com/zhuanti/20160727-meiguo-yd-1/jrtt---1_06.jpg">
+
+    </div>
+
+    <div class="jrtt-1">
+
+      <a href="tel:4006108118" target="_blank"><img src="http://m.pacificimmi.com/zhuanti/20160727-meiguo-yd-1/jrtt---1_07.jpg"></a>
+
+    </div>
+
+</div>
+
+
+
+
+
+<!--样例 开始-->
+
+
+
+<!--样例 结束-->
+
+
+
+<div class="overlay" id="overlay">
+
+  <div class="msgTip">
+
+      <div class="msgTipMsg" id="msgTimMsg">
+
+          谢谢您的信任，<br>顾问会尽快给您回电。
+
+        </div>
+
+        <div class="msgTigCloseBtn" id="closeTipBtn">
+
+          关闭
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+
+
+
+  submitForm();
+
+  function getUrlObj(url){
+
+    var reg=/&/;
+
+    var urlStr=url.substring(url.indexOf("?")+1);
+
+    var urlArr=urlStr.split(reg);
+
+    var urlObj=new Object();
+
+    for(var i=0;i<urlArr.length;i++)
+
+    {
+
+      var str=urlArr[i];
+
+      var index=str.indexOf("=");
+
+      var titleStr=str.substring(0,index);
+
+      var contentStr=str.substring(index+1);
+
+      urlObj[titleStr]=contentStr;
+
+    }
+
+    return urlObj;
+
+  }
+
+  
+
+  function submitForm()
+
+  {
+
+    var btn=document.getElementById("formBtn");
+
+    var telHtml=document.getElementById("formTel");
+
+    var nameHtml=document.getElementById("formName");
+
+    var isSending=false;
+
+    var telReg=/^(0|86|17951)?(13[0-9]|15[012356789]|17[678]|18[0-9]|14[57])[0-9]{8}$/;
+
+    var nameReg=/\S/;
+
+    
+
+    var source=decodeURI(getUrlObj(window.location.search).source);
+
+    console.info(source);
+
+    
+
+    btn.addEventListener("mousedown",function(e){
+
+      if(isSending==false)
+
+      {
+
+        var tel=telHtml.value;
+
+        var name=nameHtml.value;
+
+        var fromStr="今日头条";
+
+        var msgStr="";
+
+        if(nameReg.test(name))
+
+        {
+
+          if(telReg.test(tel))
+
+          {
+
+            isSending=true;
+
+            
+
+            var form=document.getElementsByClassName("formSelect");
+
+            var formTitle=document.getElementsByClassName("formTitle");
+
+            
+
+            for(var i=0;i<form.length;i++)
+
+            {
+
+              var selectItem=form.item(i);
+
+              var titleItem=formTitle.item(i);
+
+              var selectValue=selectItem.value;
+
+              var titleStr=titleItem.innerText;
+
+              msgStr=msgStr+titleStr+selectValue+"&";
+
+              
+
+            }
+
+            
+
+            ajax({
+
+              url: "http://m.pacificimmi.com/~do/?Data-foot.html",
+
+              type: "POST",
+
+              data: { title:name, tel: tel,message:msgStr,assets:source },
+
+              dataType: "json",
+
+              success: function (response, xml) {
+
+                telHtml.value="";
+
+                nameHtml.value="";
+
+                isSending=false;
+
+                document.getElementById("msgTimMsg").innerHTML="谢谢您的信任，<br>顾问会尽快给您回电。";
+
+                document.getElementById("overlay").style.display="block";
+
+              },
+
+              fail: function (status) {
+
+                isSending=false;
+
+                document.getElementById("msgTimMsg").innerHTML="数据保存失败！请重试。";
+
+                document.getElementById("overlay").style.display="block";
+
+              }
+
+            });
+
+          }
+
+          else
+
+          {
+
+            document.getElementById("msgTimMsg").innerHTML="请输入手机号码！";
+
+            document.getElementById("overlay").style.display="block";
+
+          }
+
+        }
+
+        else
+
+        {
+
+          document.getElementById("msgTimMsg").innerHTML="请输入姓名！";
+
+          document.getElementById("overlay").style.display="block";
+
+        }
+
+      }
+
+    });
+
+    document.getElementById("closeTipBtn").addEventListener("mousedown",function(e){
+
+      document.getElementById("overlay").style.display="none";
+
+    });
+
+  }
+
+</script>
+
+
+
+</body>
+
+</html>
+

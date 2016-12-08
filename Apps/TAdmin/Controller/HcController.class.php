@@ -1,10 +1,6 @@
 <?php
 namespace TAdmin\Controller;
-
 class HcController extends CommonController {
- /*
-     * 功能库加入缓存
-     */
 
     public function addhc(){
         /* 接收参数*/

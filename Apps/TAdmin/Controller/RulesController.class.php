@@ -7,7 +7,7 @@ class RulesController extends CommonController {
 
         $funcid=$_GET['funcid'];
         /* 实例化模型*/
-        $m=M('func');
+        $m=D('func');
         $arr=$m->find($funcid);
         $this->assign('arr',$arr);
 
@@ -15,10 +15,11 @@ class RulesController extends CommonController {
         $data=$m->where($where)->order('sn,id')->select();
         $this->assign('data',$data);
         
-        $m=M('rules');
+        $m=D('rules');
         $where['funcid']=$funcid;
         $rules=$m->where($where)->select();
         $this->assign('rules',$rules);
+
         /* add*/
         $count=$m->where($where)->count()+1;
         $this->assign("c",$count);

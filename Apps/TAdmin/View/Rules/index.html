@@ -6,16 +6,29 @@
 	  <!-- Default panel contents -->
 	  <div class="panel-heading">
 	      <{$arr.sn}>.<{$arr.id|getSPFunc=###}>
-	     <a data-toggle="modal" href="#tianjrule" class=" btn btn-info btn-xs pull-right" ><span class="glyphicon glyphicon-plus"></span> 添加</a>
+	     <a data-toggle="modal" href="#tianjrule" class=" btn btn-info btn-xs pull-right" ><span class="glyphicon glyphicon-plus"> 添加</span></a>
 	  </div>  
 	  <!-- List group -->
 	  <ul class="list-group">
 	   <form action="__URL__/order" method="post" >
 	         <volist name='rules' id='rule' empty="没有规则">
 	            <li class="list-group-item">
+	            <span>
 	                <input type="text" name="sn[<{$rule.id}>]" value="<{$rule.sn}>"  class="input40"/>
-	                <a  href="__URL__/mod/id/<{$rule.id}>/funcid/<{$arr.id}>"><{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)</a>
+	                <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)
 	                <span class="badge"><{$rule.source}></span>
+	                <div class="btn-group pull-right">
+		               <a href="__URL__/mod/id/<{$rule.id}>/funcid/<{$arr.id}>" type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-edit"> 修改</span></a>
+		               <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
+			               <span class="caret"></span>
+			               <span class="sr-only">Toggle Dropdown</span>
+		               </button>
+		               <ul class="dropdown-menu" role="menu">		                  		                  
+		                  <li><a href="__URL__/del/id/<{$rule.id}>"  onclick="return confirm('你确定要删除规则：<{$rule.rules}>？')"><span class="glyphicon glyphicon-remove"> 删除</span></a></li>
+		               </ul>
+		            </div>
+	                
+	            </span>
 	            </li>
 	        </volist>
 	        <input type="submit" name="do_submit" value="批量排序" class="btn">

@@ -32,7 +32,7 @@
 		   <form action="__URL__/order" method="post" >
 		         <volist name='scene' id='st' empty="本项目还没有场景">
 		            <li class="list-group-item">
-		            <h5>
+		            <span>
 		                <input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/>
 		                <{$st.id}>:<{$st.type}>【<b>角色：</b><{$st.swho}>】<b>时间：</b><{$st.swhen}>-<{$st.scene}>（来源：<{$st.sourceid}>）
 		
@@ -51,7 +51,7 @@
 		                    <li><a href="__URL__/del/id/<{$st.id}>"  onclick="return confirm('你确定要删除场景：<{$st.swho}>:<{$swhen}><{$st.risk}>？')" >删除</a></li>         
 		                  </ul>
 		                </div>
-		                </h5>
+		                </span>
 		            </li>
 		        </volist>
 		        <input type="submit" name="do_submit" value="批量排序" class="btn">

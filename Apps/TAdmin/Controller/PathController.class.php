@@ -81,11 +81,6 @@ class PathController extends CommonController {
         $this->display();
     }
 
-   
-
-
-
-
     public function update(){
         $db=M('path');
         $_POST['moder']=$_SESSION['realname'];
@@ -113,48 +108,36 @@ class PathController extends CommonController {
 
     public function library(){
         /* 接收参数*/
-        $proid=$_GET['proid'];
-        $stageid=$_GET['stageid'];
         $stagetesterid=$_GET['stagetesterid'];
-        $type=$_GET['type'];
-        $tester=$_GET['tester'];
+        $this->assign('stagetesterid',$stagetesterid);
         /* 实例化模型*/
-
         $m=D('exescene');
         $where=array("stagetesterid"=>$stagetesterid);
         $exe=$m->where($where)->order("sn")->select();
         $this->assign('exe',$exe);
 
-
         $m= D("prosys");
-        $where=array("tp_prosys.proid"=>"$proid");
+        $where=array("tp_prosys.proid"=>$_SESSION['proid']);
         $data=$m->join('inner JOIN tp_system ON tp_system.id = tp_prosys.sysid')
         ->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
-        ->where($where)
-        ->order("tp_system.sysno,tp_path.sn,tp_path.id")
-        ->select();
+        ->where($where)->order("tp_system.sysno,tp_path.sn,tp_path.id")->select();
         $this->assign("data",$data);
-// dump($data);
-
-        $where=array("proid"=>$proid,"stageid"=>$stageid,"stagetesterid"=>$stagetesterid,"tester"=>$tester,"type"=>$type);
-        $this->assign('w',$where);
 
         $this->display();
 
     }
     public function jion(){
-
         /* 接收参数*/
-        $proid=$_GET['proid'];
-        $stageid=$_GET['stageid'];
         $stagetesterid=$_GET['stagetesterid'];
         $pathid=$_GET['pathid'];
-        $type=$_GET['type'];
-        $tester=$_GET['tester'];
         /* 实例化模型*/
+        $m=D('stagetester');
+        $stt=$m->find($stagetesterid); 
+
 
         $m=D('path');
         $data=$m->find($pathid);
+        dump($data);
         $arr['pathid']=$data['id'];
         $arr['sceneid']=0;
         $arr['level']=2;
@@ -168,8 +151,9 @@ class PathController extends CommonController {
         $arr['adder']=$_SESSION['realname'];
         $arr['moder']=$_SESSION['realname'];
         $arr['createTime']=date("Y-m-d H:i:s",time());
-        $m=D('exescene');
-        $where=array("stagetesterid"=>$_GET['stagetesterid'],"type"=>$_GET['type']);
+
+        $m=D('exescene');               
+        $where=array("stagetesterid"=>$stagetesterid,"type"=>$stt['type']);
         $arr['sn']=$m->where($where)->count()+1;
 
         /*插入执行场景数据 */
@@ -177,6 +161,7 @@ class PathController extends CommonController {
             $this->error($m->getError());
         }
         $lastId=$m->add($arr);
+        
         $m= D("func");
         $where=array("pathid"=>$data['id']);
         $funcs=$m->where($where)->field("sn,id as funcid,func")->order("sn")->select();

@@ -24,7 +24,7 @@
 	</ul>
 	<div class="panel panel-default">
 		  <!-- Default panel contents -->
-		  <div class="panel-heading">测试里程碑
+		  <div class="panel-heading"><{$arr.id|getProNo=###}>测试里程碑
 		     <a data-toggle="modal" href="#tianjstage" class=" btn btn-info btn-xs  pull-right" ><span class="glyphicon glyphicon-plus"> 添加</span></a>
 		  </div>
 		  <!-- List group -->
@@ -32,23 +32,24 @@
 		   <form action="__URL__/order" method="post" >
 		         <volist name='stages' id='st' empty="没有数据">
 		            <li class="list-group-item">
-		                <h5 ><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/>
-		                <{$st.stage}>
-		                <span class="badge"><a href="__URL__/modstate/id/<{$st.id}>/state/<{$st.state}>"><{$st.state}></span>
+		             <span >
+		                <input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/><{$st.stage}>
+		                <a href="__URL__/modstate/id/<{$st.id}>/state/<{$st.state}>" type="button" class="btn btn-info btn-xs"><{$st.state}><span class="glyphicon glyphicon-fast-forward"></span></a>
 		                <div class="btn-group pull-right">
-		                   <a href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/M" type="button" data-toggle="modal" href="#tianjcase" class="btn btn-info btn-xs">手工<{$st.id|countMTester=###}></a>
+		                   <a target="_blank" href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/M" type="button" data-toggle="modal" href="#tianjcase" class="btn btn-info btn-xs">手工<{$st.id|countMTester=###}></a>
 		                  <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
 		                    <span class="caret"></span>
 		                    <span class="sr-only">Toggle Dropdown</span>
 		                  </button>
 		                  <ul class="dropdown-menu" role="menu">
-		                    <li><a href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/C">用例<span class="badge pull-right"><{$st.id|countCTester=###}></span></a></li>
-		                    <li><a href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/A">自动化<span class="badge pull-right"><{$st.id|countATester=###}></span></a></li>		                    
+		                    <li><a target="_blank" href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/C">用例<span class="badge pull-right"><{$st.id|countCTester=###}></span></a></li>
+		                    <li><a target="_blank" href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/A">自动化<span class="badge pull-right"><{$st.id|countATester=###}></span></a></li>		                    
 		                    <li><a href="__URL__/mod/id/<{$st.id}>/proid/<{$st.proid}>">修改</a></li>
 		                    <li class="divider"></li>
 		                    <li><a href="__URL__/del/id/<{$st.id}>">删除</a></li>
 		                  </ul>
-		                </div></h5>		                
+		                </div>
+		             </span>		                
 		            </li>
 		        </volist>
 		        <input type="submit" name="do_submit" value="批量排序" class="btn">

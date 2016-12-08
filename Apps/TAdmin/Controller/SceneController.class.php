@@ -27,7 +27,6 @@ class SceneController extends CommonController {
         $scene=$m->where($where)->order('sn')->select();
         $this->assign("scene",$scene);
         $where=array("proid"=>"$proid","copy"=>$_SESSION['copy']);
-//         $this->assign('w',$where);
         
         $count=$m->where($where)->count()+1;
         $this->assign('c',$count);

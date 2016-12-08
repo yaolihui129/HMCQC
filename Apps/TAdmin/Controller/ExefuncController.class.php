@@ -1,9 +1,7 @@
 <?php
 namespace TAdmin\Controller;
-
 class ExefuncController extends CommonController{
-
-
+    
 public function index(){
     /* 接收参数*/
     $stagetesterid=$_GET['stagetesterid'];
@@ -15,7 +13,7 @@ public function index(){
     $where=array("stagetesterid"=>$stagetesterid,"type"=>$type);
     $data=$m->where($where)->order("sn")->select();
     $this->assign('data',$data);
-    //         echo $id;
+
     $arr=$m->find($id);
 
     $this->assign('arr',$arr);

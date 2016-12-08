@@ -5,14 +5,13 @@ class StagetesterController extends CommonController {
    public function index(){
         /* 接收参数*/
         $stageid=$_GET['stageid'];
-        $proid=$_GET['proid'];
+        $proid=$_SESSION['proid'];
         $type=$_GET['type'];
         /* 实例化模型*/
         $m=D('stage');
         $where=array("proid"=>$proid);
         $data=$m->where($where)->order("sn")->select();
         $this->assign('data',$data);
-        // dump($data);
 
         $m=D('stagetester');
         $where=array("stageid"=>$stageid,"type"=>$type);
@@ -25,8 +24,6 @@ class StagetesterController extends CommonController {
         $this->assign('users',$users);
         $where=array("proid"=>$proid,"stageid"=>$stageid,"type"=>$type);
         $this->assign('w',$where);
-
-       // dump($users);
 
         $this->display();
 
@@ -60,24 +57,20 @@ class StagetesterController extends CommonController {
 
 
     public function mod(){
-
-        /* 接收参数*/
-        $stageid=$_GET['stageid'];
-        $proid=$_GET['proid'];
-        $id=$_GET['id'];
-        $type=$_GET['type'];
+        /* 接收参数*/        
+        $id=$_GET['id'];       
         /* 实例化模型*/
         $m=D('stagetester');
-        $where=array("proid"=>$proid,"stageid"=>$stageid,"type"=>$type);
-        $data=$m->where($where)->order("sn")->select();
-        $this->assign('data',$data);
-
         $tester=$m->find($id);
         $this->assign("tester",$tester);
-
+        $this->assign('arr',$tester);
         $this->assign("startDate",PublicController::date("start",$tester['start']));
         $this->assign("endDate",PublicController::date("end",$tester['end']));
-        $this->assign('w',$where);
+                
+        $where=array("stageid"=>$tester['stageid'],"type"=>$tester['type']);
+        $data=$m->where($where)->order("sn,id")->select();
+        $this->assign('data',$data);        
+        
         $this->display();
     }
 

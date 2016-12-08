@@ -3,7 +3,6 @@
 body{
 	padding-top:70px;
 	padding-bottom:50px;
-	background:url(__IMAGES__/welcome.jpg) no-repeat; 
 }
 
 /*定位*/
@@ -44,9 +43,7 @@ body{
 .lh24{line-height:24px;}
 .lh28{line-height:28px;}
 .lh30{line-height:30px;}
-.hei24{height:24px;}
-.hei30{height:30px;}
-.hei60{height:60px;}
+
 
 
 textarea{font-size:14px; line-height:24px;border:1px #cecece solid; border-top:1px #707070 solid; border-left:1px #707070 solid; border-radius:2px; padding:2px 5px; background:#fefefe}
@@ -67,11 +64,7 @@ textarea{font-size:14px; line-height:24px;border:1px #cecece solid; border-top:1
 .input600{width:600px;}
 .input650{width:650px;}
 
-/*首页*/
 
 
-/*提交页面*/
-.addmod{
-	padding: 10px  30px;
 
-}
+
