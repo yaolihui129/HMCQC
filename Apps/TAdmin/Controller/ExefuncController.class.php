@@ -3,27 +3,21 @@ namespace TAdmin\Controller;
 class ExefuncController extends CommonController{
     
 public function index(){
-    /* 接收参数*/
-    $stagetesterid=$_GET['stagetesterid'];
-    $proid=$_GET['proid'];
-    $type=$_GET['type'];
+    /* 接收参数*/    
     $id=$_GET['id'];
     /* 实例化模型*/
     $m=D('exescene');
-    $where=array("stagetesterid"=>$stagetesterid,"type"=>$type);
-    $data=$m->where($where)->order("sn")->select();
-    $this->assign('data',$data);
-
-    $arr=$m->find($id);
-
+    $arr=$m->find($id);  
     $this->assign('arr',$arr);
+    
+    $where=array("stagetesterid"=>$arr['stagetesterid'],"type"=>$arr['type']);
+    $data=$m->where($where)->order("sn")->select();
+    $this->assign('data',$data);    
     /* 实例化模型*/
     $m=M('exefunc');
     $where=array("exesceneid"=>$id);
-    $exe=$m->where($where)->order('sn')->select();
-    $this->assign('exe',$exe);
-    $where=array("stagetesterid"=>$stagetesterid,"exesceneid"=>$id,"proid"=>$proid,"type"=>$type);
-    $this->assign('w',$where);
+    $exe=$m->where($where)->order('sn,id')->select();
+    $this->assign('exe',$exe);   
 
     $this->display();
 }

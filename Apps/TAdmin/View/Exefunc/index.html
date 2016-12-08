@@ -1,15 +1,16 @@
-      <layout name="layout" />
-        <div class="place">所在位置：<a href="__APP__/TAdmin/Exescene/index/type/M/stagetesterid/<{$w.stagetesterid}>">手工测试</a>>测试执行</div>
-        <div class="content">
+<layout name="layout" />
+
+<div class="content">
            <div class="main">
               <div class="top">
-                  <span>手工测试执行-<{$w.proid|getPro=###}></span>
-                  <span style="float:right;"><a href="__APP__/TAdmin/Exescene/index/type/M/stagetesterid/<{$w.stagetesterid}>"><button class="btn">返回</button></a></span>
+                  <span>手工测试执行-<{$_SESSION['proid']|getPro=###}></span>
+                  <span style="float:right;"><a href="__APP__/TAdmin/Exescene/index/type/M/stagetesterid/<{$arr.stagetesterid}>">
+                  <button class="btn">返回</button></a></span>
               </div>
               <div class="left" align="left" style="width:20%;">
                     <volist name='data' id='vo' empty="没有数据">
                       <ur>
-                         <li><a href="__URL__/index/id/<{$vo.id}>/stagetesterid/<{$w.stagetesterid}>/proid/<{$w.proid}>/type/<{$w.type}>">
+                         <li><a href="__URL__/index/id/<{$vo.id}>">
                          <{$vo.sn}>:<{$vo.swho}>【<{$vo.swhen}>】<{$vo.scene}><br />
                          <{$vo.results}>:<{$vo.id|countExeFunc=###}></a><hr /></li>
                        </ur>
@@ -21,8 +22,7 @@
                 <table border="0" width="80%" align="center">
                    <tr>
                        <td>
-                          <table border="1" width="100%" align="center">
-                          <h1>测试场景</h1>
+                          <table border="1" width="100%" align="center">                       
                              <tr>
                                 <td width=2% align="center"><{$arr.sn}></td>
                                 <td width=5%  align="left">角色:<{$arr.swho}></td>
@@ -59,9 +59,9 @@
                           <td align="left" ><{$ex.path}></td>
                           <td align="left" ><{$ex.func}>
                             <span style="float:right;margin-right:5px;">
-                              <a target="_blank" href="__APP__/Case/indexe/funcid/<{$ex.funcid}>/proid/<{$w.proid}>" >用例</a>
-                              <a target="_blank" href="__APP__/Rules/indexe/funcid/<{$ex.funcid}>/proid/<{$w.proid}>" >规则</a>
-                              <a target="_blank" href="__APP__/Element/indexe/funcid/<{$ex.funcid}>/proid/<{$w.proid}>" >模板</a>
+                              <a target="_blank" href="__APP__/Case/indexe/funcid/<{$ex.funcid}>" >用例</a>
+                              <a target="_blank" href="__APP__/Rules/indexe/funcid/<{$ex.funcid}>" >规则</a>
+                              <a target="_blank" href="__APP__/Element/indexe/funcid/<{$ex.funcid}>" >模板</a>
                            </span>
                          </td>
                          <td align="left" ><{$ex.funcremarks}></td>

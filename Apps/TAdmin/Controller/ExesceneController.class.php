@@ -2,25 +2,25 @@
 namespace TAdmin\Controller;
 class ExesceneController extends CommonController{
     public function index(){
-        //接收参数
-        $stagetesterid=$_GET['stagetesterid'];
-        //初始化模型
-        $m=D('stagetester');
-        $arr=$m->find($stagetesterid);
-        $this->assign('arr',$arr);
-        
+        //接收参数       
+        $type=$_GET['type'];
+        $this->assign('type',$type);
+        //初始化模型               
     	$m=M('program');
-    	$where=array("tp_stage.state"=>"进行中","tp_stagetester.tester"=>$_SESSION['realname'],"tp_stagetester.type"=>$arr['type']);
+    	$where=array("tp_stage.state"=>"进行中","tp_stagetester.tester"=>$_SESSION['realname'],"tp_stagetester.type"=>$type);
     	$data=$m->join("tp_stage ON tp_program.id = tp_stage.proid")
     	 ->join("tp_stagetester ON tp_stage.id = tp_stagetester.stageid")
     	 ->order("tp_program.end desc")->where($where)->select();
-	    $this->assign('data',$data);	   
-
+	    $this->assign('data',$data);
+	    
+	    $stagetesterid=!empty($_GET['stagetesterid'])?$_GET['stagetesterid']:$data[0]['id'];	     
 	    $m=D('exescene');
 	    $where=array("stagetesterid"=>$stagetesterid);
 	    $exe=$m->where($where)->order("sn")->select();
 	    $this->assign('exe',$exe);
-
+	    $this->assign('stagetesterid',$stagetesterid);
+	     
+	    
 	    $this->display();
     }
 
