@@ -4,7 +4,6 @@ namespace TAdmin\Controller;
 class RulesController extends CommonController {
     public function index(){
         /* 接收参数*/
-
         $funcid=$_GET['funcid'];
         /* 实例化模型*/
         $m=D('func');

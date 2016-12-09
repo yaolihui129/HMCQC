@@ -57,19 +57,19 @@
 				<a data-toggle="collapse" data-parent="#accordion" href="#<{$pro.id}>" aria-expanded="true" aria-controls="<{$pro.id}>">
 				<br><{$pro.manager}>:<{$pro.program}></a>
 				<div class="btn-group pull-right"  style="margin-top:-20px;">
-					<a type="button" class="btn btn-warning btn-sm" target="_blank" href="__APP__/TAdmin/Func/range/proid/<{$pro.id}>">范围:<{$pro.id|countRange=###}> </a>
+					<a type="button" class="btn btn-warning btn-sm" href="__APP__/TAdmin/Func/range/proid/<{$pro.id}>">范围:<{$pro.id|countRange=###}> </a>
 					<button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown">
 					<span class="caret"></span>
 					<span class="sr-only">Toggle Dropdown</span>
 					</button>
 					<ul class="dropdown-menu" role="menu">
-					   <li><a target="_blank" href="__APP__/TAdmin/Risk/index/proid/<{$pro.id}>">风险 <span class="badge"><{$pro.id|countRisk=###}></span> </a></li>
-					   <li><a target="_blank" href="__APP__/TAdmin/Stage/index/proid/<{$pro.id}> ">里程碑 <span class="badge"><{$pro.id|countStage=###}></span> </a></li>
-					   <li><a target="_blank" href="__APP__/TAdmin/Prosys/index/proid/<{$pro.id}>">涉及系统<span class="badge"><{$pro.id|countProsys=###}></span> </a></li>
-					   <li><a target="_blank" href="__APP__/TAdmin/Scene/index/proid/<{$pro.id}>">场景 <span class="badge"><{$pro.id|countScene=###}><span></a></li>
-					   <li><a target="_blank" href="__APP__/TAdmin/Func/func/proid/<{$pro.id}>">功能点&nbsp;</a></li>					                				                
-					   <li><a target="_blank" href="__APP__/TAdmin/Case/procase/proid/<{$pro.id}>">用例<span class="badge"><{$pro.id|countCase=###}></span></a></li>				                
-					   <li><a target="_blank" href="__APP__/TAdmin/Element/library/proid/<{$pro.id}>">控件库</a></li>
+					   <li><a  href="__APP__/TAdmin/Risk/index/proid/<{$pro.id}>">风险 <span class="badge"><{$pro.id|countRisk=###}></span> </a></li>
+					   <li><a  href="__APP__/TAdmin/Stage/index/proid/<{$pro.id}> ">里程碑 <span class="badge"><{$pro.id|countStage=###}></span> </a></li>
+					   <li><a  href="__APP__/TAdmin/Prosys/index/proid/<{$pro.id}>">涉及系统<span class="badge"><{$pro.id|countProsys=###}></span> </a></li>
+					   <li><a  href="__APP__/TAdmin/Scene/index/proid/<{$pro.id}>">场景 <span class="badge"><{$pro.id|countScene=###}><span></a></li>
+					   <li><a  href="__APP__/TAdmin/Func/func/proid/<{$pro.id}>">功能点&nbsp;</a></li>					                				                
+					   <li><a  href="__APP__/TAdmin/Case/procase/proid/<{$pro.id}>">用例<span class="badge"><{$pro.id|countCase=###}></span></a></li>				                
+					   <li><a  href="__APP__/TAdmin/Element/library/proid/<{$pro.id}>">控件库</a></li>
 					   <li class="divider"></li>
 					   <li><a href="__URL__/mod/id/<{$pro.id}>">修改</a></li>
 					   <li class="divider"></li>

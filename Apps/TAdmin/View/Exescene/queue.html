@@ -17,35 +17,32 @@
 	  	</h3>
 	  </div>
 	  <div class="panel-body table-responsive">
-		<table border="1" width="75%" align="left">
-                            <tr>
-                              <th width=3% align="center" bgcolor="#ccc">ID</th>
-                              <th width=2% align="center" bgcolor="#ccc">顺序</th>
-                              <th width=7% align="center" bgcolor="#ccc">角色</th>
-                              <th width=7% align="center" bgcolor="#ccc">时间</th>
-                              <th width=30% align="center" bgcolor="#ccc">场景</th>
-                              <th width=5% align="center" bgcolor="#ccc">结果</th>
-                              <th width=10% align="center" bgcolor="#ccc">更新时间</th>
-                           </tr>
-                            <form action="__URL__/order" method="post" >
-                           <volist name='exe' id='ex'>
-                           <tr>
-                             <td align="center" ><{$ex.id}></td>
-                             <td align="center" ><input  type="text" name="sn[<{$ex.id}>]" value="<{$ex.sn}>" class="input40"/></td>
-                             <td align="center" ><{$ex.swho}></td>
-                             <td align="center" ><{$ex.swhen}></td>
-                             <td ><a href="#" ><{$ex.scene}></a>
-                                 <span style="float:right;margin-right:5px;">
-                                    <a href="#" >查看<{$ex.id|countExeFunc=###}></a>
-                                 </span>
-                             </td>
-                             <td align="center" ><{$ex.results}></td>
-                             <td align="center" ><{$ex.updateTime}></td>
-                           </tr>
-                          </volist>
-                            <tr><td></td><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
-                          </form>
-                       </table>
+	  	 <div class="starter-template">
+		     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+		        <form action="__URL__/order" method="post" >
+		            <volist name='exe' id='ex'>
+				         <div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading<{$pro.id}>">
+							<h4 class="panel-title">
+								<input  type="text" name="sn[<{$ex.id}>]" value="<{$ex.sn}>" class="input40"/>
+								<a data-toggle="collapse" data-parent="#accordion" href="#<{$ex.id}>" aria-expanded="true" aria-controls="<{$ex.id}>">								
+				                   	<{$ex.id}>：角色：<{$ex.swho}>，时间：<{$ex.swhen}>，场景：<{$ex.scene}>
+				                   <span class="badge"><{$ex.id|countExeFunc=###}></span>			                   
+								</a>								
+							</h4>
+							<span class="badge pull-right"><{$ex.results}></span><{$ex.updatetime}>
+							</div>
+							   <div id="<{$ex.id}>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<{$ex.id}>">
+									<div class="panel-body">
+										<{$ex.id}>
+									</div>
+							   </div>
+				  			</div>
+		         	</volist>
+		         	<input type="submit" name="do_submit" value="批量排序" class="btn">
+		        </form>
+		     </div>
+		  </div>		
 	  </div>
   </div>
   

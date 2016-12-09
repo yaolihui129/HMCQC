@@ -3,17 +3,20 @@ namespace Home\Controller;
 use Think\Controller;
 class CaseController extends Controller {
    public function index(){
-        /* 接收参数*/        
-        $funcid=$_GET['funcid'];        
-        /* 实例化模型*/
-        $m=D('func');
-        $arr=$m->find($funcid);
-        $this->assign('arr',$arr);
-        
-        $m=M('case');
-        $where['funcid']=$funcid;
-        $cases=$m->where($where)->order('sn,id')->select();
-        $this->assign('data',$cases);        
+        /* 接收参数*/
+         $funcid=$_GET['funcid'];
+         /* 实例化模型*/
+         $m=D('func');
+         $arr=$m->find($funcid);
+         $this->assign('arr',$arr);
+         $where['pathid']=$arr['pathid'];
+         $data=$m->where($where)->order('sn,id')->select();
+         $this->assign('data',$data);
+         
+    	 $m=D('case');
+    	 $where['funcid']=$funcid;
+    	 $cases=$m->where($where)->order('sn,id')->select();
+	     $this->assign('cases',$cases);        
 
         $this->display();
     }

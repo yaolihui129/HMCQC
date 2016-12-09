@@ -4,7 +4,10 @@
   <div class="col-md-9">
   		<div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><{$arr.id|getPro=###}></h3>
+    <h3 class="panel-title">
+    	<{$arr.id|getPro=###}>
+    	<a href="__APP__/TAdmin/Program" type="button" class="btn btn-warning btn-xs pull-right">返回</a>
+    </h3>
   </div>
   <div class="panel-body table-responsive">
    <div class="well well-sm">	    	
@@ -20,7 +23,6 @@
 		  <li role="presentation" class="active"><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>/copy/<{$arr.id}>">场景<span class="badge"><{$arr.id|countScene=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Case/library/proid/<{$arr.id}>">用例<span class="badge"><{$arr.id|countCase=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Element/library/proid/<{$arr.id}>">控件库</a></li>
-		  <li role="presentation"><a href="#">上线结果</a></li>
 	</ul>
 	<div class="panel panel-default">
 		  <!-- Default panel contents -->
@@ -34,11 +36,11 @@
 		            <li class="list-group-item">
 		            <span>
 		                <input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/>
-		                <{$st.id}>:<{$st.type}>【<b>角色：</b><{$st.swho}>】<b>时间：</b><{$st.swhen}>-<{$st.scene}>（来源：<{$st.sourceid}>）
+		                <{$st.type}><{$st.id}>.<b><{$st.swho}></b>【<{$st.swhen}>】<{$st.scene}>（来源：<{$st.sourceid}>）
 		
 		                <span class="badge"><{$st.state}>-<{$st.level}></span>
 		                <div class="btn-group pull-right">
-		                  <a type="button" href="__APP__/TAdmin/Scenefunc/index/sceneid/<{$st.id}>" class="btn btn-info btn-xs">功能<{$st.id|countSFunc=###}></a>
+		                  <a target="_blank" href="__APP__/TAdmin/Scenefunc/index/sceneid/<{$st.id}>" class="btn btn-info btn-xs" type="button">功能<{$st.id|countSFunc=###}></a>
 		                  <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
 		                    <span class="caret"></span>
 		                    <span class="sr-only">Toggle Dropdown</span>

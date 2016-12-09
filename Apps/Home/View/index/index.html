@@ -1,17 +1,14 @@
-<layout name="layout" />
-      
+<layout name="layout" />      
   <div class="row">
   	<div class="col-md-7"> 
   	<h3>互联网中心-产品部</h3>
-  	<br> 
   	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
 		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		  </ol>
-		
+		  </ol>		
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
 		    <div class="item active">
@@ -63,15 +60,13 @@
 					         <{$pro.end}>:<{$pro.manager}>:<{$pro.prost}></a>
 						
 					          <div class="btn-group pull-right"  style="margin-top:-6px;">
-					              <button type="button" class="btn btn-warning btn-sm ">
-					              	  <a  target="_blank" href="__APP__/Home/Func/range/proid/<{$pro.id}>">范围 <{$pro.id|countRange=###}> </a>
-					              </button>
+					              <a href="__APP__/Home/Func/range/proid/<{$pro.id}>" type="button" class="btn btn-warning btn-sm ">范围 <{$pro.id|countRange=###}> </a>
 					              <button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown">
 					                <span class="caret"></span>
 					                <span class="sr-only">Toggle Dropdown</span>
 					              </button>
 					              <ul class="dropdown-menu" role="menu">
-					                <li><a target="_blank" href="__APP__/Home/Risk/index/proid/<{$pro.id}>">风险 <span class="badge"><{$pro.id|countRisk=###}></span> </a></li>
+					                <li><a href="__APP__/Home/Risk/index/proid/<{$pro.id}>">风险 <span class="badge"><{$pro.id|countRisk=###}></span> </a></li>
 					                <li><a href="__APP__/Home/Stage/index/proid/<{$pro.id}> ">里程碑 <span class="badge "><{$pro.id|countStage=###}></span> </a></li>
 					                <li><a href="__APP__/Home/Scene/index/proid/<{$pro.id}>">场景 <span class="badge "><{$pro.id|countScene=###}><span></a></li>
 					                <li><a href="__APP__/Home/Func/func/proid/<{$pro.id}>">功能点&nbsp;</a></li>					                				                
