@@ -22,6 +22,25 @@ class RulesController extends Controller {
 
     $this->display();
   }
+  public function prorules(){
+      /* 接收参数*/
+      $proid=$_GET['proid'];
+      
+      /* 实例化模型*/
+      $m=D('program');
+      $arr=$m->find($proid);
+      $this->assign('arr',$arr);
+      
+      $m=M('system');
+      $where=array("tp_func.fproid"=>$proid);
+      $data=$m->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
+      ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')->where($where)
+      ->order("tp_system.system,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id")->select();
+      $this->assign('data',$data);
+      
+      $this->display();
+      
+  }
 
 
 }

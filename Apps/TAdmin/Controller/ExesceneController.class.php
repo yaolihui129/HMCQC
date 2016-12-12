@@ -49,8 +49,7 @@ class ExesceneController extends CommonController{
     	->order("tp_program.end desc")
         ->where($where)
         ->select();
-        $this->assign('data',$data);
-        // 	    dump($data);
+        $this->assign('data',$data);       
 
         $stagetesterid=!empty($_GET['stagetesterid'])?$_GET['stagetesterid']:$data[0]['id'];
         $m=D('exescene');

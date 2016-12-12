@@ -16,7 +16,7 @@ class RulesController extends CommonController {
         
         $m=D('rules');
         $where['funcid']=$funcid;
-        $rules=$m->where($where)->select();
+        $rules=$m->where($where)->order('sn,id')->select();
         $this->assign('rules',$rules);
 
         /* add*/
@@ -26,8 +26,6 @@ class RulesController extends CommonController {
         $this -> assign("fproid", proselect($proid,"fproid"));
         $this->assign("beizhu",PublicController::editor("remark"));
         
-
-
         $this->display();
     }
 
@@ -82,7 +80,7 @@ class RulesController extends CommonController {
 
 
     public function order(){
-
+dump($_POST);
         $db = D('rules');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
@@ -90,6 +88,7 @@ class RulesController extends CommonController {
         }
         if($num) {
             $this->success("重新排序成功!");
+            //$this->redirect('index?funcid=$',)
         }else{
             $this->error("重新排序失败...");
         }

@@ -42,13 +42,13 @@ class StagetesterController extends CommonController {
         $_GET['adder']=$_SESSION['realname'];
         $_GET['moder']=$_SESSION['realname'];
         $_POST['createTime']=date("Y-m-d H:i:s",time());
-//         dump($_GET);
+
         if(!$m->create($_GET)){
             $this->error($m->getError());
         }
         $lastId=$m->add($_GET);
         if($lastId){
-          //  $this->redirect('Stagetester/index');
+
             $this->success("添加成功");
         }else{
             $this->error("添加失败");

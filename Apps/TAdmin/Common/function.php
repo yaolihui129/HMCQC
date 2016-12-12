@@ -1,23 +1,5 @@
 <?php
 
-/**
- * 状态选择控件
- * @param $name 控件name
- * @param $value 选中值
- */
-function formselect($value="正常",$name="state",$type="state") {
-    $html = '<select name="'.$name.'" class="form-control">';
-    $m =M('dict');
-    $where=array("type"=>$type,"state"=>"正常");
-    //获取所有分类
-    $cats = $m->where($where)->order('k')->select();
-    foreach($cats as $v) {
-        $selected = ($v['v']==$value) ? "selected" : "";
-        $html .= '<option '.$selected.' value="'.$v['v'].'">'.$v['v'].'</option>';
-    }
-    $html .='<select>';
-    return $html;
-}
 
 function selectgpuer($value="腰立辉",$testgp="Auto",$name="state"){
     $html = '<select name="'.$name.'" class="form-control">';
@@ -40,7 +22,7 @@ function selectgpuer($value="腰立辉",$testgp="Auto",$name="state"){
  *
  * @param $value 选中值
  */
-function prodselect($value=1) {
+function prodselect($value=14) {
     $html = '<select name="prodid" class="form-control">';
     $m =M('product');
     //$where=array("state"=>"正常");
@@ -232,6 +214,26 @@ function getFunc($id){
 }
 
 /**
+ * 根据pathid获取功能列表
+ */
+function getFunces($pathid){
+    $where['pathid']=$pathid;
+    
+        $m=M('func');
+        $arr=$m->where($where)->select();
+        foreach ($arr as $ar){
+        $str.='<li class="list-group-item"><b>'
+                . $ar['sn']."</b>-".$ar['func']."【".$ar['state']."】<span class='badge'>".getProNo($ar['fproid'])         
+                .'</span></li>';
+            }
+        if ($arr){
+            return $str;
+        }else {
+            return '无功能点';
+        }
+}
+
+/**
  * 根据id获取功能失败数
  */
 function countFResult($id){
@@ -366,6 +368,26 @@ function countExeFunc($id){
 
 
 /**
+ * 根据执行场景功能id获取执行场景功能信息
+ */
+function getESceneFunc($id){
+
+    $m=D('exefunc');
+    $where['exesceneid']=$id;
+    $arr=$m->where($where)->order('sn,id')->select();
+    foreach ($arr as $ar){
+        $str.='<li class="list-group-item">'
+            .$ar['sn'].".".$ar['func'].":".$ar['remarks']."<br>"
+            ."<b>意图：</b>".$ar['casemain']."，<b>预期：</b>".$ar['caseexpected']."，"
+            .$ar['remark'].'<span class="badge">'.$ar['result'].'</span><br>'
+            .$ar['updatetime']
+                .'</li>';
+    }
+    return $str;
+}
+
+
+/**
  * 根据项目获取里程碑数
  */
 function countStage($id){
@@ -397,10 +419,12 @@ function countProsys($id){
 /**
  * 根据项目获取范围功能数
  */
-function countRange($id){
-    $m=M("func");
-    $where=array("fproid"=>$id);
-    $count=$m->where($where)->count();
+function countRange($id){        
+    $m = D("system");
+    $where=array("tp_func.fproid"=>$id,"tp_func.state"=>'正常',"tp_path.pstate"=>'正常');
+    $count=$m->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
+    ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
+    ->where($where)->count();
     return $count;
 }
 
@@ -528,4 +552,97 @@ function countExescene($id){
     $where=array("stagetesterid"=>$id);
     $count=$m->where($where)->count();
     return $count;
+}
+
+
+/**
+ * 手工执行场景数
+ */
+function countMExescene($Tester){
+    $where['tp_stagetester.tester']=$Tester;
+    $where['tp_stagetester.type']='M';
+    $where['tp_program.prost']='进行中';
+    $where['tp_stage.state']='进行中';
+    $m=M("program");        
+    $count=$m->join('tp_stage ON tp_stage.proid =tp_program.id')
+    ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
+    ->join('tp_exescene ON tp_exescene.stagetesterid =tp_stagetester.id')   
+    ->where($where)->count();
+    return $count;
+}
+/**
+ * 自动化执行场景数
+ */
+function countAExescene($Tester){
+    $where['tp_stagetester.tester']=$Tester;
+    $where['tp_stagetester.type']='A';
+    $where['tp_program.prost']='进行中';
+    $where['tp_stage.state']='进行中';
+    $m=M("program");
+    $count=$m->join('tp_stage ON tp_stage.proid =tp_program.id')
+    ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
+    ->join('tp_exescene ON tp_exescene.stagetesterid =tp_stagetester.id')
+    ->where($where)->count();
+    return $count;
+}
+/**
+ * 写用例模块数
+ */
+function countCExescene($Tester){
+    $where['tp_stagetester.tester']=$Tester;
+    $where['tp_stagetester.type']='C';
+    $where['tp_program.prost']='进行中';
+    $where['tp_stage.state']='进行中';
+    $m=M("program");
+    $count=$m->join('tp_stage ON tp_stage.proid =tp_program.id')
+    ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
+    ->join('tp_exescene ON tp_exescene.stagetesterid =tp_stagetester.id')
+    ->where($where)->count();
+    return $count;
+}
+
+/**
+ * 写用例模块数
+ */
+function countSExescene($Tester){
+    $where['tp_stagetester.tester']=$Tester;
+    $where['tp_program.prost']='进行中';
+    $where['tp_stage.state']='进行中';
+    $m=M("program");
+    $count=$m->join('tp_stage ON tp_stage.proid =tp_program.id')
+    ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
+    ->join('tp_exescene ON tp_exescene.stagetesterid =tp_stagetester.id')
+    ->where($where)->count();
+    return $count;
+}
+
+
+
+/**
+ * 根据funcid获取测试数据
+ */
+function getTest($id){
+    $where['tp_exefunc.funcid']=$id;
+    $where['tp_stage.proid']=$_SESSION['proid'];
+    $m=M('stage');
+    $arr=$m ->where($where)
+    ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
+    ->join('tp_exescene ON tp_stagetester.id=tp_exescene.stagetesterid')
+    ->join('tp_exefunc ON tp_exescene.id=tp_exefunc.exesceneid')
+    ->order('tp_exefunc.updateTime desc')
+    ->select();
+
+    foreach ($arr as $ar){
+        $str.='<li class="list-group-item"><b>'
+                    . $ar['tester']."</b>-".$ar['stage'].$ar['updatetime']."<br>"
+                    .$ar['swho'].$ar['swhen'].$ar['scene']."<br>"
+                    .$ar['sn'].".".$ar['func']."，<b>意图：</b>".$ar['casemain']."，<b>预期：</b>".$ar['caseexpected']."，<b>测试记录：</b>"
+                    .$ar['remark'].'<span class="badge">'.$ar['result'].'</span><br>'                            
+               .'</li>';
+    };
+    if($arr){
+        return $str;
+    }else{
+        return '无测试记录';
+    }
 }

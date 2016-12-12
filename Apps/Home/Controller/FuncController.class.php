@@ -6,8 +6,7 @@ class FuncController extends Controller {
     public function func(){
         /* 接收参数*/
         $proid=$_GET['proid'];
-        $testgp=$_GET['testgp'];
-
+        $proid=$_SESSION['proid'];
         /* 实例化模型*/
         $m=D('program');
         $arr=$m->find($proid);
@@ -15,16 +14,12 @@ class FuncController extends Controller {
         
         $m = D("prosys");
         $where=array("tp_prosys.proid"=>"$proid");
-        $data=$m->where($where)
-        ->join('tp_system ON tp_prosys.sysid =tp_system.id')
+        $data=$m->where($where)->join('tp_system ON tp_prosys.sysid =tp_system.id')
         ->join('tp_path ON tp_system.id = tp_path.sysid')
         ->join('tp_func ON tp_path.id = tp_func.pathid')
-        ->order("tp_system.sysno,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id")
-        ->select();
+        ->order("tp_system.sysno,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id")->select();
         $this->assign("data",$data);
-        $where=array("proid"=>$proid,"testgp"=>$testgp);
-        $this->assign('w',$where);
-        // dump($data);
+
         $this->display();
 
     }
@@ -33,28 +28,18 @@ class FuncController extends Controller {
     public function range(){
         /* 接收参数*/
         $proid=$_GET['proid'];
-        $_SESSION['proid']=$proid;
-        $testgp=$_GET['testgp'];
-
+        $proid=$_SESSION['proid'];
         /* 实例化模型*/
         $m=D('program');
         $arr=$m->find($proid);
         $this->assign('arr',$arr);
         
         $m = D("system");
-        $where=array("tp_func.fproid"=>"$proid");
+        $where=array("tp_func.fproid"=>$proid,"tp_func.state"=>'正常',"tp_path.pstate"=>'正常');
         $data=$m->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
-        ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
-        ->where($where)
-        ->order("tp_system.sysno,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id")
-        ->select();
-
-
+        ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')->where($where)
+        ->order("tp_system.sysno,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id")->select();
         $this->assign("data",$data);
-
-        $where=array("proid"=>"$proid","testgp"=>$testgp);
-        $this->assign('w',$where);
-
 
         $this->display();
 

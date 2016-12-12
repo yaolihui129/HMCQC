@@ -21,7 +21,7 @@
   <body>
 
      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
+      <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="sr-only">Toggle navigation</span>
@@ -36,13 +36,21 @@
             <li><a href="__APP__/TAdmin/Program"><span class="glyphicon glyphicon-home"></span> 分析</a></li>           
             <li class="dropdown">
                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="#">
-               		<span class="glyphicon glyphicon-book"></span> 任务<span class="caret"></span></a>
+               		<span class="glyphicon glyphicon-book"></span> 任务 
+               		<span class="badge"><{$_SESSION['realname']|countSExescene=###}></span>
+               		<span class="caret"></span></a>
 		               <ul class="dropdown-menu" role="menu">                
-		                 <li><a href="__APP__/TAdmin/Exescene/index/type/C">用例</a></li>
+		                 <li><a href="__APP__/TAdmin/Exescene/index/type/C"> 用例
+		                 	<span class="badge"> <{$_SESSION['realname']|countCExescene=###}></span>
+		                 </a></li>
 		                 <li class="divider"></li>
-		                 <li><a href="__APP__/TAdmin/Exescene/index/type/M">手工</a></li>
+		                 <li><a href="__APP__/TAdmin/Exescene/index/type/M">手工
+		                 	<span class="badge"><{$_SESSION['realname']|countMExescene=###}></span></a>
+		                 </li>
 		                 <li class="divider"></li>
-		                 <li><a href="__APP__/TAdmin/Exescene/test/type/A">自动</a></li>		                 
+		                 <li><a href="__APP__/TAdmin/Exescene/test/type/A">自动
+		                 	<span class="badge"><{$_SESSION['realname']|countAExescene=###}></span>
+		                 </a></li>		                 
 		               </ul>
            </li>
            <li><a href="__APP__/TAdmin/Product"><span class="glyphicon glyphicon-tasks"></span> 产品库</a></li>
@@ -73,4 +81,4 @@
       </div>
     </nav>
 
-    <div class="container-fluid">
+    <div class="container">

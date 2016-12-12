@@ -1,11 +1,12 @@
 ﻿<layout name="layout" />
 <div class="row"> 
-  <div class="col-md-9">
+  <div class="col-md-8">
   		<div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
     	<{$arr.sn}>.<{$arr.path}>
-    	<a data-toggle="modal" href="#tianjfunc" class=" btn btn-info btn-xs pull-right" >添加</a>
+    	<button data-toggle="modal" href="#tianjfunc" class=" btn btn-info btn-xs pull-right" >
+    	<span class="glyphicon glyphicon-plus"> 添加</span></button>
     </h3>
   </div>
   <div class="panel-body table-responsive"> 
@@ -15,10 +16,11 @@
             <th width=80% align="left"  bgcolor="#ccc">功能点</th> 
          </tr>
          <form action="__URL__/order" method="post" >
+         
          <volist name='funcs' id='st' empty="没有数据">
             <tr>             	
                 <td align="center" ><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/></td>
-                <td ><{$st.id}>:<{$st.func}>【<{$st.state}>】<{$st.fproid|getProNo=###}>
+                <td ><{$st.id}>:<{$st.func}>【<{$st.state}>】<span class="badge"><{$st.fproid|getProNo=###}></span>
                    <div class="btn-group pull-right">
 		               <a target="_blank" href="__APP__/TAdmin/Case/index/funcid/<{$st.id}>" type="button" class="btn btn-info btn-xs">用例  <{$st.id|countFCase=###}></a>
 		               <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -36,6 +38,7 @@
                  </td>                              
             </tr>
             </volist>
+            <input type="hidden" name="pathid" value="<{$arr.id}>" /> 
             	<tr><td  colspan="10"><input type="submit" name="do_submit" value="批量排序" class="btn"></td></tr>
             </form>
        </table>
@@ -44,7 +47,7 @@
   
   
   </div>
-  <div class="col-md-3 hidden-xs">
+  <div class="col-md-4 hidden-xs">
   	<div class="panel panel-default">
 	  <div class="panel-heading">
 	    <h3 class="panel-title">路径</h3>

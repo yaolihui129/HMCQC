@@ -13,9 +13,7 @@ class PathController extends CommonController {
             $syses=$m->where($map)
             ->join('tp_system ON tp_system.id = tp_prosys.sysid')
             ->order("tp_system.sysno")->select();
-            $this->assign("data",$syses);
-//          dump($syses);
-            
+            $this->assign("data",$syses);        
         }else{
             /* 实例化模型*/
             $m=D('system');
@@ -101,6 +99,7 @@ class PathController extends CommonController {
         }
         if($num) {
             $this->success("重新排序成功!");
+            
         }else{
             $this->error("重新排序失败...");
         }
@@ -117,7 +116,7 @@ class PathController extends CommonController {
         $this->assign('exe',$exe);
 
         $m= D("prosys");
-        $where=array("tp_prosys.proid"=>$_SESSION['proid']);
+        $where=array("tp_prosys.proid"=>$_SESSION['proid'],"tp_path.pstate"=>"正常");
         $data=$m->join('inner JOIN tp_system ON tp_system.id = tp_prosys.sysid')
         ->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
         ->where($where)->order("tp_system.sysno,tp_path.sn,tp_path.id")->select();
@@ -137,7 +136,6 @@ class PathController extends CommonController {
 
         $m=D('path');
         $data=$m->find($pathid);
-        dump($data);
         $arr['pathid']=$data['id'];
         $arr['sceneid']=0;
         $arr['level']=2;
@@ -192,8 +190,7 @@ class PathController extends CommonController {
 
     public function del(){
         /* 接收参数*/
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-       
+        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];      
         $where['pathid']=$id;
         /* 实例化模型*/
         $m=D('func');

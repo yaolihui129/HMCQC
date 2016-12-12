@@ -5,7 +5,6 @@ class RiskController extends Controller {
   public function index(){
         /* 接收参数*/
         $proid=$_GET['proid'];
-
         /* 实例化模型*/
         $m=D('program');
         $arr=$m->find($proid);
@@ -15,6 +14,7 @@ class RiskController extends Controller {
         $where=array("proid"=>$proid);
         $data=$m->where($where)->select();
         $this->assign("data",$data);
+        
         $this->assign('w',$where);
 
         $this->display();

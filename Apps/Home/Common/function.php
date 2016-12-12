@@ -1,24 +1,5 @@
 <?php
-
 use Test\Controller\ExesceneController;
-/**
- * 状态选择控件
- * @param $name 控件name
- * @param $value 选中值
- */
-function formselect($value="正常",$name="state",$type="state") {
-    $html = '<select name="'.$name.'" class="inputselect">';
-    $m =M('dict');
-    $where=array("type"=>$type,"state"=>"正常");
-    //获取所有分类
-    $cats = $m->where($where)->order('k')->select();
-    foreach($cats as $v) {
-        $selected = ($v['v']==$value) ? "selected" : "";
-        $html .= '<option '.$selected.' value="'.$v['v'].'">'.$v['v'].'</option>';
-    }
-    $html .='<select>';
-    return $html;
-}
 
 function selectgpuer($value="腰立辉",$testgp="Auto",$name="state"){
     $html = '<select name="'.$name.'" class="inputselect">';
@@ -348,6 +329,15 @@ function countRisk($id){
     $count=$m->where($where)->count();
     return $count;
 }
+/**
+ * 根据项目获取需求规则数
+ */
+function countRules($id){
+    $m=M("rules");
+    $where=array("proid"=>$id);
+    $count=$m->where($where)->count();
+    return $count;
+}
 
 /**
  * 根据项目获取系统数
@@ -362,10 +352,12 @@ function countProsys($id){
 /**
  * 根据项目获取范围功能数
  */
-function countRange($id){
-    $m=M("func");
-    $where=array("fproid"=>$id);
-    $count=$m->where($where)->count();
+function countRange($id){        
+    $m = D("system");
+    $where=array("tp_func.fproid"=>$id,"tp_func.state"=>'正常',"tp_path.pstate"=>'正常');
+    $count=$m->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
+    ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
+    ->where($where)->count();
     return $count;
 }
 
@@ -504,14 +496,60 @@ function getQueue($id){
     $arr=$m->where($where)->select();
     foreach ($arr as $ar){
        $str.='<li class="list-group-item">'
-                 . $ar['sn'].".".$ar['tester']."【".$ar['type']."】".$ar['actual']."/".$ar['plan'].'
-                 <span class="pull-right">
-                    <button class="btn btn-link btn-xs">场景<span class="badge">'.countExescene($ar['id'])
-                    .'</button>
-                </span></li>';
+            . $ar['sn'].".".$ar['tester']."【".$ar['type']."】"
+            .'<span class="badge">场景'.countExescene($ar['id']).'</span></li>';
     };
         
-    return $str;
+    return $str;       
+}
+
+/**
+ * 根据funcid获取规则数据
+ */
+function getRules($id){
+    $m=D("rules");
+    $where['funcid']=$id;
+    $arr=$m->where($where)->order("sn,id")->select();
+    foreach ($arr as $st){
+        $str.='<li class="list-group-item">'
+                . $ar['sn'].".".$ar['rules']."【".$ar['state']."】"
+                .'<span class="badge">'.$ar['source'].'</span>
+               </li>';
+    };
+    if($arr){
+        return $str;
+    }else{
+        return '无';
+    }
+}
+
+
+/**
+ * 根据funcid获取测试数据
+ */
+function getTest($id){
+    $where['tp_exefunc.funcid']=$id;
+    $where['tp_stage.proid']=$_SESSION['proid'];   
+    $m=M('stage');
+    $arr=$m ->where($where)
+    ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
+    ->join('tp_exescene ON tp_stagetester.id=tp_exescene.stagetesterid')
+    ->join('tp_exefunc ON tp_exescene.id=tp_exefunc.exesceneid')
+    ->order('tp_exefunc.updateTime desc')
+    ->select();
     
-    
+    foreach ($arr as $ar){
+        $str.='<li class="list-group-item"><b>'
+            . $ar['tester']."</b>-".$ar['stage']."<br>"
+            .$ar['swho'].$ar['swhen'].$ar['scene']."<br>"
+            .$ar['sn'].".".$ar['func']."，<b>意图：</b>".$ar['casemain']."，<b>预期：</b>".$ar['caseexpected']."，"
+            .$ar['remark'].'<span class="badge">'.$ar['result'].'</span><br>'
+            .$ar['updatetime']
+            .'</li>';
+    };
+    if($arr){
+        return $str;
+    }else{
+        return '无测试记录';
+    }
 }

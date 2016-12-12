@@ -81,14 +81,15 @@ class FuncController extends CommonController{
 
 
     public function order(){
-
+        dump($_POST);
         $db = D('func');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
         }
         if($num) {
-            $this->success("重新排序成功!");
+           $this->success("重新排序成功!");
+//           $this->redirect(U('index','pathid={$_SESSION['pathid']}'));
         }else{
             $this->error("重新排序失败...");
         }
@@ -143,14 +144,14 @@ class FuncController extends CommonController{
 
         /* 实例化模型*/
         $s = D("system");
-        $where=array("tp_func.fproid"=>"$proid");
+        $where=array("tp_func.fproid"=>"$proid","tp_func.state"=>'正常',"tp_path.pstate"=>'正常');
         $data=$s->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
         ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
         ->where($where)
         ->order("tp_system.sysno,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id")
         ->select();
         $this->assign("data",$data);
-       // dump($data);
+
         $where=array("proid"=>"$proid");
         $this->assign('w',$where);
 
@@ -208,6 +209,35 @@ class FuncController extends CommonController{
 
     }
 
+    public function pass(){
+    
+        /* 接收参数*/
+        $arr['id']=$_GET['funcid'];
+        $arr['result']='通过';
+        $arr['moder']=$_SESSION['realname'];
+        $db=D('func');
+        if ($db->save($arr)){
+            $this->success("成功！");
+        }else{
+            $this->error("失败！");
+        }
+    
+    }
+    
+    public function reset(){
+    
+        /* 接收参数*/
+        $arr['id']=$_GET['funcid'];
+        $arr['result']='未测试';
+        $arr['moder']=$_SESSION['realname'];
+        $db=D('func');
+        if ($db->save($arr)){
+            $this->success("成功！");
+        }else{
+            $this->error("失败！");
+        }
+    
+    }
 
 
 
