@@ -22,7 +22,7 @@
 		  <li role="presentation"><a href="__APP__/Home/Case/procase/proid/<{$arr.id}>">用例
 		  <span class="badge"><{$arr.id|countCase=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/Home/Rules/prorules/proid/<{$arr.id}>">本期需求
-		  <span class="badge"><{$arr.id|countRules=###}></span></a></li>		  
+		  <span class="badge"><{$arr.id|countPRules=###}></span></a></li>		  
 		</ul>
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 		    <volist name='data' id='st' empty="没有数据">
@@ -38,7 +38,7 @@
 		                  <span class="badge">历史:<{$st.id|countFResult=###}>/<{$st.id|countFQResult=###}></span>
 		              </a>
 		              <div class="btn-group pull-right">
-		                  <button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown">用例  
+		                  <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">用例  
 		                       <span class="badge"> <{$st.id|countFCase=###}></span><span class="caret"></span>
 		                  </button>
 		                  <ul class="dropdown-menu " role="menu">

@@ -64,8 +64,8 @@ class StagetesterController extends CommonController {
         $tester=$m->find($id);
         $this->assign("tester",$tester);
         $this->assign('arr',$tester);
-        $this->assign("startDate",PublicController::date("start",$tester['start']));
-        $this->assign("endDate",PublicController::date("end",$tester['end']));
+//         $this->assign("startDate",PublicController::date("start",$tester['start']));
+//         $this->assign("endDate",PublicController::date("end",$tester['end']));
                 
         $where=array("stageid"=>$tester['stageid'],"type"=>$tester['type']);
         $data=$m->where($where)->order("sn,id")->select();

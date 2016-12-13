@@ -10,7 +10,7 @@ class TesterController extends Controller {
         $where['state']='进行中';
         $arr=$m->where($where)->select();
         $this->assign('arr',$arr);
-//         dump($arr);
+
         $m=D('stagetester');
         $data=$m->order('stageid desc,type')->select();
         $this->assign('data',$data);

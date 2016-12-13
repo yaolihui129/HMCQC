@@ -28,7 +28,7 @@ class FuncController extends Controller {
     public function range(){
         /* 接收参数*/
         $proid=$_GET['proid'];
-        $proid=$_SESSION['proid'];
+        $_SESSION['proid']= $proid;
         /* 实例化模型*/
         $m=D('program');
         $arr=$m->find($proid);

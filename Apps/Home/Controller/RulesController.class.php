@@ -25,7 +25,7 @@ class RulesController extends Controller {
   public function prorules(){
       /* 接收参数*/
       $proid=$_GET['proid'];
-      
+      $_SESSION['proid']=$proid;
       /* 实例化模型*/
       $m=D('program');
       $arr=$m->find($proid);

@@ -478,6 +478,16 @@ function countFRules($id){
 
 
 /**
+ * 根据项目编号获取规则数
+ */
+function countPRules($proid){
+    $m=M("rules");
+    $where=array("fproid"=>$proid);
+    $count=$m->where($where)->count();
+    return $count;
+}
+
+/**
  * 执行场景数
  */
 function countExescene($id){
@@ -510,7 +520,7 @@ function getRules($id){
     $m=D("rules");
     $where['funcid']=$id;
     $arr=$m->where($where)->order("sn,id")->select();
-    foreach ($arr as $st){
+    foreach ($arr as $ar){
         $str.='<li class="list-group-item">'
                 . $ar['sn'].".".$ar['rules']."【".$ar['state']."】"
                 .'<span class="badge">'.$ar['source'].'</span>
@@ -540,11 +550,11 @@ function getTest($id){
     
     foreach ($arr as $ar){
         $str.='<li class="list-group-item"><b>'
-            . $ar['tester']."</b>-".$ar['stage']."<br>"
+            . $ar['tester']."</b>-".$ar['stage']."<span class='badge'>".$ar['updatetime']."</span><br>"
             .$ar['swho'].$ar['swhen'].$ar['scene']."<br>"
-            .$ar['sn'].".".$ar['func']."，<b>意图：</b>".$ar['casemain']."，<b>预期：</b>".$ar['caseexpected']."，"
-            .$ar['remark'].'<span class="badge">'.$ar['result'].'</span><br>'
-            .$ar['updatetime']
+            .$ar['sn'].".".$ar['func']."，<b>意图：</b>".$ar['casemain']."，<b>预期：</b>".$ar['caseexpected']
+            .'<span class="badge">'.$ar['result'].'</span><br><b>失败记录：</b>'
+            .$ar['remark']
             .'</li>';
     };
     if($arr){
