@@ -11,11 +11,11 @@ return array(
     'TMPL_R_DELIM'=>'}>',
     'SESSION_AUTO_START' => true,//开启SESSION
     'DB_TYPE'=>'mysql',
-    'DB_HOST'=>'hkmysql15.zzidc.ha.cn',
-    'DB_NAME'=>'tuocai',
-    'DB_USER'=>'tuocai_f',
-    'DB_PWD'=>'yaolihui129',
-    'DB_PORT'=>'3306',
+    'DB_HOST'=>'2lbrknae.2248.dnstoo.com',
+    'DB_NAME'=>'xiuli',
+    'DB_USER'=>'xiuli_f',
+    'DB_PWD'=>'yaolihui0506',
+    'DB_PORT'=>'5503',
     'DB_PREFIX'=>'tp_',
     'DB_CHARSET'=> 'utf8', // 字符集
 
