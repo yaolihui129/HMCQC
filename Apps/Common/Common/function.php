@@ -1,5 +1,53 @@
 <?php
 /**
+ * 根据id获取状态
+ */
+function getState($id){
+    if ($id){
+        $m=M('dict');
+        $data=$m->find($id);
+        //dump($data);
+        return $data['v'];
+    }else {
+        return ;
+    }
+}
+
+/**
+ * 根据id获取活动信息
+ *
+ */
+function getVoucher($id){
+    if ($id){
+        $m=D('voucher');
+
+        $arr=$m->find($id);
+        $str=$arr['title']."：奖券【".$arr['total']."】特等奖【".$arr['specia']
+        ."】，一等奖【".$arr['first']."】，二等奖【".$arr['second']
+        ."】三等奖【".$arr['third']."】，参与奖【".$arr['canyu']."】";
+        return $str;
+    }else {
+        return ;
+    }
+
+}
+/**
+ * 根据id获取奖券数
+ *
+ */
+function countTickets($id){
+    if ($id){
+        $m=D('tickets');
+        $where=array("voucherid"=>$id);
+        $c=$m->where($where)->count();
+        return $c;
+    }else {
+        return ;
+    }
+
+}
+
+/**
  * 获取客户端浏览器类型
  * @param  string $glue 浏览器类型和版本号之间的连接符
  * @return string|array 传递连接符则连接浏览器类型和版本号返回字符串否则直接返回数组 false为未知浏览器类型
