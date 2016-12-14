@@ -1,0 +1,36 @@
+<layout name="layout" />
+        <div class="place">
+              所在位置：<a href="__URL__">成功案例</a>>修理前
+             <span style="float:right;margin-right:60px;">              
+              <a href="__URL__">  返回</a>
+             </span>
+        </div>
+        <div class="content">
+           <div class="main">
+              <div class="top">上传修理前照片</div>
+              <div class="left">
+                    <volist name='arr' id='vo' empty="没有数据">
+                       <a href="__URL__/photob/id/<{$vo.id}>""><{$vo.car}>:<{$vo.cat}></a><br>
+                    </volist>
+              </div>
+              <div class="midd">
+                  <table border="0" width="700" align="left">
+                    <form action="__URL__/imageb" method="post" enctype='multipart/form-data'>
+                      <input type="hidden" name="id" value="<{$data.id}>" />   
+                     <tr><td>分类：</td><td><{$data.cat}></td></tr>
+                     <tr><td>车型：</td><td><{$data.car}></td></tr>
+                     <tr><td>修理前：</td>
+                         <td><input type="file" name="photob" class="input200"/></td>
+                     </tr>
+                     <tr><td></td>
+                         <td><img alt="修理前" src="__PUBLIC__/Upload/<{$data.bpath}><{$data.before}>" height="400"></td>
+                     </tr>                                                           
+                     <tr><td></td>
+                         <td>
+                         <input type="submit" class="btn" name="do_submit" value="提交"></form>                          
+                          <a href="__URL__"><button  class="btn" >返回</button></a>
+                         </td>
+                     </tr>
+                  </table>
+              </div><!-- midd -->
+           </div><!-- main -->

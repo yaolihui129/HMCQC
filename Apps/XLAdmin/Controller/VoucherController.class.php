@@ -1,5 +1,5 @@
 <?php
-namespace ASAdmin\Controller;
+namespace XLAdmin\Controller;
 class VoucherController extends CommonController {
    public function index(){
 

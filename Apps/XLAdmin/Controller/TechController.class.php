@@ -1,5 +1,5 @@
 <?php
-namespace ASAdmin\Controller;
+namespace XLAdmin\Controller;
 class TechController extends CommonController {
     public function mod(){
         /* 接收参数*/

@@ -1,5 +1,5 @@
 <?php
-namespace ASAdmin\Controller;
+namespace XLAdmin\Controller;
 class CaseController extends CommonController {
 public function index(){
         $m=D('case');
@@ -74,10 +74,7 @@ public function index(){
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
         $m=M('case');
-        //$where=array("state"=>"在职");
-        $arr=$m
-        //->where($where)
-        ->select();
+        $arr=$m->select();
         $this->assign('arr',$arr);
 
         $data=$m->find($id);

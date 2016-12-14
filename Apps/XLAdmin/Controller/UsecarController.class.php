@@ -1,5 +1,5 @@
 <?php
-namespace ASAdmin\Controller;
+namespace XLAdmin\Controller;
 use Think\Controller;
 class UsecarController extends Controller {
     public function index(){

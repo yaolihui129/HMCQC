@@ -1,5 +1,5 @@
 <?php
-namespace ASAdmin\Controller;
+namespace XLAdmin\Controller;
 use Think\Controller;
 class CommonController extends Controller{
     Public function _initialize(){

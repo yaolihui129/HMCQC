@@ -1,5 +1,5 @@
 <?php
-namespace ASAdmin\Controller;
+namespace XLAdmin\Controller;
 use Think\Upload;
 class UserController extends CommonController {
     public function index(){

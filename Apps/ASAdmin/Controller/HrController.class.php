@@ -1,5 +1,5 @@
 <?php
-namespace Admin\Controller;
+namespace ASAdmin\Controller;
 class HrController extends CommonController {
  public function index(){
         $m=D('hr');

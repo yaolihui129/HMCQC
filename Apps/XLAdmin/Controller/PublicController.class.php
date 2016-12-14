@@ -1,5 +1,5 @@
 <?php
-namespace ASAdmin\Controller;
+namespace XLAdmin\Controller;
 use Think\Controller;
 class PublicController extends Controller {
 
@@ -110,6 +110,43 @@ class PublicController extends Controller {
         return $str;
     }
 
-  
+    /**
+     * 颜色控件
+     *
+     * @param $name 控件name
+     * @param $value 选中值
+     */
+    public static function color($name, $value = '000000') {
 
+        if(!defined('COLOR_INIT')) {
+            define('COLOR_INIT', 1);
+            $str= '<script src="'.__ROOT__.'/Public/Admin/js/jscolor/jscolor.js"></script>';
+
+        }
+        $str .= '<input class="color" style="width:48px;height:16px;overfrom:hidden" name="'.$name.'" value="'.$value.'" />';
+
+        return $str;
+    }
+
+    /**
+     * 状态选择控件
+     * @param $name 控件name
+     * @param $value 选中值
+     */
+ public static function stateSelect($value="正常",$name="state",$type="state") {
+        $html = '<select name="'.$name.'" class="inputselect">';
+        $m =M('dict');
+        $where=array("type"=>$type,"state"=>"正常");
+        //获取所有分类
+        $cats = $m->where($where)->order('k')->select();
+
+        foreach($cats as $v) {
+            $selected = ($v['v']==$value) ? "selected" : "";
+            $html .= '<option '.$selected.' value="'.$v['v'].'">'.$v['v'].'</option>';
+        }
+        $html .='<select>';
+
+        return $html;
+
+    }
 }
