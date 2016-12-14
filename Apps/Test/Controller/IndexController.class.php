@@ -3,9 +3,9 @@ namespace Test\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){
-        $id=!empty($_GET['id']) ? $_GET['id'] : 14;
+        $id=!empty($_GET['id'])?$_GET['id'] : 14;
         
-        $where['proid']=$id;
+        $where['prodid']=$id;
         /* 实例化模型*/
         $m=M('program');
         $data=$m->where($where)

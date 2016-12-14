@@ -12,12 +12,17 @@ class LoginController extends Controller {
         ->where(array('username'=>$_POST['username'],'state'=>'在职','password'=>md5($_POST['password'])))
         ->field("id,realname,username,usergp,phone,email")
         ->find();
+        
         if ($user){
             session('[start]');
             $_SESSION=$user;
             $_SESSION['isLogin']=1;
             $_SESSION['testgp']=$user['usergp'];
-           // $_SESSION['head']=$user['head'];
+            dump($user);
+            $where['userid']=$user['id'];
+            $arr = D('userprod')->where($where)->select();
+            dump($arr);
+            //判断跳转到那个后台
             $this->redirect('TAdmin/Program/index');
         }else{
             // p($user);
