@@ -9,7 +9,6 @@
 			<span class="glyphicon glyphicon-arrow-left"> 返回</span></a></a>
           </h3>
         </div>
-
            <div class="well well-sm">
               <h4><{$arr.sn}>.角色:<{$arr.swho}>,时间:<{$arr.swhen}>,场景:<{$arr.scene}>
               <span class="badge"><{$arr.results}></span>
@@ -21,8 +20,13 @@
 					</div>
 	          </h4>
               <div class="well well-sm"><b>流程:</b><{$arr.flow}></div>
-              <div class="panel panel-default">  
+              
 			  <volist name='exe' id='ex' empty="没有数据">
+			  	<switch name="ex.result">
+		          <case value="通过"><div class="panel panel-success"></case>
+		          <case value="失败"><div class="panel panel-danger"></case>
+		          <default /><div class="panel panel-default">
+		      </switch>   			  		
 					<nav class="navbar navbar-default" role="navigation">
 					  <div class="container-fluid">
 					    <div class="navbar-header">
@@ -33,16 +37,25 @@
 					        <span class="icon-bar"></span>
 					      </button>
 					      <a class="navbar-brand" >
-					        <{$ex.sn}>.<{$ex.path}>
+					      	<{$ex.sn}>.
+					      	<switch name="ex.result">
+					          <case value="通过"><span class="label label-success"></case>
+					          <case value="失败"><span class="label label-danger"></case>
+					          <default /><span class="label label-default">
+					      	</switch>
+					        	<{$ex.result}>
+					        </span>
+					        <{$ex.path}>
 					        <{$ex.func}>(<{$ex.funcremarks}>)意图：<{$ex.main}>
-					        <span class="badge"><{$ex.result}></span>
+					        
+					        
 					      </a>
 					    </div>
 					    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					      <ul class="nav navbar-nav navbar-right">
-					      	<li><a href="__URL__/pass/id/<{$ex.id}>"  class="btn btn-success">通过</a></li>
+					      	<li><a href="__URL__/pass/id/<{$ex.id}>" type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-ok">标记通过</span></a></li>
 					      	<li class="dropdown">
-					          <a class="btn btn-info dropdown-toggle" data-toggle="dropdown">用例<{$ex.funcid|countFCase=###}> 
+					          <a class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">用例<{$ex.funcid|countFCase=###}> 
 					           <span class="caret"></span>
 					           </a>
 					          <ul class="dropdown-menu" role="menu">
@@ -55,19 +68,21 @@
 					        <div class="input-group">
 					          <input type="hidden" name="id" value="<{$ex.id}>" />
 					          <input type="hidden" name="result" value="失败" />
-					          <input type="text" class="form-control" name="remark" value="<{$ex.remark}>"/>
+					          <input type="text"  name="remark" value="<{$ex.remark}>" placeholder="测试失败描述" class="input300"/>
+					          <input type="text" name="bugid" value="<{$ex.bugid}>" placeholder="Bugid" class="input80"/>
 					        
 						        <span class="input-group-btn">
-						        	<button  class="btn btn-danger" type="submit" >失败 </button>
+						        	<button  class="btn btn-danger btn-xs" type="submit" ><span class="glyphicon glyphicon-remove">标记失败</span> </button>
 						        </span>
 					        </div>
 					      </form>
 					    </div>
 					  </div>
 					</nav>
+				</div> 
 			  </volist>
 
-			  </div> 
+			  
            </div>
            
           
