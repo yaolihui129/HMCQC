@@ -1,5 +1,5 @@
 <?php
-namespace Home\Controller;
+namespace Tuocai\Controller;
 use Think\Controller;
 class LoginController extends Controller {
     public function index(){

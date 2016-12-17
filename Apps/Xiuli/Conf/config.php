@@ -4,8 +4,8 @@ return array(
     'TMPL_PARSE_STRING'=>array(
         '__CSS__'=>__ROOT__.'/Public/css/',
         '__JS__'=>__ROOT__.'/Public/js/',
-        '__IMAGES__'=>__ROOT__.'/Public/images',
-        '__UPLOAD__'=>__ROOT__.'/Upload/xlgg'
+        '__IMAGES__'=>__ROOT__.'/Public/images/Xiuli',
+        '__UPLOAD__'=>__ROOT__.'/Upload/Xiuli'
     ),
-    'DB_PREFIX' => 'tp_xl_', // 数据库表前缀
+    
 );

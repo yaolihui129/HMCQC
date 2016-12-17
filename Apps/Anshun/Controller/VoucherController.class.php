@@ -3,6 +3,21 @@ namespace Anshun\Controller;
 use Think\Controller;
 class VoucherController extends Controller {
     public function index(){
+        if(!($_SESSION['init'])){
+             $m=D('product');
+             $data=$m->find(5);
+             $_SESSION['web']=$data['web'];
+             $_SESSION['adress']=$data['adress'];
+             $_SESSION['desc']=$data['desc'];
+             $_SESSION['phone']=$data['phone'];
+             $_SESSION['qq']=$data['qq'];
+             $_SESSION['weburl']=$data['url'];
+             $_SESSION['ip']=get_client_ip();
+             $_SESSION['browser']=GetBrowser();
+             $_SESSION['os']=GetOs();
+             $_SESSION['img']=$data['path'].$data['img'];
+             $_SESSION['init']=1;
+        }        
 
         $m=D('voucher');
         $where=array("state"=>"发布");
@@ -13,11 +28,7 @@ class VoucherController extends Controller {
         $data=$m->where($where)->find($id);
         $this->assign('data',$data);
 
-        $m=D('setting');
-        $data=$m->find(1);
-        $_SESSION['phone']=$data['phone'];
-        $_SESSION['qq']=$data['qq'];
-        $_SESSION['ip']=get_client_ip();
+        
 
         $this->display();
     }
@@ -38,7 +49,7 @@ class VoucherController extends Controller {
         $set['chouj']=1;
         $isSet=$m->save($set);
         if ($isSet){
-            $this->redirect('/Home/Voucher/tickets');
+            $this->redirect('/Anshun/Voucher/tickets');
         }else{
             $this->error("失败！");
         }

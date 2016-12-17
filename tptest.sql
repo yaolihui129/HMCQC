@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : mysql:3306
 Source Server Version : 50532
 Source Host           : localhost:3306
 Source Database       : tptest
@@ -10,216 +10,102 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2016-12-16 16:23:04
+Date: 2016-12-18 00:16:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `tp_as_admin`
+-- Table structure for `tp_ad`
 -- ----------------------------
-DROP TABLE IF EXISTS `tp_as_admin`;
-CREATE TABLE `tp_as_admin` (
+DROP TABLE IF EXISTS `tp_ad`;
+CREATE TABLE `tp_ad` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `username` varchar(10) DEFAULT NULL,
-  `password` char(32) DEFAULT NULL,
-  `realname` varchar(10) DEFAULT NULL,
-  `path` varchar(200) NOT NULL,
-  `photo` varchar(255) DEFAULT NULL,
+  `title` varchar(48) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(48) DEFAULT NULL,
+  `url` varchar(200) DEFAULT NULL,
+  `remark` text,
+  `state` varchar(5) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_ad
+-- ----------------------------
+INSERT INTO `tp_ad` VALUES ('1', '第2张', '/Ad/2016-12-13/', '584fb4689084f.jpg', '阿斯达', '', '正常', '梁小伟', '2016-12-17 21:22:40');
+INSERT INTO `tp_ad` VALUES ('2', '第1张', '/Ad/2016-12-13/', '584fb48ec1380.jpg', '水电费', '', '发布', '梁小伟', '2016-12-17 21:22:41');
+INSERT INTO `tp_ad` VALUES ('3', '第3张', '/Ad/2016-12-13/', '584fb428f34cc.jpg', '', '', '发布', '腰立辉', '2016-12-17 21:22:44');
+INSERT INTO `tp_ad` VALUES ('4', '第4张', '/Ad/2016-11-27/', '583afafcaaa26.jpg', '', '', '发布', '腰立辉', '2016-12-17 21:22:47');
+INSERT INTO `tp_ad` VALUES ('5', '第5张', '/Ad/2016-11-27/', '583afb176905b.jpg', '', '', '正常', '腰立辉', '2016-12-17 21:22:57');
+
+-- ----------------------------
+-- Table structure for `tp_admin`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_admin`;
+CREATE TABLE `tp_admin` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `phone` varchar(11) DEFAULT NULL,
-  `state` varchar(5) DEFAULT NULL,
-  `tech` varchar(5) DEFAULT '非技师',
-  `title` varchar(10) DEFAULT NULL,
-  `desc` text,
+  `username` varchar(11) DEFAULT NULL,
+  `realname` varchar(10) DEFAULT NULL,
+  `password` char(32) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `photo` varchar(32) DEFAULT NULL,
+  `state` varchar(5) DEFAULT '在职',
+  `prodid` smallint(6) DEFAULT '2',
   `adder` varchar(10) DEFAULT NULL,
   `moder` varchar(10) DEFAULT NULL,
-  `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of tp_as_admin
+-- Records of tp_admin
 -- ----------------------------
-INSERT INTO `tp_as_admin` VALUES ('1', 'admin', 'e10adc3949ba59abbe56e057f20f883e', '管理员', '/Admin/user/image/2016-10-22/', '580b6d8f61b99.png', '', '离职', '非技师', null, null, '腰立辉', '贾晓月', '2016-10-22 21:45:51', '2016-10-03 15:13:30');
-INSERT INTO `tp_as_admin` VALUES ('2', 'yaolh', 'c33367701511b4f6020ec61ded352059', '腰立辉', '/Admin/user/image/2016-10-22/', '580b6ed68ee3f.jpg', '', '在职', '非技师', 'yyy', '<p>\r\n	asdhkjsad</p>\r\n', '腰立辉', '腰立辉', '2016-10-24 09:51:44', '2016-10-24 09:51:44');
-INSERT INTO `tp_as_admin` VALUES ('3', 'jiaxy', 'e10adc3949ba59abbe56e057f20f883e', '贾晓月', '', '57f250178820d.jpeg', '', '在职', '非技师', null, null, '腰立辉', '腰立辉', '2016-10-03 20:33:27', '2016-10-03 14:59:31');
-INSERT INTO `tp_as_admin` VALUES ('4', 'wangxl', 'e10adc3949ba59abbe56e057f20f883e', '王晓亮', '/Admin/user/image/2016-10-29/', '58148ef89cdcf.jpeg', '13785900902', '在职', '技师', '钣金喷漆师', '<ul>\r\n	<li>\r\n		1111</li>\r\n</ul>\r\n', '腰立辉', '腰立辉', '2016-10-22 21:58:39', '2016-10-29 19:58:48');
+INSERT INTO `tp_admin` VALUES ('1', '18801043607', '18801043607', '腰立辉', 'c33367701511b4f6020ec61ded352059', '', '', '在职', '2', '腰立辉', '腰立辉', '2016-12-17 21:47:31');
+INSERT INTO `tp_admin` VALUES ('2', '13426179579', 'liangxw', '梁小伟', 'e10adc3949ba59abbe56e057f20f883e', null, null, '在职', '7', '腰立辉', '腰立辉', '2016-12-17 21:40:37');
+INSERT INTO `tp_admin` VALUES ('3', '15030971266', '15030971266', '贾晓月', 'e10adc3949ba59abbe56e057f20f883e', null, null, '在职', '5', '腰立辉', '腰立辉', '2016-12-17 21:46:03');
+INSERT INTO `tp_admin` VALUES ('4', '13785900902', '13785900902', '王晓亮', 'e10adc3949ba59abbe56e057f20f883e', '', '', '在职', '5', '腰立辉', '腰立辉', '2016-12-17 21:47:33');
+INSERT INTO `tp_admin` VALUES ('7', '13463925200', '13463925200', '张秀丽', 'e10adc3949ba59abbe56e057f20f883e', null, null, '在职', '8', '腰立辉', '腰立辉', '2016-12-17 21:47:06');
+INSERT INTO `tp_admin` VALUES ('8', '18610815780', '18610815780', '刘燕军', 'e10adc3949ba59abbe56e057f20f883e', null, null, '在职', '3', '腰立辉', '腰立辉', '2016-12-17 21:58:00');
+INSERT INTO `tp_admin` VALUES ('9', '18233098318', '18233098318', '马双峰', 'e10adc3949ba59abbe56e057f20f883e', null, null, '在职', '6', '腰立辉', '腰立辉', '2016-12-17 21:57:59');
+INSERT INTO `tp_admin` VALUES ('10', null, 'yangyh', '杨艳辉', 'e10adc3949ba59abbe56e057f20f883e', null, null, '在职', '6', '腰立辉', '腰立辉', '2016-12-17 21:57:58');
+INSERT INTO `tp_admin` VALUES ('11', '13131981120', '13131981120', '腰建强', 'e10adc3949ba59abbe56e057f20f883e', null, null, '在职', '8', '腰立辉', '腰立辉', '2016-12-17 21:57:57');
 
 -- ----------------------------
--- Table structure for `tp_as_case`
+-- Table structure for `tp_as_customer`
 -- ----------------------------
-DROP TABLE IF EXISTS `tp_as_case`;
-CREATE TABLE `tp_as_case` (
+DROP TABLE IF EXISTS `tp_as_customer`;
+CREATE TABLE `tp_as_customer` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `cat` varchar(10) DEFAULT NULL,
-  `car` varchar(200) DEFAULT NULL,
-  `bpath` varchar(200) NOT NULL,
-  `before` varchar(32) DEFAULT NULL,
-  `apath` varchar(200) NOT NULL,
-  `after` varchar(32) DEFAULT NULL,
-  `desc` text,
+  `phone` varchar(11) DEFAULT NULL,
+  `password` char(32) DEFAULT NULL,
+  `custype` varchar(5) DEFAULT NULL,
+  `isteacher` int(1) DEFAULT '1',
+  `coursetype` varchar(5) DEFAULT NULL,
+  `realname` varchar(10) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(32) DEFAULT NULL,
+  `state` varchar(5) DEFAULT '正常',
+  `course` varchar(10) DEFAULT NULL,
+  `remark` text,
   `adder` varchar(10) DEFAULT NULL,
   `moder` varchar(10) DEFAULT NULL,
-  `createTime` timestamp NULL DEFAULT NULL,
+  `createTime` int(11) DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_as_case
--- ----------------------------
-INSERT INTO `tp_as_case` VALUES ('1', '钣金喷漆', '雪铁龙C3-XR', '/Case/before/2016-10-29/', '581490001107b.JPG', '/Case/after/2016-10-29/', '581490aa12a9e.jpg', '前翼子板撞花', '腰立辉', '腰立辉', '2016-10-22 22:37:41', '2016-10-29 20:06:02');
-INSERT INTO `tp_as_case` VALUES ('2', '大保养', '奔驰E300', '/Case/before/2016-10-29/', '58149047d90ea.jpg', '/Case/after/2016-10-29/', '581490b6c991d.jpg', '奔驰豪车30000公里保养，更换机油三滤，刹车片，变速箱油，火花塞……', '腰立辉', '腰立辉', '2016-10-22 22:37:50', '2016-10-29 20:06:14');
-
--- ----------------------------
--- Table structure for `tp_as_dict`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_as_dict`;
-CREATE TABLE `tp_as_dict` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `k` smallint(2) DEFAULT NULL,
-  `v` varchar(20) DEFAULT NULL,
-  `type` varchar(10) DEFAULT NULL,
-  `state` varchar(5) DEFAULT NULL,
-  `adder` varchar(10) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `createTime` timestamp NULL DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `phone` (`phone`) USING HASH
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of tp_as_dict
+-- Records of tp_as_customer
 -- ----------------------------
-INSERT INTO `tp_as_dict` VALUES ('1', '1', '正常', 'state', '正常', '腰立辉', '腰立辉', '2016-10-27 15:54:22', '2016-10-30 17:51:36');
-INSERT INTO `tp_as_dict` VALUES ('2', '3', '作废', 'state', '正常', '腰立辉', '腰立辉', '2016-10-27 15:54:17', '2016-10-27 17:16:57');
-INSERT INTO `tp_as_dict` VALUES ('3', '1', '技师', 'tech', '正常', '腰立辉', '腰立辉', '2016-10-27 16:13:30', '2016-10-27 16:13:30');
-INSERT INTO `tp_as_dict` VALUES ('4', '2', '非技师', 'tech', '正常', '腰立辉', '腰立辉', '2016-10-27 16:13:46', '2016-10-27 16:13:46');
-INSERT INTO `tp_as_dict` VALUES ('5', '2', '发布', 'state', '正常', '腰立辉', '腰立辉', '2016-10-27 17:16:20', '2016-10-30 17:51:11');
-INSERT INTO `tp_as_dict` VALUES ('6', '1', '用车小常识', 'usecar', '正常', '腰立辉', '腰立辉', '2016-10-30 17:44:10', '2016-10-30 17:44:10');
-INSERT INTO `tp_as_dict` VALUES ('7', '2', '流言终结者', 'usecar', '正常', '腰立辉', '腰立辉', '2016-10-30 17:44:27', '2016-10-30 22:46:21');
-INSERT INTO `tp_as_dict` VALUES ('10', '1', '抽奖', 'voucher', '正常', '腰立辉', '腰立辉', '2016-10-31 14:47:43', '2016-10-31 14:47:43');
-INSERT INTO `tp_as_dict` VALUES ('11', '2', '普通', 'voucher', '正常', '腰立辉', '腰立辉', '2016-10-31 14:48:13', '2016-10-31 16:20:35');
-INSERT INTO `tp_as_dict` VALUES ('13', '1', '在职', 'adminst', '正常', '腰立辉', '腰立辉', '2016-11-12 16:58:06', '2016-11-12 16:58:06');
-INSERT INTO `tp_as_dict` VALUES ('14', '2', '离职', 'adminst', '正常', '腰立辉', '腰立辉', '2016-11-12 16:58:24', '2016-11-12 16:58:24');
-
--- ----------------------------
--- Table structure for `tp_as_hr`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_as_hr`;
-CREATE TABLE `tp_as_hr` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `title` varchar(20) DEFAULT NULL,
-  `state` varchar(5) DEFAULT '发布',
-  `desc` text,
-  `salary` varchar(10) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `place` varchar(20) DEFAULT NULL,
-  `adder` varchar(10) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `createTime` timestamp NULL DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_as_hr
--- ----------------------------
-INSERT INTO `tp_as_hr` VALUES ('2', '勤杂工', '作废', '<p>\r\n	啊实打实大</p>\r\n<p>\r\n	按时到敬爱阿斯达</p>\r\n<p>\r\n	联系电话：13800000000</p>\r\n', '面议', '2016-10-03', '安顺汽修', '腰立辉', '腰立辉', '2016-10-03 20:42:58', '2016-10-27 17:22:46');
-INSERT INTO `tp_as_hr` VALUES ('3', '公司CEO', '发布', '<p>\r\n	124ewqe</p>\r\n', '面议', '2016-10-03', '安顺汽修', '腰立辉', '腰立辉', null, '2016-10-03 20:41:33');
-INSERT INTO `tp_as_hr` VALUES ('4', '首席财务官', '作废', '<p>\r\n	融入融入人</p>\r\n', '面议', '2016-10-03', '安顺汽修', '腰立辉', '腰立辉', null, '2016-10-29 20:12:52');
-
--- ----------------------------
--- Table structure for `tp_as_setting`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_as_setting`;
-CREATE TABLE `tp_as_setting` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(11) DEFAULT NULL,
-  `qq` varchar(12) DEFAULT NULL,
-  `web` varchar(50) NOT NULL,
-  `keywords` varchar(200) NOT NULL,
-  `adress` varchar(100) NOT NULL,
-  `url` varchar(200) NOT NULL,
-  `hpath` varchar(200) NOT NULL,
-  `himg` varchar(48) NOT NULL,
-  `apath` varchar(200) NOT NULL,
-  `aimg` varchar(200) NOT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_as_setting
--- ----------------------------
-INSERT INTO `tp_as_setting` VALUES ('1', '13785900902', '1058793920', '临城-安顺汽车服务中心', '', '临城县射兽汽修市场', 'asqx.hyperphp.com', '/Setting/home/2016-11-10/', '58247b2140317.jpeg', '/Setting/adress/2016-11-10/', '58247b7eda772.png', '腰立辉', '2016-11-10 23:45:15');
-
--- ----------------------------
--- Table structure for `tp_as_tickets`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_as_tickets`;
-CREATE TABLE `tp_as_tickets` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `state` varchar(5) DEFAULT '新建',
-  `result` varchar(10) DEFAULT '谢谢参与',
-  `voucherid` smallint(6) DEFAULT NULL,
-  `ip` varchar(16) DEFAULT NULL,
-  `chouj` smallint(1) DEFAULT '0',
-  `owner` varchar(11) DEFAULT NULL,
-  `duij` smallint(1) DEFAULT '0',
-  `code` int(6) DEFAULT NULL,
-  `adder` varchar(10) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `createTime` timestamp NULL DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=539 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_as_tickets
--- ----------------------------
-INSERT INTO `tp_as_tickets` VALUES ('499', '设奖', '4:参与奖', '19', null, '0', null, '0', '110629', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('500', '设奖', '3:三等奖', '19', null, '0', null, '0', '930429', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('501', '设奖', '3:三等奖', '19', null, '0', null, '0', '613253', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('502', '设奖', '1:一等奖', '19', null, '0', null, '0', '410556', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('503', '抽奖', '谢谢参与', '19', '127.0.0.1', '1', null, '0', null, '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-09 23:19:51');
-INSERT INTO `tp_as_tickets` VALUES ('504', '设奖', '4:参与奖', '19', '172.20.100.72', '0', null, '0', '872750', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-01 18:01:44');
-INSERT INTO `tp_as_tickets` VALUES ('505', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('506', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('507', '设奖', '2:二等奖', '19', null, '0', null, '0', '227468', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('508', '抽奖', '4:参与奖', '19', '127.0.0.1', '1', null, '0', '225216', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-09 23:19:47');
-INSERT INTO `tp_as_tickets` VALUES ('509', '设奖', '4:参与奖', '19', null, '0', null, '0', '316842', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('510', '设奖', '3:三等奖', '19', null, '0', null, '0', '588809', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('511', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('512', '设奖', '3:三等奖', '19', null, '0', null, '0', '887033', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('513', '设奖', '1:一等奖', '19', null, '0', null, '0', '217031', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('514', '设奖', '2:二等奖', '19', null, '0', null, '0', '927133', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('515', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('516', '设奖', '2:二等奖', '19', null, '0', null, '0', '433023', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('517', '设奖', '3:三等奖', '19', null, '0', null, '0', '589138', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('518', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('519', '设奖', '3:三等奖', '19', null, '0', null, '0', '253176', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('520', '设奖', '4:参与奖', '19', null, '0', null, '0', '122659', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('521', '设奖', '4:参与奖', '19', null, '0', null, '0', '282510', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('522', '设奖', '4:参与奖', '19', null, '0', null, '0', '231314', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('523', '设奖', '4:参与奖', '19', null, '0', null, '0', '297177', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('524', '设奖', '3:三等奖', '19', null, '0', null, '0', '393911', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('525', '设奖', '4:参与奖', '19', null, '0', null, '0', '672689', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('526', '设奖', '4:参与奖', '19', null, '0', null, '0', '326675', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('527', '抽奖', '4:参与奖', '19', '172.20.100.72', '1', null, '0', '310800', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-01 18:05:25');
-INSERT INTO `tp_as_tickets` VALUES ('528', '设奖', '4:参与奖', '19', null, '0', null, '0', '414016', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('529', '设奖', '4:参与奖', '19', null, '0', null, '0', '457687', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('530', '抽奖', '4:参与奖', '19', '127.0.0.1', '1', null, '0', '778103', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-09 23:19:54');
-INSERT INTO `tp_as_tickets` VALUES ('531', '设奖', '0:特等奖', '19', null, '0', null, '0', '536349', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('532', '设奖', '3:三等奖', '19', null, '0', null, '0', '195443', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('533', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('534', '设奖', '2:二等奖', '19', null, '0', null, '0', '805569', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('535', '设奖', '3:三等奖', '19', null, '0', null, '0', '866983', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('536', '设奖', '2:二等奖', '19', null, '0', null, '0', '775192', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('537', '设奖', '4:参与奖', '19', null, '0', null, '0', '472683', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
-INSERT INTO `tp_as_tickets` VALUES ('538', '抽奖', '3:三等奖', '19', '127.0.0.1', '1', null, '0', '725534', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-10 21:02:21');
+INSERT INTO `tp_as_customer` VALUES ('1', '15803114069', 'c33367701511b4f6020ec61ded352059', '老师', '1', '中学课程', '孙云云', '/Customer/2016-12-13/', '584fbda821498.png', '发布', '初、高中物理', '孙云云，2007年毕业于河北师范大学，从事教育工作十余年，曾任上海精锐教育集团教研组长，教学校长，所带学生进步率高达100%，多名学生进入上海中学，复旦大学，上海交大等一流学府；', '腰立辉', '梁小伟', '1478415695', '2016-12-13 17:21:44');
+INSERT INTO `tp_as_customer` VALUES ('12', '12314242342', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '小学课程', 'werer', null, null, '正常', '', '', '腰立辉', '腰立辉', '1479042931', '2016-11-13 21:17:14');
+INSERT INTO `tp_as_customer` VALUES ('13', '13931162537', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '中学课程', '刘一玮（男、44中）', null, null, '发布', '初一数学', '一对二', '梁小伟', '梁小伟', '1479302465', '2016-12-13 17:28:34');
+INSERT INTO `tp_as_customer` VALUES ('14', '15803114068', 'f379eaf3c831b04de153469d1bec345e', '老师', '1', '小学课程', '康国胜', '/Customer/2016-12-13/', '584fc143123a2.jpg', '发布', '小学奥数、初高中物理', '康国胜，2007年毕业于河北师范大学，后进修于河北师范大学教育管理研究生院；从事教育工作十余年，曾任上海精锐集团教研组长，教学校长；邯郸环球雅思校长等教学和管理工作；对教学有自己独到的认识，擅长鼓励教育和引导教学，善于激发学生内在的动力，挖掘最大的潜能', '梁小伟', '梁小伟', '1481619189', '2016-12-13 17:37:07');
 
 -- ----------------------------
 -- Table structure for `tp_as_usecar`
@@ -249,36 +135,6 @@ INSERT INTO `tp_as_usecar` VALUES ('5', '遭遇鸡蛋袭击不能用雨刮?', '<
 INSERT INTO `tp_as_usecar` VALUES ('8', '开车不喝酒，喝酒不开车', '<p>\r\n	可你喝了酒又需要回家怎么办？</p>\r\n<p>\r\n	1. 自己打车回家，转天再去开回来。</p>\r\n<p>\r\n	2. 请会开车没喝酒的朋友帮忙。</p>\r\n<p>\r\n	3. 请个代驾帮忙把车开回家。</p>\r\n<p>\r\n	<strong>看看后面的规定，你就知道我们的3个办法还是最有效的。</strong></p>\r\n<p>\r\n	中华人民共和国道路交通安全法》规定，饮酒后驾驶机动车的处暂扣1个月以上3个月以下机动车驾驶证，并处200元以上元以下罚款;醉酒后驾驶机动车的，由公安机关交通管理部门约束至酒醒，处15日以下拘留和暂扣3个月以上6个月以下机动车驾驶证，并处00元以上2000元以下罚款。1年内醉酒后驾驶机动车被处罚2次以上的，吊销机动车驾驶证.5年内不得驾驶营运机动车。</p>\r\n', '6', '', '发布', '/Admin/usecar/2016-10-31/', '5816e1c4c2325.jpg', '腰立辉', '2016-10-31 14:16:36');
 INSERT INTO `tp_as_usecar` VALUES ('6', '保护漆面从新车做起', '<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体; font-size: 14px; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);\">新车漆面虽无老化问题，但使用前应该做彻底的保护处理，从出厂到运输至停车场，车表漆就已经接触了空气、酸气、风沙的侵袭。及时正确的养护，能令漆面保持良好外观。如果买的是进口轿车，要首先考虑的是车蜡中含有石蜡、树脂及特氟隆等材料。除蜡时不要用汽油或煤油擦拭，应选用专业的开蜡液，或者到专业的美容养护店，请技师帮助处理。至于国产车，车身大多采用静电喷涂，漆面呈镜面光泽，故无开蜡需要。</span></p>\r\n', '6', '#', '发布', '/Admin/usecar/2016-10-31/', '5816dedc34c66.jpeg', '腰立辉', '2016-10-31 14:04:12');
 INSERT INTO `tp_as_usecar` VALUES ('7', '调整后视镜', '调整后视镜左侧后视镜上、下位置是把远处的地平线置于中央，左、右位置则调整至车身占据镜面范围的14。右侧后视镜因为驾驶座位于左侧，因此驾驶人对车耳右侧的掌握不是那么容易，再加上有时路边停车的需要，在调整右侧后视镜上、下位置时地面面积要较大，约占镜面的23。而左、右位置则同样调整到车身占14面积即可。\r\n', '6', '', '发布', '/Admin/usecar/2016-10-31/', '5816dfa12179c.png', '腰立辉', '2016-10-31 14:07:29');
-
--- ----------------------------
--- Table structure for `tp_as_voucher`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_as_voucher`;
-CREATE TABLE `tp_as_voucher` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) DEFAULT NULL,
-  `remark` text,
-  `voucher` varchar(5) DEFAULT NULL,
-  `start` date DEFAULT NULL,
-  `end` date DEFAULT NULL,
-  `state` varchar(5) DEFAULT NULL,
-  `total` int(11) DEFAULT '10000',
-  `specia` int(1) DEFAULT '1',
-  `first` int(1) DEFAULT '3',
-  `second` int(2) DEFAULT '10',
-  `third` int(3) DEFAULT '100',
-  `canyu` int(3) DEFAULT '500',
-  `adder` varchar(10) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `createTime` timestamp NULL DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_as_voucher
--- ----------------------------
-INSERT INTO `tp_as_voucher` VALUES ('19', '抽奖活动', '<p>\r\n	抽奖</p>\r\n', '抽奖', '2016-11-01', '2016-11-13', '发布', '40', '1', '2', '5', '10', '15', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:18:28');
 
 -- ----------------------------
 -- Table structure for `tp_case`
@@ -374,7 +230,7 @@ CREATE TABLE `tp_dict` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=73 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_dict
@@ -430,7 +286,27 @@ INSERT INTO `tp_dict` VALUES ('69', '3', 'C', 'sceneType', '正常', '腰立辉'
 INSERT INTO `tp_dict` VALUES ('68', '5', '已搁置', 'prost', '正常', '腰立辉', '腰立辉', '2016-11-09 14:21:09', '2016-11-11 16:50:15');
 INSERT INTO `tp_dict` VALUES ('70', '1', '在职', 'adminst', '正常', '腰立辉', '腰立辉', '2016-11-17 13:58:18', '2016-11-17 13:57:24');
 INSERT INTO `tp_dict` VALUES ('71', '2', '离职', 'adminst', '正常', '腰立辉', '腰立辉', '2016-11-17 13:58:28', '2016-11-17 13:57:34');
-INSERT INTO `tp_dict` VALUES ('72', '6', 'PJD', 'testgp', '正常', '腰立辉', '腰立辉', '2016-12-05 15:37:48', '2016-12-05 15:43:10');
+INSERT INTO `tp_dict` VALUES ('72', '1', 'PJD', 'testgp', '正常', '腰立辉', '腰立辉', '2016-12-05 15:37:48', '2016-12-17 22:37:50');
+INSERT INTO `tp_dict` VALUES ('73', '1', '技师', 'tech', '正常', '腰立辉', '腰立辉', '2016-12-17 17:06:48', '2016-12-17 17:06:48');
+INSERT INTO `tp_dict` VALUES ('74', '2', '非技师', 'tech', '正常', '腰立辉', '腰立辉', '2016-12-17 17:07:02', '2016-12-17 17:07:02');
+INSERT INTO `tp_dict` VALUES ('75', '1', '用车小常识', 'usecar', '正常', '腰立辉', '腰立辉', '2016-12-17 17:14:52', '2016-12-17 17:14:52');
+INSERT INTO `tp_dict` VALUES ('76', '2', '流言终结者', 'usecar', '正常', '腰立辉', '腰立辉', '2016-12-17 17:15:16', '2016-12-17 17:15:16');
+INSERT INTO `tp_dict` VALUES ('77', '1', '抽奖', 'voucher', '正常', '腰立辉', '腰立辉', '2016-12-17 17:15:47', '2016-12-17 17:16:07');
+INSERT INTO `tp_dict` VALUES ('78', '2', '普通', 'voucher', '正常', '腰立辉', '腰立辉', '2016-12-17 17:16:20', '2016-12-17 17:16:20');
+INSERT INTO `tp_dict` VALUES ('79', '1', '老师', 'custype', '正常', '腰立辉', '腰立辉', '2016-12-17 20:09:14', '2016-12-17 20:09:14');
+INSERT INTO `tp_dict` VALUES ('80', '2', '助教', 'custype', '正常', '腰立辉', '腰立辉', '2016-12-17 20:09:26', '2016-12-17 20:09:26');
+INSERT INTO `tp_dict` VALUES ('81', '3', '学生', 'custype', '正常', '腰立辉', '腰立辉', '2016-12-17 20:09:33', '2016-12-17 20:09:33');
+INSERT INTO `tp_dict` VALUES ('82', '1', '学前少儿', 'coursetype', '正常', '腰立辉', '腰立辉', '2016-12-17 20:10:30', '2016-12-17 20:10:30');
+INSERT INTO `tp_dict` VALUES ('83', '2', '小学课程', 'coursetype', '正常', '腰立辉', '腰立辉', '2016-12-17 20:10:47', '2016-12-17 20:10:47');
+INSERT INTO `tp_dict` VALUES ('84', '3', '中学课程', 'coursetype', '正常', '腰立辉', '腰立辉', '2016-12-17 20:10:55', '2016-12-17 20:10:55');
+INSERT INTO `tp_dict` VALUES ('85', '4', '作业托管', 'coursetype', '正常', '腰立辉', '腰立辉', '2016-12-17 20:11:03', '2016-12-17 20:11:03');
+INSERT INTO `tp_dict` VALUES ('86', '5', '兴趣拓展', 'coursetype', '正常', '腰立辉', '腰立辉', '2016-12-17 20:11:22', '2016-12-17 20:11:22');
+INSERT INTO `tp_dict` VALUES ('87', '1', '08:00-10:00', 'sktime', '正常', '腰立辉', '腰立辉', '2016-12-17 20:11:53', '2016-12-17 20:13:21');
+INSERT INTO `tp_dict` VALUES ('88', '2', '10:10-12:10', 'sktime', '正常', '腰立辉', '腰立辉', '2016-12-17 20:12:22', '2016-12-17 20:12:22');
+INSERT INTO `tp_dict` VALUES ('89', '3', '13:30-15:30', 'sktime', '正常', '腰立辉', '腰立辉', '2016-12-17 20:12:29', '2016-12-17 20:12:29');
+INSERT INTO `tp_dict` VALUES ('90', '4', '15:40-17:40', 'sktime', '正常', '腰立辉', '腰立辉', '2016-12-17 20:12:37', '2016-12-17 20:12:37');
+INSERT INTO `tp_dict` VALUES ('91', '5', '18:00-20:00', 'sktime', '正常', '腰立辉', '腰立辉', '2016-12-17 20:12:45', '2016-12-17 20:12:45');
+INSERT INTO `tp_dict` VALUES ('92', '2', 'Auto', 'testgp', '正常', '腰立辉', '腰立辉', '2016-12-17 22:37:07', '2016-12-17 22:45:19');
 
 -- ----------------------------
 -- Table structure for `tp_element`
@@ -1178,6 +1054,32 @@ CREATE TABLE `tp_hcfunc` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `tp_hr`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_hr`;
+CREATE TABLE `tp_hr` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `title` varchar(20) DEFAULT NULL,
+  `state` varchar(5) DEFAULT '发布',
+  `desc` text,
+  `salary` varchar(10) DEFAULT NULL,
+  `prodid` smallint(6) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `place` varchar(20) DEFAULT NULL,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `createTime` timestamp NULL DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_hr
+-- ----------------------------
+INSERT INTO `tp_hr` VALUES ('3', '公司CEO', '发布', '\r\n', '面议', null, '2016-10-03', '安顺汽修', '腰立辉', '腰立辉', null, '2016-11-06 10:04:55');
+INSERT INTO `tp_hr` VALUES ('4', '首席财务官', '作废', '<p>\r\n	融入融入人</p>\r\n', '面议', null, '2016-10-03', '安顺汽修', '腰立辉', '腰立辉', null, '2016-10-29 20:12:52');
+
+-- ----------------------------
 -- Table structure for `tp_path`
 -- ----------------------------
 DROP TABLE IF EXISTS `tp_path`;
@@ -1192,7 +1094,7 @@ CREATE TABLE `tp_path` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10205 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10224 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_path
@@ -1358,6 +1260,25 @@ INSERT INTO `tp_path` VALUES ('10201', '3', ' 投票活动-太平洋好声音', 
 INSERT INTO `tp_path` VALUES ('10202', '4', ' 投票活动-四海一家', '正常', '66', '腰立辉', '腰立辉', '2016-12-12 09:59:43', '2016-12-12 10:06:15');
 INSERT INTO `tp_path` VALUES ('10203', '5', '商务合作-商务合作管理', '正常', '63', '腰立辉', '腰立辉', '2016-12-14 11:39:36', '2016-12-14 11:39:01');
 INSERT INTO `tp_path` VALUES ('10204', '5', ' 商务合作-商务合作进度', '正常', '63', '腰立辉', '腰立辉', '2016-12-14 11:45:04', '2016-12-14 11:44:19');
+INSERT INTO `tp_path` VALUES ('10205', '1', ' 登陆模块', '正常', '70', '腰立辉', '腰立辉', '2016-12-17 23:01:28', '2016-12-17 23:01:28');
+INSERT INTO `tp_path` VALUES ('10206', '2', '（首页）系统信息', '正常', '70', '腰立辉', '腰立辉', '2016-12-17 23:01:52', '2016-12-17 23:01:52');
+INSERT INTO `tp_path` VALUES ('10207', '1', ' 首页', '正常', '69', '腰立辉', '腰立辉', '2016-12-17 23:03:35', '2016-12-17 23:03:35');
+INSERT INTO `tp_path` VALUES ('10208', '2', ' 产品展示', '正常', '69', '腰立辉', '腰立辉', '2016-12-17 23:03:43', '2016-12-17 23:03:43');
+INSERT INTO `tp_path` VALUES ('10209', '3', ' 关于我们', '正常', '69', '腰立辉', '腰立辉', '2016-12-17 23:03:57', '2016-12-17 23:03:57');
+INSERT INTO `tp_path` VALUES ('10210', '1', ' 登录模块', '正常', '72', '腰立辉', '腰立辉', '2016-12-17 23:07:30', '2016-12-17 23:07:30');
+INSERT INTO `tp_path` VALUES ('10211', '2', '（首页）系统信息', '正常', '72', '腰立辉', '腰立辉', '2016-12-17 23:07:49', '2016-12-17 23:07:49');
+INSERT INTO `tp_path` VALUES ('10212', '1', ' 首页', '正常', '71', '腰立辉', '腰立辉', '2016-12-17 23:08:22', '2016-12-17 23:08:22');
+INSERT INTO `tp_path` VALUES ('10213', '2', ' 服务展示', '正常', '71', '腰立辉', '腰立辉', '2016-12-17 23:08:33', '2016-12-17 23:08:33');
+INSERT INTO `tp_path` VALUES ('10214', '3', ' 关于我们', '正常', '71', '腰立辉', '腰立辉', '2016-12-17 23:08:42', '2016-12-17 23:08:42');
+INSERT INTO `tp_path` VALUES ('10215', '1', '首页', '正常', '73', '腰立辉', '腰立辉', '2016-12-17 23:10:49', '2016-12-17 23:10:49');
+INSERT INTO `tp_path` VALUES ('10216', '2', ' 主营业务', '正常', '73', '腰立辉', '腰立辉', '2016-12-17 23:10:59', '2016-12-17 23:10:59');
+INSERT INTO `tp_path` VALUES ('10217', '3', ' 用车常识', '正常', '73', '腰立辉', '腰立辉', '2016-12-17 23:11:11', '2016-12-17 23:11:11');
+INSERT INTO `tp_path` VALUES ('10218', '4', '关于我们', '正常', '73', '腰立辉', '腰立辉', '2016-12-17 23:11:20', '2016-12-17 23:11:20');
+INSERT INTO `tp_path` VALUES ('10219', '5', ' 诚聘人才', '正常', '73', '腰立辉', '腰立辉', '2016-12-17 23:11:31', '2016-12-17 23:11:31');
+INSERT INTO `tp_path` VALUES ('10220', '6', ' 技师风采', '正常', '73', '腰立辉', '腰立辉', '2016-12-17 23:11:41', '2016-12-17 23:11:41');
+INSERT INTO `tp_path` VALUES ('10221', '7', ' 汽车用品商城', '正常', '73', '腰立辉', '腰立辉', '2016-12-17 23:11:54', '2016-12-17 23:11:54');
+INSERT INTO `tp_path` VALUES ('10222', '1', '登录模块', '正常', '74', '腰立辉', '腰立辉', '2016-12-17 23:12:09', '2016-12-17 23:12:09');
+INSERT INTO `tp_path` VALUES ('10223', '2', '（首页）系统信息', '正常', '74', '腰立辉', '腰立辉', '2016-12-17 23:12:19', '2016-12-17 23:12:19');
 
 -- ----------------------------
 -- Table structure for `tp_product`
@@ -1368,6 +1289,16 @@ CREATE TABLE `tp_product` (
   `short` varchar(10) DEFAULT NULL,
   `product` varchar(50) DEFAULT NULL,
   `state` varchar(5) DEFAULT NULL,
+  `phone` varchar(11) DEFAULT NULL,
+  `telphone` varchar(13) DEFAULT NULL,
+  `qq` varchar(13) DEFAULT NULL,
+  `web` varchar(50) DEFAULT NULL,
+  `keywords` varchar(200) DEFAULT NULL,
+  `desc` text,
+  `adress` varchar(300) DEFAULT NULL,
+  `url` varchar(200) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(48) DEFAULT NULL,
   `adder` varchar(10) DEFAULT NULL,
   `moder` varchar(10) DEFAULT NULL,
   `createTime` timestamp NULL DEFAULT NULL,
@@ -1378,14 +1309,14 @@ CREATE TABLE `tp_product` (
 -- ----------------------------
 -- Records of tp_product
 -- ----------------------------
-INSERT INTO `tp_product` VALUES ('1', '惠买车', '惠买车平台', '作废', '腰立辉', '腰立辉', '2016-09-16 22:04:58', '2016-12-05 15:41:48');
-INSERT INTO `tp_product` VALUES ('2', '自动化', '自动化平台', '正常', '腰立辉', '腰立辉', '2016-09-16 22:07:52', '2016-09-16 22:07:52');
-INSERT INTO `tp_product` VALUES ('14', 'PJD', '太平洋加达', '正常', '腰立辉', '腰立辉', '2016-12-05 15:47:20', '2016-12-05 15:47:20');
-INSERT INTO `tp_product` VALUES ('8', '秀丽', '秀丽广告', '正常', '腰立辉', '腰立辉', '2016-12-14 23:13:36', '2016-12-14 23:17:04');
-INSERT INTO `tp_product` VALUES ('5', '安顺', '安顺汽修', '正常', '腰立辉', '腰立辉', '2016-12-14 23:13:59', '2016-12-14 23:16:21');
-INSERT INTO `tp_product` VALUES ('6', '双辉', '麦田双辉', '正常', '腰立辉', '腰立辉', '2016-12-14 23:14:17', '2016-12-14 23:16:40');
-INSERT INTO `tp_product` VALUES ('7', '拓才', '拓才教育', '正常', '腰立辉', '腰立辉', '2016-12-14 23:14:42', '2016-12-14 23:16:52');
-INSERT INTO `tp_product` VALUES ('3', '信达', '智慧信达', '正常', '腰立辉', '腰立辉', '2016-12-14 23:14:59', '2016-12-14 23:17:13');
+INSERT INTO `tp_product` VALUES ('1', '惠买车', '惠买车平台', '作废', null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-09-16 22:04:58', '2016-12-05 15:41:48');
+INSERT INTO `tp_product` VALUES ('2', '自动化', '自动化平台', '正常', '18801043607', null, '83000892', '自动化测试', null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-09-16 22:07:52', '2016-12-17 21:53:51');
+INSERT INTO `tp_product` VALUES ('4', 'PJD', '太平洋加达', '正常', null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-05 15:47:20', '2016-12-17 18:24:30');
+INSERT INTO `tp_product` VALUES ('8', '秀丽', '秀丽广告', '正常', '13463925200', '0319-7186126', '2830690782', '临城-秀丽广告', null, null, '临城转盘北200米路西', 'www.xiuliguanggao.com', null, null, '腰立辉', '腰立辉', '2016-12-14 23:13:36', '2016-12-17 21:54:15');
+INSERT INTO `tp_product` VALUES ('5', '安顺', '安顺汽修', '正常', '13785900902', null, '1058793920', '临城-安顺汽车服务中心', null, null, '临城县射兽汽修市场', 'www.anshunqixiu.top', '/Setting/adress/2016-11-10/', '58247b7eda772.png', '腰立辉', '腰立辉', '2016-12-14 23:13:59', '2016-12-17 21:53:03');
+INSERT INTO `tp_product` VALUES ('6', '双辉', '麦田双辉', '正常', '18801043607', null, '83000892', '临城-麦田双辉', null, null, '临城', null, null, null, '腰立辉', '腰立辉', '2016-12-14 23:14:17', '2016-12-17 18:22:27');
+INSERT INTO `tp_product` VALUES ('7', '拓才', '拓才教育', '正常', null, '0311-89849355', '285981407', '石家庄-拓才教育', '拓才,拓才教育,一对一,个性化,课外辅导,教育培训，石家庄课外辅导', null, '石家庄1', 'www.tuocaijiaoyu.com', '/Setting/adress/2016-12-13/', '584fb53ddc613.jpg', '腰立辉', '腰立辉', '2016-12-14 23:14:42', '2016-12-17 21:53:04');
+INSERT INTO `tp_product` VALUES ('3', '信达', '智慧信达', '正常', null, null, null, null, null, null, '北京', 'www.zhihuixinda.com', null, null, '腰立辉', '腰立辉', '2016-12-14 23:14:59', '2016-12-17 21:53:18');
 
 -- ----------------------------
 -- Table structure for `tp_program`
@@ -1413,7 +1344,7 @@ CREATE TABLE `tp_program` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=111 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=115 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_program
@@ -1422,6 +1353,10 @@ INSERT INTO `tp_program` VALUES ('107', 'PJD1612.1', '微站一期-公司名片�
 INSERT INTO `tp_program` VALUES ('108', 'Auto1612.1', '测试管理平台搭建', '2', '进行中', '2016-12-05', '2016-12-12', '腰立辉', 'PJD', '简要', '腰立辉', '腰立辉', '新项目', '一般需求', '2017-02-28', '								测试管理平台搭建\r\n												', '腰立辉', '腰立辉', '2016-12-05 17:41:39', '2016-12-07 16:30:50');
 INSERT INTO `tp_program` VALUES ('109', 'PJD1612.3', '权限管理后台1612', '14', '进行中', '2016-12-05', '2016-12-15', '魏斌', 'PJD', '简要', '', '', '需求新增', '一般需求', '2016-12-15', '权限后台功能\r\n						', '腰立辉', '腰立辉', '2016-12-06 10:14:39', '2016-12-06 10:14:39');
 INSERT INTO `tp_program` VALUES ('110', 'PJD1612.4', '太平洋好声音和四海一家投票', '14', '已上线', '2016-12-12', '2016-12-19', '魏斌', 'PJD', '简要', '', '杨学毅、刘雨熙', '新项目', '一般需求', '2016-12-12', '							1.四海一家投票\r\n2.太平洋好声音投票\r\n																		', '腰立辉', '腰立辉', '2016-12-12 09:45:26', '2016-12-13 17:12:09');
+INSERT INTO `tp_program` VALUES ('111', 'Auto1612.1', '秀丽广告网站初建', '8', '进行中', '2016-12-17', '2017-01-24', '腰立辉', 'Auto', '简要', '腰立辉', '腰立辉', '新项目', '一般需求', '0000-00-00', '														暂无简介\r\n												', '腰立辉', '腰立辉', '2016-12-17 22:36:46', '2016-12-17 22:44:32');
+INSERT INTO `tp_program` VALUES ('112', 'Auto1612.2', '麦田双辉网站初建', '6', '进行中', '2016-12-17', '2017-01-24', '腰立辉', 'Auto', '简要', '腰立辉', '腰立辉', '需求新增', '一般需求', '2017-01-24', '							暂无简介\r\n						', '腰立辉', '腰立辉', '2016-12-17 22:40:37', '2016-12-17 22:44:46');
+INSERT INTO `tp_program` VALUES ('113', 'Auto1612.3', '安顺汽修网站初建', '5', '进行中', '2016-12-17', '2017-01-24', '腰立辉', 'Auto', '简要', '腰立辉', '腰立辉', '需求新增', '一般需求', '2017-01-24', '							暂无简介\r\n						', '腰立辉', '腰立辉', '2016-12-17 22:41:52', '2016-12-17 22:44:48');
+INSERT INTO `tp_program` VALUES ('114', 'Auto1612.4', '拓才教育网站初建', '7', '进行中', '2016-12-17', '2017-01-24', '腰立辉', 'Auto', '简要', '腰立辉', '腰立辉', '需求新增', '一般需求', '2017-01-24', '							暂无简介\r\n						', '腰立辉', '腰立辉', '2016-12-17 22:43:15', '2016-12-17 22:44:53');
 
 -- ----------------------------
 -- Table structure for `tp_prosys`
@@ -1436,7 +1371,7 @@ CREATE TABLE `tp_prosys` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`prosysid`)
-) ENGINE=MyISAM AUTO_INCREMENT=92 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=100 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_prosys
@@ -1463,6 +1398,14 @@ INSERT INTO `tp_prosys` VALUES ('85', '66', '107', '腰立辉', '腰立辉', '20
 INSERT INTO `tp_prosys` VALUES ('87', '68', '108', '腰立辉', '腰立辉', '2016-12-05 17:42:53', '2016-12-05 17:42:53');
 INSERT INTO `tp_prosys` VALUES ('88', '4', '108', '腰立辉', '腰立辉', '2016-12-05 17:42:56', '2016-12-05 17:42:56');
 INSERT INTO `tp_prosys` VALUES ('91', '66', '110', '腰立辉', '腰立辉', '2016-12-12 09:45:46', '2016-12-12 09:44:55');
+INSERT INTO `tp_prosys` VALUES ('92', '69', '111', '腰立辉', '腰立辉', '2016-12-17 22:59:59', '2016-12-17 22:59:59');
+INSERT INTO `tp_prosys` VALUES ('93', '70', '111', '腰立辉', '腰立辉', '2016-12-17 23:00:02', '2016-12-17 23:00:02');
+INSERT INTO `tp_prosys` VALUES ('94', '72', '112', '腰立辉', '腰立辉', '2016-12-17 23:05:50', '2016-12-17 23:05:50');
+INSERT INTO `tp_prosys` VALUES ('95', '71', '112', '腰立辉', '腰立辉', '2016-12-17 23:05:53', '2016-12-17 23:05:53');
+INSERT INTO `tp_prosys` VALUES ('96', '73', '113', '腰立辉', '腰立辉', '2016-12-17 23:09:33', '2016-12-17 23:09:33');
+INSERT INTO `tp_prosys` VALUES ('97', '74', '113', '腰立辉', '腰立辉', '2016-12-17 23:09:35', '2016-12-17 23:09:35');
+INSERT INTO `tp_prosys` VALUES ('98', '76', '114', '腰立辉', '腰立辉', '2016-12-17 23:15:52', '2016-12-17 23:15:52');
+INSERT INTO `tp_prosys` VALUES ('99', '75', '114', '腰立辉', '腰立辉', '2016-12-17 23:15:54', '2016-12-17 23:15:54');
 
 -- ----------------------------
 -- Table structure for `tp_risk`
@@ -1537,6 +1480,32 @@ INSERT INTO `tp_rules` VALUES ('10059', '6', '提交成功后台记录提交者�
 INSERT INTO `tp_rules` VALUES ('10060', '1', ' 后台统计分享后浏览名片的次数及报名成功的人数', '需求文档 ', '10424', '正常', '107', '', '腰立辉', '腰立辉', '2016-12-09 16:13:47', '2016-12-09 16:13:47');
 INSERT INTO `tp_rules` VALUES ('10061', '2', ' 点击-分享名片【计数】', '需求文档 ', '10424', '正常', '107', '', '腰立辉', '腰立辉', '2016-12-09 16:15:31', '2016-12-09 16:15:31');
 INSERT INTO `tp_rules` VALUES ('10062', '3', ' 点击-分享名片-报名提交【计数】', '需求文档 ', '10424', '正常', '107', '', '腰立辉', '腰立辉', '2016-12-09 16:15:55', '2016-12-09 16:15:55');
+
+-- ----------------------------
+-- Table structure for `tp_sccesscase`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_sccesscase`;
+CREATE TABLE `tp_sccesscase` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `cat` varchar(10) DEFAULT NULL,
+  `car` varchar(200) DEFAULT NULL,
+  `bpath` varchar(200) NOT NULL,
+  `before` varchar(32) DEFAULT NULL,
+  `apath` varchar(200) NOT NULL,
+  `after` varchar(32) DEFAULT NULL,
+  `desc` text,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `createTime` timestamp NULL DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_sccesscase
+-- ----------------------------
+INSERT INTO `tp_sccesscase` VALUES ('1', '钣金喷漆', '雪铁龙C3-XR', '/Case/before/2016-10-29/', '581490001107b.JPG', '/Case/after/2016-10-29/', '581490aa12a9e.jpg', '前翼子板撞花', '腰立辉', '腰立辉', '2016-10-22 22:37:41', '2016-10-29 20:06:02');
+INSERT INTO `tp_sccesscase` VALUES ('2', '大保养', '奔驰E300', '/Case/before/2016-10-29/', '58149047d90ea.jpg', '/Case/after/2016-10-29/', '581490b6c991d.jpg', '奔驰豪车30000公里保养，更换机油三滤，刹车片，变速箱油，火花塞……', '腰立辉', '腰立辉', '2016-10-22 22:37:50', '2016-10-29 20:06:14');
 
 -- ----------------------------
 -- Table structure for `tp_scene`
@@ -1823,36 +1792,6 @@ INSERT INTO `tp_scenefunc` VALUES ('10245', '5', '10423', null, '微网站（用
 INSERT INTO `tp_scenefunc` VALUES ('10246', '6', '10424', null, '微网站（用户）- 专属管家-公司名片', ' 数据统计（应该为后台功能）', '10036', null, '0', null, '未绑定', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-09 14:33:35', '2016-12-09 14:33:45');
 
 -- ----------------------------
--- Table structure for `tp_setting`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_setting`;
-CREATE TABLE `tp_setting` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(13) DEFAULT NULL,
-  `qq` varchar(12) DEFAULT NULL,
-  `web` varchar(50) DEFAULT NULL,
-  `keywords` varchar(200) NOT NULL,
-  `desc` text,
-  `adress` varchar(100) DEFAULT NULL,
-  `url` varchar(200) DEFAULT NULL,
-  `hpath` varchar(200) DEFAULT NULL,
-  `himg` varchar(48) DEFAULT NULL,
-  `apath` varchar(200) DEFAULT NULL,
-  `aimg` varchar(200) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_setting
--- ----------------------------
-INSERT INTO `tp_setting` VALUES ('1', '0311-89849355', '285981407', '石家庄-拓才教育', '拓才,拓才教育,一对一,个性化,课外辅导,教育培训，石家庄课外辅导', '1231231231231', '石家庄1', 'www.tuocaijiaoyu.com', '/Setting/home/2016-11-25/', '58380a991583d.jpg', '/Setting/adress/2016-12-13/', '584fb53ddc613.jpg', '腰立辉', '2016-12-13 16:45:50');
-INSERT INTO `tp_setting` VALUES ('2', '0319-7186126', '2830690782', '临城-秀丽广告', '', null, '临城转盘北200米路西', 'www.xiuliguanggao.com', null, null, null, null, '腰立辉', '2016-12-11 21:48:38');
-INSERT INTO `tp_setting` VALUES ('3', '13785900902', '1058793920', '临城-安顺汽车服务中心', '', null, '临城县射兽汽修市场', 'www.anshunqixiu.top', '/Setting/home/2016-11-10/', '58247b2140317.jpeg', '/Setting/adress/2016-11-10/', '58247b7eda772.png', '腰立辉', '2016-12-14 16:02:35');
-INSERT INTO `tp_setting` VALUES ('5', '18801043607', '83000892', '麦田双辉', '', null, '临城', null, null, null, null, null, '腰立辉', '2016-12-14 16:03:03');
-
--- ----------------------------
 -- Table structure for `tp_stage`
 -- ----------------------------
 DROP TABLE IF EXISTS `tp_stage`;
@@ -1870,7 +1809,7 @@ CREATE TABLE `tp_stage` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=1061 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1065 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_stage
@@ -1936,6 +1875,10 @@ INSERT INTO `tp_stage` VALUES ('1057', '2', '平台优化，按照公司的流�
 INSERT INTO `tp_stage` VALUES ('1058', '1', '功能验证', '110', null, '2016-12-12', '已完成', '无文档', '腰立辉', '腰立辉', '2016-12-12 19:19:20', '2016-12-13 11:15:53');
 INSERT INTO `tp_stage` VALUES ('1059', '2', '线上验证测试', '110', null, '2016-12-12', '已完成', '无文档', '腰立辉', '腰立辉', '2016-12-12 20:40:15', '2016-12-13 11:16:01');
 INSERT INTO `tp_stage` VALUES ('1060', '3', '12-13线上验证测试', '110', null, '2016-12-13', '已完成', '无文档', '腰立辉', '腰立辉', '2016-12-13 11:16:32', '2016-12-15 09:44:07');
+INSERT INTO `tp_stage` VALUES ('1061', '1', '编写测试计划', '114', null, '2016-12-18', '进行中', '无文档', '腰立辉', '腰立辉', '2016-12-17 23:17:32', '2016-12-17 23:17:32');
+INSERT INTO `tp_stage` VALUES ('1062', '1', '编写测试计划', '113', null, '2016-12-18', '进行中', '无文档', '腰立辉', '腰立辉', '2016-12-17 23:17:40', '2016-12-17 23:17:40');
+INSERT INTO `tp_stage` VALUES ('1063', '1', '编写测试计划', '112', null, '2016-12-18', '进行中', '无文档', '腰立辉', '腰立辉', '2016-12-17 23:17:48', '2016-12-17 23:17:48');
+INSERT INTO `tp_stage` VALUES ('1064', '1', '编写测试计划', '111', null, '2016-12-18', '进行中', '无文档', '腰立辉', '腰立辉', '2016-12-17 23:17:57', '2016-12-17 23:17:57');
 
 -- ----------------------------
 -- Table structure for `tp_stagetester`
@@ -2018,7 +1961,7 @@ CREATE TABLE `tp_system` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=77 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_system
@@ -2048,6 +1991,317 @@ INSERT INTO `tp_system` VALUES ('63', 'wzb', '微站CRM后台', '正常', '14', 
 INSERT INTO `tp_system` VALUES ('64', 'glb', '权限管理后台', '正常', '14', null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-05 16:08:40', '2016-12-05 17:50:35');
 INSERT INTO `tp_system` VALUES ('65', 'crm', 'CRM客户关系后台', '正常', '14', null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-05 16:09:33', '2016-12-05 16:09:33');
 INSERT INTO `tp_system` VALUES ('66', 'wzu', '微网站（用户）', '正常', '14', null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-05 16:30:40', '2016-12-05 16:36:00');
+INSERT INTO `tp_system` VALUES ('69', 'Xiuli', '秀丽广告', '正常', '8', '', '', 'www.xiuliguanggao.com', '', '', '腰立辉', '腰立辉', '2016-12-17 22:59:02', '2016-12-17 23:00:22');
+INSERT INTO `tp_system` VALUES ('70', 'XLAdmin', '秀丽广告后台', '正常', '8', '', '', 'www.xiuliguanggao.com/index.php/Admin', '13463925200', '123456', '腰立辉', '腰立辉', '2016-12-17 22:59:39', '2016-12-17 23:01:05');
+INSERT INTO `tp_system` VALUES ('71', 'Mtsh', '麦田双辉', '正常', '6', '', '', 'www.maitianshuanghui.com', '', '', '腰立辉', '腰立辉', '2016-12-17 23:05:06', '2016-12-17 23:06:41');
+INSERT INTO `tp_system` VALUES ('72', 'MTAdmin', '麦田双辉后台', '正常', '6', '', '', 'www.maitianshuanghui.com/index.php/Admin', '18233098318', '123456', '腰立辉', '腰立辉', '2016-12-17 23:05:43', '2016-12-17 23:07:09');
+INSERT INTO `tp_system` VALUES ('73', 'Anshun', '安顺汽车服务中心', '正常', '5', '', '', 'www.anshunqixiu.top', '', '', '腰立辉', '腰立辉', '2016-12-17 23:09:12', '2016-12-17 23:09:57');
+INSERT INTO `tp_system` VALUES ('74', 'ASAdmin', '安顺汽修后台', '正常', '5', '', '', 'www.anshunqixiu.top/index.php/Admin', '13785900902', '123456', '腰立辉', '腰立辉', '2016-12-17 23:09:28', '2016-12-17 23:10:33');
+INSERT INTO `tp_system` VALUES ('75', 'Tuocai', '拓才教育', '正常', '7', '', '', 'www.tuocaijiaoyu.com', '', '', '腰立辉', '腰立辉', '2016-12-17 23:15:16', '2016-12-17 23:16:59');
+INSERT INTO `tp_system` VALUES ('76', 'TCAdmin', '拓才教育后台', '正常', '7', '', '', 'www.tuocaijiaoyu.com/index.php/Admin', '13426179579', '123456', '腰立辉', '腰立辉', '2016-12-17 23:15:43', '2016-12-17 23:16:42');
+
+-- ----------------------------
+-- Table structure for `tp_tc_ad`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_tc_ad`;
+CREATE TABLE `tp_tc_ad` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `title` varchar(48) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(48) DEFAULT NULL,
+  `url` varchar(200) DEFAULT NULL,
+  `remark` text,
+  `state` varchar(5) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_tc_ad
+-- ----------------------------
+INSERT INTO `tp_tc_ad` VALUES ('5', '第2张', '/Ad/2016-12-13/', '584fb4689084f.jpg', '阿斯达', '', '正常', '梁小伟', '2016-12-13 16:44:04');
+INSERT INTO `tp_tc_ad` VALUES ('6', '第1张', '/Ad/2016-12-13/', '584fb48ec1380.jpg', '水电费', '', '发布', '梁小伟', '2016-12-13 16:43:53');
+INSERT INTO `tp_tc_ad` VALUES ('7', '第3张', '/Ad/2016-12-13/', '584fb428f34cc.jpg', '', '', '发布', '腰立辉', '2016-12-13 16:41:13');
+INSERT INTO `tp_tc_ad` VALUES ('8', '第4张', '/Ad/2016-11-27/', '583afafcaaa26.jpg', '', '', '发布', '腰立辉', '2016-11-27 23:25:49');
+INSERT INTO `tp_tc_ad` VALUES ('9', '第5张', '/Ad/2016-11-27/', '583afb176905b.jpg', '', '', '正常', '腰立辉', '2016-11-27 23:26:15');
+
+-- ----------------------------
+-- Table structure for `tp_tc_course`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_tc_course`;
+CREATE TABLE `tp_tc_course` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `course` varchar(30) DEFAULT NULL,
+  `coursetype` varchar(5) DEFAULT NULL,
+  `desc` text,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(32) DEFAULT NULL,
+  `state` varchar(5) DEFAULT NULL,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `createTime` int(11) DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_tc_course
+-- ----------------------------
+INSERT INTO `tp_tc_course` VALUES ('6', '小学英语', '小学课程', '', '/Course/2016-11-13/', '5828142cd61aa.jpg', '发布', '腰立辉', '腰立辉', null, '2016-11-16 23:54:55');
+INSERT INTO `tp_tc_course` VALUES ('7', '百家姓', '学前少儿', '12312', '/Course/2016-11-13/', '58280bc662aaa.jpg', '发布', '腰立辉', '腰立辉', '1478422638', '2016-11-16 23:55:10');
+INSERT INTO `tp_tc_course` VALUES ('9', '小学数学', '小学课程', 'qweqw11', '/Course/2016-11-25/', '5838000c6491c.jpg', '发布', '腰立辉', '梁小伟', '1478530883', '2016-11-25 17:10:36');
+INSERT INTO `tp_tc_course` VALUES ('20', '围棋', '兴趣拓展', '', '/Course/2016-11-25/', '58380443108c8.jpg', '发布', '梁小伟', '梁小伟', '1480065850', '2016-11-25 17:28:35');
+INSERT INTO `tp_tc_course` VALUES ('19', '书法国画', '兴趣拓展', '', '/Course/2016-11-25/', '58380463072e9.jpg', '发布', '梁小伟', '梁小伟', '1480065831', '2016-11-25 17:29:07');
+INSERT INTO `tp_tc_course` VALUES ('12', '三字经', '学前少儿', '', '/Course/2016-11-13/', '58280ae25f669.png', '发布', '腰立辉', '腰立辉', '1479015502', '2016-11-16 23:55:19');
+INSERT INTO `tp_tc_course` VALUES ('13', '小学奥数', '小学课程', '', '/Course/2016-11-25/', '5838006e54edb.jpg', '发布', '梁小伟', '梁小伟', '1480065112', '2016-11-25 17:12:14');
+INSERT INTO `tp_tc_course` VALUES ('14', '小学语文', '小学课程', '', '/Course/2016-11-25/', '5838016d464bb.jpg', '发布', '梁小伟', '梁小伟', '1480065358', '2016-11-25 17:16:29');
+INSERT INTO `tp_tc_course` VALUES ('15', '初中数学', '中学课程', '', '/Course/2016-11-25/', '5838075daf5c1.jpg', '发布', '梁小伟', '梁小伟', '1480065518', '2016-11-25 17:41:50');
+INSERT INTO `tp_tc_course` VALUES ('16', '初中物理', '中学课程', '', '/Course/2016-11-25/', '583808b48a7ad.jpg', '发布', '梁小伟', '梁小伟', '1480065532', '2016-11-25 17:47:33');
+INSERT INTO `tp_tc_course` VALUES ('17', '初中英语', '中学课程', '', '/Course/2016-11-25/', '5838072f51308.jpg', '发布', '梁小伟', '梁小伟', '1480065562', '2016-11-25 17:41:03');
+INSERT INTO `tp_tc_course` VALUES ('18', '初中化学', '中学课程', '', '/Course/2016-11-25/', '58380716778f3.jpg', '发布', '梁小伟', '梁小伟', '1480065584', '2016-11-25 17:40:38');
+
+-- ----------------------------
+-- Table structure for `tp_tc_customer`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_tc_customer`;
+CREATE TABLE `tp_tc_customer` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `phone` varchar(11) DEFAULT NULL,
+  `password` char(32) DEFAULT NULL,
+  `custype` varchar(5) DEFAULT NULL,
+  `isteacher` int(1) DEFAULT '1',
+  `coursetype` varchar(5) DEFAULT NULL,
+  `realname` varchar(10) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(32) DEFAULT NULL,
+  `state` varchar(5) DEFAULT '正常',
+  `course` varchar(10) DEFAULT NULL,
+  `remark` text,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `createTime` int(11) DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `phone` (`phone`) USING HASH
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_tc_customer
+-- ----------------------------
+INSERT INTO `tp_tc_customer` VALUES ('1', '15803114069', 'c33367701511b4f6020ec61ded352059', '老师', '1', '中学课程', '孙云云', '/Customer/2016-12-13/', '584fbda821498.png', '发布', '初、高中物理', '孙云云，2007年毕业于河北师范大学，从事教育工作十余年，曾任上海精锐教育集团教研组长，教学校长，所带学生进步率高达100%，多名学生进入上海中学，复旦大学，上海交大等一流学府；', '腰立辉', '梁小伟', '1478415695', '2016-12-13 17:21:44');
+INSERT INTO `tp_tc_customer` VALUES ('12', '12314242342', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '小学课程', 'werer', null, null, '正常', '', '', '腰立辉', '腰立辉', '1479042931', '2016-11-13 21:17:14');
+INSERT INTO `tp_tc_customer` VALUES ('13', '13931162537', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '中学课程', '刘一玮（男、44中）', null, null, '发布', '初一数学', '一对二', '梁小伟', '梁小伟', '1479302465', '2016-12-13 17:28:34');
+INSERT INTO `tp_tc_customer` VALUES ('14', '15803114068', 'f379eaf3c831b04de153469d1bec345e', '老师', '1', '小学课程', '康国胜', '/Customer/2016-12-13/', '584fc143123a2.jpg', '发布', '小学奥数、初高中物理', '康国胜，2007年毕业于河北师范大学，后进修于河北师范大学教育管理研究生院；从事教育工作十余年，曾任上海精锐集团教研组长，教学校长；邯郸环球雅思校长等教学和管理工作；对教学有自己独到的认识，擅长鼓励教育和引导教学，善于激发学生内在的动力，挖掘最大的潜能', '梁小伟', '梁小伟', '1481619189', '2016-12-13 17:37:07');
+
+-- ----------------------------
+-- Table structure for `tp_tc_date`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_tc_date`;
+CREATE TABLE `tp_tc_date` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `riqi` date DEFAULT NULL,
+  `xingqi` varchar(5) DEFAULT NULL,
+  `sn` smallint(2) DEFAULT NULL,
+  `sktime` varchar(20) DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=58 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_tc_date
+-- ----------------------------
+INSERT INTO `tp_tc_date` VALUES ('8', '2016-11-14', '星期一', '2', '10:00-12:00', '2016-11-14 22:11:56');
+INSERT INTO `tp_tc_date` VALUES ('7', '2016-11-14', '星期一', '1', '8:00-10:00', '2016-11-14 22:11:56');
+INSERT INTO `tp_tc_date` VALUES ('9', '2016-11-14', '星期一', '3', '13:00-15:00', '2016-11-14 22:11:56');
+INSERT INTO `tp_tc_date` VALUES ('10', '2016-11-14', '星期一', '4', '15:00-17:00', '2016-11-14 22:11:56');
+INSERT INTO `tp_tc_date` VALUES ('11', '2016-11-15', '星期二', '1', '8:00-10:00', '2016-11-14 22:39:51');
+INSERT INTO `tp_tc_date` VALUES ('12', '2016-11-15', '星期二', '2', '10:00-12:00', '2016-11-14 22:39:51');
+INSERT INTO `tp_tc_date` VALUES ('13', '2016-11-15', '星期二', '3', '13:00-15:00', '2016-11-14 22:39:51');
+INSERT INTO `tp_tc_date` VALUES ('14', '2016-11-15', '星期二', '4', '15:00-17:00', '2016-11-14 22:39:51');
+INSERT INTO `tp_tc_date` VALUES ('15', '2016-11-16', '星期三', '1', '8:00-10:00', '2016-11-14 22:40:49');
+INSERT INTO `tp_tc_date` VALUES ('16', '2016-11-16', '星期三', '2', '10:00-12:00', '2016-11-14 22:40:49');
+INSERT INTO `tp_tc_date` VALUES ('17', '2016-11-16', '星期三', '3', '13:00-15:00', '2016-11-14 22:40:49');
+INSERT INTO `tp_tc_date` VALUES ('18', '2016-11-16', '星期三', '4', '15:00-17:00', '2016-11-14 22:40:49');
+INSERT INTO `tp_tc_date` VALUES ('19', '2016-11-17', '星期四', '1', '8:00-10:00', '2016-11-14 22:52:08');
+INSERT INTO `tp_tc_date` VALUES ('20', '2016-11-17', '星期四', '2', '10:00-12:00', '2016-11-14 22:52:08');
+INSERT INTO `tp_tc_date` VALUES ('21', '2016-11-17', '星期四', '3', '13:00-15:00', '2016-11-14 22:52:08');
+INSERT INTO `tp_tc_date` VALUES ('22', '2016-11-17', '星期四', '4', '15:00-17:00', '2016-11-14 22:52:08');
+INSERT INTO `tp_tc_date` VALUES ('27', '2016-11-07', '星期一', '1', '8:00-10:00', '2016-11-15 21:38:25');
+INSERT INTO `tp_tc_date` VALUES ('28', '2016-11-07', '星期一', '2', '10:00-12:00', '2016-11-15 21:38:25');
+INSERT INTO `tp_tc_date` VALUES ('29', '2016-11-07', '星期一', '3', '13:00-15:00', '2016-11-15 21:38:25');
+INSERT INTO `tp_tc_date` VALUES ('30', '2016-11-07', '星期一', '4', '15:00-17:00', '2016-11-15 21:38:25');
+INSERT INTO `tp_tc_date` VALUES ('35', '2016-11-01', '星期二', '1', '8:00-10:00', '2016-11-15 22:20:07');
+INSERT INTO `tp_tc_date` VALUES ('36', '2016-11-01', '星期二', '2', '10:00-12:00', '2016-11-15 22:20:07');
+INSERT INTO `tp_tc_date` VALUES ('37', '2016-11-01', '星期二', '3', '13:00-15:00', '2016-11-15 22:20:07');
+INSERT INTO `tp_tc_date` VALUES ('38', '2016-11-01', '星期二', '4', '15:00-17:00', '2016-11-15 22:20:07');
+INSERT INTO `tp_tc_date` VALUES ('43', '2016-11-19', '星期六', '1', '08:00-10:00', '2016-11-19 12:41:04');
+INSERT INTO `tp_tc_date` VALUES ('44', '2016-11-19', '星期六', '2', '10:10-12:10', '2016-11-19 12:41:04');
+INSERT INTO `tp_tc_date` VALUES ('45', '2016-11-19', '星期六', '3', '13:30-15:30', '2016-11-19 12:41:04');
+INSERT INTO `tp_tc_date` VALUES ('46', '2016-11-19', '星期六', '4', '15:40-17:40', '2016-11-19 12:41:04');
+INSERT INTO `tp_tc_date` VALUES ('47', '2016-11-19', '星期六', '5', '18:00-20:00', '2016-11-19 12:41:04');
+INSERT INTO `tp_tc_date` VALUES ('48', '2016-11-27', '星期日', '1', '08:00-10:00', '2016-11-27 19:00:26');
+INSERT INTO `tp_tc_date` VALUES ('49', '2016-11-27', '星期日', '2', '10:10-12:10', '2016-11-27 19:00:26');
+INSERT INTO `tp_tc_date` VALUES ('50', '2016-11-27', '星期日', '3', '13:30-15:30', '2016-11-27 19:00:26');
+INSERT INTO `tp_tc_date` VALUES ('51', '2016-11-27', '星期日', '4', '15:40-17:40', '2016-11-27 19:00:27');
+INSERT INTO `tp_tc_date` VALUES ('52', '2016-11-27', '星期日', '5', '18:00-20:00', '2016-11-27 19:00:27');
+INSERT INTO `tp_tc_date` VALUES ('53', '2016-12-02', '星期五', '1', '08:00-10:00', '2016-12-02 15:07:17');
+INSERT INTO `tp_tc_date` VALUES ('54', '2016-12-02', '星期五', '2', '10:10-12:10', '2016-12-02 15:07:17');
+INSERT INTO `tp_tc_date` VALUES ('55', '2016-12-02', '星期五', '3', '13:30-15:30', '2016-12-02 15:07:17');
+INSERT INTO `tp_tc_date` VALUES ('56', '2016-12-02', '星期五', '4', '15:40-17:40', '2016-12-02 15:07:17');
+INSERT INTO `tp_tc_date` VALUES ('57', '2016-12-02', '星期五', '5', '18:00-20:00', '2016-12-02 15:07:17');
+
+-- ----------------------------
+-- Table structure for `tp_tc_plan`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_tc_plan`;
+CREATE TABLE `tp_tc_plan` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `dateid` smallint(6) NOT NULL,
+  `skdate` date DEFAULT NULL,
+  `skweek` varchar(6) DEFAULT NULL,
+  `sktime` varchar(20) DEFAULT NULL,
+  `techclassid` smallint(6) DEFAULT NULL,
+  `courseid` smallint(6) DEFAULT NULL,
+  `adress` varchar(100) DEFAULT NULL,
+  `state` varchar(5) DEFAULT NULL,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `createTime` int(11) DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_tc_plan
+-- ----------------------------
+INSERT INTO `tp_tc_plan` VALUES ('5', '11', '2016-11-15', '星期二', '8:00-10:00', '4', '6', 'retert', '待确认', '腰立辉', '腰立辉', '1479214738', '2016-11-15 20:58:58');
+INSERT INTO `tp_tc_plan` VALUES ('4', '8', '2016-11-14', '星期一', '10:00-12:00', '4', '6', 'asdasdsa', '待确认', '腰立辉', '腰立辉', '1479138089', '2016-11-14 23:41:29');
+INSERT INTO `tp_tc_plan` VALUES ('6', '13', '2016-11-15', '星期二', '13:00-15:00', '4', '6', 'gssgd', '待确认', '腰立辉', '腰立辉', '1479214748', '2016-11-15 20:59:08');
+INSERT INTO `tp_tc_plan` VALUES ('7', '21', '2016-11-17', '星期四', '13:00-15:00', '4', '6', 'qqq', '待确认', '腰立辉', '腰立辉', '1479214778', '2016-11-15 20:59:38');
+INSERT INTO `tp_tc_plan` VALUES ('8', '15', '2016-11-16', '星期三', '8:00-10:00', '4', '6', 'qw', '待确认', '腰立辉', '腰立辉', '1479304493', '2016-11-16 21:54:53');
+
+-- ----------------------------
+-- Table structure for `tp_tc_studentcla`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_tc_studentcla`;
+CREATE TABLE `tp_tc_studentcla` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `studentid` smallint(6) DEFAULT NULL,
+  `student` varchar(11) DEFAULT NULL,
+  `sphone` varchar(11) DEFAULT NULL,
+  `coursetype` varchar(5) DEFAULT NULL,
+  `techclassid` smallint(6) DEFAULT NULL,
+  `teacher` varchar(10) DEFAULT NULL,
+  `tphone` varchar(11) DEFAULT NULL,
+  `courseid` smallint(6) DEFAULT NULL,
+  `course` varchar(50) DEFAULT NULL,
+  `state` varchar(5) DEFAULT NULL,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `createTime` int(11) DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_tc_studentcla
+-- ----------------------------
+INSERT INTO `tp_tc_studentcla` VALUES ('4', '5', '王五', '13426179579', '小学课程', '4', '腰立辉', '18801043607', '6', '小学英语', null, '腰立辉', '腰立辉', '1479043222', '2016-11-13 21:20:22');
+
+-- ----------------------------
+-- Table structure for `tp_tc_techclass`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_tc_techclass`;
+CREATE TABLE `tp_tc_techclass` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `teacherid` smallint(6) DEFAULT NULL,
+  `teacher` varchar(10) NOT NULL,
+  `phone` varchar(11) NOT NULL,
+  `courseid` smallint(6) DEFAULT NULL,
+  `coursetype` varchar(5) NOT NULL,
+  `course` varchar(50) NOT NULL,
+  `state` varchar(5) DEFAULT NULL,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `createTime` int(11) DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_tc_techclass
+-- ----------------------------
+INSERT INTO `tp_tc_techclass` VALUES ('4', '1', '腰立辉', '18801043607', '6', '小学课程', '小学英语', null, '腰立辉', '腰立辉', '1479027130', '2016-11-13 18:39:09');
+INSERT INTO `tp_tc_techclass` VALUES ('5', '1', '腰立辉', '18801043607', '6', '小学课程', '小学英语', null, '腰立辉', '腰立辉', '1479031833', '2016-11-13 18:23:41');
+INSERT INTO `tp_tc_techclass` VALUES ('6', '4', '李四', '13222222222', '10', '兴趣拓展', '跆拳道', null, '腰立辉', '腰立辉', '1479032021', '2016-11-13 18:23:56');
+INSERT INTO `tp_tc_techclass` VALUES ('7', '3', '张三', '13333333333', '11', '中学课程', '九年级物理', null, '腰立辉', '腰立辉', '1479034059', '2016-11-13 18:47:39');
+INSERT INTO `tp_tc_techclass` VALUES ('8', '1', '腰立辉', '18801043607', '9', '小学课程', '小学自然', null, '腰立辉', '腰立辉', '1479301282', '2016-11-16 21:01:22');
+
+-- ----------------------------
+-- Table structure for `tp_tickets`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_tickets`;
+CREATE TABLE `tp_tickets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `state` varchar(5) DEFAULT '新建',
+  `result` varchar(10) DEFAULT '谢谢参与',
+  `voucherid` smallint(6) DEFAULT NULL,
+  `ip` varchar(16) DEFAULT NULL,
+  `chouj` smallint(1) DEFAULT '0',
+  `owner` varchar(11) DEFAULT NULL,
+  `duij` smallint(1) DEFAULT '0',
+  `code` int(6) DEFAULT NULL,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `createTime` timestamp NULL DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=539 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_tickets
+-- ----------------------------
+INSERT INTO `tp_tickets` VALUES ('499', '抽奖', '4:参与奖', '19', '127.0.0.1', '1', null, '0', '110629', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-12-17 16:53:56');
+INSERT INTO `tp_tickets` VALUES ('500', '设奖', '3:三等奖', '19', null, '0', null, '0', '930429', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('501', '设奖', '3:三等奖', '19', null, '0', null, '0', '613253', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('502', '设奖', '1:一等奖', '19', null, '0', null, '0', '410556', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('503', '抽奖', '谢谢参与', '19', '127.0.0.1', '1', null, '0', null, '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-09 23:19:51');
+INSERT INTO `tp_tickets` VALUES ('504', '设奖', '4:参与奖', '19', '172.20.100.72', '0', null, '0', '872750', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-01 18:01:44');
+INSERT INTO `tp_tickets` VALUES ('505', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('506', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('507', '设奖', '2:二等奖', '19', null, '0', null, '0', '227468', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('508', '抽奖', '4:参与奖', '19', '127.0.0.1', '1', null, '0', '225216', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-09 23:19:47');
+INSERT INTO `tp_tickets` VALUES ('509', '设奖', '4:参与奖', '19', null, '0', null, '0', '316842', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('510', '设奖', '3:三等奖', '19', null, '0', null, '0', '588809', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('511', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('512', '设奖', '3:三等奖', '19', null, '0', null, '0', '887033', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('513', '设奖', '1:一等奖', '19', null, '0', null, '0', '217031', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('514', '设奖', '2:二等奖', '19', null, '0', null, '0', '927133', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('515', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('516', '设奖', '2:二等奖', '19', null, '0', null, '0', '433023', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('517', '抽奖', '3:三等奖', '19', '127.0.0.1', '1', null, '0', '589138', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-12-17 16:53:59');
+INSERT INTO `tp_tickets` VALUES ('518', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('519', '抽奖', '3:三等奖', '19', '127.0.0.1', '1', null, '0', '253176', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-12-17 16:53:49');
+INSERT INTO `tp_tickets` VALUES ('520', '设奖', '4:参与奖', '19', null, '0', null, '0', '122659', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('521', '设奖', '4:参与奖', '19', null, '0', null, '0', '282510', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('522', '设奖', '4:参与奖', '19', null, '0', null, '0', '231314', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('523', '设奖', '4:参与奖', '19', null, '0', null, '0', '297177', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('524', '设奖', '3:三等奖', '19', null, '0', null, '0', '393911', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('525', '设奖', '4:参与奖', '19', null, '0', null, '0', '672689', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('526', '设奖', '4:参与奖', '19', null, '0', null, '0', '326675', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('527', '抽奖', '4:参与奖', '19', '172.20.100.72', '1', null, '0', '310800', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-01 18:05:25');
+INSERT INTO `tp_tickets` VALUES ('528', '设奖', '4:参与奖', '19', null, '0', null, '0', '414016', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('529', '设奖', '4:参与奖', '19', null, '0', null, '0', '457687', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('530', '抽奖', '4:参与奖', '19', '127.0.0.1', '1', null, '0', '778103', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-09 23:19:54');
+INSERT INTO `tp_tickets` VALUES ('531', '设奖', '0:特等奖', '19', null, '0', null, '0', '536349', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('532', '设奖', '3:三等奖', '19', null, '0', null, '0', '195443', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('533', '新建', '谢谢参与', '19', null, '0', null, '0', null, '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('534', '设奖', '2:二等奖', '19', null, '0', null, '0', '805569', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('535', '设奖', '3:三等奖', '19', null, '0', null, '0', '866983', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('536', '设奖', '2:二等奖', '19', null, '0', null, '0', '775192', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('537', '设奖', '4:参与奖', '19', null, '0', null, '0', '472683', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:11:53');
+INSERT INTO `tp_tickets` VALUES ('538', '抽奖', '3:三等奖', '19', '127.0.0.1', '1', null, '0', '725534', '腰立辉', '客户', '2016-11-01 17:11:53', '2016-11-10 21:02:21');
 
 -- ----------------------------
 -- Table structure for `tp_user`
@@ -2073,13 +2327,14 @@ CREATE TABLE `tp_user` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_user
 -- ----------------------------
 INSERT INTO `tp_user` VALUES ('11', 'yaolh', '腰立辉', '/Test/user/2016-12-06/', '58464bf1b7fb5.jpg', 'c33367701511b4f6020ec61ded352059', '在职', '6270', '', 'PJD', '18801043607', '', 'yao@yimin.la', '测试经理', '腰立辉', '腰立辉', '2016-09-22 16:54:21', '2016-12-06 13:26:09');
 INSERT INTO `tp_user` VALUES ('31', 'weib', '魏斌', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '0', '惠买车-产品研发中心-质量管理部', 'PJD', '', null, 'weib@yiche.com', '测试工程师', '腰立辉', '腰立辉', '2016-12-05 17:30:44', '2016-12-05 17:30:44');
+INSERT INTO `tp_user` VALUES ('32', 'jiaxn', '贾晓宁', '/', 'head.png', 'e10adc3949ba59abbe56e057f20f883e', '在职', '12', '惠买车-产品研发中心-质量管理部', 'Auto', '', null, 'jiaxn@yiche.com', '测试工程师', '腰立辉', '腰立辉', '2016-12-17 22:46:12', '2016-12-17 22:46:12');
 
 -- ----------------------------
 -- Table structure for `tp_userprod`
@@ -2091,19 +2346,54 @@ CREATE TABLE `tp_userprod` (
   `prodid` smallint(6) NOT NULL,
   `moder` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_userprod
 -- ----------------------------
-INSERT INTO `tp_userprod` VALUES ('1', '11', '2', '');
-INSERT INTO `tp_userprod` VALUES ('2', '11', '14', '');
-INSERT INTO `tp_userprod` VALUES ('3', '31', '14', '');
-INSERT INTO `tp_userprod` VALUES ('4', '11', '3', '');
-INSERT INTO `tp_userprod` VALUES ('5', '11', '5', '');
-INSERT INTO `tp_userprod` VALUES ('6', '11', '6', '');
-INSERT INTO `tp_userprod` VALUES ('7', '11', '7', '');
-INSERT INTO `tp_userprod` VALUES ('8', '11', '8', '');
+INSERT INTO `tp_userprod` VALUES ('3', '2', '7', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('4', '1', '3', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('5', '1', '5', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('6', '1', '6', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('7', '1', '7', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('8', '1', '8', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('17', '3', '5', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('18', '4', '5', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('19', '7', '8', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('20', '11', '8', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('21', '8', '3', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('22', '9', '6', '腰立辉');
+INSERT INTO `tp_userprod` VALUES ('23', '10', '6', '腰立辉');
+
+-- ----------------------------
+-- Table structure for `tp_voucher`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_voucher`;
+CREATE TABLE `tp_voucher` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) DEFAULT NULL,
+  `remark` text,
+  `voucher` varchar(5) DEFAULT NULL,
+  `start` date DEFAULT NULL,
+  `end` date DEFAULT NULL,
+  `state` varchar(5) DEFAULT NULL,
+  `total` int(11) DEFAULT '10000',
+  `specia` int(1) DEFAULT '1',
+  `first` int(1) DEFAULT '3',
+  `second` int(2) DEFAULT '10',
+  `third` int(3) DEFAULT '100',
+  `canyu` int(3) DEFAULT '500',
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `createTime` timestamp NULL DEFAULT NULL,
+  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_voucher
+-- ----------------------------
+INSERT INTO `tp_voucher` VALUES ('19', '抽奖活动', '<p>\r\n	抽奖</p>\r\n', '抽奖', '2016-11-01', '2016-11-13', '发布', '40', '1', '2', '5', '10', '15', '腰立辉', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:18:28');
 
 -- ----------------------------
 -- Table structure for `tp_xl_ad`
@@ -2130,33 +2420,6 @@ INSERT INTO `tp_xl_ad` VALUES ('6', '第1张', '/Ad/2016-12-13/', '584fb48ec1380
 INSERT INTO `tp_xl_ad` VALUES ('7', '第3张', '/Ad/2016-12-13/', '584fb428f34cc.jpg', '', '', '发布', '腰立辉', '2016-12-13 16:41:13');
 INSERT INTO `tp_xl_ad` VALUES ('8', '第4张', '/Ad/2016-11-27/', '583afafcaaa26.jpg', '', '', '发布', '腰立辉', '2016-11-27 23:25:49');
 INSERT INTO `tp_xl_ad` VALUES ('9', '第5张', '/Ad/2016-11-27/', '583afb176905b.jpg', '', '', '正常', '腰立辉', '2016-11-27 23:26:15');
-
--- ----------------------------
--- Table structure for `tp_xl_admin`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_xl_admin`;
-CREATE TABLE `tp_xl_admin` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `username` varchar(10) DEFAULT NULL,
-  `realname` varchar(10) DEFAULT NULL,
-  `password` char(32) DEFAULT NULL,
-  `path` varchar(200) DEFAULT NULL,
-  `photo` varchar(32) DEFAULT NULL,
-  `phone` varchar(11) DEFAULT NULL,
-  `state` varchar(5) DEFAULT NULL,
-  `tech` varchar(5) DEFAULT NULL,
-  `adder` varchar(10) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `createTime` int(11) DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_xl_admin
--- ----------------------------
-INSERT INTO `tp_xl_admin` VALUES ('1', 'yaolh', '腰立辉', 'c33367701511b4f6020ec61ded352059', '/Admin/user/image/2016-11-05/', '581de638ca86c.jpg', '18801043607', '在职', null, '腰立辉', '腰立辉', null, '2016-11-06 18:01:08');
-INSERT INTO `tp_xl_admin` VALUES ('2', 'liangxw', '梁小伟', 'e10adc3949ba59abbe56e057f20f883e', null, null, '13426179579', '在职', null, '腰立辉', '腰立辉', '2016', '2016-11-12 16:09:56');
 
 -- ----------------------------
 -- Table structure for `tp_xl_customer`
@@ -2190,138 +2453,3 @@ INSERT INTO `tp_xl_customer` VALUES ('1', '15803114069', 'c33367701511b4f6020ec6
 INSERT INTO `tp_xl_customer` VALUES ('12', '12314242342', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '小学课程', 'werer', null, null, '正常', '', '', '腰立辉', '腰立辉', '1479042931', '2016-11-13 21:17:14');
 INSERT INTO `tp_xl_customer` VALUES ('13', '13931162537', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '中学课程', '刘一玮（男、44中）', null, null, '发布', '初一数学', '一对二', '梁小伟', '梁小伟', '1479302465', '2016-12-13 17:28:34');
 INSERT INTO `tp_xl_customer` VALUES ('14', '15803114068', 'f379eaf3c831b04de153469d1bec345e', '老师', '1', '小学课程', '康国胜', '/Customer/2016-12-13/', '584fc143123a2.jpg', '发布', '小学奥数、初高中物理', '康国胜，2007年毕业于河北师范大学，后进修于河北师范大学教育管理研究生院；从事教育工作十余年，曾任上海精锐集团教研组长，教学校长；邯郸环球雅思校长等教学和管理工作；对教学有自己独到的认识，擅长鼓励教育和引导教学，善于激发学生内在的动力，挖掘最大的潜能', '梁小伟', '梁小伟', '1481619189', '2016-12-13 17:37:07');
-
--- ----------------------------
--- Table structure for `tp_xl_dict`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_xl_dict`;
-CREATE TABLE `tp_xl_dict` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `k` smallint(2) DEFAULT NULL,
-  `v` varchar(20) DEFAULT NULL,
-  `type` varchar(10) NOT NULL,
-  `state` varchar(5) NOT NULL,
-  `remark` varchar(200) DEFAULT NULL,
-  `adder` varchar(10) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `createTime` timestamp NULL DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_xl_dict
--- ----------------------------
-INSERT INTO `tp_xl_dict` VALUES ('1', '1', '正常', 'state', '正常', null, '腰立辉', '腰立辉', '2016-10-27 15:54:22', '2016-10-30 17:51:36');
-INSERT INTO `tp_xl_dict` VALUES ('2', '3', '作废', 'state', '正常', null, '腰立辉', '腰立辉', '2016-10-27 15:54:17', '2016-10-27 17:16:57');
-INSERT INTO `tp_xl_dict` VALUES ('5', '2', '发布', 'state', '正常', null, '腰立辉', '腰立辉', '2016-10-27 17:16:20', '2016-10-30 17:51:11');
-INSERT INTO `tp_xl_dict` VALUES ('16', '4', '设置', 'menu_admin', '正常', null, '腰立辉', '腰立辉', '2016-11-06 11:43:49', '2016-11-06 11:53:27');
-INSERT INTO `tp_xl_dict` VALUES ('15', '3', '师资', 'menu_admin', '正常', null, '腰立辉', '腰立辉', '2016-11-06 11:43:40', '2016-11-06 11:53:15');
-INSERT INTO `tp_xl_dict` VALUES ('14', '2', '课程', 'menu_admin', '正常', null, '腰立辉', '腰立辉', '2016-11-06 11:43:25', '2016-11-06 11:46:52');
-INSERT INTO `tp_xl_dict` VALUES ('13', '1', '首页', 'menu_admin', '正常', null, '腰立辉', '腰立辉', '2016-11-06 11:42:56', '2016-11-06 11:46:25');
-INSERT INTO `tp_xl_dict` VALUES ('17', '1', '首页', 'menu_home', '正常', null, '腰立辉', '腰立辉', '2016-11-06 11:54:40', '2016-11-06 11:54:40');
-INSERT INTO `tp_xl_dict` VALUES ('18', '2', '课程导航', 'menu_home', '正常', null, '腰立辉', '腰立辉', '2016-11-06 11:54:57', '2016-11-06 11:55:18');
-INSERT INTO `tp_xl_dict` VALUES ('19', '3', '师资力量', 'menu_home', '正常', null, '腰立辉', '腰立辉', '2016-11-06 11:55:41', '2016-11-06 11:55:41');
-INSERT INTO `tp_xl_dict` VALUES ('20', '4', '关于我们', 'menu_home', '正常', null, '腰立辉', '腰立辉', '2016-11-06 11:55:53', '2016-11-06 11:55:53');
-INSERT INTO `tp_xl_dict` VALUES ('21', '1', '老师', 'custype', '正常', '', '腰立辉', '腰立辉', '2016-11-06 13:22:33', '2016-11-06 13:22:33');
-INSERT INTO `tp_xl_dict` VALUES ('22', '2', '助教', 'custype', '正常', '', '腰立辉', '腰立辉', '2016-11-06 13:22:50', '2016-11-06 13:22:50');
-INSERT INTO `tp_xl_dict` VALUES ('23', '3', '学生', 'custype', '正常', '', '腰立辉', '腰立辉', '2016-11-06 13:22:58', '2016-11-06 13:22:58');
-INSERT INTO `tp_xl_dict` VALUES ('24', '1', '学前少儿', 'coursetype', '正常', '', '腰立辉', '腰立辉', '2016-11-06 15:20:45', '2016-11-06 16:17:22');
-INSERT INTO `tp_xl_dict` VALUES ('25', '2', '小学课程', 'coursetype', '正常', '', '腰立辉', '腰立辉', '2016-11-06 15:22:34', '2016-11-06 16:17:46');
-INSERT INTO `tp_xl_dict` VALUES ('26', '3', '中学课程', 'coursetype', '正常', '', '腰立辉', '腰立辉', '2016-11-06 15:22:49', '2016-11-06 16:17:57');
-INSERT INTO `tp_xl_dict` VALUES ('27', '4', '作业托管', 'coursetype', '正常', '', '腰立辉', '腰立辉', '2016-11-06 15:23:00', '2016-11-06 16:18:12');
-INSERT INTO `tp_xl_dict` VALUES ('28', '5', '兴趣拓展', 'coursetype', '正常', '', '腰立辉', '腰立辉', '2016-11-06 15:23:09', '2016-11-06 16:18:26');
-INSERT INTO `tp_xl_dict` VALUES ('37', '1', '08:00-10:00', 'sktime', '正常', '', '腰立辉', '腰立辉', '2016-11-11 23:30:52', '2016-11-16 23:31:58');
-INSERT INTO `tp_xl_dict` VALUES ('38', '2', '10:10-12:10', 'sktime', '正常', '', '腰立辉', '腰立辉', '2016-11-11 23:31:16', '2016-11-16 23:30:53');
-INSERT INTO `tp_xl_dict` VALUES ('39', '3', '13:30-15:30', 'sktime', '正常', '', '腰立辉', '腰立辉', '2016-11-11 23:31:31', '2016-11-16 23:31:09');
-INSERT INTO `tp_xl_dict` VALUES ('40', '4', '15:40-17:40', 'sktime', '正常', '', '腰立辉', '腰立辉', '2016-11-11 23:32:36', '2016-11-16 23:31:24');
-INSERT INTO `tp_xl_dict` VALUES ('41', '1', '在职', 'adminst', '正常', '', '腰立辉', '腰立辉', '2016-11-12 16:03:08', '2016-11-12 16:03:08');
-INSERT INTO `tp_xl_dict` VALUES ('42', '2', '离职', 'adminst', '正常', '', '腰立辉', '腰立辉', '2016-11-12 16:03:34', '2016-11-12 16:03:34');
-INSERT INTO `tp_xl_dict` VALUES ('43', '5', '18:00-20:00', 'sktime', '正常', '', '腰立辉', '腰立辉', '2016-11-16 23:31:45', '2016-11-16 23:31:45');
-
--- ----------------------------
--- Table structure for `tp_xl_hr`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_xl_hr`;
-CREATE TABLE `tp_xl_hr` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `title` varchar(20) DEFAULT NULL,
-  `state` varchar(5) DEFAULT '发布',
-  `desc` text,
-  `salary` varchar(10) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `place` varchar(20) DEFAULT NULL,
-  `adder` varchar(10) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `createTime` timestamp NULL DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_xl_hr
--- ----------------------------
-INSERT INTO `tp_xl_hr` VALUES ('3', '公司CEO', '发布', '\r\n', '面议', '2016-10-03', '安顺汽修', '腰立辉', '腰立辉', null, '2016-11-06 10:04:55');
-INSERT INTO `tp_xl_hr` VALUES ('4', '首席财务官', '作废', '<p>\r\n	融入融入人</p>\r\n', '面议', '2016-10-03', '安顺汽修', '腰立辉', '腰立辉', null, '2016-10-29 20:12:52');
-
--- ----------------------------
--- Table structure for `tp_xl_menu`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_xl_menu`;
-CREATE TABLE `tp_xl_menu` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `sn` smallint(2) DEFAULT NULL,
-  `list` varchar(5) DEFAULT NULL,
-  `menu` varchar(20) DEFAULT NULL,
-  `state` varchar(5) DEFAULT NULL,
-  `namesp` varchar(15) DEFAULT NULL,
-  `contr` varchar(50) DEFAULT NULL,
-  `fubc` varchar(50) DEFAULT NULL,
-  `argum1` varchar(15) DEFAULT NULL,
-  `value1` varchar(15) DEFAULT NULL,
-  `argum2` varchar(15) DEFAULT NULL,
-  `value2` varchar(15) DEFAULT NULL,
-  `argum3` varchar(15) DEFAULT NULL,
-  `value3` varchar(15) DEFAULT NULL,
-  `argum4` varchar(15) DEFAULT NULL,
-  `value4` varchar(15) DEFAULT NULL,
-  `argum5` varchar(15) DEFAULT NULL,
-  `value5` varchar(15) DEFAULT NULL,
-  `adder` varchar(10) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `createTime` timestamp NULL DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_xl_menu
--- ----------------------------
-
--- ----------------------------
--- Table structure for `tp_xl_setting`
--- ----------------------------
-DROP TABLE IF EXISTS `tp_xl_setting`;
-CREATE TABLE `tp_xl_setting` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(13) DEFAULT NULL,
-  `qq` varchar(12) DEFAULT NULL,
-  `web` varchar(50) DEFAULT NULL,
-  `keywords` varchar(200) NOT NULL,
-  `desc` text,
-  `adress` varchar(100) DEFAULT NULL,
-  `url` varchar(200) DEFAULT NULL,
-  `hpath` varchar(200) DEFAULT NULL,
-  `himg` varchar(48) DEFAULT NULL,
-  `apath` varchar(200) DEFAULT NULL,
-  `aimg` varchar(200) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of tp_xl_setting
--- ----------------------------
-INSERT INTO `tp_xl_setting` VALUES ('1', '0311-89849355', '285981407', '石家庄-拓才教育', '拓才,拓才教育,一对一,个性化,课外辅导,教育培训，石家庄课外辅导', '1231231231231', '石家庄1', 'www.tuocaijiaoyu.com', '/Setting/home/2016-11-25/', '58380a991583d.jpg', '/Setting/adress/2016-12-13/', '584fb53ddc613.jpg', '腰立辉', '2016-12-13 16:45:50');
-INSERT INTO `tp_xl_setting` VALUES ('2', '0319-7186126', '2830690782', '临城-秀丽广告', '', null, '临城转盘北200米路西', 'www.xiuliguanggao.com', null, null, null, null, '腰立辉', '2016-12-11 21:48:38');

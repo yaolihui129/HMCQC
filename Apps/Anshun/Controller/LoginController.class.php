@@ -8,18 +8,18 @@ class LoginController extends Controller {
     }
 
     public function login(){
-        $customer = D('customer')
+        $customer = D('as_customer')
         ->where(array('phone'=>$_POST['phone'],'password'=>md5($_POST['password'])))
-        ->field('phone,realname,path,isteacher',false)
+        ->field('phone,realname,path',false)
         ->find();
         if ($customer){
             session('[start]');
             $_SESSION=$customer;
             $_SESSION['isCLogin']=2;
-            $this->redirect('/Home/Index/index');
+            $this->redirect('/Anshun/Index/index');
         }else{
 
-            $this->error('用户或密码错误，请重新登陆！', U('Home/Index/index'));
+            $this->error('用户或密码错误，请重新登陆！', U('Anshun/Index/index'));
         }
 
     }
@@ -34,7 +34,7 @@ class LoginController extends Controller {
         // 销毁sesstion
         session_destroy();
 
-        $this->success("再见 {$realname}, 退出成功!", U('Home/Index/index'));
+        $this->success("再见 {$realname}, 退出成功!", U('Anshun/Index/index'));
 
     }
 }

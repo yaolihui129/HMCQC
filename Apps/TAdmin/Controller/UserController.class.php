@@ -52,7 +52,7 @@ class UserController extends CommonController {
         $user=$m->find($id);
         $this->assign('user',$user);
         $this -> assign("usergp", formselect($user['usergp'],"usergp","testgp"));
-        $this->assign("state", PublicController::stateSelect($user['state'],"state","adminst"));
+        $this->assign("state", formselect($user['state'],"state","adminst"));
         
         $this -> assign("position", formselect($user['position'],"position","position"));
         $this->display();
