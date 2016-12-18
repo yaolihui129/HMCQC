@@ -22,7 +22,7 @@ class CustomerController extends Controller {
 
         $where['isteacher'] = !empty($_GET['isteacher']) ? $_GET['isteacher'] : 1;
         $where['state']="发布";
-		$m=M('customer');
+		$m=M('tc_customer');
         $data=$m->where($where)->order('updateTime desc')->select();
         $this->assign('data',$data);
         $this->assign('w',$where);       
@@ -34,12 +34,9 @@ class CustomerController extends Controller {
         /* 接收参数*/
         $id =  $_SESSION['id'];
         /* 实例化模型*/
-        $m=M('customer');
-        
+        $m=M('tc_customer');        
         $user=$m->find($id);
         $this->assign('user',$user);
-        // echo $id;
-        // dump($user);
 
         $this->display();
     }
@@ -51,7 +48,7 @@ class CustomerController extends Controller {
        $pass2= $_POST['pass2'];
        $pass3= $_POST['pass3'];
        /* 实例化模型*/
-        $m=M('customer');
+        $m=M('tc_customer');
         
         $user=$m->find($id);
         if (md5($pass1)==$user['password']) {
@@ -60,7 +57,7 @@ class CustomerController extends Controller {
                 $arr['password']=md5($pass2);
                 $arr['moder']=$_SESSION['realname'];
                 if ($m->save($arr)){
-                        $this->success("密码修改成功！",U('Home/Index/index'));
+                        $this->success("密码修改成功！",U('Tuocai/Index/index'));
                 }else{
                         $this->error("密码修改失败！");
                 }
@@ -80,12 +77,9 @@ public function personal(){
        /* 接收参数*/
         $id =  $_SESSION['id'];
         /* 实例化模型*/
-        $m=M('customer');
-        
+        $m=M('tc_customer');       
         $user=$m->find($id);
         $this->assign('user',$user);
-        // echo $id;
-        // dump($user);
 
         $this->display();
     }

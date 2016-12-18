@@ -97,8 +97,8 @@ class UserController extends CommonController {
         $upload = new \Think\Upload();// 实例化上传类
         $upload->maxSize   =     3145728 ;// 设置附件上传大小
         $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-        $upload->rootPath =  './Public/Upload/';// 设置附件上传目录
-        $upload->savePath  = '/Admin/user/image/'; // 设置附件上传目录
+        $upload->rootPath  =  './Upload/'.$_SESSION['qz'];// 设置附件上传目录
+        $upload->savePath  = '/user/'; // 设置附件上传目录
         // 上传文件
         $info  =   $upload->upload();
         

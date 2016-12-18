@@ -6,6 +6,7 @@ class AdController extends CommonController {
     public function index(){
         $m=D('ad');
         $where['prodid']=$_SESSION['prodid'];
+
         $data=$m->where($where)->order('updateTime desc')->select();
         $this->assign('data',$data);
         
@@ -66,10 +67,10 @@ class AdController extends CommonController {
     
     public function pic(){
         $upload = new \Think\Upload();// 实例化上传类
-//         $upload->maxSize   =     3145728 ;// 设置附件上传大小
-        $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-        $upload->rootPath =  './Public/Upload/';// 设置附件上传目录
-        $upload->savePath  = '/Ad/'; // 设置附件上传目录
+         $upload->maxSize =     7145728 ;// 设置附件上传大小
+        $upload->exts     =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+        $upload->rootPath =  './Upload/'.$_SESSION['qz'].'/';// 设置附件上传目录
+        $upload->savePath = '/Ad/'; // 设置附件上传目录
     
         $info  =   $upload->upload();
     
@@ -81,9 +82,10 @@ class AdController extends CommonController {
             /* 实例化模型*/
             $db=D('ad');
             if ($db->save($_POST)){
-//                 $image = new \Think\Image();
-//                 $image->open('./Public/Upload/'.$info['img']['savepath'].$info['img']['savename']);
-//                 $image->thumb(800, 400,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['img']['savepath'].'/thumb_'.$info['img']['savename']);
+                $image = new \Think\Image();
+                $image->open('./Upload/'.$_SESSION['qz'].$info['img']['savepath'].$info['img']['savename']);                
+                //$image->thumb(800, 400,\Think\Image::IMAGE_THUMB_SCALE)->save('./Upload/'.$info['img']['savepath'].$info['img']['savename']);  //从中央剪裁                
+                $image->thumb(800, 400)->save('./Upload/'.$_SESSION['qz'].$info['img']['savepath'].$info['img']['savename']);   //等比例缩放
                 $this->success("上传成功！");
             }else{
                 $this->error("上传失败！");

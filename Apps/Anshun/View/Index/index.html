@@ -7,31 +7,53 @@
         </h1>       
     </div>
     <h2>优惠活动</h2>
-	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+	<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" >
 		  <!-- Indicators -->
 		  <ol class="carousel-indicators">
 		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+		    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
 		  </ol>
 		
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner" role="listbox">
 		    <div class="item active">
-		      <img src="__UPLOAD__<{$_SESSION['himg']}>" alt="__UPLOAD__<{$_SESSION['himg']}>" class="img">
+		      <img src="__UPLOAD__<{$pic[0]['path']}><{$pic[0]['img']}>" alt="__UPLOAD__<{$pic[0]['path']}>thumb_<{$pic[0]['img']}>" width="100%">
 		      <div class="carousel-caption">
-		        <a href="__APP__/Anshun/Voucher"><h2>抽奖活动</h2></a>
-		        <p>...</p> 
+		        <{$pic[0][title]}>
 		      </div>
 		    </div>
 		    <div class="item">
-		      <img src="__UPLOAD__<{$_SESSION['aimg']}>" alt="__UPLOAD__<{$_SESSION['aimg']}>" class="img">
+		      <img src="__UPLOAD__<{$pic[1]['path']}><{$pic[1]['img']}>" alt="__UPLOAD__<{$pic[1]['path']}><{$pic[1]['img']}>" width="100%">
 		      <div class="carousel-caption">
-		        1231231312
-		         
+		         <{$pic[1][title]}>
 		      </div>
+		      
 		    </div>
-		    asdasda
+		    <div class="item">
+		      <img src="__UPLOAD__<{$pic[2]['path']}><{$pic[2]['img']}>" alt="__UPLOAD__<{$pic[2]['path']}><{$pic[2]['img']}>" width="100%">
+		      <div class="carousel-caption">
+		        <{$pic[2][title]}>
+		      </div>
+		      
+		    </div>
+		    <div class="item">
+		      <img src="__UPLOAD__<{$pic[3]['path']}><{$pic[3]['img']}>" alt="__UPLOAD__<{$pic[3]['path']}><{$pic[3]['img']}>" width="100%">
+		      <div class="carousel-caption">
+		        <{$pic[3][title]}>
+		      </div>
+		      
+		    </div>
+		    <div class="item">
+		      <img src="__UPLOAD__<{$pic[4]['path']}><{$pic[4]['img']}>" alt="__UPLOAD__<{$pic[4]['path']}><{$pic[4]['img']}>" width="100%">
+		      <div class="carousel-caption">
+		       <{$pic[4][title]}>
+		      </div>
+		      
+		    </div>
+		    <!-- ...此处可以写共有的描述 -->
 		  </div>
 		
 		  <!-- Controls -->
@@ -43,7 +65,7 @@
 		    <span class="glyphicon glyphicon-chevron-right"></span>
 		    <span class="sr-only">Next</span>
 		  </a>
-		</div>		
+		</div>  		
 	
 	
 

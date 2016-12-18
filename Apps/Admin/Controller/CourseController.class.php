@@ -88,9 +88,9 @@ class CourseController extends CommonController {
     
     public function img(){
         $upload = new \Think\Upload();// 实例化上传类
-//         $upload->maxSize   =     3145728 ;// 设置附件上传大小
+        $upload->maxSize   =     7145728 ;// 设置附件上传大小
         $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-        $upload->rootPath =  './Public/Upload/';// 设置附件上传目录
+        $upload->rootPath =  './Upload/'.$_SESSION['qz'];// 设置附件上传目录
         $upload->savePath  = '/Course/'; // 设置附件上传目录
     
         $info  =   $upload->upload();
@@ -103,9 +103,12 @@ class CourseController extends CommonController {
             /* 实例化模型*/
             $db=D('tc_course');
             if ($db->save($_POST)){
-//                 $image = new \Think\Image();
-//                 $image->open('./Public/Upload/'.$info['img']['savepath'].$info['img']['savename']);
-//                 $image->thumb(245, 160,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['img']['savepath'].'/thumb_'.$info['img']['savename']);
+                $image = new \Think\Image();
+                $image->open('./Upload/'.$_SESSION['qz'].$info['img']['savepath'].$info['img']['savename']);
+                //中央剪裁
+                //$image->thumb(245, 160,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['img']['savepath'].'/thumb_'.$info['img']['savename']);
+                //缩略图
+                $image->thumb(245, 160)->save('./Upload/'.$_SESSION['qz'].$info['img']['savepath'].$info['img']['savename']);   //等比例缩放
                 $this->success("上传成功！");
             }else{
                 $this->error("上传失败！");

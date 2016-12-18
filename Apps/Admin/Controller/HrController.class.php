@@ -70,7 +70,8 @@ class HrController extends CommonController {
     public function search(){
         /* 接收参数*/
         $search=$_POST['search'];
-        $map['title|salary|state']=array('like','%'.$search.'%');
+        $map['title']=array('like','%'.$search.'%');
+        $map['prodid']=$_SESSION['prodid'];
         /* 实例化模型*/
         $m=M('hr');
         $arr=$m->where($map)->order("updateTime desc")->select();

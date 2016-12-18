@@ -1,8 +1,4 @@
 <layout name="layout" />
-  <ol class="breadcrumb">
-    <span>所在位置：</span>         
-    <li class="active">设置</li>    
-  </ol>
 <div class="panel panel-default">  
 <h3> &nbsp;&nbsp;<{$arr.web}></h3>
      <div class="panel-body">
@@ -12,8 +8,12 @@
 		              <input type="hidden" name="id" value="<{$arr.id}>" />
 		              		              
 		              <div class="form-group input-group-lg">
-		                  <label for="exampleInputusername">热线：</label>
-		                  <input type="text" class="form-control" name="phone" value="<{$arr.phone}>" placeholder="姓名" > 
+		                  <label for="exampleInputusername">手机：</label>
+		                  <input type="text" class="form-control" name="phone" value="<{$arr.phone}>" placeholder="手机" > 
+		              </div>
+		              <div class="form-group input-group-lg">
+		                  <label for="exampleInputusername">电话：</label>
+		                  <input type="text" class="form-control" name="telphone" value="<{$arr.telphone}>" placeholder="电话" > 
 		              </div>
 		              <div class="form-group input-group-lg">
 		                  <label for="exampleInputrealname">QQ：</label>
@@ -29,17 +29,17 @@
 		  </div>
 		 
 		  <div class="col-md-4">
-		  		<form action="__URL__/imga" method="post" enctype='multipart/form-data'  role="form">
+		  		<form action="__URL__/img" method="post" enctype='multipart/form-data'  role="form">
 		              <input type="hidden" name="id" value="<{$arr.id}>" />  
 		              <div class="form-group">				            
 				             <label for="exampleupdatetime">形象图</label>
 				      </div>                    		              
 		              <div class="panel panel-default" style="width:300px;">
-		                   <img alt="形象图" src="__UPLOAD__<{$arr.apath}><{$arr.aimg}>" width="100%">		                
+		                   <img alt="形象图" src="__UPLOAD__/<{$_SESSION['qz']}><{$arr.path}><{$arr.img}>" width="100%">		                
 		              </div> 
 		              <div class="form-group">
 		                  <label for="exampleInputFile"></label>
-		                  <input type="file" name="aimg"> 
+		                  <input type="file" name="img"> 
 		              </div>                           
 		              <button type="submit" class="btn btn-info" >上 传</button>
 		        </form>

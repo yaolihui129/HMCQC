@@ -3,8 +3,8 @@ return array(
 	//'配置项'=>'配置值'
 	'SHOW_PAGE_TRACE'=>false,//显示页面Trace信息
     'URL_MODEL' => '1',//URL模式
-    'MODULE_ALLOW_LIST' => array('Home','Admin','anshun','ASAdmin','TAdmin','Test','Xiuli','XLAdmin','Mtsh','SHAdmin','Tuocai','TCAdmin','Xinda','XDAdmin'),//设置允许模块
-    'DEFAULT_MODULE' => 'Test',//设置默认模块设置
+    'MODULE_ALLOW_LIST' => array('Admin','Anshun','TAdmin','Test','Xiuli','Mtsh','Tuocai','Xinda'),//设置允许模块
+    'DEFAULT_MODULE' => 'Xiuli',//设置默认模块设置
     'MODULE_DENY_LIST' => array('Common','Runtime'), // 禁止访问的模块列表
     //修改定界符
     'TMPL_L_DELIM'=>'<{',

@@ -1,8 +1,4 @@
 <layout name="layout" />
-  <ol class="breadcrumb">
-    <span>所在位置：</span>       
-    <li class="active">课程管理</li>   
-  </ol>
   <div class="container-fluid">
    	<div class="panel panel-default">		  
 		  <div class="panel-body">
@@ -43,7 +39,7 @@
 					<volist name='data' id='ar' empty="没有数据">
 						<li class="list-group-item">
 							<div class="row">
-								  <div class="col-md-3"><img alt="thumb_<{$ar.img}>" src="__UPLOAD__/<{$ar.path}><{$ar.img}>" height="100px"></div>							  
+								  <div class="col-md-3"><img alt="thumb_<{$ar.img}>" src="__UPLOAD__/<{$_SESSION['qz']}><{$ar.path}><{$ar.img}>" height="100px"></div>							  
 								  <div class="col-md-2">【<{$ar.coursetype}>】</div>
 								  <div class="col-md-3">课程：<{$ar.course}></div>								  
 								  <div class="col-md-2">状态：<{$ar.state}></div>

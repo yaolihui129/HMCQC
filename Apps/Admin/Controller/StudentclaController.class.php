@@ -79,9 +79,7 @@ class StudentclaController extends CommonController {
         $where['state']="正常";
         $data=$m->where($where)->select();
         $this->assign('data',$data);
-        
-        
-        
+               
         $this->display();
     
     }

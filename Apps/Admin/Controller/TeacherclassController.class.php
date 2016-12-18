@@ -72,8 +72,8 @@ class TeacherclassController extends CommonController {
         
         $m=D('tc_customer');
         $arr=$m
-        ->join('tc_techclass ON tc_customer.id = tc_techclass.teacherid')
-        ->field('tc_techclass.id,tc_techclass.courseid,tc_techclass.teacherid')
+        ->join('tp_tc_techclass ON tp_tc_customer.id = tp_tc_techclass.teacherid')
+        ->field('tp_tc_techclass.id,tp_tc_techclass.courseid,tp_tc_techclass.teacherid')
         ->select();
     
         $this->display();

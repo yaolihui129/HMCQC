@@ -12,22 +12,22 @@ class SettingController extends Controller {
     
     
     
-    public function aimg(){
-        $m=M('product');
-        $arr=$m->find($_SESSION['prodid']);
-        $this->assign('arr',$arr);
+//     public function aimg(){
+//         $m=M('product');
+//         $arr=$m->find($_SESSION['prodid']);
+//         $this->assign('arr',$arr);
          
-        $this->display();
+//         $this->display();
         
-    }
+//     }
     
     public function img(){
 
         $upload = new \Think\Upload();// 实例化上传类
 //         $upload->maxSize   =     3145728 ;// 设置附件上传大小
         $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-        $upload->rootPath =  './Public/Upload/';// 设置附件上传目录
-        $upload->savePath  = '/Setting/adress/'; // 设置附件上传目录
+        $upload->rootPath =  './Upload/'.$_SESSION['qz'];// 设置附件上传目录
+        $upload->savePath  = '/Setting'; // 设置附件上传目录
         
         $info  =   $upload->upload();
         if(!$info) {// 上传错误提示错误信息
