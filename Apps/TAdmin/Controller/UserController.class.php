@@ -6,24 +6,24 @@ class UserController extends CommonController {
          $testgp=$_SESSION['testgp'];
     	 $m=M('user');
     	 $where['state']="在职";
+    	 $where['usergp']="PJD";
     	 $arr=$m->where($where)->select();
 	     $this->assign('data',$arr);
 	     $this -> assign("usergp", formselect($testgp,"usergp","testgp"));
-	     $this -> assign("position", formselect("测试工程师","position","position"));
+	     $this -> assign("position", formselect("测试","position","position"));
 	     
 	     $this->display();
     }
 
 
     public function insert(){
-       // var_dump($_POST);
         $m=D('user');
         $_POST['password']=md5("123456");
         $_POST['state']="在职";
         $_POST['path']="/";
         $_POST['img']="head.png";
         $_POST['email']=$_POST['username']."@yiche.com";
-        $_POST['team']="惠买车-产品研发中心-质量管理部";
+        $_POST['team']="互联网中心";
         $_POST['adder']=$_SESSION['realname'];
         $_POST['moder']=$_SESSION['realname'];
         $_POST['createTime']=date("Y-m-d H:i:s",time());

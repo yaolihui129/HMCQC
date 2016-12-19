@@ -14,8 +14,15 @@
 	         <volist name='rules' id='rule' empty="没有规则">
 	            <li class="list-group-item">
 	            <span>
+	            <div class="well well-sm">
 	                <input type="text" name="sn[<{$rule.id}>]" value="<{$rule.sn}>"  class="input40"/>
-	                <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)
+	                
+	                <switch name="rule.state">
+			          <case value="待确认"><b> <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)</b></case>
+			          <case value="作废"><s> <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)</s></case>
+			          <default /> <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)
+			      	</switch>
+	                
 	                <span class="badge"><{$rule.source}></span>
 	                <div class="btn-group pull-right">
 		               <a href="__URL__/mod/id/<{$rule.id}>/funcid/<{$arr.id}>" type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-edit"> 修改</span></a>
@@ -27,6 +34,9 @@
 		                  <li><a href="__URL__/del/id/<{$rule.id}>"  onclick="return confirm('你确定要删除规则：<{$rule.rules}>？')"><span class="glyphicon glyphicon-remove"> 删除</span></a></li>
 		               </ul>
 		            </div>
+		         </div> 最后更新时间：  
+		         <{$rule.updatetime}>
+	                
 	                
 	            </span>
 	            </li>

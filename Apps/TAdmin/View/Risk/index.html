@@ -79,8 +79,9 @@
 				<default /><li class="list-group-item ">
 		 </switch> 
             <a href="__URL__/index/proid/<{$pro.id}>">
-            	<{$pro.end}>【<{$pro.prost}>】<br>
+            	<{$pro.end}>:<{$pro.program}><br>
             	<{$pro.prono}>:<{$pro.manager}>
+            	<span class="badge"><{$pro.prost}></span>
             </a>
             <span class="badge"><{$pro.id|countRisk=###}></span></li>
         </volist>

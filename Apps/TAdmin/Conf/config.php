@@ -4,8 +4,8 @@ return array(
     'TMPL_PARSE_STRING'=>array(
         '__CSS__'=>__ROOT__.'/Public/css',
         '__JS__'=>__ROOT__.'/Public/js/',
-        '__IMAGES__'=>__ROOT__.'/Public/images/TAdmin',
-        '__UPLOAD__'=>__ROOT__.'/Public/Upload'
+        '__IMAGES__'=>__ROOT__.'/Public/images',
+        '__UPLOAD__'=>__ROOT__.'/Upload'
     ),
 //     'DB_TYPE'=>'mysql',
 //     'DB_HOST'=>'192.168.87.40',

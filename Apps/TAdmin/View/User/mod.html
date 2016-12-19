@@ -1,14 +1,16 @@
 <layout name="layout" />  
-<h1 >管理员-修改</h1>      
-<div class="panel panel-default">  
-     <div class="panel-body addmod">
+<div class="container">   
+<h1 >管理员-修改</h1>   
+	<div class="panel panel-default">  
+     <div class="panel-body">
          <form action="__URL__/update" method="post" enctype='multipart/form-data'  role="form">
          <input type="hidden" name="id" value="<{$user.id}>" />
+          
                <div class="form-group ">
                     <label for="exampleupdateTime"><{$user.moder}>：更新于:<{$user.updatetime}> </label>                       
                </div>
                <div class="form-group ">
-                   <label for="exampleInputusername" class="col-sm-2 control-label">员工号：</label>
+                   <label for="exampleInputusername" class="col-sm-2">员工号：</label>
                    <div  class="col-sm-10">
                    		<input type="text" class="form-control" name="userno" value="<{$user.userno}>" placeholder="员工号" > 
                    </div>
@@ -49,17 +51,16 @@
                    <input type="tel" class="form-control" name="phone" value="<{$user.tel}>" placeholder="座机" >
                    </div>
                </div> 
-                <div class="form-group ">
+                <!-- <div class="form-group ">
                    <label for="exampleInputrealname" class="col-sm-2 control-label">邮箱：</label>
                    <div  class="col-sm-10">
                    <input type="email" class="form-control" name="email" value="<{$user.email}>" placeholder="邮箱" >
                    </div> 
-               </div> 
-                    
-               <button type="submit" class="btn btn-info btn-lg pull-left" style="margin-left:20%;">提 交</button>
+               </div> -->      	  
+     	 </div>                   
+               <button type="submit" class="btn btn-info btn-lg pull-left" >提 交</button>
           </form>
                <a href="__URL__" type="text" class="btn btn-warning btn-lg pull-right" > 返 回</a>
-                 
       </div>
 </div>
    

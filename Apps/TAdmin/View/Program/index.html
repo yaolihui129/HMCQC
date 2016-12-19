@@ -49,13 +49,13 @@
          <volist name='arr' id='pro' empty="没有数据">
          <div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="heading<{$pro.id}>">
-			<h4 class="panel-title"><{$pro.prono}>
+			<h4 class="panel-title"><{$pro.prono}>.<{$pro.manager}>
 				<a href="__URL__/modprost/id/<{$pro.id}>/prost/<{$pro.prost}>" 
 				class="btn btn-link btn-sm  " role="button" onclick="return confirm('你确定要变更项目状态吗？（未开始->进行中->已完成->已上线）')">
 					<span class="badge"><{$pro.prost}></span>
 				</a>
 				<a data-toggle="collapse" data-parent="#accordion" href="#<{$pro.id}>" aria-expanded="true" aria-controls="<{$pro.id}>">
-				<br><{$pro.manager}>:<{$pro.program}></a>
+				<br><{$pro.program}></a>
 				<div class="btn-group pull-right"  style="margin-top:-20px;">
 					<a type="button" class="btn btn-warning btn-sm" href="__APP__/TAdmin/Func/range/proid/<{$pro.id}>">范围:<{$pro.id|countRange=###}> </a>
 					<button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown">

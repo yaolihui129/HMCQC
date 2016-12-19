@@ -91,8 +91,9 @@
 			</switch> 
             
             <a href="__URL__/range/proid/<{$pro.id}>">
-            	<{$pro.end}>【<{$pro.prost}>】<br>
+            	<{$pro.end}>:<{$pro.program}><br>
             	<{$pro.prono}>:<{$pro.manager}>
+            	<span class="badge"><{$pro.prost}></span>
             </a>
             	<span class="badge"><{$pro.id|countRange=###}></span></li>
         </volist>

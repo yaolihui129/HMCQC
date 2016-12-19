@@ -34,6 +34,12 @@ class FuncController extends Controller {
         $arr=$m->find($proid);
         $this->assign('arr',$arr);
         
+        $m = D("stage");
+        $where=array("proid"=>"$proid");
+        $stage=$m->where($where)->order("sn,id")->select();
+        $this->assign('stage',$stage);
+        dump($stage);
+        
         $m = D("system");
         $where=array("tp_func.fproid"=>$proid,"tp_func.state"=>'正常',"tp_path.pstate"=>'正常');
         $data=$m->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')

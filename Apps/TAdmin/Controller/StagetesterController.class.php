@@ -19,7 +19,8 @@ class StagetesterController extends CommonController {
         $this->assign('testers',$testers);
 
         $m=D('user');
-        $where=array("state"=>"在职");
+        $where['state']="在职";
+        $where['usergp']="PJD";
         $users=$m->where($where)->order("usergp")->select();
         $this->assign('users',$users);
         $where=array("proid"=>$proid,"stageid"=>$stageid,"type"=>$type);
