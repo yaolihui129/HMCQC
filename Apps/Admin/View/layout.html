@@ -1,3 +1,11 @@
-<include file="Public:header" />
+<{$_SESSION['qz']}>
+<switch name="_SESSION['qz']">
+	<case value="Xiuli"><include file="Public:xlheader" /></case>
+	<case value="Tuocai"><include file="Public:tcheader" /></case>
+	<case value="Anshun"><include file="Public:asheader" /></case>
+	<case value="Xinda"><include file="Public:xdheader" /></case>
+	<case value="Mtsh"><include file="Public:mtheader" /></case>
+	<default /><include file="Public:header" />
+</switch> 
 {__CONTENT__}
 <include file="Public:footer" />

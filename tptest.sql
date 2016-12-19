@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : mysql:3306
 Source Server Version : 50532
 Source Host           : localhost:3306
 Source Database       : tptest
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2016-12-19 18:48:28
+Date: 2016-12-20 00:25:23
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -2119,6 +2119,28 @@ INSERT INTO `tp_tc_ad` VALUES ('8', '第4张', '/Ad/2016-11-27/', '583afafcaaa26
 INSERT INTO `tp_tc_ad` VALUES ('9', '第5张', '/Ad/2016-11-27/', '583afb176905b.jpg', '', '', '正常', '腰立辉', '2016-11-27 23:26:15');
 
 -- ----------------------------
+-- Table structure for `tp_tc_cate`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_tc_cate`;
+CREATE TABLE `tp_tc_cate` (
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `sn` smallint(2) DEFAULT NULL,
+  `cName` varchar(50) DEFAULT NULL,
+  `pid` smallint(6) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cName` (`cName`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_tc_cate
+-- ----------------------------
+INSERT INTO `tp_tc_cate` VALUES ('2', '2', '小学课程', '0');
+INSERT INTO `tp_tc_cate` VALUES ('1', '1', '学前少儿', '0');
+INSERT INTO `tp_tc_cate` VALUES ('3', '3', '中学课程', '0');
+INSERT INTO `tp_tc_cate` VALUES ('4', '4', '兴趣拓展', '0');
+INSERT INTO `tp_tc_cate` VALUES ('5', '5', '作业托管', '0');
+
+-- ----------------------------
 -- Table structure for `tp_tc_course`
 -- ----------------------------
 DROP TABLE IF EXISTS `tp_tc_course`;
@@ -2521,6 +2543,27 @@ INSERT INTO `tp_xl_ad` VALUES ('6', '第1张', '/Ad/2016-12-13/', '584fb48ec1380
 INSERT INTO `tp_xl_ad` VALUES ('7', '第3张', '/Ad/2016-12-13/', '584fb428f34cc.jpg', '', '', '发布', '腰立辉', '2016-12-13 16:41:13');
 INSERT INTO `tp_xl_ad` VALUES ('8', '第4张', '/Ad/2016-11-27/', '583afafcaaa26.jpg', '', '', '发布', '腰立辉', '2016-11-27 23:25:49');
 INSERT INTO `tp_xl_ad` VALUES ('9', '第5张', '/Ad/2016-11-27/', '583afb176905b.jpg', '', '', '正常', '腰立辉', '2016-11-27 23:26:15');
+
+-- ----------------------------
+-- Table structure for `tp_xl_cate`
+-- ----------------------------
+DROP TABLE IF EXISTS `tp_xl_cate`;
+CREATE TABLE `tp_xl_cate` (
+  `id` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
+  `sn` smallint(2) DEFAULT NULL,
+  `cName` varchar(50) DEFAULT NULL,
+  `pid` smallint(6) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cName` (`cName`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of tp_xl_cate
+-- ----------------------------
+INSERT INTO `tp_xl_cate` VALUES ('2', '2', '企业网站建设', '0');
+INSERT INTO `tp_xl_cate` VALUES ('1', '1', '主营业务', '0');
+INSERT INTO `tp_xl_cate` VALUES ('5', '3', '电子广告制作', '0');
+INSERT INTO `tp_xl_cate` VALUES ('6', '4', '微信公众号', '0');
 
 -- ----------------------------
 -- Table structure for `tp_xl_customer`

@@ -35,10 +35,20 @@ class FuncController extends Controller {
         $this->assign('arr',$arr);
         
         $m = D("stage");
-        $where=array("proid"=>"$proid");
+        $where=array("proid"=>$proid);
         $stage=$m->where($where)->order("sn,id")->select();
         $this->assign('stage',$stage);
-        dump($stage);
+        
+        $where['tp_stage.proid']=$proid;
+        $where['tp_stage.state']='已完成';
+        $where['tp_exescene.results']='未测试';
+        
+        $stagetester=$m->where($where)
+        ->join(' inner JOIN tp_stagetester ON tp_stage.id = tp_stagetester.stageid')
+        ->join(' inner JOIN tp_exescene ON tp_stagetester.id = tp_exescene.stagetesterid')
+        ->select();
+        $this->assign('tester',$stagetester);
+        //dump($stagetester);
         
         $m = D("system");
         $where=array("tp_func.fproid"=>$proid,"tp_func.state"=>'正常',"tp_path.pstate"=>'正常');
