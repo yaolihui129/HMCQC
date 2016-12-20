@@ -538,7 +538,7 @@ function getTest($id){
             .$ar['swho'].$ar['swhen'].$ar['scene']."<br>"
             .$ar['sn'].".".$ar['func']."，<b>意图：</b>".$ar['casemain']."，<b>预期：</b>".$ar['caseexpected']
             .'<span class="badge">'.$ar['result'].'</span><br><b>失败记录：</b>'
-            .$ar['remark']
+            .$ar['remark'].';<b>禅道BUG：</b>'.$ar['bugid']
             .'</li>';
     };
     if($arr){

@@ -150,6 +150,22 @@ function getStage($id){
 }
 
 /**
+ * 根据id获取列队信息
+ */
+function getSTester($id){
+    if ($id){
+        $m=M('stagetester');
+        $data=$m->find($id);
+        //dump($data);
+
+        $str=$data['stage']."【".$data['state']."】";
+        return $str;
+    }else {
+        return ;
+    }
+}
+
+/**
  * 根据id获取场景信息
  */
 function getScene($id){

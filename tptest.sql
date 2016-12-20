@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysql:3306
+Source Server         : localhost
 Source Server Version : 50532
 Source Host           : localhost:3306
 Source Database       : tptest
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2016-12-20 00:25:23
+Date: 2016-12-20 19:16:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -409,7 +409,7 @@ CREATE TABLE `tp_exefunc` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10587 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10626 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_exefunc
@@ -564,6 +564,45 @@ INSERT INTO `tp_exefunc` VALUES ('10583', '1', '10117', '10474', null, '微站CR
 INSERT INTO `tp_exefunc` VALUES ('10584', '2', '10117', '10475', null, '微站CRM后台- 数据中心-微信号设置', ' 设置-入口', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-19 15:48:10', '2016-12-19 16:16:54');
 INSERT INTO `tp_exefunc` VALUES ('10585', '3', '10117', '10476', null, '微站CRM后台- 数据中心-微信号设置', ' 设置-选择用户', null, null, null, '', '失败', '用下拉菜单悬着200个用户，以后还回更多，极容易选错；选错了，没有地方可以查到微信号帮给了谁', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-19 15:48:10', '2016-12-19 16:18:05');
 INSERT INTO `tp_exefunc` VALUES ('10586', '4', '10117', '10477', null, '微站CRM后台- 数据中心-微信号设置', ' 设置-绑定', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-19 15:48:10', '2016-12-19 16:18:08');
+INSERT INTO `tp_exefunc` VALUES ('10587', '1', '10118', '10458', null, '微站CRM后台-商务合作-商务合作管理', ' 查询-按地区', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:36', '2016-12-20 16:45:02');
+INSERT INTO `tp_exefunc` VALUES ('10588', '2', '10118', '10459', null, '微站CRM后台-商务合作-商务合作管理', ' 查询-按合作方式', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:36', '2016-12-20 16:45:10');
+INSERT INTO `tp_exefunc` VALUES ('10589', '3', '10118', '10460', null, '微站CRM后台-商务合作-商务合作管理', ' 查询-按状态', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:36', '2016-12-20 16:47:46');
+INSERT INTO `tp_exefunc` VALUES ('10590', '4', '10118', '10461', null, '微站CRM后台-商务合作-商务合作管理', ' 查询-按联系方式', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:36', '2016-12-20 16:47:48');
+INSERT INTO `tp_exefunc` VALUES ('10591', '5', '10118', '10462', null, '微站CRM后台-商务合作-商务合作管理', ' 组合查询', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:36', '2016-12-20 16:47:51');
+INSERT INTO `tp_exefunc` VALUES ('10592', '6', '10118', '10463', null, '微站CRM后台-商务合作-商务合作管理', ' 合作者列表', null, null, null, '39,40', '失败', '微信昵称有特殊符号；姓名下有优化线', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:36', '2016-12-20 16:47:43');
+INSERT INTO `tp_exefunc` VALUES ('10593', '7', '10118', '10464', null, '微站CRM后台-商务合作-商务合作管理', '编辑/ 查看进度入口', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:36', '2016-12-20 16:47:57');
+INSERT INTO `tp_exefunc` VALUES ('10594', '1', '10119', '10465', null, '微站CRM后台- 商务合作-商务合作进度', ' 申请资料信息', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:39', '2016-12-20 16:50:06');
+INSERT INTO `tp_exefunc` VALUES ('10595', '2', '10119', '10466', null, '微站CRM后台- 商务合作-商务合作进度', ' 洽谈进度维护', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:39', '2016-12-20 16:50:09');
+INSERT INTO `tp_exefunc` VALUES ('10596', '3', '10119', '10467', null, '微站CRM后台- 商务合作-商务合作进度', ' 洽谈进度历史', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:39', '2016-12-20 16:48:53');
+INSERT INTO `tp_exefunc` VALUES ('10597', '4', '10119', '10468', null, '微站CRM后台- 商务合作-商务合作进度', ' 处理结果', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:39', '2016-12-20 16:50:13');
+INSERT INTO `tp_exefunc` VALUES ('10598', '1', '10120', '10425', null, '微站CRM后台- 内容发布-移民管家', ' 管家新增', null, null, null, '142', '失败', '没有返回，只能通过导航跳出本页面', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:44', '2016-12-20 16:55:59');
+INSERT INTO `tp_exefunc` VALUES ('10599', '2', '10120', '10426', null, '微站CRM后台- 内容发布-移民管家', ' 管家编辑', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:44', '2016-12-20 16:56:03');
+INSERT INTO `tp_exefunc` VALUES ('10600', '3', '10120', '10427', null, '微站CRM后台- 内容发布-移民管家', ' 管家评价', null, null, null, '144', '失败', '没有评价明细，无法操作', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:44', '2016-12-20 17:04:03');
+INSERT INTO `tp_exefunc` VALUES ('10601', '4', '10120', '10428', null, '微站CRM后台- 内容发布-移民管家', ' 聘用情况', null, null, null, '', '失败', '未发现该功能', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:44', '2016-12-20 16:57:00');
+INSERT INTO `tp_exefunc` VALUES ('10602', '5', '10120', '10429', null, '微站CRM后台- 内容发布-移民管家', ' 管家详情', null, null, null, '', '失败', '未发现该功能', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:44', '2016-12-20 17:02:10');
+INSERT INTO `tp_exefunc` VALUES ('10603', '6', '10120', '10430', null, '微站CRM后台- 内容发布-移民管家', ' 服务用户（列表）', null, null, null, '143', '失败', '查询后，条件信息被置空', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:44', '2016-12-20 17:02:01');
+INSERT INTO `tp_exefunc` VALUES ('10604', '1', '10121', '10470', null, '微站CRM后台-数据中心-获客列表', ' 获客列表', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:53', '2016-12-20 17:04:54');
+INSERT INTO `tp_exefunc` VALUES ('10605', '2', '10121', '10471', null, '微站CRM后台-数据中心-获客列表', ' 查询筛选', null, null, null, '125', '失败', '此功能缺失', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:53', '2016-12-20 17:05:26');
+INSERT INTO `tp_exefunc` VALUES ('10606', '1', '10122', '10472', null, '微站CRM后台- 数据中心-名片流量', ' 名片流量列表', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:58', '2016-12-20 17:05:43');
+INSERT INTO `tp_exefunc` VALUES ('10607', '2', '10122', '10473', null, '微站CRM后台- 数据中心-名片流量', ' 转化率计算', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:42:58', '2016-12-20 17:05:45');
+INSERT INTO `tp_exefunc` VALUES ('10608', '1', '10123', '10474', null, '微站CRM后台- 数据中心-微信号设置', '微信号列表（打开过且未设置）', null, null, null, '', '通过', '只有未设置的列表，已设置的或所有的没有地方查', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:02', '2016-12-20 17:15:59');
+INSERT INTO `tp_exefunc` VALUES ('10609', '2', '10123', '10475', null, '微站CRM后台- 数据中心-微信号设置', ' 设置-入口', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:02', '2016-12-20 17:07:34');
+INSERT INTO `tp_exefunc` VALUES ('10610', '3', '10123', '10476', null, '微站CRM后台- 数据中心-微信号设置', ' 设置-选择用户', null, null, null, '122', '失败', ' OpenID绑定时，选择人员用下拉菜单，公司暂时百十号人，根本不易查找，还特别容易出错', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:02', '2016-12-20 17:08:32');
+INSERT INTO `tp_exefunc` VALUES ('10611', '4', '10123', '10477', null, '微站CRM后台- 数据中心-微信号设置', ' 设置-绑定', null, null, null, '', '通过', '解绑后，显示解绑前的名字', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:02', '2016-12-20 17:08:53');
+INSERT INTO `tp_exefunc` VALUES ('10612', '1', '10124', '10401', null, '微网站（用户）- 个人中心-商务合作', ' 简介', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:09', '2016-12-20 17:11:24');
+INSERT INTO `tp_exefunc` VALUES ('10613', '2', '10124', '10447', null, '微网站（用户）- 个人中心-商务合作', ' 拨打400电话', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:09', '2016-12-20 17:11:26');
+INSERT INTO `tp_exefunc` VALUES ('10614', '3', '10124', '10402', null, '微网站（用户）- 个人中心-商务合作', ' 获取验证码', null, null, null, '', '通过', '测试环境获取不到验证码', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:09', '2016-12-20 17:11:39');
+INSERT INTO `tp_exefunc` VALUES ('10615', '4', '10124', '10403', null, '微网站（用户）- 个人中心-商务合作', ' 登录', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:09', '2016-12-20 17:11:45');
+INSERT INTO `tp_exefunc` VALUES ('10616', '5', '10124', '10404', null, '微网站（用户）- 个人中心-商务合作', ' 提交信息', null, null, null, '141', '失败', '网络慢的情况下，有重复提交的情况', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:09', '2016-12-20 17:11:21');
+INSERT INTO `tp_exefunc` VALUES ('10617', '6', '10124', '10405', null, '微网站（用户）- 个人中心-商务合作', ' 查询合作状态', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:09', '2016-12-20 17:11:50');
+INSERT INTO `tp_exefunc` VALUES ('10618', '7', '10124', '10406', null, '微网站（用户）- 个人中心-商务合作', ' 驳回后重提', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:09', '2016-12-20 17:11:51');
+INSERT INTO `tp_exefunc` VALUES ('10619', '1', '10125', '10419', null, '微网站（用户）-个人中心-公司名片', ' 公司介绍', null, null, null, '', '通过', '第一次加载时，先加载全部，再显示动画，顺序不对', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:15', '2016-12-20 17:12:26');
+INSERT INTO `tp_exefunc` VALUES ('10620', '2', '10125', '10420', null, '微网站（用户）-个人中心-公司名片', ' 重点项目', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:15', '2016-12-20 17:12:29');
+INSERT INTO `tp_exefunc` VALUES ('10621', '3', '10125', '10421', null, '微网站（用户）-个人中心-公司名片', ' 名片信息', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:15', '2016-12-20 17:12:32');
+INSERT INTO `tp_exefunc` VALUES ('10622', '4', '10125', '10422', null, '微网站（用户）-个人中心-公司名片', ' 公司名片分享', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:15', '2016-12-20 17:12:34');
+INSERT INTO `tp_exefunc` VALUES ('10623', '5', '10125', '10423', null, '微网站（用户）-个人中心-公司名片', ' 报名', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:15', '2016-12-20 17:12:39');
+INSERT INTO `tp_exefunc` VALUES ('10624', '6', '10125', '10469', null, '微网站（用户）-个人中心-公司名片', ' 消息反馈（移动管家名片）', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:15', '2016-12-20 17:12:47');
+INSERT INTO `tp_exefunc` VALUES ('10625', '7', '10125', '10424', null, '微网站（用户）-个人中心-公司名片', ' 数据统计', null, null, null, null, '通过', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '腰立辉', '腰立辉', '2016-12-20 09:43:15', '2016-12-20 17:12:49');
 
 -- ----------------------------
 -- Table structure for `tp_exescene`
@@ -591,7 +630,7 @@ CREATE TABLE `tp_exescene` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10118 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10126 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_exescene
@@ -624,6 +663,14 @@ INSERT INTO `tp_exescene` VALUES ('10114', '5', 'M', '10055', '10175', '0', '2',
 INSERT INTO `tp_exescene` VALUES ('10115', '6', 'M', '10055', '10224', '0', '2', '【功能】', '默认', '微站CRM后台-数据中心-获客列表', '失败', '“微站CRM后台-数据中心-获客列表“下所有功能点', null, null, '2016-12-19 15:49:04', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-19 15:47:55', '2016-12-19 15:49:04');
 INSERT INTO `tp_exescene` VALUES ('10116', '7', 'M', '10055', '10225', '0', '2', '【功能】', '默认', '微站CRM后台- 数据中心-名片流量', '通过', '“微站CRM后台- 数据中心-名片流量“下所有功能点', null, null, '2016-12-19 16:16:44', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-19 15:48:06', '2016-12-19 16:16:44');
 INSERT INTO `tp_exescene` VALUES ('10117', '8', 'M', '10055', '10226', '0', '2', '【功能】', '默认', '微站CRM后台- 数据中心-微信号设置', '失败', '“微站CRM后台- 数据中心-微信号设置“下所有功能点', null, null, '2016-12-19 16:19:02', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-19 15:48:10', '2016-12-19 16:19:02');
+INSERT INTO `tp_exescene` VALUES ('10118', '1', 'M', '10056', '10203', '0', '2', '【功能】', '默认', '微站CRM后台-商务合作-商务合作管理', '通过', '“微站CRM后台-商务合作-商务合作管理“下所有功能点', null, null, '2016-12-20 16:47:59', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-20 09:42:36', '2016-12-20 16:47:59');
+INSERT INTO `tp_exescene` VALUES ('10119', '2', 'M', '10056', '10204', '0', '2', '【功能】', '默认', '微站CRM后台- 商务合作-商务合作进度', '通过', '“微站CRM后台- 商务合作-商务合作进度“下所有功能点', null, null, '2016-12-20 16:55:17', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-20 09:42:39', '2016-12-20 16:55:17');
+INSERT INTO `tp_exescene` VALUES ('10120', '3', 'M', '10056', '10181', '0', '2', '【功能】', '默认', '微站CRM后台- 内容发布-移民管家', '失败', '“微站CRM后台- 内容发布-移民管家“下所有功能点', null, null, '2016-12-20 17:04:20', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-20 09:42:44', '2016-12-20 17:04:20');
+INSERT INTO `tp_exescene` VALUES ('10121', '4', 'M', '10056', '10224', '0', '2', '【功能】', '默认', '微站CRM后台-数据中心-获客列表', '失败', '“微站CRM后台-数据中心-获客列表“下所有功能点', null, null, '2016-12-20 17:05:31', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-20 09:42:53', '2016-12-20 17:05:31');
+INSERT INTO `tp_exescene` VALUES ('10122', '5', 'M', '10056', '10225', '0', '2', '【功能】', '默认', '微站CRM后台- 数据中心-名片流量', '通过', '“微站CRM后台- 数据中心-名片流量“下所有功能点', null, null, '2016-12-20 17:05:48', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-20 09:42:58', '2016-12-20 17:05:48');
+INSERT INTO `tp_exescene` VALUES ('10123', '6', 'M', '10056', '10226', '0', '2', '【功能】', '默认', '微站CRM后台- 数据中心-微信号设置', '通过', '“微站CRM后台- 数据中心-微信号设置“下所有功能点', null, null, '2016-12-20 17:09:02', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-20 09:43:02', '2016-12-20 17:09:02');
+INSERT INTO `tp_exescene` VALUES ('10124', '7', 'M', '10056', '10173', '0', '2', '【功能】', '默认', '微网站（用户）- 个人中心-商务合作', '失败', '“微网站（用户）- 个人中心-商务合作“下所有功能点', null, null, '2016-12-20 17:11:55', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-20 09:43:09', '2016-12-20 17:11:55');
+INSERT INTO `tp_exescene` VALUES ('10125', '8', 'M', '10056', '10175', '0', '2', '【功能】', '默认', '微网站（用户）-个人中心-公司名片', '通过', '“微网站（用户）-个人中心-公司名片“下所有功能点', null, null, '2016-12-20 17:12:52', '192.168.6.57', '腰立辉', '腰立辉', '2016-12-20 09:43:15', '2016-12-20 17:12:52');
 
 -- ----------------------------
 -- Table structure for `tp_func`
@@ -886,7 +933,7 @@ INSERT INTO `tp_func` VALUES ('10408', '1', ' 管家列表', '正常', '10163', 
 INSERT INTO `tp_func` VALUES ('10409', '2', ' 管家详情', '正常', '10163', '107', '未测试', '腰立辉', '腰立辉', '2016-12-05 18:00:02', '2016-12-05 18:00:02');
 INSERT INTO `tp_func` VALUES ('10410', '3', ' 绑定管家', '正常', '10163', '107', '未测试', '腰立辉', '腰立辉', '2016-12-05 18:00:28', '2016-12-05 18:00:28');
 INSERT INTO `tp_func` VALUES ('10411', '4', ' 微信关注', '正常', '10163', '107', '未测试', '腰立辉', '腰立辉', '2016-12-05 18:00:38', '2016-12-05 18:00:38');
-INSERT INTO `tp_func` VALUES ('10419', '1', ' 公司介绍', '正常', '10175', '107', '通过', '腰立辉', '腰立辉', '2016-12-05 18:04:50', '2016-12-19 16:38:15');
+INSERT INTO `tp_func` VALUES ('10419', '1', ' 公司介绍', '正常', '10175', '107', '通过', '腰立辉', '腰立辉', '2016-12-05 18:04:50', '2016-12-20 17:13:02');
 INSERT INTO `tp_func` VALUES ('10414', '1', ' 我的管家信息', '正常', '10174', null, '未测试', '腰立辉', '腰立辉', '2016-12-05 18:03:30', '2016-12-06 10:42:56');
 INSERT INTO `tp_func` VALUES ('10415', '2', '点赞', '正常', '10174', null, '未测试', '腰立辉', '腰立辉', '2016-12-05 18:03:40', '2016-12-06 10:42:59');
 INSERT INTO `tp_func` VALUES ('10416', '3', ' 评价', '正常', '10174', null, '未测试', '腰立辉', '腰立辉', '2016-12-05 18:03:47', '2016-12-06 10:43:02');
@@ -1031,18 +1078,18 @@ INSERT INTO `tp_func` VALUES ('10398', '13', '确认成交', '正常', '10124', 
 INSERT INTO `tp_func` VALUES ('10399', '14', '取消交易', '正常', '10124', '50', '失败', '腰立辉', '腰立辉', '2016-10-25 17:20:51', '2016-11-02 09:42:47');
 INSERT INTO `tp_func` VALUES ('10400', '15', '详情', '正常', '10124', '50', '未测试', '腰立辉', '腰立辉', '2016-10-25 17:20:59', '2016-10-25 17:20:59');
 INSERT INTO `tp_func` VALUES ('10401', '1', ' 简介', '正常', '10173', '107', '通过', '腰立辉', '腰立辉', '2016-12-05 16:47:48', '2016-12-12 15:09:30');
-INSERT INTO `tp_func` VALUES ('10402', '3', ' 获取验证码', '正常', '10173', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 16:48:03', '2016-12-19 14:56:43');
-INSERT INTO `tp_func` VALUES ('10403', '4', ' 登录', '正常', '10173', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 16:48:12', '2016-12-14 11:51:09');
-INSERT INTO `tp_func` VALUES ('10404', '5', ' 提交信息', '正常', '10173', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 16:48:41', '2016-12-19 14:56:06');
+INSERT INTO `tp_func` VALUES ('10402', '3', ' 获取验证码', '正常', '10173', '107', '通过', '腰立辉', '腰立辉', '2016-12-05 16:48:03', '2016-12-20 17:13:27');
+INSERT INTO `tp_func` VALUES ('10403', '4', ' 登录', '正常', '10173', '107', '通过', '腰立辉', '腰立辉', '2016-12-05 16:48:12', '2016-12-20 17:13:17');
+INSERT INTO `tp_func` VALUES ('10404', '5', ' 提交信息', '正常', '10173', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 16:48:41', '2016-12-20 17:11:21');
 INSERT INTO `tp_func` VALUES ('10405', '6', ' 查询合作状态', '正常', '10173', '107', '通过', '腰立辉', '腰立辉', '2016-12-05 16:49:29', '2016-12-14 12:00:43');
 INSERT INTO `tp_func` VALUES ('10406', '7', ' 驳回后重提', '正常', '10173', '107', '通过', '腰立辉', '腰立辉', '2016-12-05 16:49:42', '2016-12-19 16:37:59');
 INSERT INTO `tp_func` VALUES ('10424', '7', ' 数据统计', '正常', '10175', '107', '通过', '腰立辉', '腰立辉', '2016-12-05 18:06:02', '2016-12-15 13:56:33');
-INSERT INTO `tp_func` VALUES ('10425', '1', ' 管家新增', '正常', '10181', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 18:25:13', '2016-12-19 16:30:48');
+INSERT INTO `tp_func` VALUES ('10425', '1', ' 管家新增', '正常', '10181', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 18:25:13', '2016-12-20 16:55:59');
 INSERT INTO `tp_func` VALUES ('10426', '2', ' 管家编辑', '正常', '10181', '107', '通过', '腰立辉', '腰立辉', '2016-12-05 18:25:23', '2016-12-19 16:36:53');
-INSERT INTO `tp_func` VALUES ('10427', '3', ' 管家评价', '正常', '10181', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 18:25:34', '2016-12-19 16:33:00');
-INSERT INTO `tp_func` VALUES ('10428', '4', ' 聘用情况', '正常', '10181', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 18:25:42', '2016-12-19 16:35:17');
-INSERT INTO `tp_func` VALUES ('10429', '5', ' 管家详情', '正常', '10181', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 18:26:15', '2016-12-19 16:35:24');
-INSERT INTO `tp_func` VALUES ('10430', '6', ' 服务用户（列表）', '正常', '10181', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 18:26:40', '2016-12-19 15:24:02');
+INSERT INTO `tp_func` VALUES ('10427', '3', ' 管家评价', '正常', '10181', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 18:25:34', '2016-12-20 17:04:03');
+INSERT INTO `tp_func` VALUES ('10428', '4', ' 聘用情况', '正常', '10181', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 18:25:42', '2016-12-20 16:57:00');
+INSERT INTO `tp_func` VALUES ('10429', '5', ' 管家详情', '正常', '10181', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 18:26:15', '2016-12-20 17:02:10');
+INSERT INTO `tp_func` VALUES ('10430', '6', ' 服务用户（列表）', '正常', '10181', '107', '失败', '腰立辉', '腰立辉', '2016-12-05 18:26:40', '2016-12-20 17:02:01');
 INSERT INTO `tp_func` VALUES ('10431', '1', ' 登录', '正常', '10152', '109', '未测试', '腰立辉', '腰立辉', '2016-12-06 10:30:17', '2016-12-06 10:30:17');
 INSERT INTO `tp_func` VALUES ('10432', '2', ' 注销', '正常', '10152', '109', '未测试', '腰立辉', '腰立辉', '2016-12-06 10:30:26', '2016-12-06 10:30:26');
 INSERT INTO `tp_func` VALUES ('10433', '3', ' 修改密码', '正常', '10152', '109', '未测试', '腰立辉', '腰立辉', '2016-12-06 10:30:52', '2016-12-06 10:30:52');
@@ -1075,21 +1122,21 @@ INSERT INTO `tp_func` VALUES ('10459', '2', ' 查询-按合作方式', '正常',
 INSERT INTO `tp_func` VALUES ('10460', '3', ' 查询-按状态', '正常', '10203', '107', '通过', '腰立辉', '腰立辉', '2016-12-14 11:42:31', '2016-12-19 16:35:55');
 INSERT INTO `tp_func` VALUES ('10461', '4', ' 查询-按联系方式', '正常', '10203', '107', '通过', '腰立辉', '腰立辉', '2016-12-14 11:42:44', '2016-12-19 16:35:58');
 INSERT INTO `tp_func` VALUES ('10462', '5', ' 组合查询', '正常', '10203', '107', '通过', '腰立辉', '腰立辉', '2016-12-14 11:42:58', '2016-12-19 16:36:10');
-INSERT INTO `tp_func` VALUES ('10463', '6', ' 合作者列表', '正常', '10203', '107', '通过', '腰立辉', '腰立辉', '2016-12-14 11:43:11', '2016-12-19 16:36:26');
+INSERT INTO `tp_func` VALUES ('10463', '6', '商务合作列表', '正常', '10203', '107', '失败', '腰立辉', '腰立辉', '2016-12-14 11:43:11', '2016-12-20 17:14:20');
 INSERT INTO `tp_func` VALUES ('10464', '7', '编辑/ 查看进度入口', '正常', '10203', '107', '通过', '腰立辉', '腰立辉', '2016-12-14 11:43:33', '2016-12-14 15:48:23');
-INSERT INTO `tp_func` VALUES ('10465', '1', ' 申请资料信息', '正常', '10204', '107', '失败', '腰立辉', '腰立辉', '2016-12-14 11:46:24', '2016-12-19 16:06:10');
+INSERT INTO `tp_func` VALUES ('10465', '1', ' 申请资料信息', '正常', '10204', '107', '通过', '腰立辉', '腰立辉', '2016-12-14 11:46:24', '2016-12-20 16:50:34');
 INSERT INTO `tp_func` VALUES ('10466', '2', ' 洽谈进度维护', '正常', '10204', '107', '通过', '腰立辉', '腰立辉', '2016-12-14 11:46:49', '2016-12-19 16:36:36');
 INSERT INTO `tp_func` VALUES ('10467', '3', ' 洽谈进度历史', '正常', '10204', '107', '通过', '腰立辉', '腰立辉', '2016-12-14 11:47:07', '2016-12-14 15:29:21');
 INSERT INTO `tp_func` VALUES ('10468', '4', ' 处理结果', '正常', '10204', '107', '通过', '腰立辉', '腰立辉', '2016-12-14 11:47:19', '2016-12-19 16:36:43');
 INSERT INTO `tp_func` VALUES ('10469', '6', ' 消息反馈（移动管家名片）', '正常', '10175', '107', '通过', '腰立辉', '腰立辉', '2016-12-15 13:56:25', '2016-12-19 16:38:05');
 INSERT INTO `tp_func` VALUES ('10470', '1', ' 获客列表', '正常', '10224', '107', '通过', '腰立辉', '腰立辉', '2016-12-19 15:44:24', '2016-12-19 16:37:10');
-INSERT INTO `tp_func` VALUES ('10471', '2', ' 查询筛选', '正常', '10224', '107', '失败', '腰立辉', '腰立辉', '2016-12-19 15:44:35', '2016-12-19 15:49:02');
+INSERT INTO `tp_func` VALUES ('10471', '2', ' 查询筛选', '正常', '10224', '107', '失败', '腰立辉', '腰立辉', '2016-12-19 15:44:35', '2016-12-20 17:05:26');
 INSERT INTO `tp_func` VALUES ('10472', '1', ' 名片流量列表', '正常', '10225', '107', '通过', '腰立辉', '腰立辉', '2016-12-19 15:45:02', '2016-12-19 16:37:32');
 INSERT INTO `tp_func` VALUES ('10473', '2', ' 转化率计算', '正常', '10225', '107', '通过', '腰立辉', '腰立辉', '2016-12-19 15:45:11', '2016-12-19 16:37:37');
-INSERT INTO `tp_func` VALUES ('10474', '1', '微信号列表（打开过且未设置）', '正常', '10226', '107', '失败', '腰立辉', '腰立辉', '2016-12-19 15:45:59', '2016-12-19 16:18:52');
+INSERT INTO `tp_func` VALUES ('10474', '1', '微信号列表（打开过且未设置）', '正常', '10226', '107', '通过', '腰立辉', '腰立辉', '2016-12-19 15:45:59', '2016-12-20 17:16:04');
 INSERT INTO `tp_func` VALUES ('10475', '2', ' 设置-入口', '正常', '10226', '107', '通过', '腰立辉', '腰立辉', '2016-12-19 15:46:10', '2016-12-19 16:37:48');
-INSERT INTO `tp_func` VALUES ('10476', '3', ' 设置-选择用户', '正常', '10226', '107', '失败', '腰立辉', '腰立辉', '2016-12-19 15:47:00', '2016-12-19 16:18:05');
-INSERT INTO `tp_func` VALUES ('10477', '4', ' 设置-绑定', '正常', '10226', '107', '通过', '腰立辉', '腰立辉', '2016-12-19 15:47:11', '2016-12-19 16:37:53');
+INSERT INTO `tp_func` VALUES ('10476', '3', ' 设置-选择用户', '正常', '10226', '107', '通过', '腰立辉', '腰立辉', '2016-12-19 15:47:00', '2016-12-20 17:16:20');
+INSERT INTO `tp_func` VALUES ('10477', '4', ' 设置-绑定', '正常', '10226', '107', '通过', '腰立辉', '腰立辉', '2016-12-19 15:47:11', '2016-12-20 17:09:52');
 
 -- ----------------------------
 -- Table structure for `tp_hcfunc`
@@ -1257,7 +1304,7 @@ INSERT INTO `tp_path` VALUES ('10176', '4', ' 项目资料库-项目管理', '�
 INSERT INTO `tp_path` VALUES ('10177', '5', '项目资料库-移民评估', '正常', '63', '腰立辉', '腰立辉', '2016-12-05 18:16:23', '2016-12-06 14:05:31');
 INSERT INTO `tp_path` VALUES ('10178', '7', '内容发布-专题管理', '正常', '63', '腰立辉', '腰立辉', '2016-12-05 18:16:34', '2016-12-06 14:05:31');
 INSERT INTO `tp_path` VALUES ('10179', '8', ' 内容发布-资讯发布', '正常', '63', '腰立辉', '腰立辉', '2016-12-05 18:19:30', '2016-12-06 14:05:31');
-INSERT INTO `tp_path` VALUES ('10180', '9', ' 内容发布-活动管理', '正常', '63', '腰立辉', '腰立辉', '2016-12-05 18:20:01', '2016-12-06 14:05:31');
+INSERT INTO `tp_path` VALUES ('10180', '9', ' 内容发布-活动管理', '待确认', '63', '腰立辉', '腰立辉', '2016-12-05 18:20:01', '2016-12-20 09:58:00');
 INSERT INTO `tp_path` VALUES ('10181', '10', ' 内容发布-移民管家', '正常', '63', '腰立辉', '腰立辉', '2016-12-05 18:20:20', '2016-12-06 14:05:31');
 INSERT INTO `tp_path` VALUES ('10182', '12', ' 营销管理-我的客户', '正常', '63', '腰立辉', '腰立辉', '2016-12-05 18:21:07', '2016-12-06 14:05:31');
 INSERT INTO `tp_path` VALUES ('10183', '13', '营销管理-移民方案', '正常', '63', '腰立辉', '腰立辉', '2016-12-05 18:21:22', '2016-12-06 14:05:31');
@@ -1958,8 +2005,8 @@ INSERT INTO `tp_stage` VALUES ('1049', '2', '编写测试用例', '107', '2016-1
 INSERT INTO `tp_stage` VALUES ('1050', '3', '功能验证', '107', '2016-12-05', '2016-12-06', '已完成', '无文档', '腰立辉', '腰立辉', '2016-12-05 17:28:50', '2016-12-12 12:03:26');
 INSERT INTO `tp_stage` VALUES ('1051', '4', '第一轮测试', '107', '2016-12-05', '2016-12-06', '已完成', '无文档', '腰立辉', '腰立辉', '2016-12-05 17:28:57', '2016-12-14 11:34:33');
 INSERT INTO `tp_stage` VALUES ('1052', '5', '第二轮测试', '107', '2016-12-05', '2016-12-06', '已完成', '无文档', '腰立辉', '腰立辉', '2016-12-05 17:29:04', '2016-12-19 14:51:13');
-INSERT INTO `tp_stage` VALUES ('1053', '6', '第三轮测试', '107', '2016-12-05', '2016-12-06', '进行中', '无文档', '腰立辉', '腰立辉', '2016-12-05 17:29:10', '2016-12-19 14:51:16');
-INSERT INTO `tp_stage` VALUES ('1054', '7', '第四轮测试', '107', '2016-12-05', '2016-12-06', '未开始', '无文档', '腰立辉', '腰立辉', '2016-12-05 17:29:17', '2016-12-05 17:29:17');
+INSERT INTO `tp_stage` VALUES ('1053', '6', '第三轮测试', '107', '2016-12-05', '2016-12-06', '已完成', '无文档', '腰立辉', '腰立辉', '2016-12-05 17:29:10', '2016-12-20 09:42:03');
+INSERT INTO `tp_stage` VALUES ('1054', '7', '第四轮测试', '107', '2016-12-05', '2016-12-06', '进行中', '无文档', '腰立辉', '腰立辉', '2016-12-05 17:29:17', '2016-12-20 09:42:13');
 INSERT INTO `tp_stage` VALUES ('1055', '9', '线上验证测试', '107', '2016-12-15', '2016-12-15', '未开始', '无文档', '腰立辉', '腰立辉', '2016-12-05 17:29:23', '2016-12-07 17:41:30');
 INSERT INTO `tp_stage` VALUES ('1056', '1', '平台搭建，可以初步管理测试项目', '108', '2016-12-05', '2016-12-16', '进行中', '无文档', '腰立辉', '腰立辉', '2016-12-05 17:43:17', '2016-12-05 17:44:07');
 INSERT INTO `tp_stage` VALUES ('1057', '2', '平台优化，按照公司的流程对平台进行调整', '108', '2016-12-12', '2017-01-31', '未开始', '无文档', '腰立辉', '腰立辉', '2016-12-05 17:43:23', '2016-12-05 17:44:57');
@@ -1990,7 +2037,7 @@ CREATE TABLE `tp_stagetester` (
   `createTime` timestamp NULL DEFAULT NULL,
   `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10056 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=10057 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of tp_stagetester
@@ -2032,6 +2079,7 @@ INSERT INTO `tp_stagetester` VALUES ('10052', '1', 'M', '1059', '腰立辉', '20
 INSERT INTO `tp_stagetester` VALUES ('10053', '1', 'M', '1060', '腰立辉', '2016-12-13', '2016-12-14', '8', '0', '腰立辉', '腰立辉', null, '2016-12-13 11:16:20');
 INSERT INTO `tp_stagetester` VALUES ('10054', '1', 'M', '1052', '腰立辉', '2016-12-14', '2016-12-15', '8', '0', '腰立辉', '腰立辉', null, '2016-12-14 11:35:01');
 INSERT INTO `tp_stagetester` VALUES ('10055', '1', 'M', '1053', '腰立辉', '2016-12-19', '2016-12-20', '8', '0', '腰立辉', '腰立辉', null, '2016-12-19 14:53:05');
+INSERT INTO `tp_stagetester` VALUES ('10056', '1', 'M', '1054', '腰立辉', '2016-12-20', '2016-12-21', '8', '0', '腰立辉', '腰立辉', null, '2016-12-20 09:42:22');
 
 -- ----------------------------
 -- Table structure for `tp_system`
