@@ -1,15 +1,19 @@
 <layout name="layout" />
 <div class="row">  
   <div class="col-md-9">
-  		<div class="panel panel-default">
+  		<div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title">
     	<{$arr.id|getPro=###}>
-    	<a href="__APP__/TAdmin/Program" type="button" class="btn btn-warning btn-xs pull-right">返回</a>
+    	<div class="btn-group pull-right">
+    		<a data-toggle="modal" href="#tianjstage" class=" btn btn-info btn-xs" >
+    		<span class="glyphicon glyphicon-plus"> 添加</span></a>
+    		<a href="__APP__/TAdmin/Program" type="button" class="btn btn-warning btn-xs">返回</a>
+    	</div>
     </h3>
   </div>
   <div class="panel-body table-responsive">
-   <div class="well well-sm">	    	
+   <div class="well">	    	
 	 	<{$arr.retype}>:<{$arr.relevel}>，产品经理：<{$arr.pm}><br>
 		<{$arr.profile}>
    </div>	  
@@ -24,11 +28,6 @@
 		  <li role="presentation"><a href="__APP__/TAdmin/Element/library/proid/<{$arr.id}>">控件库</a></li>
 	</ul>
 	<div class="panel panel-default">
-		  <!-- Default panel contents -->
-		  <div class="panel-heading"><{$arr.id|getProNo=###}>测试里程碑
-		     <a data-toggle="modal" href="#tianjstage" class=" btn btn-info btn-xs  pull-right" ><span class="glyphicon glyphicon-plus"> 添加</span></a>
-		  </div>
-		  <!-- List group -->
 		  <ul class="list-group">
 		   <form action="__URL__/order" method="post" >
 		         <volist name='stages' id='st' empty="没有数据">
@@ -58,12 +57,10 @@
 		        <input type="submit" name="do_submit" value="批量排序" class="btn">
 		    </form>
 		  </ul>
-		</div>
-	
     </div>
   </div>
   
-  
+  </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm">
   	<div class="panel panel-default">
@@ -114,11 +111,13 @@
 					  <select name="stage" class="form-control">
                          <option value="编写测试计划">编写测试计划</option>
                          <option value="编写测试用例">编写测试用例</option>
-                         <option value="功能验证">功能验证</option>
+                         <option value="研发冒烟测试">研发冒烟测试</option>
+                         <option value="产品冒烟测试">产品冒烟测试</option>
                          <option value="第一轮测试">第一轮测试</option>
                          <option value="第二轮测试">第二轮测试</option>
                          <option value="第三轮测试">第三轮测试</option>
                          <option value="第四轮测试">第四轮测试</option>
+                         <option value="仿真环境测试">仿真环境测试</option>
                          <option value="线上验证测试">线上验证测试</option>
                        </select>
 					</div>

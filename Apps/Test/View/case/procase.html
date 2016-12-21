@@ -26,26 +26,17 @@
 		  <li role="presentation"><a href="__APP__/Test/Rules/prorules/proid/<{$arr.id}>">本期需求<span class="badge">
 		  <{$arr.id|countPRules=###}></span></a></li>		  
 		</ul>
-		<table class="table table-striped table-bordered table-hover table-condensed ">
-          <tr >          		
-                <th width=15%  bgcolor="#ccc">功能点</th>
-                <th width=10%  bgcolor="#ccc">意图 </th>
-                <th width=10%  bgcolor="#ccc">预期</th>                
-                <th width=10%  bgcolor="#ccc">评审建议</th>				                        	
-         </tr>
-         <volist name='data' id='vo' empty="没有数据">
-		 <tr>
-            <td align="left" ><{$vo.id}>.<{$vo.path}>-<{$vo.func}></td>
-            <td align="left" ><{$vo.sn}>.<{$vo.main}><span class="badge"><{$vo.state}></span></td>
-            <td align="left" ><{$vo.expected}></td>
-            <form action="__URL__/update" method="post" >
-               <input type="hidden" name="id" value="vo" />           
-            <td align="left" ><textarea rows="2" cols="30" name="remarks" ><{$vo.remarks}></textarea>
-            <button>保存</button></form>
-            </td>                        			                  
-        </tr>
-       </volist>
-	</table>				
+			
+		<ul class="list-group">
+		 <volist name='data' id='vo' empty="没有数据">
+			  <li class="list-group-item">
+			  <{$vo.id}>.<{$vo.system}>-<{$vo.path}>-<{$vo.func}>
+			  ,<b>意图 :</b><{$vo.sn}>.<{$vo.main}>
+			  ,<b>预期:</b><{$vo.expected}>
+			  <span class="badge"><{$vo.state}></span>
+			  </li>
+		 </volist> 
+		</ul>			
    </div>
 </div>
 

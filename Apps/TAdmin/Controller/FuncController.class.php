@@ -11,19 +11,19 @@ class FuncController extends CommonController{
         $m=D('path');
         $arr=$m->find($pathid);
         $this->assign("arr",$arr);
-        
+         
         $where['sysid']=$arr['sysid'];
         $where['state']="正常";        
         $data=$m->where($where)->order("sn,id")->select();
         $this->assign("data",$data);
         
-        /* 实例化模型*/
         $m= D("func");
-        $where['pathid']=$pathid;        
-        $funcs=$m->where($where)->order("sn")->select();
+        $map['pathid']=$pathid;
+        $funcs=$m->where($map)->order("sn")->select();
         $this->assign("funcs",$funcs);
+        
         /* 添加*/
-        $count=$m->where($where)->count()+1;
+        $count=$m->where($map)->count()+1;
         $this->assign("c",$count);       
         $this -> assign("state", formselect());
         $this -> assign("fproid", proselect($proid,"fproid"));

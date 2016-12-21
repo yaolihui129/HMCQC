@@ -490,7 +490,7 @@ function getQueue($id){
     $arr=$m->where($where)->select();
     foreach ($arr as $ar){
        $str.='<li class="list-group-item">'
-            . $ar['sn'].".".$ar['tester']."【".$ar['type']."】"
+            . $ar['sn'].".【".$ar['type'].'】'.$ar['tester']
             .'<span class="badge">场景'.countExescene($ar['id']).'</span></li>';
     };
         

@@ -1,43 +1,40 @@
  <layout name="layout" />
  <div class="row"> 
   <div class="col-md-9">
-  <h2>规则 <span class="pull-right">当前：<{$_SESSION['proid']|getProNo=###}></span></h2>
-  	<div class="panel panel-default">
-	  <!-- Default panel contents -->
-	  <div class="panel-heading">
-	      <{$arr.sn}>.<{$arr.id|getSPFunc=###}>
-	     <a data-toggle="modal" href="#tianjrule" class=" btn btn-info btn-xs pull-right" ><span class="glyphicon glyphicon-plus"> 添加</span></a>
-	  </div>  
-	  <!-- List group -->
+  <h2><{$_SESSION['proid']|getProNo=###}>规则 
+  	<a data-toggle="modal" href="#tianjrule" class=" btn btn-info btn-xs pull-right" >
+  	<span class="glyphicon glyphicon-plus">添加</span></a> 
+  </h2>
+  	<div class="panel panel-info">
+	  <div class="panel-heading"><{$arr.sn}>.<{$arr.id|getSPFunc=###}>	     </div>  
 	  <ul class="list-group">
 	   <form action="__URL__/order" method="post" >
 	         <volist name='rules' id='rule' empty="没有规则">
 	            <li class="list-group-item">
-	            <span>
-	            <div class="well well-sm">
-	                <input type="text" name="sn[<{$rule.id}>]" value="<{$rule.sn}>"  class="input40"/>
-	                
+	            <span>	            
+	                <input type="text" name="sn[<{$rule.id}>]" value="<{$rule.sn}>"  class="input40"/>	                
 	                <switch name="rule.state">
 			          <case value="待确认"><b> <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)</b></case>
 			          <case value="作废"><s> <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)</s></case>
 			          <default /> <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)
-			      	</switch>
+			      	</switch>	                
+	                <span class="badge"><{$rule.source}></span><br>更新时间：  
+		         	<span class="badge"><{$rule.updatetime}></span>
 	                
-	                <span class="badge"><{$rule.source}></span>
 	                <div class="btn-group pull-right">
-		               <a href="__URL__/mod/id/<{$rule.id}>/funcid/<{$arr.id}>" type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-edit"> 修改</span></a>
-		               <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
+		               <a href="__URL__/mod/id/<{$rule.id}>/funcid/<{$arr.id}>" type="button" class="btn btn-info btn-xs">
+		               <span class="glyphicon glyphicon-edit">修改</span></a>
+		               <a href="__URL__/mod/id/<{$rule.id}>" type="button" class="btn btn-danger btn-xs">
+		               <span class="glyphicon glyphicon-remove">作废</span></a>
+		               <!-- <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
 			               <span class="caret"></span>
 			               <span class="sr-only">Toggle Dropdown</span>
 		               </button>
 		               <ul class="dropdown-menu" role="menu">		                  		                  
-		                  <li><a href="__URL__/del/id/<{$rule.id}>"  onclick="return confirm('你确定要删除规则：<{$rule.rules}>？')"><span class="glyphicon glyphicon-remove"> 删除</span></a></li>
-		               </ul>
-		            </div>
-		         </div> 最后更新时间：  
-		         <{$rule.updatetime}>
-	                
-	                
+		                  <li><a href="__URL__/del/id/<{$rule.id}>"  onclick="return confirm('你确定要删除规则：<{$rule.rules}>？')">
+		                  <span class="glyphicon glyphicon-remove"> 删除</span></a></li>
+		               </ul> -->
+		            </div>		         	                	                
 	            </span>
 	            </li>
 	        </volist>
@@ -48,9 +45,9 @@
     
   </div>
   <div class="col-md-3 hidden-xs">
-  	<div class="panel panel-default">
+  	<div class="panel panel-primary">
 	  <div class="panel-heading">
-	    <h3 class="panel-title"><b>路径：</b><{$arr.pathid|getPath=###}></h3>
+	    <h3 class="panel-title"><{$arr.pathid|getPath=###}></h3>
 	  </div>
 	  <ul class="list-group">
 	    <volist name='data' id='vo' empty="没有数据"> 			

@@ -32,18 +32,17 @@
 				<div class="panel-heading" role="tab" id="heading<{$st.id}>">
 					<h4 class="panel-title">
 					    <a data-toggle="collapse" data-parent="#accordion" href="#<{$st.id}>" aria-expanded="true" aria-controls="<{$st.id}>">
-					        <{$st.sn}>.<{$st.stage}>:<{$st.state}> 
-					        <span class="pull-right"><{$st.document}></span>
+					        <{$st.sn}>.<{$st.stage}>(<{$st.end}>完成)
+					        <span class="badge pull-right"><{$st.state}> </span>
 					     </a>
 					  </h4>
 				</div>
 				<div id="<{$st.id}>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<{$st.id}>">
-					<div class="panel-body">						        
-						 <{$st.moder}>&nbsp;更新于:<{$st.updatetime}><br>
-						 <div class="well well-sm"><{$st.end}>完成
-							<ul class="list-group"><{$st.id|getQueue=###}></ul>
-						 </div>
-					 </div>
+											        
+						 <span class="pull-right"><{$st.moder}>&nbsp;更新于:<{$st.updatetime}></span><br>
+						 <ul class="list-group"><{$st.id|getQueue=###}></ul>
+						 
+					
 				</div>
   			 </div>                      
            </volist>

@@ -17,6 +17,10 @@ public function index(){
     	 $cases=$m->where($where)->order('sn,id')->select();
 	     $this->assign('cases',$cases);
 	     
+	     $m=D('rules');
+	     $rules=$m->where($where)->order('sn,id')->select();
+	     $this->assign('rules',$rules);
+	     
 	     /* 添加*/
 	     $count=$m->where($where)->count()+1;
 	     $this->assign("c",$count);
@@ -59,7 +63,11 @@ public function index(){
         
         $where['funcid']=$case['funcid'];
         $data=$m->where($where)->select();
-        $this->assign('data',$data);        
+        $this->assign('data',$data); 
+        
+        $m=D('rules');
+        $rules=$m->where($where)->order('sn,id')->select();
+        $this->assign('rules',$rules);
         
         
         $this -> assign("state", formselect($case['state']));

@@ -1,14 +1,13 @@
 <layout name="layout" />
-<div class="row">
-  
+<div class="row"> 
   <div class="col-md-9">
   		<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-    	<{$w.proid|getPro=###}>
-    	<a href="__APP__/TAdmin/Program" type="button" class="btn btn-warning btn-xs pull-right">返回</a>
-    </h3>
-  </div>
+		  <div class="panel-heading">
+		    <h3 class="panel-title">
+		    	<{$w.proid|getPro=###}>
+		    	<a href="__APP__/TAdmin/Program" type="button" class="btn btn-warning btn-xs pull-right">返回</a>
+		    </h3>
+		  </div>
   <div class="panel-body table-responsive">
    <div class="well well-sm">	    	
 	 	<{$arr.retype}>:<{$arr.relevel}>，产品经理：<{$arr.pm}><br>
@@ -29,8 +28,7 @@
           		<th width=3% align="center" bgcolor="#ccc">ID</th>
                 <th width=10% align="left" bgcolor="#ccc">路径</th>
                 <th width=7% align="left" bgcolor="#ccc">功能</th>
-                <th width=7% align="left"  bgcolor="#ccc">意图 </th>
-                <th width=7% align="left"  bgcolor="#ccc">评审建议 </th>
+                <th width=7% align="left"  bgcolor="#ccc">意图 </th>               
                 <th width=3% align="center" bgcolor="#ccc">状态</th>
                 <th width=10% align="left"  bgcolor="#ccc">预期</th>				
                 <th width=5% align="center" bgcolor="#ccc">操作 </th>         	
@@ -42,8 +40,7 @@
             <td align="left" ><{$case.func}></td>
             <form action="__URL__/update" method="post" >
                <input type="hidden" name="id" value="<{$case.id}>" />
-            <td align="left" ><textarea rows="2" cols="30" name="main" ><{$case.main}></textarea></td>
-            <td align="left" ><textarea rows="2" cols="30" name="remarks" ><{$case.remarks}></textarea></td>
+            <td align="left" ><textarea rows="2" cols="30" name="main" ><{$case.main}></textarea></td>            
             <td align="center" ><{$case.state}></td>
             <td align="left" ><textarea rows="2" cols="30" name="expected"><{$case.expected}></textarea></td>
 			<td align="center" ><button>修改</button></form></td>                   
@@ -58,17 +55,14 @@
   </div>
   <div class="col-md-3 hidden-xs hidden-sm">
   	<div class="panel panel-default">
-	  <div class="panel-heading">
-	    <h3 class="panel-title"><{$_SESSION['testgp']}>组测试项目</h3>
-	  </div>
+	  <div class="panel-heading"><h3 class="panel-title"><{$_SESSION['testgp']}>组测试项目</h3></div>
 	  <ul class="list-group">
 	    <volist name='pros' id='pro' empty="没有数据">
 	    	<switch name="pro.id">
 				<case value="$arr.id"> <li class="list-group-item list-group-item-warning"></case>					   					    
 				<default /><li class="list-group-item ">
 			</switch>    			
-            <a href="__URL__/library/proid/<{$pro.id}>">
-            	<{$pro.end}>:<{$pro.program}><br>
+            <a href="__URL__/library/proid/<{$pro.id}>"><{$pro.end}>:<{$pro.program}><br>
             	<{$pro.prono}>:<{$pro.manager}>
             	<span class="badge"><{$pro.prost}></span>
             </a>
@@ -76,8 +70,7 @@
             </li>
         </volist>
       </ul>	  
-	</div>
-  	 
+	</div>  	 
   </div>
   
 </div> 
