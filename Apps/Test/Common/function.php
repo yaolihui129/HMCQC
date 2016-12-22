@@ -506,8 +506,8 @@ function getRules($id){
     $arr=$m->where($where)->order("sn,id")->select();
     foreach ($arr as $ar){
         $str.='<li class="list-group-item">'
-                . $ar['sn'].".".$ar['rules']."【".$ar['state']."】"
-                .'<span class="badge">'.$ar['source'].'</span>
+                . $ar['sn'].".".$ar['rules']."【".$ar['source']."】"
+                .'<span class="badge">'.$ar['state'].'</span>
                </li>';
     };
     if($arr){

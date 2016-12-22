@@ -9,7 +9,7 @@
     	<div class="btn-group pull-right">
     		<a data-toggle="modal" href="#tianjscene" class=" btn btn-info btn-xs" >
 		      <span class="glyphicon glyphicon-plus">添加  </span></a>
-    		<a href="__APP__/TAdmin/Program" type="button" class="btn btn-warning btn-xs">
+    		<a href="__APP__/TAdmin/Program" class="btn btn-warning btn-xs">
     		<span class="glyphicon glyphicon-arrow-left">返回</span></a>
     	</div>
     </h3>
@@ -40,14 +40,16 @@
 		
 		                <span class="badge"><{$st.state}>-<{$st.level}></span>
 		                <div class="btn-group pull-right">
-		                  <a target="_blank" href="__APP__/TAdmin/Scenefunc/index/sceneid/<{$st.id}>" class="btn btn-info btn-xs" type="button">功能<{$st.id|countSFunc=###}></a>
+		                  <a href="__URL__/copy/sceneid/<{$st.id}>/proid/<{$_SESSION['copy']}>"  class="btn btn-success btn-xs"
+		                  onclick="return confirm('你确定复制场景<{$st.id}>到：<{$_SESSION['copy']|getProNo=###}>吗？')">复制到：
+		                  <{$_SESSION['copy']|getProNo=###}></a>
+		                  <a href="__APP__/TAdmin/Scenefunc/index/sceneid/<{$st.id}>" class="btn btn-info btn-xs">场景功能
+		                  <{$st.id|countSFunc=###}></a>
 		                  <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
 		                    <span class="caret"></span>
 		                    <span class="sr-only">Toggle Dropdown</span>
 		                  </button>
-		                  <ul class="dropdown-menu" role="menu">
-		                  <li><a href="__URL__/copy/sceneid/<{$st.id}>/proid/<{$_SESSION['copy']}>" onclick="return confirm('你确定复制场景<{$st.id}>到：<{$_SESSION['copy']|getProNo=###}>吗？')">复制到：<{$_SESSION['copy']|getProNo=###}></a></li>
-		                    <li class="divider "></li>
+		                  <ul class="dropdown-menu" role="menu">		                    
 		                    <li><a href="__URL__/mod/id/<{$st.id}>" >修改</a></li>
 		                    <li class="divider "></li>
 		                    <li><a href="__URL__/del/id/<{$st.id}>"  onclick="return confirm('你确定要删除场景：<{$st.swho}>:<{$swhen}><{$st.risk}>？')" >删除</a></li>         
@@ -78,10 +80,9 @@
 			</switch> 
             <a href="__URL__/index/proid/<{$pro.id}>">
             	<{$pro.end}>:<{$pro.program}><br>
-            	<{$pro.prono}>:<{$pro.manager}>
-            	<span class="badge"><{$pro.prost}></span>
+            	<{$pro.prono}>:<{$pro.manager}>【<{$pro.id|countScene=###}>】
             </a>
-            <span class="badge"><{$pro.id|countScene=###}></span>
+            <span class="badge"><{$pro.prost}></span>
             </li>
         </volist>
       </ul>	  

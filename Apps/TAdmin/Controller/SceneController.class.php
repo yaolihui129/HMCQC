@@ -5,7 +5,8 @@ class SceneController extends CommonController {
     public function index(){
         /* 接收参数*/
         $proid=$_GET['proid'];
-        $proid=$_SESSION['proid'];
+        //给$_SESSION['proid']重新赋值
+        $_SESSION['proid']=$proid;
     	$gp=$_SESSION['testgp'];
     	$copy=$_GET['copy'];
          /* 实例化模型*/

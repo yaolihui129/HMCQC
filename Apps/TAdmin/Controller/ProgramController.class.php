@@ -28,7 +28,7 @@ class ProgramController extends CommonController {
         $arr['end']=date("Y-m-d",time()+7*24*3600);
         $arr['prono']="$testgp$d".".".($tol+1);
         $this->assign("p",$arr);
-        $this -> assign("prod", prodselect(14));
+        $this -> assign("prod", prodselect(4));
         $this -> assign("selectptype", formselect("简要","ptype","ptype"));
         $this -> assign("selectgp", formselect($testgp,"testgp","testgp"));
         $this -> assign("select", formselect("进行中","prost","prost"));

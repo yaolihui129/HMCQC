@@ -46,25 +46,15 @@
 		                  <span class="badge">历史:<{$st.id|countFResult=###}>/<{$st.id|countFQResult=###}></span>
 		              </a>
 		              <div class="btn-group pull-right">
-		                  <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">用例  
-		                       <span class="badge"> <{$st.id|countFCase=###}></span><span class="caret"></span>
-		                  </button>
-		                  <ul class="dropdown-menu " role="menu">
-		                      <li ><a target="_blank" href="__APP__/Test/Case/index/funcid/<{$st.id}>">用例
-		                      <span class="badge"> <{$st.id|countFCase=###}></span></a></li>
-		                      <li class="divider "></li>
-		                      <li ><a target="_blank" href="__APP__/Test/Rules/index/funcid/<{$st.id}>">规则
-		                      <span class="badge"> <{$st.id|countFRules=###}></span></a></li>
-		                  </ul>
+		              	<a target="_blank" href="__APP__/Test/Case/index/funcid/<{$st.id}>" class="btn btn-info btn-xs">用例
+		                <{$st.id|countFCase=###}></a>
+		                <a target="_blank" href="__APP__/Test/Rules/index/funcid/<{$st.id}>" class="btn btn-warning btn-xs">规则
+		                <{$st.id|countFRules=###}></a>		                  		                  
 		              </div>
 		            </h4>
 		        </div>
 		        <div id="<{$st.id}>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<{$st.id}>">
-		          <div class="panel-body">
-		             <div class="well well-sm">
-		              <ul class="list-group"><{$st.id|getTest=###}></ul>
-		             </div>
-		           </div>
+		         	<ul class="list-group"><{$st.id|getTest=###}></ul>		           		          
 		        </div>
 		     </div>
 		    </volist>      			

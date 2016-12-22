@@ -100,10 +100,9 @@ class FuncController extends CommonController{
          /* 接收参数*/
         $proid=$_GET['proid'];
         $_SESSION['proid']=$proid;
-    	$gp=$_SESSION['testgp'];
          /* 实例化模型*/
         $m= D("program");
-        $where=array("testgp"=>"$gp");
+        $where['testgp']=$_SESSION['testgp'];
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
         
@@ -112,16 +111,16 @@ class FuncController extends CommonController{
 
         /* 实例化模型*/
         $s = D("prosys");
-        $where=array("tp_prosys.proid"=>"$proid");
-        $data=$s->where($where)
+        $map['tp_prosys.proid']=$proid;
+        $map['tp_path.pstate']='正常';
+        
+        $data=$s->where($map)
         ->join('tp_system ON tp_prosys.sysid =tp_system.id')
         ->join('tp_path ON tp_system.id = tp_path.sysid')
         ->join('tp_func ON tp_path.id = tp_func.pathid')
         ->order("tp_system.sysno,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id")
         ->select();
         $this->assign("data",$data);
-        $where=array("proid"=>$proid);
-        $this->assign('w',$where);
 
         $this->display();
 
