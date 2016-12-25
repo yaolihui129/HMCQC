@@ -22,7 +22,24 @@ class IndexController extends Controller {
         $m=D('ad');
         $where['prodid']=8;
         $pic=$m->where($where)->order('updateTime desc')->select();
-        $this->assign('pic',$pic);
+        $this->assign('pic',$pic);       
+        
+        $m=D('xl_service');
+        $map['cate']=1;
+        $arr1=$m->where($map)->order('sn,id')->limit(4)->select();
+        $this->assign('arr1',$arr1);
+        
+        $map['cate']=2;
+        $arr2=$m->where($map)->order('sn,id')->limit(4)->select();
+        $this->assign('arr2',$arr2);
+        
+        $map['cate']=5;
+        $arr5=$m->where($map)->order('sn,id')->limit(4)->select();
+        $this->assign('arr5',$arr5);
+        
+        $map['cate']=6;
+        $arr6=$m->where($map)->order('sn,id')->limit(4)->select();
+        $this->assign('arr6',$arr6);             
                 
         $this->display();
         

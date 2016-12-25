@@ -1,7 +1,5 @@
 <?php
 namespace Admin\Controller;
-use TAdmin\Controller\FuncController;
-
 class AdController extends CommonController {
     public function index(){
         $m=D('ad');

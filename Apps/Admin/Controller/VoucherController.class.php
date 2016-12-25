@@ -1,18 +1,17 @@
 <?php
-namespace ASAdmin\Controller;
+namespace Admin\Controller;
 class VoucherController extends CommonController {
-   public function index(){
-
-        $m=D('voucher');
+    public function index(){
+        $m=D('xl_voucher');
         $arr=$m->order('end desc')->select();
         $this->assign('arr',$arr);
-
+        
         $this->display();
     }
-
+    
     public  function add(){
         $start=date("Y-m-d",time());
-        $m=M('voucher');
+        $m=M('xl_voucher');
         $arr=$m->order('end desc')->select();
         $this->assign('arr',$arr);
         $this->assign("remark",PublicController::editor("remark",$arr['desc']));
@@ -20,13 +19,13 @@ class VoucherController extends CommonController {
         $this->assign("end", PublicController::date("end"));
         $this->assign("state", PublicController::stateSelect("正常","state","state"));
         $this->assign("voucher", PublicController::stateSelect("抽奖","voucher","voucher"));
-
+    
         $this->display();
     }
-
+    
     public function insert(){
-
-        $m=D('voucher');
+    
+        $m=D('xl_voucher');
         $_POST['adder']=$_SESSION['realname'];
         $_POST['moder']=$_SESSION['realname'];
         $_POST['createTime']=date("Y-m-d H:i:s",time());
@@ -50,8 +49,8 @@ class VoucherController extends CommonController {
             }
             if($last){
                 $where=array("voucherid"=>$lastId,"state"=>'新建');
-
-
+    
+    
                 $set['state']='设奖';
                 $set['moder']=$_SESSION['realname'];
                 //设置特等奖
@@ -90,7 +89,7 @@ class VoucherController extends CommonController {
                     $set['code']=rand(100000, 999999);
                     $isSet=$m->save($set);
                 }
-
+    
                 //设置三等奖
                 $set['result']='3:三等奖';
                 for ($i=0;$i<$_POST['third'];$i++){
@@ -116,7 +115,7 @@ class VoucherController extends CommonController {
                     $isSet=$m->save($set);
                 }
                 if ($isSet){
-                       $this->redirect('/Admin/Tickets/index');
+                    $this->redirect('/Admin/Tickets/index');
                 }else{
                     $this->error("失败！");
                 }
@@ -127,15 +126,15 @@ class VoucherController extends CommonController {
             $this->error('活动创建失败');
         }
     }
-
+    
     public function mod(){
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('voucher');
+        $m=M('xl_voucher');
         $arr=$m->order('end desc')->select();
         $this->assign('arr',$arr);
-
+    
         $data=$m->find($id);
         $this->assign('data',$data);
         $this->assign("remark",PublicController::editor("remark",$data['remark']));
@@ -143,14 +142,14 @@ class VoucherController extends CommonController {
         $this->assign("end", PublicController::date("end",$data['end']));
         $this->assign("state", PublicController::stateSelect($data['state'],"state","state"));
         $this->assign("voucher", PublicController::stateSelect($data['voucher'],"voucher","voucher"));
-
+    
         $this->display();
     }
-
+    
     public function update(){
         /* 实例化模型*/
-        $db=D('voucher');
-
+        $db=D('xl_voucher');
+    
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
@@ -158,14 +157,14 @@ class VoucherController extends CommonController {
             $this->error("修改失败！");
         }
     }
-
-
-
+    
+    
+    
     public function del(){
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('voucher');
+        $m=M('xl_voucher');
         $count =$m->delete($id);
         if ($count>0) {
             $this->success('删除成功');
@@ -173,4 +172,7 @@ class VoucherController extends CommonController {
             $this->error('删除失败');
         }
     }
+    
+    
+    
 }
