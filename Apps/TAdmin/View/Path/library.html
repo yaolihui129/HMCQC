@@ -37,9 +37,9 @@
              		 	<a data-toggle="collapse" data-parent="#accordion" href="#<{$st.id}>" aria-expanded="true" aria-controls="<{$st.id}>">
                   		<{$st.id}>:<{$st.system}>-<{$st.path}></a>
                   		<switch name="st.id|countFunc=###">
-			          		<case value="0"><span class="badge pull-right"><{$st.id|countFunc=###}></span></case>			          
+			          		<case value="0"><span class="badge"><{$st.id|countFunc=###}></span></case>			          
 			         		 <default /><a href="__URL__/jion/pathid/<{$st.id}>/stagetesterid/<{$stagetesterid}>" 
-                    		type="button" class="btn btn-info btn-xs pull-right">加入
+                    		type="button" class="btn btn-info btn-xs">加入
                     		<span class="badge"><{$st.id|countFunc=###}></span></a>
 			      		</switch>               
            			 </h4>
