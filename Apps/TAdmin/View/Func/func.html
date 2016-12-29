@@ -33,7 +33,7 @@
 				<case value="作废"><tr class="danger"></case>
 				<default /><tr class="info">
 			</switch>
-                <td align="left" ><{$st.id}>.<{$st.system}>-<{$st.path}>【<{$st.pstate}>】-<b><{$st.func}></b>【<{$st.state}>】
+                <td align="left" ><{$st.id}>.<{$st.system}>-<{$st.path}>-<b><{$st.func}></b>【<{$st.state}>】
                    <div class="btn-group pull-right">
                    		<a href="__URL__/modproid/id/<{$st.id}>/fproid/<{$w.proid}>  " type="button" class="btn btn-warning btn-sm"
                    		onclick="return confirm('你确定要变更该功能的所属项目吗？')" ><{$st.fproid|getProNo=###}>
