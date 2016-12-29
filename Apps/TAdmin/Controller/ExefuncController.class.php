@@ -6,9 +6,18 @@ public function index(){
     /* 接收参数*/    
     $id=$_GET['id'];
     /* 实例化模型*/
+    $m=D('stage');
+    $map['tp_exescene.id']=$id;
+    $pro=$m->where($map)
+        ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
+        ->join('tp_exescene ON tp_exescene.stagetesterid =tp_stagetester.id')
+        ->find();
+    $_SESSION['proid']=$pro['proid'];
+    
     $m=D('exescene');
     $arr=$m->find($id);  
     $this->assign('arr',$arr);
+    
     
     $where=array("stagetesterid"=>$arr['stagetesterid'],"type"=>$arr['type']);
     $data=$m->where($where)->order("sn")->select();
@@ -65,20 +74,28 @@ public function update(){
     $data=$db->find($_POST['id']);
     $funcid=$data['funcid'];
     $_POST['moder']=$_SESSION['realname'];
-    if ($db->save($_POST)){
-        $arr['id']=$funcid;
-        $arr['result']='失败';
-        $arr['moder']=$_SESSION['realname'];
-        $arr['updateTime']=date("Y-m-d H:i:s",time());
-        $db=M('func');
-        if ($db->save($arr)){
-            $this->success("成功！");
+    if ($_POST['remark']){
+        if ($db->save($_POST)){
+            $arr['id']=$funcid;
+            $arr['result']='失败';
+            $arr['moder']=$_SESSION['realname'];
+            $arr['updateTime']=date("Y-m-d H:i:s",time());
+            $db=M('func');
+            if ($db->save($arr)){
+                $this->success("成功！");
+            }else{
+                $this->error("失败！");
+            }
         }else{
             $this->error("失败！");
         }
-    }else{
-        $this->error("失败！");
+        
+    }else {
+        $this->error("必须填写失败描述！");
     }
+    
+    
+        
 }
 
 
