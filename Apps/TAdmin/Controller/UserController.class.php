@@ -89,7 +89,7 @@ class UserController extends CommonController {
         $upload = new \Think\Upload();// 实例化上传类
         $upload->maxSize   =     3145728 ;// 设置附件上传大小
         $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-        $upload->rootPath =  './Public/Upload/';// 设置附件上传目录
+        $upload->rootPath =  './Upload/';// 设置附件上传目录
         $upload->savePath  = '/Test/user/'; // 设置附件上传目录
     
         $info  =   $upload->upload();
@@ -103,8 +103,8 @@ class UserController extends CommonController {
             $db=D('user');
             if ($db->save($_POST)){
                 $image = new \Think\Image();
-                $image->open('./Public/Upload/'.$info['img']['savepath'].$info['img']['savename']);
-                $image->thumb(245, 160,\Think\Image::IMAGE_THUMB_CENTER)->save('./Public/Upload/'.$info['img']['savepath'].'/thumb_'.$info['img']['savename']);
+                $image->open('./Upload/'.$info['img']['savepath'].$info['img']['savename']);
+                $image->thumb(245, 160,\Think\Image::IMAGE_THUMB_CENTER)->save('./Upload/'.$info['img']['savepath'].$info['img']['savename']);
                 $this->success("上传成功！");
             }else{
                 $this->error("上传失败！");
