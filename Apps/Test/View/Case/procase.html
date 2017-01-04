@@ -1,0 +1,43 @@
+<layout name="layout" />
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><{$arr.id|getPro=###}>
+    	<a href="__APP__/Test" type="button" class="btn btn-warning btn-xs pull-right">返回</a>
+    </h3>
+  </div>
+  <div class="panel-body table-responsive">
+  	 <{$arr.prono}>:<{$arr.program}><br>
+	 <{$arr.retype}>:<{$arr.relevel}>，产品经理：<{$arr.pm}><br>
+	 <div class="well well-sm"><{$arr.profile}></div>
+  
+    	<ul class="nav nav-tabs" role="tablist">
+		  <li role="presentation" ><a href="__APP__/Test/Stage/index/proid/<{$arr.id}>">里程碑
+		  	<span class="badge"><{$arr.id|countStage=###}></span></a>
+		  </li>
+		  <li role="presentation"><a href="__APP__/Test/Risk/index/proid/<{$arr.id}>">风险
+		  <span class="badge"><{$arr.id|countRisk=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/Test/Func/func/proid/<{$arr.id}>">功能点</a></li>
+		  <li role="presentation" ><a href="__APP__/Test/Func/range/proid/<{$arr.id}>">范围
+		  <span class="badge"><{$arr.id|countRange=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/Test/Scene/index/proid/<{$arr.id}>">场景
+		  <span class="badge"><{$arr.id|countScene=###}></span></a></li>
+		  <li role="presentation" class="active"><a href="__APP__/Test/Case/procase/proid/<{$arr.id}>">用例
+		  <span class="badge"><{$arr.id|countCase=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/Test/Rules/prorules/proid/<{$arr.id}>">本期需求<span class="badge">
+		  <{$arr.id|countPRules=###}></span></a></li>		  
+		</ul>
+			
+		<ul class="list-group">
+		 <volist name='data' id='vo' empty="没有数据">
+			  <li class="list-group-item">
+			  <{$vo.id}>.<{$vo.system}>-<{$vo.path}>-<{$vo.func}>
+			  ,<b>意图 :</b><{$vo.sn}>.<{$vo.main}>
+			  ,<b>预期:</b><{$vo.expected}>
+			  <span class="badge"><{$vo.state}></span>
+			  </li>
+		 </volist> 
+		</ul>			
+   </div>
+</div>
+
+      

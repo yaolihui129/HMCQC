@@ -5,7 +5,7 @@ return array(
     'TMPL_PARSE_STRING'=>array(
         '__CSS__'=>__ROOT__.'/Public/css',
         '__JS__'=>__ROOT__.'/Public/js/',
-        '__IMAGES__'=>__ROOT__.'/Public/images/test',
-        '__UPLOAD__'=>__ROOT__.'/Public/Upload/test'
+        '__IMAGES__'=>__ROOT__.'/Public/images/Test',
+        '__UPLOAD__'=>__ROOT__.'/Upload/Test'
     ),
 );
