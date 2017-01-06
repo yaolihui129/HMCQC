@@ -36,7 +36,7 @@ class FuncController extends CommonController{
         $m=D('func');
         $_POST['adder']=$_SESSION['realname'];
         $_POST['moder']=$_SESSION['realname'];
-        $_POST['createTime']=date("Y-m-d H:i:s",time());
+        $_POST['createTime']=date('Y-m-d H:i:s',time());
         if(!$m->create()){
             $this->error($m->getError());
         }
@@ -221,6 +221,26 @@ class FuncController extends CommonController{
             $this->error("失败！");
         }
     
+    }
+    
+    public function resetAll(){
+        /* 接收参数*/
+        $proid=$_GET['proid'];
+        /* 实例化模型*/
+        $db=D('func');
+        $where['fproid']=$proid;
+        $where['result']='失败';
+        $arr=$db->where($where)->select();
+        if ($arr){
+            foreach ($arr as $a){
+                $a['result']='未测试';
+                $a['moder']=$_SESSION['realname'];
+                $db->save($a);
+            }           
+        }else {
+            $this->error("无需重置！");
+        }
+        
     }
     
     public function reset(){
