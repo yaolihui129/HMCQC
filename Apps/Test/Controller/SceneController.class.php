@@ -11,8 +11,8 @@ class SceneController extends Controller {
         $this->assign('arr',$arr);
         
         $m = D("scene");
-        $where=array("proid"=>$proid);
-        $data=$m->where($where)->select();
+        $where['proid']=$proid;
+        $data=$m->where($where)->order('sn,id')->select();
         $this->assign("data",$data);
 
         $this->display();

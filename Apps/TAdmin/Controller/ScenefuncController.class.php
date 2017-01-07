@@ -8,7 +8,7 @@ class ScenefuncController extends CommonController {
        /* 实例化模型*/
         $m = D("scene");
         $where['proid']=$_SESSION['proid'];       
-        $data=$m->where($where)->select();
+        $data=$m->where($where)->order('sn,id')->select();
         $this->assign("data",$data);
         
         $arr=$m->find($sceneid);
