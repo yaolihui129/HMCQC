@@ -236,7 +236,8 @@ class FuncController extends CommonController{
                 $a['result']='未测试';
                 $a['moder']=$_SESSION['realname'];
                 $db->save($a);
-            }           
+            }  
+            $this->success("重置成功！");
         }else {
             $this->error("无需重置！");
         }
