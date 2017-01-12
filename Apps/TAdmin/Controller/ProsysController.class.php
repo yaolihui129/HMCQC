@@ -8,7 +8,7 @@ class ProsysController extends CommonController {
         $_SESSION['proid']=$proid;
         $gp=$_SESSION['testgp'];
         /* 实例化模型*/
-        $m= D("program");
+        $m= D("project");
         $where=array("testgp"=>"$gp");
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
@@ -41,8 +41,6 @@ class ProsysController extends CommonController {
         $_GET['adder']=$_SESSION['realname'];
         $_GET['moder']=$_SESSION['realname'];
         $_GET['createTime']=date("Y-m-d H:i:s",time());
-//         dump($_GET);
-//         exit();
         if(!$m->create($_GET)){
             $this->error($m->getError());
         }

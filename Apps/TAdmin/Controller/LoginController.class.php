@@ -9,8 +9,9 @@ class LoginController extends Controller {
 
     public function login(){
         $user = D('user')
-        ->where(array('username'=>$_POST['username'],'state'=>'在职','password'=>md5($_POST['password'])))
-        ->field("id,realname,username,usergp,phone,email")
+        //->where(array('username'=>$_POST['username'],'state'=>'在职','password'=>md5($_POST['password'])))
+        ->field("id,dept,role,realname,account,usergp,phone,email,deleted,path,img")
+        ->where(array('account'=>$_POST['username'],'password'=>md5($_POST['password']))) 
         ->find();
         
         if ($user){
@@ -20,7 +21,7 @@ class LoginController extends Controller {
             $_SESSION['testgp']=$user['usergp'];
             dump($user);
             $where['userid']=$user['id'];
-            $arr = D('userprod')->where($where)->select();
+            $arr = D('tp_userprod')->where($where)->select();
             dump($arr);
             //判断跳转到那个后台
             $this->redirect('TAdmin/Program/index');
@@ -32,7 +33,7 @@ class LoginController extends Controller {
     }
 
     public function logout(){
-        $username =$_SESSION['username'];
+        $username =$_SESSION['realname'];
         $_SESSION = array();
 
         if (isset($_COOKIE[session_name()])) {

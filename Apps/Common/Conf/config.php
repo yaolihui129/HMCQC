@@ -13,12 +13,12 @@ return array(
     'DB_TYPE'=>'mysql',
 //     'DB_HOST'=>'192.168.21.10',
     'DB_HOST'=>'127.0.0.1',
-    'DB_NAME'=>'tptest',
+    'DB_NAME'=>'zentao',
     'DB_USER'=>'root',
     'DB_PWD'=>'root',
     'DB_PORT'=>'3306',
     
-    'DB_PREFIX'=>'tp_',
+    'DB_PREFIX'=>'zt_',
     'DB_CHARSET'=> 'utf8', // 字符集
 
 //     'DB_DEPLOY_TYPE'        =>  0, // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)

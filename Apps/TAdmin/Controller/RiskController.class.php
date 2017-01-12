@@ -8,7 +8,7 @@ class RiskController extends CommonController {
         $_SESSION['proid']=$proid;
     	$gp=$_SESSION['testgp'];
          /* 实例化模型*/
-        $m= D("program");
+        $m= D("project");
         $where=array("testgp"=>"$gp");
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
@@ -17,7 +17,7 @@ class RiskController extends CommonController {
         $this->assign("arr",$arr);
 
         /* 实例化模型*/
-        $m = D("risk");
+        $m = D("tp_risk");
         $where=array("proid"=>"$proid");
         $risks=$m->where($where)->select();
         $this->assign("risks",$risks);

@@ -4,7 +4,7 @@
 function selectgpuer($value="腰立辉",$testgp="Auto",$name="state"){
     $html = '<select name="'.$name.'" class="form-control">';
     $m =M('user');
-    $where=array("usergp"=>$testgp,"state"=>"在职");
+    $where=array("usergp"=>$testgp);
     //获取所有分类
     $users = $m->where($where)->select();
     foreach($users as $v) {
@@ -48,7 +48,7 @@ function prodselect($value=14) {
  */
 function proselect($value=1,$name=prono) {
     $html = '<select name="'.$name.'" class="form-control">';
-    $m =M('program');
+    $m =M('project');
     $where=array("testgp"=>$_SESSION['testgp']);
     //获取所有分类
     $cats = $m->where($where)->order("end desc")->select();
@@ -92,7 +92,7 @@ function sysselect($value=1) {
  */
 function getProNo($id){
     if ($id){
-        $m=M('program');
+        $m=M('project');
         $data=$m->find($id);
         //dump($data);
         return $data['prono'];
@@ -106,7 +106,7 @@ function getProNo($id){
  */
 function getPro($id){
     if ($id){
-        $m=M('program');
+        $m=M('project');
         $data=$m->find($id);
         //dump($data);
         $str=$data['prono'].$data['manager']."-".$data['program']."【".$data['prost']."】".$data['end'];
@@ -503,7 +503,7 @@ function countMTester($id){
  * 根据分组获取项目数
  */
 function countPro($testgp){
-    $m=M("program");
+    $m=M("project");
     $where=array("testgp"=>$testgp);
     $count=$m->where($where)->count();
     return $count;
