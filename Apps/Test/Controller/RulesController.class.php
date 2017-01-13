@@ -7,7 +7,7 @@ class RulesController extends Controller {
      /* 接收参数*/
      $funcid=$_GET['funcid'];
      /* 实例化模型*/
-     $m=D('func');
+     $m=D('tp_func');
      $arr=$m->find($funcid);
      $this->assign('arr',$arr);
 
@@ -15,7 +15,7 @@ class RulesController extends Controller {
      $data=$m->where($where)->order('sn,id')->select();
      $this->assign('data',$data);
         
-     $m=D('rules');
+     $m=D('tp_rules');
      $where['funcid']=$funcid;
      $rules=$m->where($where)->select();
      $this->assign('rules',$rules);
@@ -27,8 +27,8 @@ class RulesController extends Controller {
       $proid=$_GET['proid'];
       $_SESSION['proid']=$proid;
       /* 实例化模型*/
-      $m=D('program');
-      $arr=$m->find($proid);
+      $m=D('project');
+      $arr=$m->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order,prodid")->find($proid);
       $this->assign('arr',$arr);
       
       $m=M('system');

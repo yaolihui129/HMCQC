@@ -56,7 +56,7 @@ class ProgramController extends CommonController {
        /* 实例化模型*/
        $m=M('project');
         
-       $map['manager|prost|program|prono']=array('like','%'.$search.'%');
+       $map['QD|name|code']=array('like','%'.$search.'%');
         
        $arr=$m->where($map)->order("end desc")->select();
        $this->assign('arr',$arr);

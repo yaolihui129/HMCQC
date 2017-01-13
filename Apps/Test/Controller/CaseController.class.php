@@ -6,7 +6,7 @@ class CaseController extends Controller {
         /* 接收参数*/
          $funcid=$_GET['funcid'];
          /* 实例化模型*/
-         $m=D('func');
+         $m=D('tp_func');
          $arr=$m->find($funcid);
          $this->assign('arr',$arr);
          $where['pathid']=$arr['pathid'];
@@ -27,8 +27,8 @@ class CaseController extends Controller {
         /* 接收参数*/
         $proid=$_GET['proid'];
         /* 实例化模型*/
-        $m=D('program');
-        $arr=$m->find($proid);
+        $m=D('project');
+        $arr=$m->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order,prodid")->find($proid);
         $this->assign('arr',$arr);
         
         $m=M('system');
@@ -47,7 +47,7 @@ class CaseController extends Controller {
 
     public function update(){
         /* 实例化模型*/
-        $db=D('case');
+        $db=D('tp_case');
         if ($db->save($_POST)){
             $this->success("修改成功！");
         }else{

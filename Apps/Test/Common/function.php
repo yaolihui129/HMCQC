@@ -35,53 +35,13 @@ function prodselect($value=1) {
 }
 
 
-/**
- * 项目选择
- *
- * @param $value 选中值
- */
-function proselect($value=1,$name=prono) {
-    $html = '<select name="'.$name.'" class="inputselect">';
-    $m =M('program');
-    $where=array("testgp"=>$_SESSION['testgp']);
-    //获取所有分类
-    $cats = $m->where($where)->order("end desc")->select();
-    foreach($cats as $v) {
-        $selected = ($v['id']==$value) ? "selected" : "";
-        $html .= '<option '.$selected.' value="'.$v['id'].'">'.$v['prono'].'</option>';
-    }
 
-    $html .='<select>';
-
-    return $html;
-}
-
-
-/**
- * 系统选择
- *
- * @param $value 选中值
- */
-function sysselect($value=1) {
-    $html = '<select name="prodid" class="inputselect">';
-    $m =M('system');
-    //获取所有分类
-    $cats = $m->select();
-    foreach($cats as $v) {
-        $selected = ($v['id']==$value) ? "selected" : "";
-        $html .= '<option '.$selected.' value="'.$v['id'].'">'.$v['sysid'].'</option>';
-    }
-
-    $html .='<select>';
-
-    return $html;
-}
 /**
  * 根据id获取项目编号
  */
 function getProNo($id){
     if ($id){
-        $m=M('program');
+        $m=M('project');
         $data=$m->find($id);
 
         return $data['prono'];
@@ -95,10 +55,10 @@ function getProNo($id){
  */
 function getPro($id){
     if ($id){
-        $m=M('program');
+        $m=M('project');
         $data=$m->find($id);
 
-        $str=$data['prono'].$data['manager']."-".$data['program']."【".$data['prost']."】".$data['end'];
+        $str=$data['code'].$data['qd']."-".$data['name']."【".$data['status']."】".$data['end'];
 
         return $str;
     }else {
@@ -126,7 +86,7 @@ function getSystem($id){
  */
 function getStage($id){
     if ($id){
-        $m=M('stage');
+        $m=M('tp_stage');
         $data=$m->find($id);
 
         $str=$data['stage']."【".$data['state']."】";
@@ -141,7 +101,7 @@ function getStage($id){
  */
 function getScene($id){
     if ($id){
-        $m=M('scene');
+        $m=M('tp_scene');
         $data=$m->find($id);
         $str=$data['sn'].$data['swho']."-".$data['swhen']."-".$data['scene'];
         return $str;
@@ -155,7 +115,7 @@ function getScene($id){
  */
 function getPath($id){
     if ($id){
-        $m=M('path');
+        $m=M('tp_path');
         $data=$m->find($id);
         $str= $data['sn'].".".$data['path'];
         return $str;
@@ -169,7 +129,7 @@ function getPath($id){
  */
 function getFunc($id){
     if ($id){
-        $m=M('func');
+        $m=M('tp_func');
         $data=$m->find($id);
         return $data['func'];
     }else {
@@ -183,11 +143,11 @@ function getFunc($id){
 function countFResult($id){
     if ($id){
         $where=array("proid"=>$_SESSION['proid'],"tp_exefunc.funcid"=>$id,"tp_exefunc.result"=>'失败');
-        $m=M('stage');
+        $m=M('zt_stage');
         $data=$m ->where($where)
-        ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
-        ->join('tp_exescene ON tp_stagetester.id=tp_exescene.stagetesterid')
-        ->join('tp_exefunc ON tp_exescene.id=tp_exefunc.exesceneid')
+        ->join('zt_tp_stagetester ON zt_tp_stage.id =zt_tp_stagetester.stageid')
+        ->join('zt_tp_exescene ON zt_tp_stagetester.id=zt_tp_exescene.stagetesterid')
+        ->join('zt_tp_exefunc ON zt_tp_exescene.id=zt_tp_exefunc.exesceneid')
         ->count();
         return $data;
     }else {
@@ -200,12 +160,12 @@ function countFResult($id){
  */
 function countFQResult($id){
     if ($id){
-        $where=array("proid"=>$_SESSION['proid'],"tp_exefunc.funcid"=>$id);
-        $m=M('stage');
+        $where=array("proid"=>$_SESSION['proid'],"zt_tp_exefunc.funcid"=>$id);
+        $m=M('tp_stage');
         $data=$m ->where($where)
-        ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
-        ->join('tp_exescene ON tp_stagetester.id=tp_exescene.stagetesterid')
-        ->join('tp_exefunc ON tp_exescene.id=tp_exefunc.exesceneid')
+        ->join('zt_tp_stagetester ON zt_tp_stage.id =zt_tp_stagetester.stageid')
+        ->join('zt_tp_exescene ON zt_tp_stagetester.id=zt_tp_exescene.stagetesterid')
+        ->join('zt_tp_exefunc ON zt_tp_exescene.id=zt_tp_exefunc.exesceneid')
         ->count();
         return $data;
     }else {
@@ -219,7 +179,7 @@ function countFQResult($id){
  */
 function getFResult($id){
     if ($id){
-        $m=M('func');
+        $m=M('tp_func');
         $data=$m->find($id);
         return $data['result'];
     }else {
@@ -252,9 +212,9 @@ function getSPFunc($id){
  */
 function getSPath($id){
     if ($id){
-        $s = D("system");
-        $where=array("tp_path.id"=>$id);
-        $data=$s->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
+        $s = D("tp_system");
+        $where=array("zt_tp_path.id"=>$id);
+        $data=$s->join('inner JOIN zt_tp_path ON zt_tp_system.id = zt_tp_path.sysid')
         ->where($where)
         ->select();
 
@@ -270,7 +230,7 @@ function getSPath($id){
  */
 function getSceneFunc($id){
 
-        $m=D('scenefunc');
+        $m=D('tp_scenefunc');
         $where['sceneid']=$id;
         $arr=$m->where($where)->order('sn,id')->select();
         foreach ($arr as $ar){
@@ -288,7 +248,7 @@ function getSceneFunc($id){
  * 根据列队获取执行功能数
  */
 function countExeFunc($id){
-    $m=M("exefunc");
+    $m=M("tp_exefunc");
     $where=array("exesceneid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -299,7 +259,7 @@ function countExeFunc($id){
  * 根据项目获取里程碑数
  */
 function countStage($id){
-    $m=M("stage");
+    $m=M("tp_stage");
     $where=array("proid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -308,7 +268,7 @@ function countStage($id){
  * 根据项目获取风险数
  */
 function countRisk($id){
-    $m=M("risk");
+    $m=M("tp_risk");
     $where=array("proid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -317,7 +277,7 @@ function countRisk($id){
  * 根据项目获取需求规则数
  */
 function countRules($id){
-    $m=M("rules");
+    $m=M("tp_rules");
     $where=array("proid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -327,7 +287,7 @@ function countRules($id){
  * 根据项目获取系统数
  */
 function countProsys($id){
-    $m=M("prosys");
+    $m=M("tp_prosys");
     $where=array("proid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -338,7 +298,7 @@ function countProsys($id){
  */
 function countRange($id){        
     $m = D("system");
-    $where=array("tp_func.fproid"=>$id,"tp_func.state"=>'正常',"tp_path.pstate"=>'正常');
+    $where=array("zt_tp_func.fproid"=>$id,"zt_tp_func.state"=>'正常',"zt_tp_path.pstate"=>'正常');
     $count=$m->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
     ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
     ->where($where)->count();
@@ -349,7 +309,7 @@ function countRange($id){
  * 根据id获取场景数
  */
 function countScene($id){
-    $m=M("scene");
+    $m=M("tp_scene");
     $where=array("proid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -359,7 +319,7 @@ function countScene($id){
  * 根据id获取场景功能数
  */
 function countSFunc($id){
-    $m=M("scenefunc");
+    $m=M("tp_scenefunc");
     $where=array("sceneid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -369,7 +329,7 @@ function countSFunc($id){
  * 根据项目获取用例数
  */
 function countCase($id){
-    $m=M("case");
+    $m=M("tp_case");
     $where=array("fproid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -379,14 +339,14 @@ function countCase($id){
  * 根据阶段id获取测试人员
  */
 function countATester($id){
-    $m=M("stagetester");
+    $m=M("tp_stagetester");
     $where=array("stageid"=>$id,"type"=>"A");
     $count=$m->where($where)->count();
     return $count;
 }
 
 function countCTester($id){
-    $m=M("stagetester");
+    $m=M("tp_stagetester");
     $where=array("stageid"=>$id,"type"=>"C");
     $count=$m->where($where)->count();
     return $count;
@@ -394,7 +354,7 @@ function countCTester($id){
 
 
 function countMTester($id){
-    $m=M("stagetester");
+    $m=M("tp_stagetester");
     $where=array("stageid"=>$id,"type"=>"M");
     $count=$m->where($where)->count();
     return $count;
@@ -404,7 +364,7 @@ function countMTester($id){
  * 根据分组获取项目数
  */
 function countPro($testgp){
-    $m=M("program");
+    $m=M("project");
     $where=array("testgp"=>$testgp);
     $count=$m->where($where)->count();
     return $count;
@@ -414,7 +374,7 @@ function countPro($testgp){
  * 根据系统编号获取路径数
  */
 function countPath($id){
-    $m=M("path");
+    $m=M("tp_path");
     $where=array("sysid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -423,7 +383,7 @@ function countPath($id){
  * 根据路径获取功能数
  */
 function countFunc($id){
-    $m=M("func");
+    $m=M("tp_func");
     $where=array("pathid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -443,7 +403,7 @@ function countSys($id){
  * 根据功能获取路径数
  */
 function countFCase($id){
-    $m=M("case");
+    $m=M("tp_case");
     $where=array("funcid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -454,7 +414,7 @@ function countFCase($id){
  * 根据功能获取规则数
  */
 function countFRules($id){
-    $m=M("rules");
+    $m=M("tp_rules");
     $where=array("funcid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -465,7 +425,7 @@ function countFRules($id){
  * 根据项目编号获取规则数
  */
 function countPRules($proid){
-    $m=M("rules");
+    $m=M("tp_rules");
     $where=array("fproid"=>$proid);
     $count=$m->where($where)->count();
     return $count;
@@ -475,7 +435,7 @@ function countPRules($proid){
  * 执行场景数
  */
 function countExescene($id){
-    $m=M("exescene");
+    $m=M("tp_exescene");
     $where=array("stagetesterid"=>$id);
     $count=$m->where($where)->count();
     return $count;
@@ -485,7 +445,7 @@ function countExescene($id){
  * 根据stgeid获取列队数据
  */
 function getQueue($id){
-    $m=M("stagetester");
+    $m=M("tp_stagetester");
     $where['stageid']=$id;
     $arr=$m->where($where)->select();
     foreach ($arr as $ar){
@@ -501,7 +461,7 @@ function getQueue($id){
  * 根据funcid获取规则数据
  */
 function getRules($id){
-    $m=D("rules");
+    $m=D("tp_rules");
     $where['funcid']=$id;
     $arr=$m->where($where)->order("sn,id")->select();
     foreach ($arr as $ar){

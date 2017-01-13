@@ -6,11 +6,11 @@ class RiskController extends Controller {
         /* 接收参数*/
         $proid=$_GET['proid'];
         /* 实例化模型*/
-        $m=D('program');
-        $arr=$m->find($proid);
+        $m=D('project');
+        $arr=$m->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order,prodid")->find($proid);
         $this->assign('arr',$arr);
         
-        $m = D("risk");
+        $m = D("tp_risk");
         $where=array("proid"=>$proid);
         $data=$m->where($where)->select();
         $this->assign("data",$data);
