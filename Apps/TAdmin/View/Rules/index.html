@@ -19,7 +19,7 @@
 			          <default /> <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)
 			      	</switch>	                
 	                <span class="badge"><{$rule.source}></span><br>更新时间：  
-		         	<span class="badge"><{$rule.updatetime}></span>
+		         	<span class="badge"><{$rule.utime}></span>
 	                
 	                <div class="btn-group pull-right">
 		               <a href="__URL__/mod/id/<{$rule.id}>/funcid/<{$arr.id}>" type="button" class="btn btn-info btn-xs">
@@ -80,22 +80,16 @@
 	      	<input type="hidden" name="fproid" value="<{$_SESSION['proid']}>" />
 				<div class="form-group">
 					<label for="short" class="col-sm-2 control-label">顺序:</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="sn" value="<{$c}>" placeholder="顺序">
-					</div>
+					<div class="col-sm-10"><input type="text" class="form-control" name="sn" value="<{$c}>" placeholder="顺序"></div>
 				</div>
 				<div class="form-group">
 					<label for="product" class="col-sm-2 control-label">规则:</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="rules" value=" " placeholder="规则">
-					</div>
+					<div class="col-sm-10"><input type="text" class="form-control" name="rules" value=" " placeholder="规则"></div>
 				</div>
 				
 				<div class="form-group">
 					<label for="product" class="col-sm-2 control-label">来源:</label>
-					<div class="col-sm-10">
-						<input type="text" class="form-control" name="source" value="需求文档 " placeholder="来源">
-					</div>
+					<div class="col-sm-10"><input type="text" class="form-control" name="source" value="需求文档 " placeholder="来源"></div>
 				</div>
 				<div class="form-group">
 					<label for="state" class="col-sm-2 control-label">状态:</label>

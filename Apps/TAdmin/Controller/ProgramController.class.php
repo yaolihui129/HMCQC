@@ -1,6 +1,5 @@
 <?php
 namespace TAdmin\Controller;
-
 class ProgramController extends CommonController {
     public function index(){
         /* 接收参数*/
@@ -44,20 +43,16 @@ class ProgramController extends CommonController {
 
 
    public function search(){
-   
        /* 接收参数*/
        $testgp=$_POST['testgp'];
        $search=$_POST['search'];
        $m=M('dict');
        $where=array("type"=>"testgp","state"=>"正常");
        $data=$m->where($where)->select();
-       $this->assign('data',$data);
-   
+       $this->assign('data',$data);  
        /* 实例化模型*/
-       $m=M('project');
-        
-       $map['QD|name|code']=array('like','%'.$search.'%');
-        
+       $m=M('project');        
+       $map['name|code']=array('like','%'.$search.'%');       
        $arr=$m->where($map)->order("end desc")->select();
        $this->assign('arr',$arr);
    

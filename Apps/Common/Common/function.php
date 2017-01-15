@@ -1,7 +1,5 @@
 <?php
-/**
- * 根据id获取状态
- */
+// 根据id获取状态
 function getState($id){
     if ($id){
         $m=M('dict');
@@ -13,14 +11,10 @@ function getState($id){
     }
 }
 
-/**
- * 根据id获取活动信息
- *
- */
+//根据id获取活动信息
 function getVoucher($id){
     if ($id){
         $m=D('voucher');
-
         $arr=$m->find($id);
         $str=$arr['title']."：奖券【".$arr['total']."】特等奖【".$arr['specia']
         ."】，一等奖【".$arr['first']."】，二等奖【".$arr['second']
@@ -31,10 +25,8 @@ function getVoucher($id){
     }
 
 }
-/**
- * 根据id获取奖券数
- *
- */
+
+// 根据id获取奖券数
 function countTickets($id){
     if ($id){
         $m=D('tickets');
@@ -86,7 +78,6 @@ function GetLang(){
             $lang = "English";
         }
         return $lang;
-
     }else{return "获取浏览器语言失败！";}
 }
 
@@ -112,12 +103,9 @@ function GetOs(){
 }
 
 
-/*
- * 根据日期获取星期
- * 
- * 
- * */
-    function   wk($date) {
+
+//根据日期获取星期
+function   wk($date) {
         $datearr = explode("-",$date);     //将传来的时间使用“-”分割成数组
         $year = $datearr[0];       //获取年份
         $month = sprintf('%02d',$datearr[1]);  //获取月份
@@ -130,12 +118,9 @@ function GetOs(){
     }
     
     
-    /*
-     * 根据id 获取老师信息
-     *
-     *
-     * */
-    function getTeacher($id){
+
+//根据id 获取老师信息
+function getTeacher($id){
         if ($id){
             $m=M('customer');
             $where['isteacher']=1;
@@ -146,19 +131,16 @@ function GetOs(){
             return ;
         }
         
-    }
-    /*
-     * 根据dateid 获取排课信息
-     * */
-    
-    function getPlan($dateid){
+}
+
+//根据dateid 获取排课信息
+function getPlan($dateid){
         $m=D('plan');
         $where['tuoc_plan.dateid']=$dateid;
         $arr=$m
         ->where($where)
         ->join('tuoc_techclass ON tuoc_plan.techclassid =tuoc_techclass.id')
         ->select();
-//         dump($arr);
         if($arr){
         foreach ($arr as $ar){
         $str.='<li class="list-group-item">'
@@ -169,7 +151,7 @@ function GetOs(){
         }else{
             return "暂无课程";
         }
-    }
+}
     
     /*
      * 根据dateid 获取排课信息
@@ -200,4 +182,50 @@ function GetOs(){
         return $html;
     }  
     
+// 根据id获取项目信息
+    function getPro($id){
+        if ($id){
+            $m=M('project');
+            $data=$m->find($id);
+            $str=$data['code'].$data['qd']."-".$data['name']."【".$data['status']."】".$data['end'];    
+            return $str;
+        }else {
+            return ;
+        }
+    }   
+
+//根据id获取项目编号
+
+    function getProNo($id){
+        if ($id){
+            $m=M('project');
+            $data=$m->find($id);   
+            return $data['code'];
+        }else {
+            return ;
+        }
+    }
     
+    /**
+     * 获取路径数
+     */
+    function countPath($id){
+        $m=M("module");
+        $where=array("branch"=>$id);
+        $count=$m->where($where)->count();
+        return $count;
+    }
+    
+    /**
+     * 根据id获取里程碑信息
+     */
+    function getStage($id){
+        if ($id){
+            $m=M('tp_stage');
+            $data=$m->find($id);
+            $str=$data['sn'].'.'.$data['stage']."【".$data['state']."】";
+            return $str;
+        }else {
+            return ;
+        }
+    }

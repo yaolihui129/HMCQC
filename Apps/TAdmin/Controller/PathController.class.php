@@ -4,39 +4,27 @@ namespace TAdmin\Controller;
 class PathController extends CommonController {
     public function index(){
         /* 接收参数*/
-        $prodid=$_GET['prodid'];
         $proid=$_GET['proid'];
         $sysid=$_GET['sysid'];      
-        if($proid){           
-            $m=D('prosys');
-            $map['proid']=$proid;
-            $syses=$m->where($map)
-            ->join('tp_system ON tp_system.id = tp_prosys.sysid')
-            ->order("tp_system.sysno")->select();
-            $this->assign("data",$syses);        
-        }else{
-            /* 实例化模型*/
-            $m=D('system');
-            $where['prodid']=$prodid;
-            $where['state']="正常";
-            
-            $syses=$m->where($where)->order("sysno")->select();
-            $this->assign("data",$syses);
-        }
         /* 实例化模型*/
-        $m=D('system');
+        $m=D('tp_prosys');
+        $map['project']=$proid;
+        $data=$m->where($map)->join('zt_branch ON zt_branch.id = zt_tp_prosys.branch')->order("zt_branch.sysno")->select();
+        $this->assign("data",$data);            
+        /* 实例化模型*/
+        $m=D('branch');
         $arr=$m->find($sysid);
         $this->assign("arr",$arr);
          /* 实例化模型*/
-        $m=D('path');
-        $where['sysid']=$sysid;
+        $m=D('module');
+        $where['branch']=$sysid;
         $pathes= $m->where($where)->order("sn,id")->select();
         $this->assign("pathes",$pathes);
         $this->assign("proid",$proid);
         
         $count=$m->where($where)->count()+1;
         $this->assign("c",$count);
-        $this -> assign("pstate", formselect("","pstate"));
+        $this -> assign("state", formselect("","state"));
 
 	    $this->display();
     }
@@ -44,18 +32,17 @@ class PathController extends CommonController {
 
 
     public function insert(){
-        $m=D('path');
-        $_POST['adder']=$_SESSION['realname'];
+        /* 实例化模型*/
+        $m=D('module');
         $_POST['moder']=$_SESSION['realname'];
-        $_POST['createTime']=date("Y-m-d H:i:s",time());
         if(!$m->create()){
             $this->error($m->getError());
         }
         $lastId=$m->add();
         if($lastId){
-           $this->success("添加成功");
+           $this->success("成功");
         }else{
-            $this->error("添加失败");
+            $this->error("失败");
         }
 
     }
@@ -66,21 +53,24 @@ class PathController extends CommonController {
         $sysid=$_GET['sysid'];
         $id=$_GET['id'];
         /* 实例化模型*/
-        $m=D('path');
+        $m=D('module');
         $where=array("sysid"=>"$sysid");
-        $data= $m->where($where)->order("sn")->select();
+        $data= $m->where($where)
+        ->order("sn")
+        ->select();
         $this->assign("data",$data);
         //编辑内容
         $path=$m->find($id);
         $this->assign("path",$path);
-        $this -> assign("pstate", formselect($path['pstate'],"pstate"));      
+        $this -> assign("state", formselect($path['state'],"state"));      
         $this->assign("proid",$proid);
 
         $this->display();
     }
 
     public function update(){
-        $db=M('path');
+        /* 实例化模型*/
+        $db=M('module');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
@@ -91,17 +81,17 @@ class PathController extends CommonController {
     }
 
     public function order(){
-
-        $db = D('path');
+        /* 实例化模型*/
+        $db = D('module');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
            $num += $db->save(array("id"=>$id, "sn"=>$sn));
         }
         if($num) {
-            $this->success("重新排序成功!");
+            $this->success("排序成功!");
             
         }else{
-            $this->error("重新排序失败...");
+            $this->error("排序失败...");
         }
     }
 
@@ -110,16 +100,16 @@ class PathController extends CommonController {
         $stagetesterid=$_GET['stagetesterid'];
         $this->assign('stagetesterid',$stagetesterid);
         /* 实例化模型*/
-        $m=D('exescene');
+        $m=D('tp_exescene');
         $where=array("stagetesterid"=>$stagetesterid);
         $exe=$m->where($where)->order("sn")->select();
         $this->assign('exe',$exe);
-
-        $m= D("prosys");
-        $where=array("tp_prosys.proid"=>$_SESSION['proid'],"tp_path.pstate"=>"正常");
-        $data=$m->join('inner JOIN tp_system ON tp_system.id = tp_prosys.sysid')
-        ->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
-        ->where($where)->order("tp_system.sysno,tp_path.sn,tp_path.id")->select();
+        /* 实例化模型*/
+        $m= D("tp_prosys");
+        $where=array("zt_tp_prosys.project"=>$_SESSION['proid'],"zt_module.state"=>"正常");
+        $data=$m->join('inner JOIN zt_branch ON zt_branch.id = zt_tp_prosys.branch')
+        ->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
+        ->where($where)->order("zt_branch.sysno,zt_module.sn,zt_module.id")->select();
         $this->assign("data",$data);
 
         $this->display();
@@ -130,11 +120,10 @@ class PathController extends CommonController {
         $stagetesterid=$_GET['stagetesterid'];
         $pathid=$_GET['pathid'];
         /* 实例化模型*/
-        $m=D('stagetester');
+        $m=D('tp_stagetester');
         $stt=$m->find($stagetesterid); 
 
-
-        $m=D('path');
+        $m=D('module');
         $data=$m->find($pathid);
         $arr['pathid']=$data['id'];
         $arr['sceneid']=0;
@@ -146,9 +135,7 @@ class PathController extends CommonController {
         $arr['scene']=getSPath($data['id']);
         $arr['flow']='“'.$arr['scene'].'“下所有功能点';
         $arr['results']='未测试';
-        $arr['adder']=$_SESSION['realname'];
         $arr['moder']=$_SESSION['realname'];
-        $arr['createTime']=date("Y-m-d H:i:s",time());
 
         $m=D('exescene');               
         $where=array("stagetesterid"=>$stagetesterid,"type"=>$stt['type']);
@@ -168,9 +155,7 @@ class PathController extends CommonController {
         foreach ($funcs as $a){
             $a['path']=$arr['scene'];
             $a['exesceneid']=$lastId;
-            $a['adder']=$_SESSION['realname'];
             $a['moder']=$_SESSION['realname'];
-            $a['createTime']=date("Y-m-d H:i:s",time());
             $m=D('exefunc');
             if(!$m->create($a)){
                 $this->error($m->getError());
@@ -179,36 +164,9 @@ class PathController extends CommonController {
         }
 
         if($lastfId){
-            $this->success("添加成功");
+            $this->success("成功");
         }else{
-            $this->error("添加失败");
+            $this->error("失败");
         }
-
-    }
-
-
-
-    public function del(){
-        /* 接收参数*/
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];      
-        $where['pathid']=$id;
-        /* 实例化模型*/
-        $m=D('func');
-        $arr=$m->where($where)->select();
-        if($arr){
-            //不允许删除
-            $this->error('该路径下有功能，不能删除');
-        }else {
-            $m=D('path');
-            
-            $count =$m->delete($id);
-            if ($count>0) {
-                $this->success('数据删除成功');
-            }else{
-                $this->error('数据删除失败');
-            }
-        }
-        
-        
     }
 }

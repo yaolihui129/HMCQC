@@ -1,24 +1,23 @@
 <?php
 namespace TAdmin\Controller;
-
 class ScenecaseController extends CommonController {
 public function index(){
         /* 接收参数*/        
         $sfuncid=$_GET['sfuncid'];               
         /* 实例化模型*/
-        $m=D('scenefunc');
+        $m=D('tp_scenefunc');
         $sf=$m->find($sfuncid);
         $this->assign("sf",$sf);        
         
-        $m=D('system');
-        $where=array("tp_scenefunc.sceneid"=>$sf['sceneid']);
-        $data=$m->join("inner JOIN tp_path ON tp_system.id = tp_path.sysid")
-        ->join("inner JOIN tp_func ON tp_path.id = tp_func.pathid")
-        ->join("inner JOIN tp_scenefunc ON tp_func.id = tp_scenefunc.funcid")
-        ->where($where)->order('tp_scenefunc.sn')->select();
+        $m=D('branch');
+        $where=array("zt_tp_scenefunc.sceneid"=>$sf['sceneid']);
+        $data=$m->join("inner JOIN zt_path ON zt_branch.id = zt_path.sysid")
+        ->join("inner JOIN zt_tp_func ON zt_path.id = zt_tp_func.pathid")
+        ->join("inner JOIN zt_tp_scenefunc ON zt_tp_func.id = zt_tp_scenefunc.funcid")
+        ->where($where)->order('zt_tp_scenefunc.sn')->select();
         $this->assign("data",$data);
         
-        $m=D('case');
+        $m=D('tp_case');
         $where=array("funcid"=>$sf['funcid']);
         $arr=$m->where($where)->select();
         $this->assign("arr",$arr);       
@@ -31,7 +30,7 @@ public function index(){
         $sfuncid=$_GET['sfuncid'];
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=D('case');
+        $m=D('tp_case');
         $data=$m->find($id);
         $arr['id']=$sfuncid;
         $arr['caseid']=$id;
@@ -59,8 +58,7 @@ public function index(){
         $arr['num19']=$data['num19'];
         $arr['num20']=$data['num20'];
         $arr['moder']=$_SESSION['realname'];
-        $arr['updateTime']=date("Y-m-d H:i:s",time());
-        $m=D('scenefunc');
+        $m=D('tp_scenefunc');
         if ($m->save($arr)){
             $this->success("绑定成功！");
         }else{

@@ -10,7 +10,7 @@ class SceneController extends CommonController {
     	$gp=$_SESSION['testgp'];
     	$copy=$_GET['copy'];
          /* 实例化模型*/
-        $m= D("program");
+        $m= D("project");
         $where=array("testgp"=>"$gp");
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
@@ -23,7 +23,7 @@ class SceneController extends CommonController {
         }
 
         /* 实例化模型*/
-        $m = D("scene");
+        $m = D("tp_scene");
         $where=array("proid"=>"$proid");
         $scene=$m->where($where)->order('sn')->select();
         $this->assign("scene",$scene);
@@ -39,10 +39,9 @@ class SceneController extends CommonController {
 
 
     public function insert(){
-        $m=D('scene');
-        $_POST['adder']=$_SESSION['realname'];
+        /* 实例化模型*/
+        $m=D('tp_scene');
         $_POST['moder']=$_SESSION['realname'];
-        $_POST['createTime']=date("Y-m-d H:i:s",time());
         if(!$m->create()){
             $this->error($m->getError());
         }
@@ -58,7 +57,7 @@ class SceneController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m= D("scene");
+        $m= D("tp_scene");
         $where['proid']=$_SESSION['proid'];
         $pros=$m->where($where)->order('sn,id')->select();
         $this->assign("data",$pros);
@@ -73,7 +72,8 @@ class SceneController extends CommonController {
     }
 
     public function update(){
-        $db=D('scene');
+        /* 实例化模型*/
+        $db=D('tp_scene');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
@@ -83,8 +83,8 @@ class SceneController extends CommonController {
     }
 
     public function order(){
-
-        $db = D('scene');
+        /* 实例化模型*/
+        $db = D('tp_scene');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
@@ -103,22 +103,20 @@ class SceneController extends CommonController {
         $sceneid=$_GET['sceneid'];
         $proid=$_GET['proid'];
         /* 实例化模型*/
-        $m=M('scene');
+        $m=M('tp_scene');
         $data=$m->field("type,level,swho,swhen,testip,scene,state,flow")->find($sceneid);
         $where=array("proid"=>$proid);
         $data['sourceid']=$sceneid;
         $data['sn']=$m->where($where)->count()+1;
         $data['proid']=$proid;
         $data['state']='待确认';
-        $data['adder']=$_SESSION['realname'];
         $data['moder']=$_SESSION['realname'];
-        $data['createTime']=date("Y-m-d H:i:s",time());
         if(!$m->create($data)){
             $this->error($m->getError());
         }
         $lastId=$m->add($data);
 
-        $m=D('scenefunc');
+        $m=D('tp_scenefunc');
         $where=array("sceneid"=>$sceneid);
         $arr=$m->where($where)
              ->field("sn,funcid,sysno,path,func,remarks,caseid,casestate,casemain,caseexpected,num1,num2,num3,
@@ -126,9 +124,7 @@ class SceneController extends CommonController {
              ->order('sn')->select();
         foreach ($arr as $a){
             $a['sceneid']=$lastId;
-            $a['adder']=$_SESSION['realname'];
             $a['moder']=$_SESSION['realname'];
-            $a['createTime']=date("Y-m-d H:i:s",time());
             if(!$m->create($a)){
                 $this->error($m->getError());
             }
@@ -147,8 +143,7 @@ class SceneController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('scene');
-
+        $m=M('tp_scene');
         $count =$m->delete($id);
         if ($count>0) {
             $this->success('数据删除成功');

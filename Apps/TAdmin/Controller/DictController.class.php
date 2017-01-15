@@ -7,17 +7,13 @@ class DictController extends CommonController{
         $where = !empty($_GET['type']) ? array("type"=>$_GET['type']) : array("type"=>"testgp");
          /* 实例化模型*/
     	 $m=M('dict');
-    	 /* 查询数据*/
-    	     /* 1.分类数据*/
          $tp=$m->field('type',false)->group('type')->select();
-             /* 2.分类字典*/
     	 $arr=$m->field('id,k,v,type,state,moder,updatetime',false)->where($where)->order('k')->select();
-
-    	 /* 输出数据*/
+    	 
     	 $this->assign('data',$tp);
 	     $this->assign('arr',$arr);
 	     $this->assign('w',$where);
-	     //dump($where);
+	    
 	     $this->display();
     }
 
@@ -57,17 +53,14 @@ class DictController extends CommonController{
     }
 
     public function mod(){
-         /* 接收参数*/
-        $where = array("type"=>$_GET['type']);
+         /* 接收参数*/        
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
         $m=M('dict');
-        /* 查询数据*/
+        $where = array("type"=>$_GET['type']);
         $arr=$m->field('id,k,v,type,state',false)->where($where)->order('k')->select();
         $dic=$m->find($id);
 
-
-        /* 输出数据*/
         $this->assign('data',$arr);
         $this->assign('dic',$dic);
         $this -> assign("state", formselect($dic['state'],"state"));

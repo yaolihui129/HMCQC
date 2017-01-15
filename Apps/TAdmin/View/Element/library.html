@@ -1,6 +1,5 @@
 <layout name="layout" />
-<div class="row">
-  
+<div class="row"> 
   <div class="col-md-9">
   		<div class="panel panel-default">
   <div class="panel-heading">
@@ -13,18 +12,22 @@
     </h3>
   </div>
   <div class="panel-body table-responsive">
-   <div class="well well-sm">	    	
-	 	<{$arr.retype}>:<{$arr.relevel}>，产品经理：<{$arr.pm}><br>
-		<{$arr.profile}>
-   </div>	  
+ 	<b> 产品经理：</b><{$arr.po}><b> 项目经理：</b><{$arr.pm}><b> 研发：</b><{$arr.rd}><b> 测试：</b><{$arr.qd}><br>
+	<div class="well well-sm"><{$arr.desc}></div>	  
     <ul class="nav nav-pills" role="tablist">
-		  <li role="presentation" ><a href="__APP__/TAdmin/Stage/index/proid/<{$arr.id}>">里程碑<span class="badge"><{$arr.id|countStage=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/TAdmin/Risk/index/proid/<{$arr.id}>">风险<span class="badge"><{$arr.id|countRisk=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/TAdmin/Prosys/index/proid/<{$arr.id}>">涉及系统<span class="badge"><{$arr.id|countProsys=###}></span> </a></li>
+		  <li role="presentation" ><a href="__APP__/TAdmin/Stage/index/proid/<{$arr.id}>">里程碑
+		  <span class="badge"><{$arr.id|countStage=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/TAdmin/Risk/index/proid/<{$arr.id}>">风险
+		  <span class="badge"><{$arr.id|countRisk=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/TAdmin/Prosys/index/proid/<{$arr.id}>">涉及系统
+		  <span class="badge"><{$arr.id|countProsys=###}></span> </a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Func/func/proid/<{$arr.id}>">功能点</a></li>
-		  <li role="presentation" ><a href="__APP__/TAdmin/Func/range/proid/<{$arr.id}>">范围<span class="badge"><{$arr.id|countRange=###}></span></a></li>
-		  <li role="presentation" ><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>/copy/<{$arr.id}>">场景<span class="badge"><{$arr.id|countScene=###}></span></a></li>
-		  <li role="presentation" ><a href="__APP__/TAdmin/Case/library/proid/<{$arr.id}>">用例<span class="badge"><{$arr.id|countCase=###}></span></a></li>
+		  <li role="presentation" ><a href="__APP__/TAdmin/Func/range/proid/<{$arr.id}>">范围
+		  <span class="badge"><{$arr.id}></span></a></li>
+		  <li role="presentation" ><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>/copy/<{$arr.id}>">场景
+		  <span class="badge"><{$arr.id|countScene=###}></span></a></li>
+		  <li role="presentation" ><a href="__APP__/TAdmin/Case/library/proid/<{$arr.id}>">用例
+		  <span class="badge"><{$arr.id|countCase=###}></span></a></li>
 		  <li role="presentation"  class="active"><a href="__APP__/TAdmin/Element/library/proid/<{$arr.id}>">控件库</a></li>
 	</ul>
 	<table class="table table-striped table-bordered table-hover table-condensed ">
@@ -78,9 +81,9 @@
 				<default /><li class="list-group-item ">
 			</switch>    			
             <a href="__URL__/library/proid/<{$pro.id}>">
-            	<{$pro.end}>:<{$pro.program}><br>
-            	<{$pro.prono}>:<{$pro.manager}>
-            	<span class="badge"><{$pro.prost}></span>
+            	<{$pro.end}>:<{$pro.name}><br>
+            	<{$pro.code}>:<{$pro.qd}>
+            	<span class="badge"><{$pro.status}></span>
             </a>
            </li>
         </volist>

@@ -6,10 +6,9 @@ class StageController extends CommonController {
         /* 接收参数*/
         $proid=$_GET['proid'];
         $_SESSION['proid']=$proid;
-    	$gp=$_SESSION['testgp'];
          /* 实例化模型*/
-        $m= D("program");
-        $where=array("testgp"=>"$gp");
+        $m= D("project");
+        $where=array("testgp"=>$_SESSION['testgp']);
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
         
@@ -17,22 +16,15 @@ class StageController extends CommonController {
         $this->assign("arr",$arr);
 
         /* 实例化模型*/
-        $m = D("stage");
+        $m = D("tp_stage");
         $where=array("proid"=>"$proid");
         $stages=$m->where($where)->order("sn,id")->select();
         $this->assign("stages",$stages);
-
-        
-        
-        /* 阶段添加*/
-        
+              
+        /* 阶段添加*/        
         $count=$m->where($where)->count()+1;
-
         $this->assign('c',$count);       
         $this -> assign("state", formselect("未开始","state","prost"));
-        $this -> assign("document", formselect("无文档","document","document"));
-        $start=date("Y-m-d",time());
-        $this->assign('start',$start);
         $end=date("Y-m-d",time()+1*24*3600);
         $this->assign('end',$end);
         
@@ -41,11 +33,8 @@ class StageController extends CommonController {
 
     public function insert(){
         /* 实例化模型*/
-        $m=D('stage');
-
-        $_POST['adder']=$_SESSION['realname'];
+        $m=D('tp_stage');
         $_POST['moder']=$_SESSION['realname'];
-        $_POST['createTime']=date("Y-m-d H:i:s",time());
         if(!$m->create()){
             $this->error($m->getError());
         }
@@ -62,7 +51,7 @@ class StageController extends CommonController {
         /* 接收参数*/
         $id = $_GET['id'];
         /* 实例化模型*/ 
-        $m= D("stage");
+        $m= D("tp_stage");
         $where['proid']=$_SESSION['proid'];
         $pros=$m->where($where)->order("sn,id")->select();
         $this->assign("data",$pros);
@@ -79,7 +68,7 @@ class StageController extends CommonController {
 
     public function update(){
         /* 实例化模型*/
-        $db=D('stage');
+        $db=D('tp_stage');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！",U("Stage/index?proid={$_POST['proid']}"));
@@ -90,8 +79,8 @@ class StageController extends CommonController {
 
 
     public function order(){
-
-        $db = D('stage');
+        /* 实例化模型*/
+        $db = D('tp_stage');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
@@ -107,7 +96,7 @@ class StageController extends CommonController {
 
     public function modstate(){
         /* 实例化模型*/
-        $db=D('stage');
+        $db=D('tp_stage');
         if ($_GET['state']=="未开始"){
             $_GET['state']="进行中";
         }elseif ($_GET['state']=="进行中"){
@@ -126,8 +115,7 @@ class StageController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('stage');
-
+        $m=M('tp_stage');
         $count =$m->delete($id);
         if ($count>0) {
             $this->success('删除成功');

@@ -5,19 +5,19 @@ public function index(){
         /* 接收参数*/
          $funcid=$_GET['funcid'];
          /* 实例化模型*/
-         $m=D('func');
+         $m=D('tp_func');
          $arr=$m->find($funcid);
          $this->assign('arr',$arr);
          $where['pathid']=$arr['pathid'];
          $data=$m->where($where)->order('sn,id')->select();
          $this->assign('data',$data);
          
-    	 $m=D('case');
+    	 $m=D('tp_case');
     	 $where['funcid']=$funcid;
     	 $cases=$m->where($where)->order('sn,id')->select();
 	     $this->assign('cases',$cases);
 	     
-	     $m=D('rules');
+	     $m=D('tp_rules');
 	     $rules=$m->where($where)->order('sn,id')->select();
 	     $this->assign('rules',$rules);
 	     
@@ -34,7 +34,7 @@ public function index(){
 
     public function insert(){
         /* 实例化模型*/
-        $m=D('case');
+        $m=D('tp_case');
         $_POST['adder']=$_SESSION['realname'];
         $_POST['moder']=$_SESSION['realname'];
         $_POST['createTime']=date("Y-m-d H:i:s",time());
@@ -57,7 +57,7 @@ public function index(){
         
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('case');
+        $m=M('tp_case');
         $case=$m->find($id);
         $this->assign("case",$case);
         
@@ -65,7 +65,7 @@ public function index(){
         $data=$m->where($where)->select();
         $this->assign('data',$data); 
         
-        $m=D('rules');
+        $m=D('tp_rules');
         $rules=$m->where($where)->order('sn,id')->select();
         $this->assign('rules',$rules);
         
@@ -85,7 +85,7 @@ public function index(){
 
     public function update(){
         /* 实例化模型*/
-        $db=D('case');
+        $db=D('tp_case');
         $_POST['moder']=$_SESSION['realname'];
         //$_POST['updateTime']=date("Y-m-d H:i:s",time());
         if ($db->save($_POST)){
@@ -98,7 +98,7 @@ public function index(){
 
     public function order(){
 
-        $db = D('case');
+        $db = D('tp_case');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
@@ -117,7 +117,7 @@ public function index(){
         $proid=$_GET['proid'];
         $_SESSION['proid']=$proid;
         /* 实例化模型*/
-        $m= D("program");
+        $m= D("project");
         $where=array("testgp"=>$testgp);
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
@@ -126,19 +126,17 @@ public function index(){
         $this->assign("arr",$arr);
 
         /* 实例化模型*/
-        $m=D('program');
         $where=array("testgp"=>$testgp);
         $data=$m->where($where)->select();
         $this->assign('data',$data);
-//         $m=M('case');
-        $m=M('system');
-        $where=array("tp_case.fproid"=>$proid);
+        $m=M('branch');
+        $where=array("zt_tp_case.fproid"=>$proid);
         $cases=$m
-        ->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
-        ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
-        ->join(' inner JOIN tp_case ON tp_func.id = tp_case.funcid')
+        ->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
+        ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
+        ->join(' inner JOIN zt_tp_case ON zt_tp_func.id = zt_tp_case.funcid')
         ->where($where)
-        ->order("tp_system.sysno,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id,tp_case.sn,tp_case.id")
+        ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id,zt_tp_case.sn,zt_tp_case.id")
         ->select();
         $this->assign('cases',$cases);
         $where=array("proid"=>$proid);
@@ -151,7 +149,7 @@ public function index(){
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('case');
+        $m=M('tp_case');
         $count =$m->delete($id);
         if ($count>0) {
             $this->success('删除成功');

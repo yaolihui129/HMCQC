@@ -31,12 +31,12 @@ class CaseController extends Controller {
         $arr=$m->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order,prodid")->find($proid);
         $this->assign('arr',$arr);
         
-        $m=M('system');
-        $where=array("tp_case.fproid"=>$proid);
-        $data=$m->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
-        ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
-        ->join(' inner JOIN tp_case ON tp_func.id = tp_case.funcid')
-        ->where($where)->order("tp_system.system,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id,tp_case.sn,tp_case.id")->select();
+        $m=M('branch');
+        $where=array("zt_tp_case.fproid"=>$proid);
+        $data=$m->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
+        ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
+        ->join(' inner JOIN zt_tp_case ON zt_tp_func.id = zt_tp_case.funcid')
+        ->where($where)->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id,zt_tp_case.sn,zt_tp_case.id")->select();
         $this->assign('data',$data);        
 
         $this->display();

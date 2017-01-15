@@ -1,5 +1,7 @@
  <layout name="layout" />
- <h2>待测模块库 <span class="pull-right">当前项目：<{$_SESSION['proid']|getProNo=###}><a href="__APP__/TAdmin/Exescene/queue/stagetesterid/<{$stagetesterid}>"> 返回</a></span></h2>
+ <h3><{$_SESSION['proid']|getProNo=###}>待测模块库 
+ 	<a href="__APP__/TAdmin/Exescene/queue/stagetesterid/<{$stagetesterid}>" class="btn btn-warning  pull-right"> 返回</a>
+ </h3>
 <div class="row">
   <div class="col-md-6">
   	<div class="panel panel-default">
@@ -35,7 +37,7 @@
         		<div class="panel-heading" role="tab" id="heading<{$st.id}>">
           			<h4 class="panel-title">
              		 	<a data-toggle="collapse" data-parent="#accordion" href="#<{$st.id}>" aria-expanded="true" aria-controls="<{$st.id}>">
-                  		<{$st.id}>:<{$st.system}>-<{$st.path}></a>
+                  		<{$st.id}>:<{$st.branch}>-<{$st.name}></a>
                   		<switch name="st.id|countFunc=###">
 			          		<case value="0"><span class="badge"><{$st.id|countFunc=###}></span></case>			          
 			         		 <default /><a href="__URL__/jion/pathid/<{$st.id}>/stagetesterid/<{$stagetesterid}>" 

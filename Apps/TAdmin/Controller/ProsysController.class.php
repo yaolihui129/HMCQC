@@ -15,20 +15,20 @@ class ProsysController extends CommonController {
         
         $arr=$m->find($proid);
         $this->assign("arr",$arr);
+        
+        $m=D('projectproduct');
+        $where=array("project"=>$proid);
+        $pp=$m->where($where)->find();
 
-        $m = D("system");
-        $where=array("tp_prosys.proid"=>"$proid");
-        $data=$m->where($where)
-        ->join('tp_prosys ON tp_prosys.sysid =tp_system.id')
-        ->order('tp_system.sysno')
-        ->select();
+        $m = D('branch');
+        $where=array("zt_tp_prosys.project"=>$proid);
+        $data=$m->where($where)->join('zt_tp_prosys ON zt_tp_prosys.branch =zt_branch.id')
+        ->order('zt_branch.sysno')->select();
         $this->assign("data",$data);
-
-
-        $where=array("prodid"=>$arr['prodid']);
-        $syses=$m->where($where)->order('sysno')->select();
+        
+        $map['prodcut']=$pp['product'];
+        $syses=$m->where($map)->order('sysno')->select();
         $this->assign('syses',$syses);
-        $this -> assign("state", formselect("正常"));
 
 	    $this->display();
     }
@@ -37,10 +37,9 @@ class ProsysController extends CommonController {
     public function insert(){
         /* 接收参数*/
 
-        $m=D('prosys');
-        $_GET['adder']=$_SESSION['realname'];
+        $m=D('tp_prosys');
         $_GET['moder']=$_SESSION['realname'];
-        $_GET['createTime']=date("Y-m-d H:i:s",time());
+
         if(!$m->create($_GET)){
             $this->error($m->getError());
         }
@@ -52,20 +51,45 @@ class ProsysController extends CommonController {
         }
 
     }
-
+    public function mod(){
+    
+        /* 实例化模型*/
+        $m=M('branch');
+        $sys=$m->find($_GET['id']);
+        $this->assign('sys',$sys);
+    
+        $where['prodid']=$sys['prodid'];
+        $data=$m->where($where)->select();
+        $this->assign('data',$data);
+    
+        $where['proid']=$_GET['proid'];
+        $this->assign('w',$where);
+    
+        $this->display();
+    }
+    
+    public function update(){
+        /* 实例化模型*/
+        $db=D('branch');
+        $_POST['moder']=$_SESSION['realname'];
+        if ($db->save($_POST)){
+            $this->success("成功");
+        }else{
+            $this->error("失败");
+        }
+    
+    }
 
     public function del(){
         /* 接收参数*/
-        $id = !empty($_POST['prosysid']) ? $_POST['prosysid'] : $_GET['prosysid'];
-
+        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('prosys');
-
+        $m=M('tp_prosys');
         $count =$m->delete($id);
         if ($count>0) {
-            $this->success('数据删除成功');
+            $this->success('成功');
         }else{
-            $this->error('数据删除失败');
+            $this->error('失败');
         }
     }
 }

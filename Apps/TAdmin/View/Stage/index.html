@@ -3,27 +3,22 @@
   <div class="col-md-9">
   		<div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">
-    	<{$arr.id|getPro=###}>
+    <h3 class="panel-title"><{$arr.id|getPro=###}>
     	<div class="btn-group pull-right">
-    		<a data-toggle="modal" href="#tianjstage" class=" btn btn-info btn-xs" >
-    		<span class="glyphicon glyphicon-plus"> 添加</span></a>
-    		<a href="__APP__/TAdmin/Program"  class="btn btn-warning btn-xs">
-	    	<span class="glyphicon glyphicon-arrow-left">返回</span></a>
+    		<a data-toggle="modal" href="#tianjstage" class=" btn btn-info btn-xs" >添加</a>
+    		<a href="__APP__/TAdmin/Program"  class="btn btn-warning btn-xs">返回</a>
     	</div>    	    	
     </h3>
   </div>
   <div class="panel-body table-responsive">
-   <div class="well">	    	
-	 	<{$arr.retype}>:<{$arr.relevel}>，产品经理：<{$arr.pm}><br>
-		<{$arr.profile}>
-   </div>	  
+   	<b> 产品经理：</b><{$arr.po}><b> 项目经理：</b><{$arr.pm}><b> 研发：</b><{$arr.rd}><b> 测试：</b><{$arr.qd}><br>
+	<div class="well well-sm"><{$arr.desc}></div>	  
     <ul class="nav nav-pills" role="tablist">
 		  <li role="presentation" class="active"><a href="__APP__/TAdmin/Stage/index/proid/<{$arr.id}>">里程碑<span class="badge"><{$arr.id|countStage=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Risk/index/proid/<{$arr.id}>">风险<span class="badge"><{$w.proid|countRisk=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/TAdmin/Prosys/index/proid/<{$arr.id}>">涉及系统<span class="badge"><{$arr.id|countProsys=###}></span> </a></li>
+		  <li role="presentation"><a href="__APP__/TAdmin/Prosys/index/proid/<{$arr.id}>">涉及系统<span class="badge"><{$arr.id}></span> </a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Func/func/proid/<{$arr.id}>">功能点</a></li>
-		  <li role="presentation" ><a href="__APP__/TAdmin/Func/range/proid/<{$arr.id}>">范围<span class="badge"><{$arr.id|countRange=###}></span></a></li>
+		  <li role="presentation" ><a href="__APP__/TAdmin/Func/range/proid/<{$arr.id}>">范围<span class="badge"><{$arr.id}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>/copy/<{$arr.id}>">场景<span class="badge"><{$arr.id|countScene=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Case/library/proid/<{$arr.id}>">用例<span class="badge"><{$arr.id|countCase=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Element/library/proid/<{$arr.id}>">控件库</a></li>
@@ -31,43 +26,37 @@
 	<div class="panel panel-default">
 		  <ul class="list-group">
 		   <form action="__URL__/order" method="post" >
-		         <volist name='stages' id='st' empty="没有数据">
-		            <li class="list-group-item">
-		             <span >
-		                <input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/>
-		                <{$st.stage}>【<{$st.end}>】<span class="badge"><{$st.state}></span>		                
-		                <div class="btn-group pull-right">
-		                	<a href="__URL__/modstate/id/<{$st.id}>/state/<{$st.state}>" type="button" class="btn btn-warning btn-xs">变更状态</a>
-		                	<a href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/C" class="btn btn-success btn-xs">用例<{$st.id|countCTester=###}></a>
-		                    <a href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/M" class="btn btn-info btn-xs">手工<{$st.id|countMTester=###}></a>		                    
-		                  	<button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
-		                    	<span class="caret"></span>
-		                    	<span class="sr-only">Toggle Dropdown</span>
-		                  	</button>
-		                  	<ul class="dropdown-menu" role="menu">
-			                    <li><a target="_blank" href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/A">自动化
-			                    <span class="badge pull-right"><{$st.id|countATester=###}></span></a></li>		                    
-			                    <li><a href="__URL__/mod/id/<{$st.id}>/proid/<{$st.proid}>">修改</a></li>
-			                    <li class="divider"></li>
-			                    <li><a href="__URL__/del/id/<{$st.id}>">删除</a></li>
-		                  </ul>
-		                </div>
-		             </span>		                
-		            </li>
-		        </volist>
-		        <input type="submit" name="do_submit" value="批量排序" class="btn">
-		    </form>
-		  </ul>
+		   <volist name='stages' id='st' empty="没有数据">
+		     <li class="list-group-item">
+		        <input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/><{$st.stage}>【<{$st.end}>】
+		        <a href="__URL__/modstate/id/<{$st.id}>/state/<{$st.state}>" class="badge"><{$st.state}></a>		                
+		        <div class="btn-group">		            
+		            <a href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/C" class="btn btn-success btn-xs">用例<{$st.id|countCTester=###}></a>
+		            <a href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/M" class="btn btn-info btn-xs">手工<{$st.id|countMTester=###}></a>		                    
+		            <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
+		                <span class="caret"></span>
+		                <span class="sr-only">Toggle Dropdown</span>
+		            </button>
+		            <ul class="dropdown-menu" role="menu">
+			            <li><a target="_blank" href="__APP__/TAdmin/Stagetester/index/stageid/<{$st.id}>/type/A">自动化
+			            <span class="badge pull-right"><{$st.id|countATester=###}></span></a></li>		                    
+			            <li><a href="__URL__/mod/id/<{$st.id}>/proid/<{$st.proid}>">修改</a></li>
+			            <li class="divider"></li>
+			            <li><a href="__URL__/del/id/<{$st.id}>">删除</a></li>
+		            </ul>
+		        </div>
+		      </li>
+		   </volist>
+		   <input type="submit" name="do_submit" value="批量排序" class="btn">
+		   </form>
+		</ul>
     </div>
   </div>
   
   </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm">
-  	<div class="panel panel-default">
-	  <div class="panel-heading">
-	    <h3 class="panel-title"><{$_SESSION['testgp']}>组测试项目</h3>
-	  </div>
+  	<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title"><{$_SESSION['testgp']}>组测试项目</h3></div>
 	  <ul class="list-group">
 	    <volist name='pros' id='pro' empty="没有数据"> 			
            <switch name="pro.id">
@@ -75,9 +64,9 @@
 				<default /><li class="list-group-item ">
 		 </switch> 
             <a href="__URL__/index/proid/<{$pro.id}>">
-            	<{$pro.end}>:<{$pro.program}><br>
-            	<{$pro.prono}>:<{$pro.manager}>
-            	<span class="badge"><{$pro.prost}></span>
+            	<{$pro.end}>:<{$pro.name}><br>
+            	<{$pro.code}>:<{$pro.qd}>
+            	<span class="badge"><{$pro.status}></span>
             </a>
             <span class="badge"><{$pro.id|countStage=###}></span></li>
         </volist>
@@ -126,10 +115,6 @@
 				<div class="form-group">
 					<label for="state" class="col-sm-4 control-label">状态:</label>
 					<div class="col-sm-8"><{$state}></div>
-				</div>
-				<div class="form-group">
-					<label for="state" class="col-sm-4 control-label">文档:</label>
-					<div class="col-sm-8"><{$document}></div>
 				</div>				
 				<div class="form-group">
 					<label for="state" class="col-sm-4 control-label">结束:</label>

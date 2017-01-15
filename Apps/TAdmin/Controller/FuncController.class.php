@@ -8,7 +8,7 @@ class FuncController extends CommonController{
         $proid=$_SESSION['proid'];
 
         /* 实例化模型*/
-        $m=D('path');
+        $m=D('tp_path');
         $arr=$m->find($pathid);
         $this->assign("arr",$arr);
          
@@ -17,7 +17,7 @@ class FuncController extends CommonController{
         $data=$m->where($where)->order("sn,id")->select();
         $this->assign("data",$data);
         
-        $m= D("func");
+        $m= D("tp_func");
         $map['pathid']=$pathid;
         $funcs=$m->where($map)->order("sn")->select();
         $this->assign("funcs",$funcs);
@@ -33,10 +33,8 @@ class FuncController extends CommonController{
   
 
     public function insert(){
-        $m=D('func');
-        $_POST['adder']=$_SESSION['realname'];
-        $_POST['moder']=$_SESSION['realname'];
-        $_POST['createTime']=date('Y-m-d H:i:s',time());
+        $m=D('tp_func');
+        $_POST['moder']=$_SESSION['realname'];      
         if(!$m->create()){
             $this->error($m->getError());
         }
@@ -53,7 +51,7 @@ class FuncController extends CommonController{
         /* 接收参数*/        
         $id=$_GET['id'];
         /* 实例化模型*/
-        $m= D("func");
+        $m= D("tp_func");
         $func=$m->find($id);
         $this->assign("func",$func);
         $where['pathid']=$func['pathid'];
@@ -70,7 +68,7 @@ class FuncController extends CommonController{
    
 
     public function update(){
-        $db=D('func');
+        $db=D('tp_func');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
@@ -82,14 +80,13 @@ class FuncController extends CommonController{
 
     public function order(){
         dump($_POST);
-        $db = D('func');
+        $db = D('tp_func');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
         }
         if($num) {
            $this->success("重新排序成功!");
-//           $this->redirect(U('index','pathid={$_SESSION['pathid']}'));
         }else{
             $this->error("重新排序失败...");
         }
@@ -101,7 +98,7 @@ class FuncController extends CommonController{
         $proid=$_GET['proid'];
         $_SESSION['proid']=$proid;
          /* 实例化模型*/
-        $m= D("program");
+        $m= D("project");
         $where['testgp']=$_SESSION['testgp'];
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
@@ -110,15 +107,14 @@ class FuncController extends CommonController{
         $this->assign("arr",$arr);
 
         /* 实例化模型*/
-        $s = D("prosys");
-        $map['tp_prosys.proid']=$proid;
-        $map['tp_path.pstate']='正常';
-        
+        $s = D("tp_prosys");
+        $map['zt_tp_prosys.project']=$proid;
+//         $map['zt_tp_module.state']='正常';       
         $data=$s->where($map)
-        ->join('tp_system ON tp_prosys.sysid =tp_system.id')
-        ->join('tp_path ON tp_system.id = tp_path.sysid')
-        ->join('tp_func ON tp_path.id = tp_func.pathid')
-        ->order("tp_system.sysno,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id")
+        ->join('zt_branch ON zt_tp_prosys.branch =zt_branch.id')
+        ->join('zt_module ON zt_branch.id = zt_module.branch')
+        ->join('zt_tp_func ON zt_module.id = zt_tp_func.pathid')
+        ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id")
         ->select();
         $this->assign("data",$data);
 
@@ -133,7 +129,7 @@ class FuncController extends CommonController{
         $_SESSION['proid']=$proid;
     	$gp=$_SESSION['testgp'];
          /* 实例化模型*/
-        $m= D("program");
+        $m= D("project");
         $where=array("testgp"=>"$gp");
         $pros=$m->where($where)->order("end desc")->select();
         $this->assign("pros",$pros);
@@ -142,12 +138,12 @@ class FuncController extends CommonController{
         $this->assign("arr",$arr);
 
         /* 实例化模型*/
-        $s = D("system");
-        $where=array("tp_func.fproid"=>"$proid","tp_func.state"=>'正常',"tp_path.pstate"=>'正常');
-        $data=$s->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
-        ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
+        $s = D('branch');
+        $where=array("zt_tp_func.fproid"=>$proid,"zt_tp_func.state"=>'正常',"zt_module.state"=>'正常');
+        $data=$s->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
+        ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
         ->where($where)
-        ->order("tp_system.sysno,tp_path.sn,tp_path.id,tp_func.sn,tp_func.id")
+        ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id")
         ->select();
         $this->assign("data",$data);
 
@@ -165,25 +161,25 @@ class FuncController extends CommonController{
         $sceneid=$_GET['sceneid'];
         /* 实例化模型*/
         $m= D("prosys");
-        $where=array("tp_prosys.proid"=>"$proid");
-        $data=$m->join('inner JOIN tp_system ON tp_system.id = tp_prosys.sysid')
-        ->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
+        $where=array("zt_tp_prosys.proid"=>"$proid");
+        $data=$m->join('inner JOIN zt_system ON zt_system.id = zt_tp_prosys.sysid')
+        ->join('inner JOIN zt_path ON zt_system.id = zt_path.sysid')
         ->where($where)
-        ->order("tp_system.sysno,tp_path.sn,tp_path.id")
+        ->order("zt_system.sysno,zt_path.sn,zt_path.id")
         ->select();
         $this->assign("data",$data);
 
-        $m= D("func");
+        $m= D("tp_func");
         $pathid=!empty($_GET['pathid'])?$_GET['pathid']:$data[0]['id'];
-        $where=array("pathid"=>"$pathid");
+        $where=array("pathid"=>$pathid);
         $funcs=$m->where($where)->order("sn")->select();
         $this->assign("funcs",$funcs);
-        $m=D('scenefunc');
+        $m=D('tp_scenefunc');
         $where=array("sceneid"=>$sceneid);
         $sfunc=$m->where($where)->order('sn')->select();
         $this->assign("sfunc",$sfunc);
 
-        $m=D('hcfunc');
+        $m=D('tp_hcfunc');
         $where=array("adder"=>$_SESSION['realname']);
         $hfunc=$m->where($where)->order('sn')->select();
         $this->assign("hfunc",$hfunc);
@@ -198,7 +194,7 @@ class FuncController extends CommonController{
     public function modproid(){
         /* 实例化模型*/
 
-        $db=D('func');
+        $db=D('tp_func');
 
         if ($db->save($_GET)){
             $this->success("修改成功！");
@@ -214,7 +210,7 @@ class FuncController extends CommonController{
         $arr['id']=$_GET['funcid'];
         $arr['result']='通过';
         $arr['moder']=$_SESSION['realname'];
-        $db=D('func');
+        $db=D('tp_func');
         if ($db->save($arr)){
             $this->success("成功！");
         }else{
@@ -227,7 +223,7 @@ class FuncController extends CommonController{
         /* 接收参数*/
         $proid=$_GET['proid'];
         /* 实例化模型*/
-        $db=D('func');
+        $db=D('tp_func');
         $where['fproid']=$proid;
         $where['result']='失败';
         $arr=$db->where($where)->select();
@@ -250,7 +246,7 @@ class FuncController extends CommonController{
         $arr['id']=$_GET['funcid'];
         $arr['result']='未测试';
         $arr['moder']=$_SESSION['realname'];
-        $db=D('func');
+        $db=D('tp_func');
         if ($db->save($arr)){
             $this->success("成功！");
         }else{
@@ -266,7 +262,7 @@ class FuncController extends CommonController{
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         $where['funcid']=$id;
         /* 实例化模型*/
-        $m=D('case');
+        $m=D('tp_case');
         $arr=$m->where($where)->select();
         if ($arr){
             $this->error('该功能点下有用例，不能删除');

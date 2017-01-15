@@ -21,8 +21,6 @@ class RiskController extends CommonController {
         $where=array("proid"=>"$proid");
         $risks=$m->where($where)->select();
         $this->assign("risks",$risks);
-        //$this->assign('w',$where);
-        
         
         $count=$m->where($where)->count()+1;      
         $this->assign('c',$count);
@@ -31,17 +29,14 @@ class RiskController extends CommonController {
         $this->assign("tamethod",PublicController::editor("amethod","暂无方案"));
         $this->assign("tremaks",PublicController::editor("remaks",""));
         
-
-
 	     $this->display();
     }
 
    
     public function insert(){
-        $m=D('risk');
-        $_POST['adder']=$_SESSION['realname'];
+        /* 实例化模型*/
+        $m=D('tp_risk');
         $_POST['moder']=$_SESSION['realname'];
-        $_POST['createTime']=date("Y-m-d H:i:s",time());
         if(!$m->create()){
             $this->error($m->getError());
         }
@@ -58,15 +53,13 @@ class RiskController extends CommonController {
         $proid=$_GET['proid'];
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m= D("risk");
+        $m= D("tp_risk");
         $where=array("proid"=>$proid);
         $data=$m->where($where)->select();
 
         $this->assign("data",$data);
         $this->assign('w',$where);
 
-        /* 实例化模型*/
-        $m=M('risk');
         $risk=$m->find($id);
         $this->assign("risk",$risk);
         $this -> assign("level", formselect($risk['level'],"level","risklevel"));
@@ -78,7 +71,8 @@ class RiskController extends CommonController {
     }
 
     public function update(){
-        $db=D('risk');
+        /* 实例化模型*/
+        $db=D('tp_risk');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
@@ -89,8 +83,8 @@ class RiskController extends CommonController {
 
 
     public function order(){
-
-        $db = D('risk');
+        /* 实例化模型*/
+        $db = D('tp_risk');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
@@ -107,8 +101,7 @@ class RiskController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('risk');
-
+        $m=M('tp_risk');
         $count =$m->delete($id);
         if ($count>0) {
             $this->success('数据删除成功');

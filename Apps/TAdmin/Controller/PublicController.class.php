@@ -64,25 +64,4 @@ class PublicController extends Controller {
         return $str;
     }
 
-
-    /**
-     * 状态选择控件
-     * @param $name 控件name
-     * @param $value 选中值
-     */
-    public static function FormSelect($value="正常",$name="state",$type="state") {
-        $html = '<select name="'.$name.'" class="form-control">';
-        $m =M('dict');
-        $where=array("type"=>$type,"state"=>"正常");
-        //获取所有分类
-        $cats = $m->where($where)->order('k')->select();
-        foreach($cats as $v) {
-            $selected = ($v['v']==$value) ? "selected" : "";
-            $html .= '<option '.$selected.' value="'.$v['v'].'">'.$v['v'].'</option>';
-        }
-        $html .='<select>';
-
-        return $html;
-
-    }
 }

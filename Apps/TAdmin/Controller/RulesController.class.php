@@ -1,20 +1,19 @@
 <?php
 namespace TAdmin\Controller;
-
 class RulesController extends CommonController {
     public function index(){
         /* 接收参数*/
         $funcid=$_GET['funcid'];
         /* 实例化模型*/
-        $m=D('func');
+        $m=D('tp_func');
         $arr=$m->find($funcid);
         $this->assign('arr',$arr);
 
         $where['pathid']=$arr['pathid'];
         $data=$m->where($where)->order('sn,id')->select();
         $this->assign('data',$data);
-        
-        $m=D('rules');
+        /* 实例化模型*/
+        $m=D('tp_rules');
         $where['funcid']=$funcid;
         $rules=$m->where($where)->order('sn,id')->select();
         $this->assign('rules',$rules);
@@ -32,10 +31,9 @@ class RulesController extends CommonController {
 
 
     public function insert(){
-        $m=D('rules');
-        $_POST['adder']=$_SESSION['realname'];
+        /* 实例化模型*/
+        $m=D('tp_rules');
         $_POST['moder']=$_SESSION['realname'];
-        $_POST['createTime']=date("Y-m-d H:i:s",time());
         if(!$m->create()){
             $this->error($m->getError());
         }
@@ -50,10 +48,9 @@ class RulesController extends CommonController {
 
     public function mod(){
         /* 接收参数*/
-
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('rules');
+        $m=M('tp_rules');
         $rule=$m->find($id);
         $this->assign("rule",$rule);
         
@@ -69,7 +66,8 @@ class RulesController extends CommonController {
     }
 
     public function update(){
-        $db=D('rules');
+        /* 实例化模型*/
+        $db=D('tp_rules');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
@@ -80,15 +78,14 @@ class RulesController extends CommonController {
 
 
     public function order(){
-dump($_POST);
-        $db = D('rules');
+        /* 实例化模型*/
+        $db = D('tp_rules');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
         }
         if($num) {
-            $this->success("重新排序成功!");
-            //$this->redirect('index?funcid=$',)
+            $this->success("重新排序成功!");          
         }else{
             $this->error("重新排序失败...");
         }
@@ -99,8 +96,7 @@ dump($_POST);
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('rules');
-
+        $m=M('tp_rules');
         $count =$m->delete($id);
         if ($count>0) {
             $this->success('删除成功');

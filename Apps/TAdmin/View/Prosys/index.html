@@ -1,30 +1,29 @@
 <layout name="layout" />
-<div class="row">
-  
+<div class="row"> 
   <div class="col-md-9">
   		<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-    	<{$arr.id|getPro=###}>
-    	<div class="btn-group pull-right">
-	    	<a href="__APP__/TAdmin/Program"  class="btn btn-warning btn-xs">
-	    	<span class="glyphicon glyphicon-arrow-left">返回</span></a>
-	    </div>
-    </h3>
-  </div>
-  <div class="panel-body table-responsive">
-   <div class="well well-sm">	    	
-	 	<{$arr.retype}>:<{$arr.relevel}>，产品经理：<{$arr.pm}><br>
-		<{$arr.profile}>
-   </div>	  
+		  <div class="panel-heading">
+		    <h3 class="panel-title"><{$arr.id|getPro=###}>
+		    	<a href="__APP__/TAdmin/Program"  class="btn btn-warning btn-xs pull-right">返回</a>
+		    </h3>
+		  </div>
+  <div class="panel-body table-responsive">	    	
+	 <b> 产品经理：</b><{$arr.po}><b> 项目经理：</b><{$arr.pm}><b> 研发：</b><{$arr.rd}><b> 测试：</b><{$arr.qd}><br>
+	 <div class="well well-sm"><{$arr.desc}></div>    
     <ul class="nav nav-pills" role="tablist">
-		  <li role="presentation" ><a href="__APP__/TAdmin/Stage/index/proid/<{$arr.id}>">里程碑<span class="badge"><{$arr.id|countStage=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/TAdmin/Risk/index/proid/<{$arr.id}>">风险<span class="badge"><{$arr.id|countRisk=###}></span></a></li>
-		  <li role="presentation" class="active"><a href="__APP__/TAdmin/Prosys/index/proid/<{$arr.id}>">涉及系统<span class="badge"><{$arr.id|countProsys=###}></span> </a></li>
+		  <li role="presentation" ><a href="__APP__/TAdmin/Stage/index/proid/<{$arr.id}>">里程碑
+		  <span class="badge"><{$arr.id|countStage=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/TAdmin/Risk/index/proid/<{$arr.id}>">风险
+		  <span class="badge"><{$arr.id|countRisk=###}></span></a></li>
+		  <li role="presentation" class="active"><a href="__APP__/TAdmin/Prosys/index/proid/<{$arr.id}>">涉及系统
+		  <span class="badge"><{$arr.id|countProsys=###}></span> </a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Func/func/proid/<{$arr.id}>">功能点</a></li>
-		  <li role="presentation" ><a href="__APP__/TAdmin/Func/range/proid/<{$arr.id}>">范围<span class="badge"><{$arr.id|countRange=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>/copy/<{$arr.id}>">场景<span class="badge"><{$arr.id|countScene=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/TAdmin/Case/library/proid/<{$arr.id}>">用例<span class="badge"><{$arr.id|countCase=###}></span></a></li>
+		  <li role="presentation" ><a href="__APP__/TAdmin/Func/range/proid/<{$arr.id}>">范围
+		  <span class="badge"><{$arr.id}></span></a></li>
+		  <li role="presentation"><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>/copy/<{$arr.id}>">场景
+		  <span class="badge"><{$arr.id|countScene=###}></span></a></li>
+		  <li role="presentation"><a href="__APP__/TAdmin/Case/library/proid/<{$arr.id}>">用例
+		  <span class="badge"><{$arr.id|countCase=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Element/library/proid/<{$arr.id}>">控件库</a></li>	  
 	</ul>
 	<div class="row">
@@ -33,19 +32,24 @@
 			  <div class="panel-heading">关联系统</div>
 			      <ul class="list-group">
 			        <volist name='data' id='st' empty="没有数据">
-			            <li class="list-group-item">
-			              <{$st.sysno}>:<{$st.system}>
-			              <!-- Split button -->
+			            <li class="list-group-item"><{$st.sysno}>:<{$st.name}>
 			              <div class="btn-group pull-right">
-			                <a target="_blank" href="__APP__/TAdmin/Path/index/sysid/<{$st.sysid}>/proid/<{$arr.id}>" type="button" class="btn btn-info btn-xs">路径<{$st.sysid|countPath=###}></a>
+			                <a href="__APP__/TAdmin/Path/index/sysid/<{$st.branch}>/proid/<{$arr.id}>" 
+			                class="btn btn-info btn-xs">路径<{$st.branch|countPath=###}></a>
 			                <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
 			                  <span class="caret"></span>
 			                  <span class="sr-only">Toggle Dropdown</span>
 			                </button>
 			                <ul class="dropdown-menu" role="menu">			                  
-			                  <li><a href="__APP__/TAdmin/System/test/id/<{$st.id}>/proid/<{$arr.id}>"><span class="glyphicon glyphicon-cloud"> 环境</span></a></li>                 
+			                  <li>
+				                  <a href="__URL__/mod/id/<{$st.branch}>/proid/<{$arr.id}>">
+				                  <span class="glyphicon glyphicon-cloud"> 修改</span></a>
+				              </li>                 
 			                  <li class="divider"></li>
-			                  <li><a href="__URL__/del/prosysid/<{$st.prosysid}>"  onclick="return confirm('你确定要从项目中移除：<{$st.system}>系统吗？')"><span class="glyphicon glyphicon-remove"> 移除</span></a></li>
+			                  <li>
+			                  	  <a href="__URL__/del/id/<{$st.id}>"  onclick="return confirm('你确定要从项目中移除：<{$st.name}>系统吗？')">
+			                  	  <span class="glyphicon glyphicon-remove"> 移除</span></a>
+			                  </li>
 			                </ul>
 			              </div>
 			            </li>
@@ -55,37 +59,18 @@
 	  </div>
 	  <div class="col-md-6">
 	  		<div class="panel panel-default">
-			  <div class="panel-heading">备选系统
-			  	<button type="button" class="btn btn-primary btn-xs pull-right" data-toggle="modal" data-target="#tianjsystem"><span class="glyphicon glyphicon-plus"> 添加  </span></button>
-			  </div>
+			  <div class="panel-heading">备选系统</div>
 			      <ul class="list-group">
 			        <volist name='syses' id='st' empty="没有数据">
-			            <li class="list-group-item">
-			              <{$st.sysno}>:<{$st.system}>【<{$st.state}>】
-			              <!-- Split button -->
-			              <div class="btn-group pull-right">
-			                <a href="__URL__/insert/proid/<{$arr.id}>/sysid/<{$st.id}>" type="button" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-link"> 关联 </span></a>
-			                <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
-			                  <span class="caret"></span>
-			                  <span class="sr-only">Toggle Dropdown</span>
-			                </button>
-			                <ul class="dropdown-menu" role="menu">
-			                  <li><a href="__URL__/insert/proid/<{$arr.id}>/sysid/<{$st.id}>" ><span class="glyphicon glyphicon-link"> 关联</span></a></li>
-			                               
-			                  <li class="divider"></li>
-			                  <li><a href="__APP__/TAdmin/System/mod/id/<{$st.id}>/proid/<{$arr.id}>"><span class="glyphicon glyphicon-edit"> 修改</span></a></li>
-			                </ul>
-			              </div>
+			            <li class="list-group-item"><{$st.sysno}>:<{$st.name}>
+			              <a href="__URL__/insert/project/<{$arr.id}>/branch/<{$st.id}>" type="button" class="btn btn-danger btn-xs pull-right">
+			                <span class="glyphicon glyphicon-link"> 关联 </span></a>
 			            </li>
 			        </volist> 
 			      </ul>
-			</div>
-	 
+			</div>	 
 	  </div>
-	</div>
-	
-		
-       
+	</div>     
     </div>
   </div>
   
@@ -103,65 +88,17 @@
 				<default /><li class="list-group-item ">
 			</switch>   
             <a href="__URL__/index/proid/<{$pro.id}>">
-            	<{$pro.end}>:<{$pro.program}><br>
-            	<{$pro.prono}>:<{$pro.manager}>
-            	<span class="badge"><{$pro.prost}></span>
+            	<{$pro.end}>:<{$pro.name}><br>
+            	<{$pro.code}>:<{$pro.dq}>
+            	<span class="badge"><{$pro.status}></span>
             </a>
             <span class="badge"><{$pro.id|countProsys=###}></span></li>
         </volist>
       </ul>	  
-	</div>
-  	 
-  </div>
-  
+	</div>  	 
+  </div> 
 </div> 
 
-
-
-
-
-<!-- 添加-模态框 -->
-<div class="modal fade" id="tianjsystem" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
-    <div class="modal-content">
-    	<div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	        <h4 class="modal-title" id="myModalLabel">系统-添加</h4>
-	    </div>
-	    <div class="modal-body">
-	      	<form action="__APP__/TAdmin/System/insert" method="post" class="form-horizontal" role="form" >
-	      	<input type="hidden" name="prodid" value="<{$arr.prodid}>" />
-				<div class="form-group">
-					<label for="sysno" class="col-sm-4 control-label">编号:</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" name="sysno" value="" placeholder="编号">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="system" class="col-sm-4 control-label">系统:</label>
-					<div class="col-sm-8">
-						<input type="text" class="form-control" name="system" value="" placeholder="系统">
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="state" class="col-sm-4 control-label">状态:</label>
-					<div class="col-sm-8">
-						<{$state}>
-					</div>
-				</div>
-		</div>
-		<div class="modal-footer">
-		     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-		     <button type="submit" class="btn btn-primary">提交</button></form>
-		</div>
-    </div>       
-  </div>
-  
-  
- 
-  
-  
-</div>
 
 
 

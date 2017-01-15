@@ -6,15 +6,15 @@ class ExesceneController extends CommonController{
         $type=$_GET['type'];
         $this->assign('type',$type);
         //初始化模型               
-    	$m=M('program');
-    	$where=array("tp_stage.state"=>"进行中","tp_stagetester.tester"=>$_SESSION['realname'],"tp_stagetester.type"=>$type);
-    	$data=$m->join("tp_stage ON tp_program.id = tp_stage.proid")
-    	 ->join("tp_stagetester ON tp_stage.id = tp_stagetester.stageid")
-    	 ->order("tp_program.end desc")->where($where)->select();
+    	$m=M('project');
+    	$where=array("zt_tp_stage.state"=>"进行中","zt_tp_stagetester.tester"=>$_SESSION['realname'],"zt_tp_stagetester.type"=>$type);
+    	$data=$m->join("zt_tp_stage ON zt_tp_program.id = zt_tp_stage.proid")
+    	 ->join("zt_tp_stagetester ON zt_tp_stage.id = zt_tp_stagetester.stageid")
+    	 ->order("zt_project.end desc")->where($where)->select();
 	    $this->assign('data',$data);
 	    
 	    $stagetesterid=!empty($_GET['stagetesterid'])?$_GET['stagetesterid']:$data[0]['id'];	     
-	    $m=D('exescene');
+	    $m=D('tp_exescene');
 	    $where=array("stagetesterid"=>$stagetesterid);
 	    $exe=$m->where($where)->order("sn")->select();
 	    $this->assign('exe',$exe);
@@ -26,7 +26,7 @@ class ExesceneController extends CommonController{
 
     public function order(){
 
-        $db = D('exescene');
+        $db = D('tp_exescene');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
@@ -42,17 +42,17 @@ class ExesceneController extends CommonController{
 
         $type=$_GET['type'];
 
-        $m=M('program');
-        $where=array("tp_stage.state"=>"进行中","tp_stagetester.tester"=>$_SESSION['realname'],"tp_stagetester.type"=>$type);
-        $data=$m->join("tp_stage ON tp_program.id = tp_stage.proid")
-        ->join("tp_stagetester ON tp_stage.id = tp_stagetester.stageid")
-    	->order("tp_program.end desc")
+        $m=M('project');
+        $where=array("zt_tp_stage.state"=>"进行中","zt_tp_stagetester.tester"=>$_SESSION['realname'],"zt_tp_stagetester.type"=>$type);
+        $data=$m->join("zt_tp_stage ON zt_project.id = zt_tp_stage.proid")
+        ->join("zt_tp_stagetester ON zt_tp_stage.id = zt_tp_stagetester.stageid")
+    	->order("zt_project.end desc")
         ->where($where)
         ->select();
         $this->assign('data',$data);       
 
         $stagetesterid=!empty($_GET['stagetesterid'])?$_GET['stagetesterid']:$data[0]['id'];
-        $m=D('exescene');
+        $m=D('tp_exescene');
         $where=array("stagetesterid"=>$stagetesterid);
         $exe=$m->where($where)->order("sn")->select();
         $this->assign('exe',$exe);
@@ -68,7 +68,7 @@ class ExesceneController extends CommonController{
        $_GET['results']='通过';
        $_GET['testtime']=date("Y-m-d H:i:s",time());
        $_GET['runningip']= get_client_ip();
-       $db=D('exescene');
+       $db=D('tp_exescene');
        if ($db->save($_GET)){
            $this->success("修改成功！");
        }else{
@@ -82,7 +82,7 @@ class ExesceneController extends CommonController{
        $_GET['results']='失败';
        $_GET['testtime']=date("Y-m-d H:i:s",time());
        $_GET['runningip']= get_client_ip();
-       $db=D('exescene');
+       $db=D('tp_exescene');
        if ($db->save($_GET)){
            $this->success("修改成功！");
        }else{
@@ -95,17 +95,17 @@ public function queue(){
     /* 接收参数*/
     $stagetesterid=$_GET['stagetesterid'];
     /* 实例化模型*/
-    $m=D('stagetester');
+    $m=D('tp_stagetester');
     $arr=$m->find($stagetesterid);
     $this->assign('arr',$arr);
 
-    $m=D('stage');
-    $where=array("tp_stage.proid"=>$_SESSION['proid'],"tp_stagetester.type"=>$arr['type']);
-    $data=$m->join(" tp_stagetester ON tp_stage.id = tp_stagetester.stageid")
-    ->where($where)->order("tp_stage.sn,tp_stage.id,tp_stagetester.sn,tp_stagetester.id")->select();
+    $m=D('tp_stage');
+    $where=array("zt_tp_stage.proid"=>$_SESSION['proid'],"zt_tp_stagetester.type"=>$arr['type']);
+    $data=$m->join(" zt_tp_stagetester ON zt_tp_stage.id = zt_tp_stagetester.stageid")
+    ->where($where)->order("zt_tp_stage.sn,zt_tp_stage.id,zt_tp_stagetester.sn,zt_tp_stagetester.id")->select();
     $this->assign('data',$data);
     
-    $m=D('exescene');
+    $m=D('tp_exescene');
     $where=array("stagetesterid"=>$stagetesterid);
     $exe=$m->where($where)->order("sn,id")->select();
     $this->assign('exe',$exe);
@@ -116,10 +116,10 @@ public function queue(){
 
 public function insert(){
     $sceneid=$_GET['sceneid'];
-    $m=D('scene');
+    $m=D('tp_scene');
     $data=$m->field("type,level,swho,swhen,testip,scene,flow")->find($sceneid);
 
-    $m=D('exescene');
+    $m=D('tp_exescene');
     $where=array("stagetesterid"=>$_GET['stagetesterid'],"type"=>$_GET['type']);
     $data['sn']=$m->where($where)->count()+1;
     $data['adder']=$_SESSION['realname'];
@@ -133,7 +133,7 @@ public function insert(){
         $this->error($m->getError());
     }
     $lastId=$m->add($data);
-     $m=D("scenefunc");
+     $m=D("tp_scenefunc");
      $where=array("sceneid"=>$sceneid);
      $arr=$m->field("sn,funcid,func,path,remarks as funcremarks,casestate,casemain,caseexpected,
             num1,num2,num3,num4,num5,num6,num7,num8,num9,num10,num11,num12,num13,num14,num15,num16,num17,num18,num19,num20")
@@ -164,16 +164,16 @@ public function library(){
     /* 接收参数*/
     $stagetesterid=$_GET['stagetesterid'];
     /* 实例化模型*/
-    $m=D('stagetester');
+    $m=D('tp_stagetester');
     $arr=$m->find($stagetesterid);
     $this->assign('arr',$arr);
 
-    $m=D('exescene');
+    $m=D('tp_exescene');
     $where=array("stagetesterid"=>$stagetesterid);
     $exe=$m->where($where)->order("sn")->select();
     $this->assign('exe',$exe);
 
-    $m=D('scene');
+    $m=D('tp_scene');
     $where=array("proid"=>$_SESSION['proid'],"type"=>$arr['type']);
     $scene=$m->where($where)->order("sn")->select(); 
     $this->assign('scene',$scene);   

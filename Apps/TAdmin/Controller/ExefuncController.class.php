@@ -6,15 +6,15 @@ public function index(){
     /* 接收参数*/    
     $id=$_GET['id'];
     /* 实例化模型*/
-    $m=D('stage');
-    $map['tp_exescene.id']=$id;
+    $m=D('tp_stage');
+    $map['zt_tp_exescene.id']=$id;
     $pro=$m->where($map)
-        ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
-        ->join('tp_exescene ON tp_exescene.stagetesterid =tp_stagetester.id')
+        ->join('zt_tp_stagetester ON zt_tp_stage.id =zt_tp_stagetester.stageid')
+        ->join('zt_tp_exescene ON zt_tp_exescene.stagetesterid =zt_tp_stagetester.id')
         ->find();
     $_SESSION['proid']=$pro['proid'];
     
-    $m=D('exescene');
+    $m=D('tp_exescene');
     $arr=$m->find($id);  
     $this->assign('arr',$arr);
     
@@ -23,7 +23,7 @@ public function index(){
     $data=$m->where($where)->order("sn")->select();
     $this->assign('data',$data);    
     /* 实例化模型*/
-    $m=M('exefunc');
+    $m=M('tp_exefunc');
     $where=array("exesceneid"=>$id);
     $exe=$m->where($where)->order('sn,id')->select();
     $this->assign('exe',$exe);   
@@ -39,12 +39,12 @@ public function test(){
     $type=$_GET['type'];
     $id=$_GET['id'];
     /* 实例化模型*/
-    $m=D('exescene');
+    $m=D('tp_exescene');
     $where=array("stagetesterid"=>$stagetesterid,"type"=>$type);
     $data=$m->where($where)->order("sn")->select();
     $this->assign('data',$data);
     /* 实例化模型*/
-    $m=M('exefunc');
+    $m=M('tp_exefunc');
     $where=array("exesceneid"=>$id);
     $exe=$m->where($where)->select();
     $this->assign('exe',$exe);
@@ -60,7 +60,7 @@ public function pass(){
 
     $_GET['result']="通过";
     $_GET['moder']=$_SESSION['realname'];
-    $db=D('exefunc');
+    $db=D('tp_exefunc');
     if ($db->save($_GET)){
         $this->success("修改成功！");
     }else{
@@ -70,7 +70,7 @@ public function pass(){
 
 public function update(){
     /* 实例化模型*/
-    $db=D('exefunc');
+    $db=D('tp_exefunc');
     $data=$db->find($_POST['id']);
     $funcid=$data['funcid'];
     $_POST['moder']=$_SESSION['realname'];
@@ -101,7 +101,7 @@ public function update(){
 
 public function order(){
 
-    $db = D('exescene');
+    $db = D('tp_exescene');
     $num = 0;
     foreach($_POST['sn'] as $id => $sn) {
         $num += $db->save(array("id"=>$id, "sn"=>$sn));
@@ -117,7 +117,7 @@ public function order(){
 
 public function supdate(){
     /* 实例化模型*/
-    $db=D('exescene');
+    $db=D('tp_exescene');
     $_POST['moder']=$_SESSION['realname'];
 
     if ($db->save($_POST)){

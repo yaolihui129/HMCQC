@@ -8,9 +8,7 @@ class LoginController extends Controller {
     }
 
     public function login(){
-        $user = D('user')
-        //->where(array('username'=>$_POST['username'],'state'=>'在职','password'=>md5($_POST['password'])))
-        ->field("id,dept,role,realname,account,usergp,phone,email,deleted,path,img")
+        $user = D('user')->field("id,dept,role,realname,account,usergp,phone,email,deleted,path,img")
         ->where(array('account'=>$_POST['username'],'password'=>md5($_POST['password']))) 
         ->find();
         
@@ -19,10 +17,8 @@ class LoginController extends Controller {
             $_SESSION=$user;
             $_SESSION['isLogin']=1;
             $_SESSION['testgp']=$user['usergp'];
-            dump($user);
             $where['userid']=$user['id'];
             $arr = D('tp_userprod')->where($where)->select();
-            dump($arr);
             //判断跳转到那个后台
             $this->redirect('TAdmin/Program/index');
         }else{
@@ -41,8 +37,7 @@ class LoginController extends Controller {
         }
         // 销毁sesstion
         session_destroy();
-
-        $this->success(" {$username},再见!", "index");
+        $this->success($_SESSION['realname'].",再见!", "index");
 
     }
 

@@ -1,101 +1,5 @@
 <?php
 
-function selectgpuer($value="腰立辉",$testgp="Auto",$name="state"){
-    $html = '<select name="'.$name.'" class="inputselect">';
-    $m =M('user');
-    $where=array("usergp"=>$testgp,"state"=>"在职");
-    //获取所有分类
-    $users = $m->where($where)->select();
-    foreach($users as $v) {
-        $selected = ($v['realname']==$value) ? "selected" : "";
-        $html .= '<option '.$selected.' value="'.$v['realname'].'">'.$v['realname'].'</option>';
-    }
-    $html .='<select>';
-    return $html;
-
-}
-
-
-/**
- * 产品选择
- *
- * @param $value 选中值
- */
-function prodselect($value=1) {
-    $html = '<select name="prodid" class="inputselect">';
-    $m =M('product');
-    $cats = $m->select();
-    foreach($cats as $v) {
-        $selected = ($v['id']==$value) ? "selected" : "";
-        $html .= '<option '.$selected.' value="'.$v['id'].'">'.$v['short'].'</option>';
-    }
-    $html .='<select>';
-
-    return $html;
-}
-
-
-
-/**
- * 根据id获取项目编号
- */
-function getProNo($id){
-    if ($id){
-        $m=M('project');
-        $data=$m->find($id);
-
-        return $data['prono'];
-    }else {
-        return ;
-    }
-}
-
-/**
- * 根据id获取项目信息
- */
-function getPro($id){
-    if ($id){
-        $m=M('project');
-        $data=$m->find($id);
-
-        $str=$data['code'].$data['qd']."-".$data['name']."【".$data['status']."】".$data['end'];
-
-        return $str;
-    }else {
-        return ;
-    }
-}
-
-/**
- * 根据id获取系统信息
- */
-function getSystem($id){
-    if ($id){
-        $m=M('system');
-        $data=$m->find($id);
-
-        $str=$data['system']."【".$data['state']."】";
-        return $str;
-    }else {
-        return ;
-    }
-}
-
-/**
- * 根据id获取里程碑信息
- */
-function getStage($id){
-    if ($id){
-        $m=M('tp_stage');
-        $data=$m->find($id);
-
-        $str=$data['stage']."【".$data['state']."】";
-        return $str;
-    }else {
-        return ;
-    }
-}
-
 /**
  * 根据id获取场景信息
  */
@@ -196,9 +100,7 @@ function getSPFunc($id){
         $where=array("tp_func.id"=>$id);
         $data=$s->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
         ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
-        ->where($where)
-        ->select();
-
+        ->where($where)->select();
         $str=$data[0]['system'].">".$data[0]['path'].">".$data[0]['func'];
         return $str;
     }else {
@@ -215,9 +117,7 @@ function getSPath($id){
         $s = D("tp_system");
         $where=array("zt_tp_path.id"=>$id);
         $data=$s->join('inner JOIN zt_tp_path ON zt_tp_system.id = zt_tp_path.sysid')
-        ->where($where)
-        ->select();
-
+        ->where($where)->select();
         $str=$data[0]['system']."-".$data[0]['path'];
         return $str;
     }else {
@@ -229,7 +129,6 @@ function getSPath($id){
  * 根据场景功能id获取场景功能信息
  */
 function getSceneFunc($id){
-
         $m=D('tp_scenefunc');
         $where['sceneid']=$id;
         $arr=$m->where($where)->order('sn,id')->select();
@@ -243,7 +142,6 @@ function getSceneFunc($id){
         return $str;  
 }
 
-
 /**
  * 根据列队获取执行功能数
  */
@@ -253,7 +151,6 @@ function countExeFunc($id){
     $count=$m->where($where)->count();
     return $count;
 }
-
 
 /**
  * 根据项目获取里程碑数
@@ -370,17 +267,9 @@ function countPro($testgp){
     return $count;
 }
 
+
 /**
- * 根据系统编号获取路径数
- */
-function countPath($id){
-    $m=M("tp_path");
-    $where=array("sysid"=>$id);
-    $count=$m->where($where)->count();
-    return $count;
-}
-/**
- * 根据路径获取功能数
+ * 获取功能数
  */
 function countFunc($id){
     $m=M("tp_func");
@@ -389,18 +278,10 @@ function countFunc($id){
     return $count;
 }
 
-/**
- * 根据产品获取系统数
- */
-function countSys($id){
-    $m=M("system");
-    $where=array("prodid"=>$id);
-    $count=$m->where($where)->count();
-    return $count;
-}
+
 
 /**
- * 根据功能获取路径数
+ * 获取用例数
  */
 function countFCase($id){
     $m=M("tp_case");
@@ -422,7 +303,7 @@ function countFRules($id){
 
 
 /**
- * 根据项目编号获取规则数
+ * 获取规则数
  */
 function countPRules($proid){
     $m=M("tp_rules");

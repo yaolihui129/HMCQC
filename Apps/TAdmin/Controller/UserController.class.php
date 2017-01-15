@@ -1,46 +1,16 @@
 <?php
 namespace TAdmin\Controller;
-
 class UserController extends CommonController {
    public function index(){
          $testgp=$_SESSION['testgp'];
     	 $m=M('user');
-    	 $where['state']="在职";
-    	 $where['usergp']="PJD";
+    	 //$where['usergp']="PJD";
     	 $arr=$m->where($where)->select();
-	     $this->assign('data',$arr);
-	     $this -> assign("usergp", formselect($testgp,"usergp","testgp"));
-	     $this -> assign("position", formselect("测试","position","position"));
+	     $this->assign('data',$arr);	    
 	     
 	     $this->display();
     }
-
-
-    public function insert(){
-        $m=D('user');
-        $_POST['password']=md5("123456");
-        $_POST['state']="在职";
-        $_POST['path']="/";
-        $_POST['img']="head.png";
-        $_POST['email']=$_POST['username']."@yiche.com";
-        $_POST['team']="互联网中心";
-        $_POST['adder']=$_SESSION['realname'];
-        $_POST['moder']=$_SESSION['realname'];
-        $_POST['createTime']=date("Y-m-d H:i:s",time());
-        if(!$m->create()){
-            $this->error($m->getError());
-        }
-       
-        $lastId=$m->add();
-        if($lastId){
-           $this->success("添加成功");
-        }else{
-            $this->error('用户注册失败');
-        }
-
-
-    }
-
+   
     public function mod(){
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
@@ -52,14 +22,9 @@ class UserController extends CommonController {
         $user=$m->find($id);
         $this->assign('user',$user);
         $this -> assign("usergp", formselect($user['usergp'],"usergp","testgp"));
-        $this->assign("state", formselect($user['state'],"state","adminst"));
-        
-        $this -> assign("position", formselect($user['position'],"position","position"));
+                       
         $this->display();
     }
-
-
-
 
     public function update(){
         /* 实例化模型*/
@@ -71,8 +36,6 @@ class UserController extends CommonController {
             $this->error("修改失败！");
         }
     }
-
-
 
     public function photo(){
         /* 接收参数*/
@@ -90,10 +53,9 @@ class UserController extends CommonController {
         $upload->maxSize   =     3145728 ;// 设置附件上传大小
         $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
         $upload->rootPath =  './Upload/';// 设置附件上传目录
-        $upload->savePath  = '/Test/user/'; // 设置附件上传目录
+        $upload->savePath  = 'Test/user/'; // 设置附件上传目录
     
         $info  =   $upload->upload();
-        dump($info);
         if(!$info) {// 上传错误提示错误信息
             $this->error($upload->getError());
         }else{// 上传成功 获取上传文件信息
@@ -135,8 +97,7 @@ class UserController extends CommonController {
         /* 接收参数*/
         $id =  $_SESSION['id'];
         /* 实例化模型*/
-        $m=M('user');
-    
+        $m=M('user');  
         $user=$m->find($id);
         $this->assign('user',$user);
     
@@ -150,8 +111,7 @@ class UserController extends CommonController {
         $pass2= $_POST['pass2'];
         $pass3= $_POST['pass3'];
         /* 实例化模型*/
-        $m=M('user');
-    
+        $m=M('user');   
         $user=$m->find($id);
         if (md5($pass1)==$user['password']) {
             if ($pass2==$pass3) {
@@ -162,28 +122,20 @@ class UserController extends CommonController {
                     $this->success("密码修改成功！",U('TAdmin/Program/index'));
                 }else{
                     $this->error("密码修改失败！");
-                }
-    
+                }  
             }else{
                 $this->error('新密码和确认密码不一致');
             }
         }else{
             $this->error('原密码错误');
-        }
-    
-    
+        }        
     }
-    
-    
-    
-    
-    
+     
     public function del(){
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
    	    $m=M('user');
-
    	    $count =$m->delete($id);
    	    if ($count>0) {
    		    $this->success('删除成功');
@@ -191,5 +143,6 @@ class UserController extends CommonController {
    		    $this->error('删除失败');
      	}
    }
-
+   
+   
 }

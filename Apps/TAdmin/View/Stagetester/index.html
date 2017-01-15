@@ -1,38 +1,16 @@
  <layout name="layout" />
- <h2>【<{$w.type}>】人员安排
- 	<div class="btn-group pull-right">    		
-    	<a href="__APP__/TAdmin/Stage/index/proid/<{$w.proid}>"  class="btn btn-warning">
-	    <span class="glyphicon glyphicon-arrow-left">返回</span></a>
-    </div> 
- </h2>      
+ <h2>【<{$_SESSION["proid"]|getProNo=###}><{$type.type}>】人员安排
+ <a href="__APP__/TAdmin/Stage/index/proid/<{$_SESSION['proid']}>"  class="btn btn-warning pull-right">返回</a></h2>      
  <div class="row">
   <div class="col-md-7">
   	<div class="panel panel-info">
-	  <div class="panel-heading"> <{$w.stageid|getStage=###}>
-	  	<span class="pull-right">当前：<{$w.proid|getProNo=###}></span>
-	  	
-	  </div>
+	  <div class="panel-heading"> <{$type.stageid|getStage=###}></div>
 	   <form action="__URL__/order" method="post" >
 	     <volist name='testers' id='tester'>
 	       <li class="list-group-item">
-	       		<span>
-			        <input type="text" name="sn[<{$tester.id}>]" value="<{$tester.sn}>"  class="input40"/>
-			        <{$tester.tester}>			        
-			        <span class="badge"><{$tester.plan}></span>			        
-			        <div class="btn-group pull-right">
-					  <a href="__APP__/TAdmin/Exescene/queue/stagetesterid/<{$tester.id}>" 
-					  type="button" class="btn btn-info btn-xs">列队<span class="badge"><{$tester.id|countExescene=###}></span></a>
-					  <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
-					    <span class="caret"></span>
-					    <span class="sr-only">Toggle Dropdown</span>
-					  </button>
-					  <ul class="dropdown-menu" role="menu">
-					    <li><a href="__URL__/mod/id/<{$tester.id}>" >修改</a></li>
-					    <!--  <li class="divider "></li>
-					    <li><a href="__URL__/del/id/<{$tester.id}>" >删除</a></li>-->
-					  </ul>
-					</div>
-		        </span>
+		       	<input type="text" name="sn[<{$tester.id}>]" value="<{$tester.sn}>"  class="input40"/><{$tester.tester}>			        
+				<a href="__APP__/TAdmin/Exescene/queue/stagetesterid/<{$tester.id}>" class="btn btn-info btn-xs pull-right">列队
+				<span class="badge"><{$tester.id|countExescene=###}></span></a>					  					  							       
 	        </li>
 	    </volist>
 	      <input type="submit" name="do_submit" value="批量排序" class="btn">
@@ -41,9 +19,7 @@
   
   </div>
   <div class="col-md-2">
-   	<div class="panel panel-default">
-	  <div class="panel-heading">测试人员
-	  </div>
+   	<div class="panel panel-default">	  
 	  <ul class="list-group">
 	      <volist name='users' id='user' empty="没有数据">
 	        <li class="list-group-item">
@@ -60,9 +36,7 @@
   </div>
   <div class="col-md-3 hidden-xs hidden-sm">
     <div class="panel panel-default">
-    	<div class="panel-heading">
-      		<h3 class="panel-title"><{$w.proid|getProNo=###}></h3>
-    	</div>
+    	<div class="panel-heading"><h3 class="panel-title"><{$_SESSION["proid"]|getProNo=###}></h3></div>
     	<ul class="list-group">
       	<volist name='data' id='vo' empty="没有数据">      
            <switch name="w.stageid">
@@ -70,7 +44,7 @@
            <default />
            	<li class="list-group-item ">
      	   </switch> 
-           		<a href="__URL__/index/stageid/<{$vo.id}>/type/<{$w.type}>"><{$vo.sn}>.<{$vo.stage}></a>
+           		<a href="__URL__/index/stageid/<{$vo.id}>/type/<{$type.type}>"><{$vo.sn}>.<{$vo.stage}></a>
            		<span class="badge"><{$vo.state}></span>
             </li>
         </volist>
