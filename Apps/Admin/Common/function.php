@@ -7,7 +7,7 @@ function getProd($id){
         $m=M('product');
         $data=$m->find($id);
         //dump($data);
-        return $data['product'];
+        return $data['name'];
     }else {
         return ;
     }

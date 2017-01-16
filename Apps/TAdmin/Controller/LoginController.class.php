@@ -37,7 +37,7 @@ class LoginController extends Controller {
         }
         // 销毁sesstion
         session_destroy();
-        $this->success($_SESSION['realname'].",再见!", "index");
+        $this->success($username.",再见!", "index");
 
     }
 

@@ -1,13 +1,6 @@
  <layout name="layout" />
-  <ol class="breadcrumb">
-    <span>所在位置：</span>
-        <li><a href="__APP__/Admin/Index/index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-        <li><a href="__URL__/index">管理员</a></li>   
-         <li class="active">上传照片</li>
-    <span class="pull-right"><a href="__URL__/index"><button type="button" class="btn btn-warning btn-xs pull-right">返回</button></a></span>
-  </ol>
-  <h1 >管理员-上传照片</h1>
-  <div class="row">
+<h3 >管理员-上传照片<a href="__URL__/index" class="btn btn-warning  pull-right">返回</a></h3>
+<div class="row">
       <div class="col-sm-8">
             <p class="pull-right visible-xs"><button class="btn-xs btn-primary">tar</button></p>
             <div class="panel panel-default">  
@@ -36,12 +29,12 @@
     </div>                      
     <div class="col-sm-4">
         <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">管理员</h3>
-            </div>            
+            <div class="panel-heading"><h3 class="panel-title">用户</h3></div>            
             <ul class="list-group">
             <volist name='data' id='vo' empty="没有数据">
-                <li class="list-group-item" title="管理员"><a href="__URL__/photo/id/<{$vo.id}>""><{$vo.realname}>:<{$vo.state}></a></li>
+                <li class="list-group-item" title="用户">
+                	<a href="__URL__/photo/id/<{$vo.id}>""><{$vo.realname}>:<{$vo.state}></a>
+                </li>
             </volist>            
             </ul>                        
         </div>          

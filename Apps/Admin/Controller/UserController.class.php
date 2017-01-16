@@ -4,7 +4,7 @@ class UserController extends CommonController {
     public function index(){
         $where['state']="在职";
         $where['prodid']=$_SESSION['prodid'];
-        $m=M('admin');
+        $m=M('tp_admin');
 
         $arr=$m->where($where)->select();
         $this->assign('data',$arr);
@@ -13,7 +13,7 @@ class UserController extends CommonController {
 
     public  function add(){
 
-        $m=M('admin');
+        $m=M('tp_admin');
         
         $where['prodid']=$_SESSION['prodid'];
         $arr=$m->where($where)->select();
@@ -25,7 +25,7 @@ class UserController extends CommonController {
 
     public function insert(){
 
-        $m=D('admin');
+        $m=D('tp_admin');
         $_POST['password']=md5("123456");
         $_POST['username']=$_POST['phone'];
         $_POST['prodid']=$_SESSION['prodid'];
@@ -47,7 +47,7 @@ class UserController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('admin');
+        $m=M('tp_admin');
         $where['prodid']=$_SESSION['prodid'];
         $arr=$m->where($where)->select();
         $this->assign('data',$arr);
@@ -64,7 +64,7 @@ class UserController extends CommonController {
         /* 接收参数*/       
         $search=$_POST['search'];               
         /* 实例化模型*/
-        $m=M('admin');    
+        $m=M('tp_admin');    
         $map['phone']=array('like','%'.$search.'%');
         $map['prodid']=$_SESSION['prodid'];
         $arr=$m->where($map)->select();
@@ -81,7 +81,7 @@ class UserController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('admin');
+        $m=M('tp_admin');
         $where=array("state"=>"在职");
         $arr=$m->where($where)->select();
         $this->assign('data',$arr);
@@ -108,7 +108,7 @@ class UserController extends CommonController {
            $_POST['path']=$info['photo']['savepath'];
            $_POST['photo']=$info['photo']['savename'];
            /* 实例化模型*/
-           $db=D('admin');
+           $db=D('tp_admin');
               if ($db->save($_POST)){
                   $this->success("修改成功！");
               }else{
@@ -119,7 +119,7 @@ class UserController extends CommonController {
 
     public function update(){
         /* 实例化模型*/
-        $db=D('admin');
+        $db=D('tp_admin');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
@@ -132,7 +132,7 @@ class UserController extends CommonController {
         /* 接收参数*/
         $id =  $_SESSION['id'];
         /* 实例化模型*/
-        $m=M('admin');
+        $m=M('tp_admin');
         
         $user=$m->find($id);
         $this->assign('user',$user);
@@ -147,7 +147,7 @@ class UserController extends CommonController {
        $pass2= $_POST['pass2'];
        $pass3= $_POST['pass3'];
        /* 实例化模型*/
-        $m=M('admin');
+        $m=M('tp_admin');
         
         $user=$m->find($id);
         if (md5($pass1)==$user['password']) {
@@ -176,7 +176,7 @@ class UserController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-   	    $m=M('admin');
+   	    $m=M('tp_admin');
 
    	    $count =$m->delete($id);
    	    if ($count>0) {

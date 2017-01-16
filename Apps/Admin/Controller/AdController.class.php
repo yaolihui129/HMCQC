@@ -2,10 +2,10 @@
 namespace Admin\Controller;
 class AdController extends CommonController {
     public function index(){
-        $m=D('ad');
+        $m=D('tp_ad');
         $where['prodid']=$_SESSION['prodid'];
 
-        $data=$m->where($where)->order('updateTime desc')->select();
+        $data=$m->where($where)->order('utime desc')->select();
         $this->assign('data',$data);
         
         $this -> assign("state", formselect());

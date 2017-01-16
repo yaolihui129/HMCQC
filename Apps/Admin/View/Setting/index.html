@@ -3,38 +3,48 @@
 <h3> &nbsp;&nbsp;<{$arr.web}></h3>
      <div class="panel-body">
      	<div class="row">
-		  <div class="col-md-4">
+		  <div class="col-md-6">
 		  		 <form action="__URL__/update" method="post" enctype='multipart/form-data'  role="form">
 		              <input type="hidden" name="id" value="<{$arr.id}>" />
-		              		              
-		              <div class="form-group input-group-lg">
-		                  <label for="exampleInputusername">手机：</label>
-		                  <input type="text" class="form-control" name="phone" value="<{$arr.phone}>" placeholder="手机" > 
+		              <div class="form-group ">
+		                   <label for="exampleInputusername" class="col-sm-3 control-label">手机：</label>
+		                   <div  class="col-sm-9">
+		                   		<input type="text" class="form-control" name="phone" value="<{$arr.phone}>" placeholder="手机" >
+						   </div>
 		              </div>
-		              <div class="form-group input-group-lg">
-		                  <label for="exampleInputusername">电话：</label>
-		                  <input type="text" class="form-control" name="telphone" value="<{$arr.telphone}>" placeholder="电话" > 
+		              <div class="form-group ">
+		                   <label for="exampleInputusername" class="col-sm-3 control-label">电话：</label>
+		                   <div  class="col-sm-9">
+		                   		<input type="text" class="form-control" name="telphone" value="<{$arr.telphone}>" placeholder="电话" >
+						   </div>
 		              </div>
-		              <div class="form-group input-group-lg">
-		                  <label for="exampleInputrealname">QQ：</label>
-		                  <input type="text" class="form-control" name="qq" value="<{$arr.qq}>" placeholder="QQ" > 
-		              </div>                  
-		              <div class="form-group input-group-lg">
-		                  <label for="exampleInputrealname">地址：</label>
-		                  <input type="text" class="form-control" name="adress" value="<{$arr.adress}>" placeholder="地址" > 
-		              </div>  
-		                    
+		              <div class="form-group ">
+		                   <label for="exampleInputusername" class="col-sm-3 control-label">QQ：</label>
+		                   <div  class="col-sm-9">
+		                   		<input type="text" class="form-control" name="qq" value="<{$arr.qq}>" placeholder="QQ" >
+						   </div>
+		              </div>
+		              <div class="form-group ">
+		                   <label for="exampleInputusername" class="col-sm-3 control-label">地址：</label>
+		                   <div  class="col-sm-9">
+		                   		<input type="text" class="form-control" name="adress" value="<{$arr.adress}>" placeholder="地址" >
+						   </div>
+		              </div>
+		              <div class="form-group ">
+		                   <label for="exampleInputusername" class="col-sm-3 control-label">备案号：</label>
+		                   <div  class="col-sm-9">
+		                   		<input type="text" class="form-control" name="record" value="<{$arr.record}>" placeholder="备案号" readonly>
+						   </div>
+		              </div>		              		              
+    
 		              <button type="submit" class="btn btn-info" >提 交</button>
 		          </form>
 		  </div>
 		 
-		  <div class="col-md-4">
+		  <div class="col-md-6">
 		  		<form action="__URL__/img" method="post" enctype='multipart/form-data'  role="form">
-		              <input type="hidden" name="id" value="<{$arr.id}>" />  
-		              <div class="form-group">				            
-				             <label for="exampleupdatetime">形象图</label>
-				      </div>                    		              
-		              <div class="panel panel-default" style="width:300px;">
+		              <input type="hidden" name="id" value="<{$arr.id}>" />  		                                  		              
+		              <div class="panel panel-default" style="width:450px;">
 		                   <img alt="形象图" src="__UPLOAD__/<{$_SESSION['qz']}><{$arr.path}><{$arr.img}>" width="100%">		                
 		              </div> 
 		              <div class="form-group">

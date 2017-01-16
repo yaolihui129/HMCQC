@@ -8,20 +8,28 @@ class LoginController extends Controller {
     }
 
     public function login(){
-        $user = D('admin')
-        ->where(array('username'=>$_POST['username'],'state'=>'在职','password'=>md5($_POST['password'])))
-        ->field('id,username,realname,prodid,path,photo',false)
-        ->find();
-        if ($user){
+        $m=D('user');
+        $where=array('account'=>$_POST['username'],'password'=>md5($_POST['password']));
+        $user=$m->where($where)->find();
+        if($user){
             session('[start]');
             $_SESSION=$user;
             $_SESSION['isLogin']=1;
             $this->redirect('/Admin/Index/test');
-        }else{
-
-            $this->error('用户或密码错误，请重新登陆！', "index");
-        }
-
+        }else {
+            $m = D('tp_admin');
+            $where=array('username'=>$_POST['username'],'state'=>'在职','password'=>md5($_POST['password']));
+            $user=$m->where($where)->field('id,username,realname,prodid,path,photo',false)->find();
+            if ($user){
+                session('[start]');
+                $_SESSION=$user;
+                $_SESSION['isLogin']=1;
+                $this->redirect('/Admin/Index/index');
+            }else{
+            
+                $this->error('用户或密码错误，请重新登陆！', "index");
+            }
+        }                              
     }
 
     public function logout(){

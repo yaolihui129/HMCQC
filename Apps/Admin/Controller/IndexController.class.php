@@ -65,7 +65,7 @@ class IndexController extends CommonController {
     
     public function test(){
 
-        $m=D('userprod');
+        $m=D('tp_userprod');
         $where['userid']=$_SESSION['id'];
         $data=$m->where($where)->select();
         $this->assign('data',$data);
