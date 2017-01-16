@@ -26,7 +26,7 @@ class ProsysController extends CommonController {
         ->order('zt_branch.sysno')->select();
         $this->assign("data",$data);
         
-        $map['prodcut']=$pp['product'];
+        $map['product']=$pp['product'];
         $syses=$m->where($map)->order('sysno')->select();
         $this->assign('syses',$syses);
 

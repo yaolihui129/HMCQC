@@ -8,7 +8,7 @@ class AboutController extends Controller {
         /* 实例化模型*/
         $m=M('project');
         $data=$m->where($where)->order("end desc")
-        ->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order,prodid")        
+        ->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order")        
         ->select();
         $this->assign('data',$data);
         

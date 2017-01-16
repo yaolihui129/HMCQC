@@ -6,7 +6,10 @@
     </h3>
   </div>
   <div class="panel-body table-responsive">
-	<b> 产品经理：</b><{$arr.po}><b> 项目经理：</b><{$arr.pm}><b> 研发：</b><{$arr.rd}><b> 测试：</b><{$arr.qd}><br>
+	<b> 产品：</b><{$arr.po|getRealname=###}>
+	<b> 项目：</b><{$arr.pm|getRealname=###}>
+	<b> 研发：</b><{$arr.rd|getRealname=###}>
+	<b> 测试：</b><{$arr.qd|getRealname=###}><br>
 	 <div class="well well-sm">简介：<br><{$arr.desc}></div>
   
     	<ul class="nav nav-tabs" role="tablist">

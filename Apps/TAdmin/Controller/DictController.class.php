@@ -8,7 +8,7 @@ class DictController extends CommonController{
          /* 实例化模型*/
     	 $m=M('dict');
          $tp=$m->field('type',false)->group('type')->select();
-    	 $arr=$m->field('id,k,v,type,state,moder,updatetime',false)->where($where)->order('k')->select();
+    	 $arr=$m->field('id,k,v,type,state,moder,utime',false)->where($where)->order('k')->select();
     	 
     	 $this->assign('data',$tp);
 	     $this->assign('arr',$arr);
@@ -24,7 +24,7 @@ class DictController extends CommonController{
         /* 实例化模型*/
         $m=M('dict');
         /* 查询数据*/
-        $arr=$m->field('id,k,v,type,state,moder,updateTime',false)->where($where)->order('k')->select();
+        $arr=$m->field('id,k,v,type,state,moder,utime',false)->where($where)->order('k')->select();
         $this->assign('data',$arr);
         $count=$m->where($where)->count()+1;
         $this->assign("c",$count);

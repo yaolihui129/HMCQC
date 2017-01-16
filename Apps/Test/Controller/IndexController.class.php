@@ -9,7 +9,7 @@ class IndexController extends Controller {
         $where['zt_projectproduct.product']=$id;
         $data=$m->where($where)
         ->join('zt_project ON zt_projectproduct.project = zt_project.id')
-        ->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order,prodid")
+        ->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order")
         ->limit(12)->select();            
         $this->assign('data',$data);
         

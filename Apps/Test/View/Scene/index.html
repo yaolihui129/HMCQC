@@ -1,13 +1,14 @@
 <layout name="layout" />
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><{$arr.id|getPro=###}>
-    	<a href="__APP__/Test" type="button" class="btn btn-warning btn-xs pull-right">返回</a>
-    </h3>
+    <h3 class="panel-title"><{$arr.id|getPro=###}><a href="__APP__/Test" class="btn btn-warning btn-xs pull-right">返回</a></h3>
   </div>
   <div class="panel-body table-responsive">
-	<b> 产品经理：</b><{$arr.po}><b> 项目经理：</b><{$arr.pm}><b> 研发：</b><{$arr.rd}><b> 测试：</b><{$arr.qd}><br>
-	 <div class="well well-sm"><{$arr.desc}></div>
+	<b> 产品：</b><{$arr.po|getRealname=###}>
+	<b> 项目：</b><{$arr.pm|getRealname=###}>
+	<b> 研发：</b><{$arr.rd|getRealname=###}>
+	<b> 测试：</b><{$arr.qd|getRealname=###}><br>
+	 <div class="well well-sm"><b>简介：</b><{$arr.desc}></div>
   
     	<ul class="nav nav-tabs" role="tablist">
 		  <li role="presentation" ><a href="__APP__/Test/Stage/index/proid/<{$arr.id}>">里程碑
@@ -25,25 +26,24 @@
 		  <span class="badge"><{$arr.id|countPRules=###}></span></a></li>		  
 		</ul>				
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <br>
-                <volist name='data' id='st' empty="没有数据">
-                    <div class="panel panel-default">
-					    <div class="panel-heading" role="tab" id="heading<{$st.id}>">
-					      	<h4 class="panel-title">
-					        <a data-toggle="collapse" data-parent="#accordion" href="#<{$st.id}>" aria-expanded="true" aria-controls="<{$st.id}>">
-					        <{$st.sn}>.<{$st.swho}>【<{$st.swhen}>】<{$st.scene}> <span class="pull-right"><{$st.state}></span></a>
-					      </h4>
-					    </div>
-					    <div id="<{$st.id}>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<{$st.id}>">
-					      	<div class="panel-body">						        						       
-						        <{$st.moder}>&nbsp;更新于:<{$st.updatetime}><br>
-						         <div class="well well-sm"><b>大致流程：</b><{$st.flow}></div>						        
-							        <ul class="list-group"><{$st.id|getSceneFunc=###}></ul>							    
-					      	</div>
-					   </div>
-  					</div>
-                      
-             </volist>
+           	<volist name='data' id='st' empty="没有数据">
+            <div class="panel panel-default">
+				<div class="panel-heading" role="tab" id="heading<{$st.id}>">
+					<h4 class="panel-title">
+					   <a data-toggle="collapse" data-parent="#accordion" href="#<{$st.id}>" aria-expanded="true" aria-controls="<{$st.id}>">
+					   <{$st.sn}>.<{$st.swho}>【<{$st.swhen}>】<{$st.scene}> 
+					   <span class="pull-right"><{$st.state}></span></a>
+					</h4>
+				</div>
+				<div id="<{$st.id}>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<{$st.id}>">
+					<div class="panel-body">						        						       
+						<{$st.moder}>&nbsp;更新于:<{$st.utime}><br>
+						<div class="well well-sm"><b>大致流程：</b><{$st.flow}></div>						        
+						<ul class="list-group"><{$st.id|getSceneFunc=###}></ul>							    
+					</div>
+				</div>
+  			</div>                      
+            </volist>
       </div>
 		
    </div>

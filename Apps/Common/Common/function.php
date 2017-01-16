@@ -187,7 +187,7 @@ function getPlan($dateid){
         if ($id){
             $m=M('project');
             $data=$m->find($id);
-            $str=$data['code'].$data['qd']."-".$data['name']."【".$data['status']."】".$data['end'];    
+            $str=$data['code'].":".$data['name']."(".$data['end']."上线)";    
             return $str;
         }else {
             return ;
@@ -216,9 +216,9 @@ function getPlan($dateid){
         return $count;
     }
     
-    /**
-     * 根据id获取里程碑信息
-     */
+
+ //获取里程碑信息
+
     function getStage($id){
         if ($id){
             $m=M('tp_stage');
@@ -229,3 +229,69 @@ function getPlan($dateid){
             return ;
         }
     }
+    
+    //获取模块名
+    function getModuleName($id){
+        if ($id){
+            $m=M('module');
+            $data=$m->find($id);
+            if ($data['parent']){
+                $str=$data['parent'].$data['name'];
+            }else {
+                $str=$data['name'];                              
+            }
+            
+            return $str;
+        }else {
+            return ;
+        }
+    }
+           
+    //获取平台名称
+    function getBranchName($id){
+        if ($id){
+            $m=M('branch');
+            $data=$m->find($id);
+            $str=$data['name'];
+            return $str;
+        }else {
+            return ;
+        }
+        
+    }
+    //获取项目状态
+    function getProst($value){
+        if($value=='doing'){
+            return '进行中';
+        }elseif ($value=='done'){
+            return '已完成';
+        }elseif ($value=='wait'){
+            return '未开始';
+        }else{
+            return ;
+        }
+        
+    }
+    
+    //获取真实姓名
+    function getRealname($username){
+        if($username){
+            $m=M('user');
+            $where['account']=$username;
+            $data=$m->where($where)->find();
+            $str=$data['realname'];
+            return $str;
+        }else {
+            return ;
+        }
+        
+    }
+  //获取范围数
+  function countRange($proid){
+      $m=M("tp_func");
+      $where=array("fproid"=>$proid);
+      $count=$m->where($where)->count();
+      return $count;          
+  }
+    
+   

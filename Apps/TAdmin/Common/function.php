@@ -250,17 +250,6 @@ function countProsys($id){
     return $count;
 }
 
-/**
- * 根据项目获取范围功能数
- */
-function countRange($id){        
-    $m = D("system");
-    $where=array("tp_func.fproid"=>$id,"tp_func.state"=>'正常',"tp_path.pstate"=>'正常');
-    $count=$m->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
-    ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
-    ->where($where)->count();
-    return $count;
-}
 
 /**
  * 根据id获取场景数

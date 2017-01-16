@@ -35,6 +35,9 @@ class PathController extends CommonController {
         /* 实例化模型*/
         $m=D('module');
         $_POST['moder']=$_SESSION['realname'];
+        $_POST['type']='story';
+        $_POST['grade']=1;
+        $_POST['order']=10;
         if(!$m->create()){
             $this->error($m->getError());
         }
@@ -50,21 +53,18 @@ class PathController extends CommonController {
     public function mod(){
         /* 接收参数*/
         $proid=$_GET['proid'];
-        $sysid=$_GET['sysid'];
         $id=$_GET['id'];
         /* 实例化模型*/
-        $m=D('module');
-        $where=array("sysid"=>"$sysid");
-        $data= $m->where($where)
-        ->order("sn")
-        ->select();
-        $this->assign("data",$data);
-        //编辑内容
+        $m=D('module');        
         $path=$m->find($id);
         $this->assign("path",$path);
         $this -> assign("state", formselect($path['state'],"state"));      
+              
+        $where=array("branch"=>$path['branch']);
+        $data= $m->where($where)->order("sn,id")->select();
+        $this->assign("data",$data);
         $this->assign("proid",$proid);
-
+        
         $this->display();
     }
 

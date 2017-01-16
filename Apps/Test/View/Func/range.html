@@ -1,30 +1,34 @@
 <layout name="layout" />
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><{$arr.id|getPro=###}>
-    	<a href="__APP__/Test" type="button" class="btn btn-warning btn-xs pull-right">返回</a>
-    </h3>
-  </div>
-  <div class="panel-body table-responsive">
-	<b> 产品经理：</b><{$arr.po}><b> 项目经理：</b><{$arr.pm}><b> 研发：</b><{$arr.rd}><b> 测试：</b><{$arr.qd}><br>
-	 <div class="well well-sm"><{$arr.desc}></div>
-	 <div class="row">
-	  <div class="col-md-8">
-	  	<ul class="nav nav-tabs" role="tablist">
-		  <li role="presentation" ><a href="__APP__/Test/Stage/index/proid/<{$arr.id}>">里程碑
-		  <span class="badge"><{$arr.id|countStage=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/Test/Risk/index/proid/<{$arr.id}>">风险
-		  <span class="badge"><{$arr.id|countRisk=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/Test/Func/func/proid/<{$arr.id}>">功能点</a></li>
-		  <li role="presentation" class="active"><a href="__APP__/Test/Func/range/proid/<{$arr.id}>">范围
-		  <span class="badge"><{$arr.id}></span></a></li>
-		  <li role="presentation"><a href="__APP__/Test/Scene/index/proid/<{$arr.id}>">场景
-		  <span class="badge"><{$arr.id|countScene=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/Test/Case/procase/proid/<{$arr.id}>">用例
-		  <span class="badge"><{$arr.id|countCase=###}></span></a></li>
-		  <li role="presentation"><a href="__APP__/Test/Rules/prorules/proid/<{$arr.id}>">本期需求
-		  <span class="badge"><{$arr.id|countPRules=###}></span></a></li>		  
-		</ul>
+<div class="row">
+	<div class="col-md-8">
+		<div class="panel panel-default">
+			  <div class="panel-heading">
+			    <h3 class="panel-title"><{$arr.id|getPro=###}>
+			    <a href="__APP__/Test" class="btn btn-warning btn-xs pull-right">返回</a></h3>
+			  </div>
+		  <div class="panel-body table-responsive">
+				<b> 产品：</b><{$arr.po|getRealname=###}>
+				<b> 项目：</b><{$arr.pm|getRealname=###}>
+				<b> 研发：</b><{$arr.rd|getRealname=###}>
+				<b> 测试：</b><{$arr.qd|getRealname=###}><br>
+				 <div class="well well-sm"><b>简介：</b><br><{$arr.desc}></div>
+				 
+				 
+			  	<ul class="nav nav-tabs" role="tablist">
+				  <li role="presentation" ><a href="__APP__/Test/Stage/index/proid/<{$arr.id}>">里程碑
+				  <span class="badge"><{$arr.id|countStage=###}></span></a></li>
+				  <li role="presentation"><a href="__APP__/Test/Risk/index/proid/<{$arr.id}>">风险
+				  <span class="badge"><{$arr.id|countRisk=###}></span></a></li>
+				  <li role="presentation"><a href="__APP__/Test/Func/func/proid/<{$arr.id}>">功能点</a></li>
+				  <li role="presentation" class="active"><a href="__APP__/Test/Func/range/proid/<{$arr.id}>">范围
+				  <span class="badge"><{$arr.id}></span></a></li>
+				  <li role="presentation"><a href="__APP__/Test/Scene/index/proid/<{$arr.id}>">场景
+				  <span class="badge"><{$arr.id|countScene=###}></span></a></li>
+				  <li role="presentation"><a href="__APP__/Test/Case/procase/proid/<{$arr.id}>">用例
+				  <span class="badge"><{$arr.id|countCase=###}></span></a></li>
+				  <li role="presentation"><a href="__APP__/Test/Rules/prorules/proid/<{$arr.id}>">本期需求
+				  <span class="badge"><{$arr.id|countPRules=###}></span></a></li>		  
+				</ul>
 
 		
 		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -54,9 +58,16 @@
 		     </div>
 		    </volist>      			
          </div>
-	  
-	  </div>
-	  <div class="col-md-4">
+				 
+				 
+				 
+				 
+				 					  
+		  </div>		   	    	
+		</div>  
+	
+	</div>
+	<div class="col-md-4">
 	  <div class="panel panel-info">
 	  	<div class="panel-heading">
 		    <h3 class="panel-title">里程碑
@@ -93,8 +104,7 @@
       	</div>
       	  
 	  </div>
-	</div>
-	   
-    	
-</div>
+	  
+<div>
+
 

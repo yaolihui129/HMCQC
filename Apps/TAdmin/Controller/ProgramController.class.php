@@ -15,7 +15,7 @@ class ProgramController extends CommonController {
         $m=M('project');
         $where=array("testgp"=>$testgp);
         $arr=$m->where($where)->order("end desc")
-        ->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order,prodid")
+        ->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order")
         ->select();
         $this->assign('arr',$arr);
         $this->assign('w',$where);

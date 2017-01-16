@@ -43,9 +43,9 @@
          <volist name='arr' id='pro' empty="没有数据">
          <div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="heading<{$pro.id}>">
-			<h4 class="panel-title"><{$pro.code}>.<{$pro.qd}>
+			<h4 class="panel-title">
 				<a data-toggle="collapse" data-parent="#accordion" href="#<{$pro.id}>" aria-expanded="true" aria-controls="<{$pro.id}>">
-				<{$pro.name}></a><span class="badge"><{$pro.status}></span>
+				<{$pro.code}>.<{$pro.qd|getRealname=###}>:<{$pro.name}></a><span class="badge"><{$pro.status|getProst=###}></span>
 				<div class="btn-group pull-right"  >
 					<a type="button" class="btn btn-warning btn-sm" href="__APP__/TAdmin/Func/range/proid/<{$pro.id}>">范围:<{$pro.id}> </a>
 					<button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown">
