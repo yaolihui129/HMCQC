@@ -15,7 +15,7 @@ class LoginController extends Controller {
         if ($customer){
             session('[start]');
             $_SESSION=$customer;
-            $_SESSION['isCLogin']=2;
+            $_SESSION['isCLogin']=1;
             $this->redirect('/Anshun/Index/index');
         }else{
 

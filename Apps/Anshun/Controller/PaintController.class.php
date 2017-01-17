@@ -5,7 +5,7 @@ class PaintController extends Controller {
      public function index(){
         if(!($_SESSION['init'])){
              $m=D('product');
-             $data=$m->find(5);
+             $data=$m->find(4);
              $_SESSION['web']=$data['web'];
              $_SESSION['adress']=$data['adress'];
              $_SESSION['desc']=$data['desc'];
@@ -26,7 +26,7 @@ class PaintController extends Controller {
     public function banj(){
         if(!($_SESSION['init'])){
              $m=D('product');
-             $data=$m->find(5);
+             $data=$m->find(4);
              $_SESSION['web']=$data['web'];
              $_SESSION['adress']=$data['adress'];
              $_SESSION['desc']=$data['desc'];
@@ -46,7 +46,7 @@ class PaintController extends Controller {
     public function weix(){
         if(!($_SESSION['init'])){
              $m=D('product');
-             $data=$m->find(5);
+             $data=$m->find(4);
              $_SESSION['web']=$data['web'];
              $_SESSION['adress']=$data['adress'];
              $_SESSION['desc']=$data['desc'];

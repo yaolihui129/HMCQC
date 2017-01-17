@@ -5,7 +5,7 @@ class VoucherController extends Controller {
     public function index(){
         if(!($_SESSION['init'])){
              $m=D('product');
-             $data=$m->find(5);
+             $data=$m->find(4);
              $_SESSION['web']=$data['web'];
              $_SESSION['adress']=$data['adress'];
              $_SESSION['desc']=$data['desc'];
@@ -19,7 +19,7 @@ class VoucherController extends Controller {
              $_SESSION['init']=1;
         }        
 
-        $m=D('voucher');
+        $m=D('as_voucher');
         $where=array("state"=>"发布");
         $arr=$m->where($where)->order('end desc')->select();
         $this->assign('arr',$arr);
@@ -35,7 +35,7 @@ class VoucherController extends Controller {
 
     public function choujiang(){
 
-        $m=D('tickets');
+        $m=D('as_tickets');
         $where=array("voucherid"=>$_GET['id']);
         $arr=$m->where($where)->field("id")->select();
         $count=$m->where($where)->count();

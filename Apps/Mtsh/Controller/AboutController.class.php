@@ -4,7 +4,7 @@ use Think\Controller;
 class AboutController extends Controller {
     public function index(){
         $m=D('product');
-        $data=$m->find(6);
+        $data=$m->find(3);
         $_SESSION['web']=$data['web'];
         $_SESSION['adress']=$data['adress'];
         $_SESSION['desc']=$data['desc'];

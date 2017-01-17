@@ -148,7 +148,7 @@ class PathController extends CommonController {
         $lastId=$m->add($arr);
         
         $m= D("func");
-        $where=array("pathid"=>$data['id']);
+        $where=array("pathid"=>$data['id'],"fproid"=>$_SESSION['proid']);
         $funcs=$m->where($where)->field("sn,id as funcid,func")->order("sn")->select();
 
         /*插入执行场景功能数据 */

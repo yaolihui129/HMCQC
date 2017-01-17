@@ -4,7 +4,7 @@ use Think\Controller;
 class AboutController extends Controller {
     public function index(){
         $m=D('product');
-        $data=$m->find(7);
+        $data=$m->find(2);
         $_SESSION['web']=$data['web'];
         $_SESSION['adress']=$data['adress'];
         $_SESSION['desc']=$data['desc'];
@@ -18,8 +18,8 @@ class AboutController extends Controller {
         $_SESSION['img']=$data['path'].$data['img'];
         $_SESSION['init']=1;
         
-        $m=M('hr');
-        $where=array('state'=>"发布",'prodid'=>7);
+        $m=M('tp_hr');
+        $where=array('state'=>"发布",'prodid'=>2);
         $arr=$m->where($where)->select();
         $this->assign('data',$arr);
         

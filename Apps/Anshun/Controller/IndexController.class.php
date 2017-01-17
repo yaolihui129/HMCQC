@@ -5,7 +5,7 @@ class IndexController extends Controller {
 public function index(){
         
         $m=D('product');
-        $data=$m->find(5);
+        $data=$m->find(4);
         $_SESSION['web']=$data['web'];
         $_SESSION['adress']=$data['adress'];
         $_SESSION['desc']=$data['desc'];
@@ -18,8 +18,8 @@ public function index(){
         $_SESSION['img']=$data['path'].$data['img'];
         $_SESSION['init']=1;
         
-        $m=D('ad');
-        $where['prodid']=5;
+        $m=D('tp_ad');
+        $where['prodid']=4;
         $pic=$m->where($where)->order('updateTime desc')->select();
         $this->assign('pic',$pic);
                 

@@ -5,7 +5,7 @@ class AboutController extends Controller {
 public function about(){
        
        $m=D('product');
-       $data=$m->find(5);
+       $data=$m->find(4);
        $_SESSION['web']=$data['web'];
        $_SESSION['adress']=$data['adress'];
        $_SESSION['desc']=$data['desc'];
@@ -24,7 +24,7 @@ public function about(){
     public function hr(){
     if(!($_SESSION['init'])){
              $m=D('product');
-             $data=$m->find(5);
+             $data=$m->find(4);
              $_SESSION['web']=$data['web'];
              $_SESSION['adress']=$data['adress'];
              $_SESSION['desc']=$data['desc'];
@@ -49,7 +49,7 @@ public function about(){
     public function tech(){
         if(!($_SESSION['init'])){
              $m=D('product');
-             $data=$m->find(5);
+             $data=$m->find(4);
              $_SESSION['web']=$data['web'];
              $_SESSION['adress']=$data['adress'];
              $_SESSION['desc']=$data['desc'];

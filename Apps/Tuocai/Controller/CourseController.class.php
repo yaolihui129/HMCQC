@@ -6,7 +6,7 @@ class CourseController extends Controller {
 	public function index(){
 	   if(!($_SESSION['init'])){
              $m=D('product');
-             $data=$m->find(7);
+             $data=$m->find(2);
              $_SESSION['web']=$data['web'];
              $_SESSION['adress']=$data['adress'];
              $_SESSION['desc']=$data['desc'];

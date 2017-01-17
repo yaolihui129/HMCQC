@@ -5,7 +5,7 @@ class AboutController extends Controller {
     public function About(){
 
          $m=D('product');
-         $data=$m->find(8);
+         $data=$m->find(1);
          $_SESSION['web']=$data['web'];
          $_SESSION['adress']=$data['adress'];
          $_SESSION['desc']=$data['desc'];

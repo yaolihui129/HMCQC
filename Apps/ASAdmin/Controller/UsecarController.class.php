@@ -20,7 +20,7 @@ class UsecarController extends Controller {
 
     public function add(){
 
-        $m=D('usecar');
+        $m=D('as_usecar');
         $type=$_GET['type'];
         $where=array("type"=>$type);
         $this->assign('w',$where);
