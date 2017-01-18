@@ -377,3 +377,97 @@ function getTest($id){
         return '无测试记录';
     }
 }
+
+/**
+ * 根据id获取工时明细
+ */
+function getTasktime($id){
+    $m=D('taskestimate');
+    $where=array("task"=>$id);
+    $arr=$m->where($where)->select();
+    
+    foreach ($arr as $ar){
+        $str.='<li class="list-group-item">'
+                    .$ar['date']."&nbsp;剩余："
+                    .$ar['left']."&nbsp;&nbsp;消耗："
+                    .$ar['consumed']."&nbsp;&nbsp;"
+                    .$ar['work']
+             .'</li>';
+        
+    }
+    
+    if($arr){
+        return $str;
+    }else{
+        return '无记录' ;
+    }
+    
+}
+
+
+function getTaskdoing($user){
+    
+    $where['zt_task.assignedTo']=$user;
+    $where['zt_task.deleted']='0';    
+    $where['zt_task.status']=array('neq','cancel');
+    $m=D('task');
+    $arr=$m->where($where)
+    ->join('inner JOIN zt_taskestimate ON zt_task.id =zt_taskestimate.task')
+    ->select();
+    
+    foreach ($arr as $ar){
+        $str.='<li class="list-group-item"><span class="badge pull-left">'
+                
+                .$ar['date']."</span>&nbsp;"
+                .getProNo($ar['project'])."："
+                .$ar['name']."【"
+                .getProst($ar['status'])
+                ."】&nbsp;剩余："
+                .$ar['left']."&nbsp;&nbsp;消耗："
+                .$ar['consumed']."&nbsp;&nbsp;"
+                .$ar['work']
+             .'</li>';
+    
+    }
+    
+    if($arr){
+        return $str;
+    }else{
+        return '无记录' ;
+    }
+    
+    
+}
+
+
+function getTaskfinish($user){
+    
+
+    $where['zt_task.finishedBy']=$user;
+    $where['zt_task.deleted']='0';
+    $where['zt_task.status']=array('neq','cancel');
+    $where['zt_task.assignedTo']='closed';
+    $m=D('task');
+    $arr=$m->where($where)
+    ->join('inner JOIN zt_taskestimate ON zt_task.id =zt_taskestimate.task')
+    ->order('zt_task.project,zt_task.story,zt_taskestimate.date')
+    ->select();
+    
+    foreach ($arr as $ar){
+        $str.='<li class="list-group-item"><span class="badge pull-left">'              
+                .$ar['date']."</span>&nbsp;"
+                .getProNo($ar['project'])."："
+                .$ar['name']."&nbsp;&nbsp;【消耗："
+                .$ar['consumed']."】&nbsp;&nbsp;"
+                .$ar['work']
+            .'</li>';
+    
+    }
+    
+    if($arr){
+        return $str;
+    }else{
+        return '无记录' ;
+    }
+    
+}

@@ -192,7 +192,20 @@ function getPlan($dateid){
         }else {
             return ;
         }
+    } 
+    
+    // 根据id获取项目信息
+    function getProname($id){
+        if ($id){
+            $m=M('project');
+            $data=$m->find($id);
+            $str=$data['name'];
+            return $str;
+        }else {
+            return ;
+        }
     }   
+    
 
 //根据id获取项目编号
 
