@@ -21,7 +21,7 @@ class IndexController extends Controller {
         
         $m=D('tp_ad');
         $where['prodid']=1;
-        $pic=$m->where($where)->order('updateTime desc')->select();
+        $pic=$m->where($where)->order('utime desc')->select();
         $this->assign('pic',$pic);       
         
         $m=D('xl_service');

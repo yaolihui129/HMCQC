@@ -13,28 +13,9 @@ class AdController extends CommonController {
         $this->display();
     }
     
-    
-    
-    public function insert(){
-    
-        $m=D('ad');
-       
-        $_POST['moder']=$_SESSION['realname'];  
-        $_POST['prodid']=$_SESSION['prodid'];
 
-        if(!$m->create()){
-            $this->error($m->getError());
-        }
-        $lastId=$m->add();
-        if($lastId){
-            $this->success("成功");
-        }else{
-            $this->error('失败');
-        }
-    }
-    
     public function mod(){
-        $m=D('ad');
+        $m=D('tp_ad');
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
         $this -> assign("state", formselect($arr['state']));
@@ -45,7 +26,7 @@ class AdController extends CommonController {
 
     public function update(){
         /* 实例化模型*/
-        $db=D('ad');
+        $db=D('tp_ad');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
@@ -55,7 +36,7 @@ class AdController extends CommonController {
     }
     
     public function img(){
-        $m=D('ad');
+        $m=D('tp_ad');
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
 
@@ -78,7 +59,7 @@ class AdController extends CommonController {
             $_POST['path']=$info['img']['savepath'];
             $_POST['img']=$info['img']['savename'];
             /* 实例化模型*/
-            $db=D('ad');
+            $db=D('tp_ad');
             if ($db->save($_POST)){
                 $image = new \Think\Image();
                 $image->open('./Upload/'.$_SESSION['qz'].$info['img']['savepath'].$info['img']['savename']);                
@@ -96,7 +77,7 @@ class AdController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=M('ad');
+        $m=M('tp_ad');
         $count =$m->delete($id);
         if ($count>0) {
             $this->success('删除成功');

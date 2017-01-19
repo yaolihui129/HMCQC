@@ -7,5 +7,5 @@ return array(
         '__IMAGES__'=>__ROOT__.'/Public/images/mtsh',
         '__UPLOAD__'=>__ROOT__.'/Upload/mtsh'
     ),
-    'DB_PREFIX' => 'tp_', // 数据库表前缀
+    
 );
