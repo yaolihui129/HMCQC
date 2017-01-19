@@ -38,7 +38,7 @@ public function about(){
              $_SESSION['init']=1;
         }        
        
-        $m=M('hr');
+        $m=M('tp_hr');
         $where=array("state"=>"发布");
         $arr=$m->where($where)->select();
         $this->assign('data',$arr);
@@ -63,7 +63,7 @@ public function about(){
              $_SESSION['init']=1;
         }        
         
-        $m=M('admin');
+        $m=M('tp_admin');
         $where=array("tech"=>"技师");
         $data=$m->where($where)->select();
         $this->assign('data',$data);

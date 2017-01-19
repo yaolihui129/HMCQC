@@ -306,5 +306,15 @@ function getPlan($dateid){
       $count=$m->where($where)->count();
       return $count;          
   }
-    
+  // 根据id获取分类名
+  function getCatname($id){
+      if ($id){
+          $m=M('tp_cate');
+          $data=$m->find($id);
+          $str=getCatname($data['pid'])."-".$data['catname'];
+          return $str;
+      }else {
+          return "|-";
+      }
+  }  
    

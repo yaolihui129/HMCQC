@@ -19,7 +19,7 @@ class CaseController extends Controller {
              $_SESSION['init']=1;
         }              
         
-        $m=D('as_case');
+        $m=D('tp_successcase');
         $arr=$m->select();
         $this->assign('data',$arr);
         

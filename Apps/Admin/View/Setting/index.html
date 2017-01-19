@@ -4,7 +4,7 @@
 	<div class="col-md-3">
 		<form action="__URL__/img" method="post" enctype='multipart/form-data'  role="form">
 		<input type="hidden" name="id" value="<{$arr.id}>" />  		                                  		              
-		    <div class="panel panel-default" style="width:450px;">
+		    <div class="panel panel-default" >
 		        <img alt="形象图" src="__UPLOAD__/<{$_SESSION['qz']}><{$arr.path}><{$arr.img}>" width="100%">		                
 		    </div> 
 		    <div class="form-group">
@@ -15,7 +15,7 @@
 		</form>
 	</div>
 	<div class="col-md-3">
-		<div class="thumbnail pull-right" style="width:450px;">
+		<div class="thumbnail" >
 			<img src="__IMAGES__/<{$_SESSION['qz']}>/WechatIMG1.jpeg" alt="__IMAGES__/<{$_SESSION['qz']}>/WechatIMG1.jpeg" width="100%">
 			<div class="caption"><h4>扫描二维码关注微信公众号</h4></div>
 		</div>
@@ -29,14 +29,9 @@
 		            <input type="text" class="form-control" name="web" value="<{$arr.web}>" placeholder="网站" readonly>
 				</div>
 		    </div>
+		    
 		    <div class="form-group ">
-		        <label for="exampleInputusername" class="col-sm-3 control-label">代号：</label>
-		        <div  class="col-sm-9">
-		            <input type="text" class="form-control" name="code" value="<{$arr.code}>" placeholder="代号" readonly>
-				</div>
-		    </div>
-		    <div class="form-group ">
-		         <label for="exampleInputusername" class="col-sm-3 control-label">版本号：</label>
+		         <label for="exampleInputusername" class="col-sm-3 control-label">版本：</label>
 		         <div  class="col-sm-9">
 		              <input type="text" class="form-control" name="version" value="<{$arr.version}>" placeholder="版本号" readonly>
 				 </div>
@@ -48,25 +43,20 @@
 				 </div>
 		     </div>
 		     <div class="form-group ">
-		          <label for="exampleInputusername" class="col-sm-3 control-label">备案号：</label>
+		          <label for="exampleInputusername" class="col-sm-3 control-label">备案：</label>
 		          <div  class="col-sm-9">
 		              <input type="text" class="form-control" name="record" value="<{$arr.record}>" placeholder="备案号" readonly>
 				  </div>
 		     </div>
 		     <div class="form-group ">
-		         <label for="exampleInputusername" class="col-sm-3 control-label">关键字：</label>
+		         <label for="exampleInputusername" class="col-sm-3 control-label">Keys：</label>
 		         <div  class="col-sm-9">
 		              <input type="text" class="form-control" name="keywords" value="<{$arr.keywords}>" placeholder="关键字" readonly>
 				 </div>
 		     </div>
+		     
 		     <div class="form-group ">
-		         <label for="exampleInputusername" class="col-sm-3 control-label">描述：</label>
-		         <div  class="col-sm-9">
-		             <input type="text" class="form-control" name="desc" value="<{$arr.desc}>" placeholder="描述" readonly>
-				 </div>
-		     </div>
-		     <div class="form-group ">
-		         <label for="exampleInputusername" class="col-sm-3 control-label">更新时间：</label>
+		         <label for="exampleInputusername" class="col-sm-3 control-label">更新：</label>
 		         <div  class="col-sm-9">
 		              <input type="text" class="form-control" name="utime" value="<{$arr.utime}>" placeholder="更新时间" readonly>
 				 </div>

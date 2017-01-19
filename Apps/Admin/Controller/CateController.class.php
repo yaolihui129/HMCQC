@@ -4,10 +4,29 @@ class CateController extends CommonController {
     
     public function index(){
         $m=D('tp_cate');
-        $data=$m->select();
+        $where['prodid']=$_SESSION['prodid'];
+        $data=$m->where($where)->select();
         $this->assign('data',$data);
         
         $this->display();
+    }
+    
+    public function add(){
+        /*接收参数*/
+        $pid=!empty($_GET['pid']) ? $_GET['pid'] : 0;      
+        /*实例化模型*/
+        $m=D('tp_cate');
+        $where['prodid']=$_SESSION['prodid'];        
+        $data=$m->where($where)->select();
+        $this->assign('data',$data);
+//         dump($data);
+        $where['pid']=$pid;
+        $count=$m->where($where)->count()+1;
+        $this->assign("c",$count);
+        $this->assign("pid",$pid);
+        
+        $this->display();
+        
     }
     
     public function insert(){
@@ -28,11 +47,29 @@ class CateController extends CommonController {
         }
     }
     
+    public function order(){
+        /* 实例化模型*/
+        $db = D('tp_cate');
+        $num = 0;
+        foreach($_POST['sn'] as $id => $sn) {
+            $num += $db->save(array("id"=>$id, "sn"=>$sn));
+        }
+        if($num) {
+            $this->success("排序成功!");
+    
+        }else{
+            $this->error("排序失败...");
+        }
+    }
+    
     public function mod(){
         $m=D('tp_cate');
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
-        $this -> assign("state", formselect($arr['state']));
+        
+        $where['prodid']=$_SESSION['prodid'];
+        $data=$m->where($where)->select();
+        $this->assign('data',$data);       
     
         $this->display();
     }
