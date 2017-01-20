@@ -4,7 +4,6 @@ function getState($id){
     if ($id){
         $m=M('dict');
         $data=$m->find($id);
-        //dump($data);
         return $data['v'];
     }else {
         return ;

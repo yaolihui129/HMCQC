@@ -1,0 +1,103 @@
+<layout name="layout" />
+<div class="container">	
+	<div class="row">
+		<div class="col-md-9">
+			<h3 >商品&服务新增</h3> 
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<form action="__URL__/insert" method="post" enctype='multipart/form-data'  role="form"> 
+                     <input type="hidden" name="pid" value="<{$pid}>" /> 
+                     <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label">货号：</label>
+				          <div class="col-sm-10">
+				            	<input type="text" class="form-control" name="mark" value="" placeholder="货号" >
+						  </div>
+				      </div>
+                     <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label">sn：</label>
+				          <div class="col-sm-10">
+				            	<input type="text" class="form-control" name="sn" value="<{$c}>" placeholder="sn" >
+						  </div>
+				      </div>
+				      <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label">商品&服务：</label>
+				          <div class="col-sm-10">
+				            	<input type="text" class="form-control" name="name" value="" placeholder="商品&服务" >
+						  </div>
+				      </div>
+				      <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label">规格：</label>
+				          <div class="col-sm-10">
+				            	<input type="text" class="form-control" name="weight" value="" placeholder="规格" >
+						  </div>
+				      </div>
+				      <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label">市场价格：</label>
+				          <div class="col-sm-10">
+				            	<input type="text" class="form-control" name="smoney" value="0.0" placeholder="市场价格" >
+						  </div>
+				      </div>
+				      <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label">物流价格：</label>
+				          <div class="col-sm-10">
+				            	<input type="text" class="form-control" name="wlmoney" value="0.0" placeholder="物流价格" >
+						  </div>
+				      </div>
+				      <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label">优惠价格：</label>
+				          <div class="col-sm-10">
+				            	<input type="text" class="form-control" name="money" value="0.0" placeholder="优惠价格" >
+						  </div>
+				      </div>
+				      <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label">库存：</label>
+				          <div class="col-sm-10">
+				            	<input type="text" class="form-control" name="num" value="1" placeholder="库存" >
+						  </div>
+				      </div>
+				      <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label">类别：</label>
+				          <div class="col-sm-10">
+				            	<input type="text" class="form-control" name="cate" value="<{$cate}>" placeholder="类别" readonly>
+						  </div>
+				      </div>
+				      <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label">描述：</label>
+				          <div class="col-sm-10">
+				            	<textarea  class="form-control" name="content" rows="5" placeholder="描述"></textarea>
+						  </div>
+				      </div>
+				      <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label"></label>
+				          <div class="col-sm-10">&nbsp;</div>
+				      </div>
+				      
+				      
+				      <div class="form-group ">
+				          <label for="exampleInputusername" class="col-sm-2 control-label"></label>
+				          <div  class="col-sm-8">
+				            <button type="submit" class="btn btn-info" >提 交</button></form>
+						  </div>
+						  <div  class="col-sm-2">
+				            <a href="__URL__/index" type="button"  class="btn btn-warning" >返 回</a>
+						  </div>
+				      </div>
+				</div>
+			</div>                 
+        </div>
+        <div class="col-sm-3">
+			<div class="panel panel-primary"> 
+				<div class="panel-heading">
+					<h3 class="panel-title">分类</h3>
+				</div>            		                     
+			    <ul class="list-group">
+			 		<volist name='arr' id='st' empty="暂无分类">            
+			             <li class="list-group-item">
+			                <a href="__URL__/add/cate/<{$st.id}>" title="#"><{$st.pid|getCatname=###}>-<{$st.catname}></a>
+			             </li>
+					 </volist>    
+				</ul>                        
+			 </div> 
+		</div>           
+      </div> 
+</div>

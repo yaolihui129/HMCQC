@@ -1,10 +1,11 @@
  <layout name="layout" />
+ <div class="container">
 <h3 >管理员-上传照片<a href="__URL__/index" class="btn btn-warning  pull-right">返回</a></h3>
 <div class="row">
       <div class="col-sm-8">
             <p class="pull-right visible-xs"><button class="btn-xs btn-primary">tar</button></p>
             <div class="panel panel-default">  
-              <div class="panel-body addmod">
+              <div class="panel-body">
                   <form action="__URL__/image" method="post" enctype='multipart/form-data'  role="form">
                       <input type="hidden" name="id" value="<{$user.id}>" />
                       <div class="form-group input-group-lg">
@@ -39,4 +40,5 @@
             </ul>                        
         </div>          
     </div>
+</div>
 </div>

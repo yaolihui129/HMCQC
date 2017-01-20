@@ -1,4 +1,5 @@
 <layout name="layout" />
+<div class="container">
 <nav class="navbar navbar-default" role="navigation">
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -33,21 +34,14 @@
 				<volist name='data' id='vo' empty="没有数据">
 					<li class="list-group-item">
 						<div class="row">								  
-							<div class="col-md-2">职位：<{$vo.title}></div>
-							<div class="col-md-2">薪酬：<{$vo.salary}></div>
-							<div class="col-md-2">发布日期：<{$vo.date}></div>								  
-							<div class="col-md-2">状态：<{$vo.state}></div>
-							<div class="col-md-3"></div>
+							<div class="col-md-3"><{$vo.title}>(ID:<{$vo.id}>)</div>
+							<div class="col-md-1"><{$vo.num}>人</div>
+							<div class="col-md-2"><{$vo.salary}>/人月</div>
+							<div class="col-md-3"><{$vo.rtime}></div>								  
+							<div class="col-md-2">【<{$vo.state}>】</div>							
 							<div class="col-md-1">
 								<div class="btn-group pull-right">
-									<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">修改 
-										 <span class="caret"></span>
-									</button>
-										<ul class="dropdown-menu" role="menu">										    
-											<li><a href="__URL__/mod/id/<{$ar.id}>">修改</a></li>										    										    									    
-											<li class="divider"></li>
-											<li><a href="__URL__/del/id/<{$ar.id}>"onclick="return confirm('你确定要删除职位：<{$vo.title}>吗？')">删除</a></li>
-										</ul>
+									<a type="button" href="__URL__/mod/id/<{$ar.id}>" class="btn btn-info btn-sm " >修改 </a>										
 								</div>
 							</div>
 						</div>					  		
@@ -81,6 +75,4 @@
 		</div>	
 	</div>
 </div>   
-
-
-  
+</div>

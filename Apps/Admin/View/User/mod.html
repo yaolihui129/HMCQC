@@ -1,5 +1,6 @@
 <layout name="layout" />
-<h3 >管理员-修改 <a href="__URL__/index" class="btn btn-warning  pull-right">返回</a></h3>
+<div class="container">
+<h3 >管理员-修改 </h3>
 <div class="row">
     <div class="col-sm-8">
        <div class="panel panel-default">  
@@ -7,25 +8,42 @@
                 <form action="__URL__/update" method="post" enctype='multipart/form-data'  role="form">
                     <input type="hidden" name="id" value="<{$user.id}>" />
                     <div class="form-group input-group-lg">
-                        <label for="exampleupdateTime"><{$user.moder}>：</label>
-                        更新于:<{$user.utime}> 
+                    	<label for="inputEmail3" class="col-sm-2 control-label"></label>
+                        <label for="exampleupdateTime" class="col-sm-10 control-label">
+                        	<{$user.moder}>：更新于:<{$user.utime}> 
+                        </label>
+                        
                     </div>
                     <div class="form-group ">
-					    <label for="inputEmail3" class="col-sm-1 control-label">手机</label>
-					    <div class="col-sm-11">
+					    <label for="inputEmail3" class="col-sm-2 control-label">手机</label>
+					    <div class="col-sm-10">
 					       <input type="phone" class="form-control" name="phone" value="<{$user.phone}>" placeholder="手机" >  
 					    </div>
+					    
 					</div>
 					<div class="form-group ">
-					    <label for="inputEmail3" class="col-sm-1 control-label">姓名</label>
-					    <div class="col-sm-11">
+					    <label for="inputEmail3" class="col-sm-2 control-label">姓名</label>
+					    <div class="col-sm-10">
 					      <input type="text" class="form-control" name="realname" value="<{$user.realname}>" placeholder="姓名" >  
 					    </div>
 					</div>
-					<button type="submit" class="btn btn-info pull-left">提 交</button></form>
-					<a href="__URL__"><button  class="btn btn-warning pull-right" >返 回</button></a>	
-					<a href="__URL__/add"><button  class="btn btn-success pull-right" >添 加</button></a>
-									
+					<div class="form-group ">
+					    <label for="inputEmail3" class="col-sm-2 control-label"></label>
+					    <div class="col-sm-10">
+					         &nbsp;
+					    </div>
+					</div>
+					<div class="form-group ">
+					    <label for="inputEmail3" class="col-sm-2 control-label"></label>
+					    <div class="col-sm-8">
+					         <button type="submit" class="btn btn-info ">提 交</button></form>
+					    </div>
+					    <div class="col-sm-2">
+					         <a href="__URL__"><button type="button"  class="btn btn-warning" >返 回</button></a>
+					    </div>
+					</div>
+					
+																				
               </div>
           </div>
     </div>                      
@@ -40,4 +58,5 @@
             </ul>                        
         </div>          
     </div>
+</div>
 </div>
