@@ -24,7 +24,7 @@ class IndexController extends Controller {
         $pic=$m->where($where)->order('utime desc')->select();
         $this->assign('pic',$pic);       
         
-        $m=D('xl_service');
+        $m=D('xl_prodservice');
         $map['cate']=1;
         $arr1=$m->where($map)->order('sn,id')->limit(4)->select();
         $this->assign('arr1',$arr1);

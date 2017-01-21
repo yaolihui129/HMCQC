@@ -5,7 +5,7 @@ class CateController extends CommonController {
     public function index(){
         $m=D('tp_cate');
         $where['prodid']=$_SESSION['prodid'];
-        $data=$m->where($where)->select();
+        $data=$m->where($where)->order('sn')->select();
         $this->assign('data',$data);
         
         $this->display();
@@ -17,7 +17,7 @@ class CateController extends CommonController {
         /*实例化模型*/
         $m=D('tp_cate');
         $where['prodid']=$_SESSION['prodid'];        
-        $data=$m->where($where)->select();
+        $data=$m->where($where)->order('sn')->select();
         $this->assign('data',$data);
 //         dump($data);
         $where['pid']=$pid;
@@ -84,6 +84,14 @@ class CateController extends CommonController {
         }else{
             $this->error("修改失败！");
         }
+    }
+    
+    public function img(){
+        $m=D('tp_ad');
+        $arr=$m->find($_GET[id]);
+        $this->assign('arr',$arr);
+    
+        $this->display();
     }
     
     public function del(){

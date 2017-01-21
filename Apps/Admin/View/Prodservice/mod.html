@@ -1,7 +1,60 @@
-<layout name="layout" />  
-<div class="row">
-	<div class="col-md-9">
+<layout name="layout" />
+<div class="container">	
+	<h3 >商品&服务编辑</h3> 
+	<div class="panel panel-default">
+		<div class="panel-body">
+			<form action="__URL__/update" method="post" enctype='multipart/form-data'  role="form"> 
+            <input type="hidden" name="id" value="<{$arr.id}>" /> 
+            <div class="form-group ">
+				<label for="exampleInputusername" class="col-sm-2 control-label">货号：</label>
+				<div class="col-sm-10"><input type="text" class="form-control" name="mark" value="<{$arr.mark}>" placeholder="货号" readonly></div>
+			</div>
+            <div class="form-group ">
+				<label for="exampleInputusername" class="col-sm-2 control-label">sn：</label>
+				<div class="col-sm-10"><input type="text" class="form-control" name="sn" value="<{$arr.sn}>" placeholder="sn" ></div>
+			</div>
+			<div class="form-group ">
+				 <label for="exampleInputusername" class="col-sm-2 control-label">商品&服务：</label>
+				 <div class="col-sm-10"><input type="text" class="form-control" name="name" value="<{$arr.name}>" placeholder="商品&服务" ></div>
+			</div>
+			<div class="form-group ">
+				<label for="exampleInputusername" class="col-sm-2 control-label">分类：</label>
+				<div class="col-sm-10"><input type="text" class="form-control"  value="<{$arr.cate}>" placeholder="分类" readonly ></div>
+			</div>
+			<div class="form-group ">
+				<label for="exampleInputusername" class="col-sm-2 control-label">规格：</label>
+				<div class="col-sm-10"><input type="text" class="form-control" name="weight" value="<{$arr.weight}>" placeholder="规格" ></div>
+			</div>
+			<div class="form-group ">
+				 <label for="exampleInputusername" class="col-sm-2 control-label">市场价格：</label>
+				 <div class="col-sm-10"><input type="text" class="form-control" name="smoney" value="<{$arr.smoney}>" placeholder="市场价格" ></div>
+			</div>
+			<div class="form-group ">
+				<label for="exampleInputusername" class="col-sm-2 control-label">物流价格：</label>
+				<div class="col-sm-10"><input type="text" class="form-control" name="wlmoney" value="<{$arr.wlmoney}>" placeholder="物流价格" ></div>
+			</div>
+			<div class="form-group ">
+				 <label for="exampleInputusername" class="col-sm-2 control-label">优惠价格：</label>
+				 <div class="col-sm-10"><input type="text" class="form-control" name="money" value="<{$arr.money}>" placeholder="优惠价格" ></div>
+			</div>
+			<div class="form-group ">
+				 <label for="exampleInputusername" class="col-sm-2 control-label">库存：</label>
+				 <div class="col-sm-10"><input type="text" class="form-control" name="num" value="<{$arr.num}>" placeholder="库存" ></div>
+			</div>
+			
+			<div class="form-group ">
+				<label for="exampleInputusername" class="col-sm-2 control-label">描述：</label>
+				<div class="col-sm-10"><textarea  class="form-control" name="content" rows="5" placeholder="<{$arr.content}>"></textarea></div>
+			</div>
+			<div class="form-group ">
+				<label for="exampleInputusername" class="col-sm-2 control-label"></label>
+				<div class="col-sm-10">&nbsp;</div>
+			</div>
+			<div class="form-group ">
+				<label for="exampleInputusername" class="col-sm-2 control-label"></label>
+				<div  class="col-sm-8"><button type="submit" class="btn btn-info" >提 交</button></form></div>
+				<div  class="col-sm-2"><a href="__URL__/index/cate/<{$arr.cate}>" type="button"  class="btn btn-warning" >返 回</a></div>
+			</div> 
 	</div>
-	<div class="col-md-3">
-	</div>
-</div>	
+</div>
+                   
