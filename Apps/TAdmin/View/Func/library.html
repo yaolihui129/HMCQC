@@ -22,7 +22,8 @@
 		    <volist name='funcs' id='st' empty="没有数据">
 		      <li class="list-group-item"><{$st.sn}>.<{$st.func}><span class="badge pull-left"><{$st.state}></span>
 		      <div class="btn-group ">
-				  <a href="__APP__/TAdmin/Scenefunc/addscene/funcid/<{$st.id}>/sceneid/<{$w.sceneid}>" type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-plus"> 场景</span></a>
+				  <a href="__APP__/TAdmin/Scenefunc/addscene/funcid/<{$st.id}>/sceneid/<{$w.sceneid}>" type="button" class="btn btn-info btn-xs">
+				  <span class="glyphicon glyphicon-plus"> 场景</span></a>
 				  <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
 				    <span class="caret"></span>
 				    <span class="sr-only">Toggle Dropdown</span>
@@ -48,8 +49,8 @@
 		   <form action="__APP__/TAdmin/Scenefunc/order" method="post" >
 		       <volist name='sfunc' id='st' empty="没有数据">
 		            <li class="list-group-item">
-		              <input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/>
-		              <{$st.path}>-<{$st.func}>(<{$st.remarks}>)
+		              <input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/>路径：
+		              <{$st.path}><br>功能点：<{$st.func}>(<{$st.remarks}>)
 		              <div class="btn-group pull-right">
 						  <a href="__APP__/TAdmin/Scenefunc/addhc/id/<{$st.id}>" type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-plus">缓存</span></a>
 						  <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -86,8 +87,9 @@
        <form action="__APP__/TAdmin/Hcfunc/order" method="post" >
           <volist name='hfunc' id='hc'>
                 <li class="list-group-item">
-                  <input type="text" name="sn[<{$hc.id}>]" value="<{$hc.sn}>"  class="input40"/>
-                  <{$hc.path}>-<{$hc.func}>(<{$hc.remarks}>)
+                  <input type="text" name="sn[<{$hc.id}>]" value="<{$hc.sn}>"  class="input40"/>路径：
+                  <{$hc.path}><br>功能点：
+                  <{$hc.func}>(<{$hc.remarks}>)
                   <div class="btn-group pull-right">
 		              <a href="__APP__/TAdmin/Hc/addfunc/id/<{$hc.id}>/sceneid/<{$w.sceneid}>" type="button" class="btn btn-info btn-xs">
 		              <span class="glyphicon glyphicon-plus">场景</span></a>

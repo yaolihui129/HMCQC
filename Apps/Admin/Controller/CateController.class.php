@@ -5,6 +5,7 @@ class CateController extends CommonController {
     public function index(){
         $m=D('tp_cate');
         $where['prodid']=$_SESSION['prodid'];
+        $where['pid']=!empty($_GET['pid']) ? $_GET['pid'] : 0;
         $data=$m->where($where)->order('sn')->select();
         $this->assign('data',$data);
         

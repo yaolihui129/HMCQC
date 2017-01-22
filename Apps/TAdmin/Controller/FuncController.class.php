@@ -138,18 +138,19 @@ class FuncController extends CommonController{
         $this->assign("arr",$arr);
 
         /* 实例化模型*/
-        $s = D('branch');
-        $where=array("zt_tp_func.fproid"=>$proid,"zt_tp_func.state"=>'正常',"zt_module.state"=>'正常');
-        $data=$s->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
-        ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
-        ->where($where)
-        ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id")
-        ->select();
+//         $s = D('branch');
+//         $where=array("zt_tp_func.fproid"=>$proid,"zt_tp_func.state"=>'正常');
+//         $data=$s->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
+//         ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
+//         ->where($where)
+//         ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id")
+//         ->select();
+        $m=D('tp_func');
+        $where=array("fproid"=>$proid,"state"=>'正常');
+        $data=$m->where($where)->select();
         $this->assign("data",$data);
-
-        $where=array("proid"=>"$proid");
-        $this->assign('w',$where);
-
+// dump($data);
+       
 
         $this->display();
 

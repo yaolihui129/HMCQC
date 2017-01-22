@@ -1,6 +1,5 @@
 <layout name="layout" />
 <div class="container">
-
 <div class="row">
 	<div class="col-md-7">
 		<h3 >分类修改</h3>
@@ -53,7 +52,10 @@
              <ul class="list-group">
  				<volist name='data' id='st' empty="暂无分类">            
                 	<li class="list-group-item">
-                		<a href="__URL__/mod/id/<{$st.id}>" title="#"><{$st.pid|getCatname=###}>-<{$st.catname}></a>
+                		<a href="__URL__/mod/id/<{$st.id}>" title="#">
+                			<{$st.pid|getCatname=###}>-<{$st.catname}>
+                		</a>
+                		<span class="badge"><{$st.id}></span>
                 	</li>
 			    </volist>    
 			 </ul>                        
