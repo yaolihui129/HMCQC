@@ -3,11 +3,15 @@ namespace Admin\Controller;
 class CateController extends CommonController {
     
     public function index(){
-        $m=D('tp_cate');
+        
         $where['prodid']=$_SESSION['prodid'];
         $where['pid']=!empty($_GET['pid']) ? $_GET['pid'] : 0;
+        $m=D('tp_cate');
         $data=$m->where($where)->order('sn')->select();
         $this->assign('data',$data);
+        
+        $arr=$m->find($_GET['pid']);
+        $this->assign('arr',$arr);
         
         $this->display();
     }

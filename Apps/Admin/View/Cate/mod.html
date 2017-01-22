@@ -1,6 +1,21 @@
 <layout name="layout" />
 <div class="container">
 <div class="row">
+	<div class="col-sm-4">
+		<div class="panel panel-primary"> 
+           <div class="panel-heading"><h3 class="panel-title">分类</h3></div>            		                     
+             <ul class="list-group">
+ 				<volist name='data' id='st' empty="暂无分类">            
+                	<li class="list-group-item">
+                		<a href="__URL__/mod/id/<{$st.id}>" title="#">
+                			<{$st.pid|getCatname=###}>-<{$st.catname}>
+                		</a>
+                		<span class="badge"><{$st.id|countCate=###}></span>
+                	</li>
+			    </volist>    
+			 </ul>                        
+        </div>  
+	</div>
 	<div class="col-md-7">
 		<h3 >分类修改</h3>
 		<div class="panel panel-default">          
@@ -46,20 +61,6 @@
            
         	</div> 	
 	</div>
-	<div class="col-sm-5">
-		<div class="panel panel-primary"> 
-           <div class="panel-heading"><h3 class="panel-title">分类</h3></div>            		                     
-             <ul class="list-group">
- 				<volist name='data' id='st' empty="暂无分类">            
-                	<li class="list-group-item">
-                		<a href="__URL__/mod/id/<{$st.id}>" title="#">
-                			<{$st.pid|getCatname=###}>-<{$st.catname}>
-                		</a>
-                		<span class="badge"><{$st.id}></span>
-                	</li>
-			    </volist>    
-			 </ul>                        
-        </div>  
-	</div>
+	
 </div>
 </div>

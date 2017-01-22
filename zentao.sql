@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : mysql:3306
 Source Server Version : 50532
 Source Host           : localhost:3306
 Source Database       : zentao
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2017-01-22 18:21:11
+Date: 2017-01-23 00:05:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -3956,11 +3956,11 @@ INSERT INTO `zt_tp_admin` VALUES ('1', '18801043607', '18801043607', '腰立辉'
 INSERT INTO `zt_tp_admin` VALUES ('2', '13426179579', '13426179579', '梁小伟', 'e10adc3949ba59abbe56e057f20f883e', null, null, '2', '腰立辉', '2017-01-19 16:35:23');
 INSERT INTO `zt_tp_admin` VALUES ('3', '15030971266', '15030971266', '贾晓月', 'e10adc3949ba59abbe56e057f20f883e', null, null, '4', '腰立辉', '2017-01-19 16:35:32');
 INSERT INTO `zt_tp_admin` VALUES ('4', '13785900902', '13785900902', '王晓亮', 'e10adc3949ba59abbe56e057f20f883e', '', '', '4', '腰立辉', '2017-01-19 16:35:33');
-INSERT INTO `zt_tp_admin` VALUES ('7', '13463925200', '13463925200', '张秀丽', 'e10adc3949ba59abbe56e057f20f883e', null, null, '1', '腰立辉', '2017-01-19 16:35:41');
+INSERT INTO `zt_tp_admin` VALUES ('7', '13463925200', '13463925200', '张秀丽', 'e10adc3949ba59abbe56e057f20f883e', null, null, '1', '腰立辉', '2017-01-22 23:13:16');
 INSERT INTO `zt_tp_admin` VALUES ('8', '18610815780', '18610815780', '刘燕军', 'e10adc3949ba59abbe56e057f20f883e', null, null, '6', '腰立辉', '2017-01-19 16:36:35');
 INSERT INTO `zt_tp_admin` VALUES ('9', '18233098318', '18233098318', '马双峰', 'e10adc3949ba59abbe56e057f20f883e', null, null, '3', '腰立辉', '2017-01-19 16:35:53');
 INSERT INTO `zt_tp_admin` VALUES ('10', null, 'yangyh', '杨艳辉', 'e10adc3949ba59abbe56e057f20f883e', null, null, '3', '腰立辉', '2017-01-19 16:35:51');
-INSERT INTO `zt_tp_admin` VALUES ('11', '13131981120', '13131981120', '腰建强', 'e10adc3949ba59abbe56e057f20f883e', null, null, '1', '腰立辉', '2017-01-19 16:35:43');
+INSERT INTO `zt_tp_admin` VALUES ('11', '13131981120', '13131981120', '腰建强1', 'e10adc3949ba59abbe56e057f20f883e', null, null, '1', '腰立辉', '2017-01-22 23:05:33');
 
 -- ----------------------------
 -- Table structure for `zt_tp_article`
@@ -6368,21 +6368,17 @@ CREATE TABLE `zt_usertpl` (
 DROP TABLE IF EXISTS `zt_xl_customer`;
 CREATE TABLE `zt_xl_customer` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(11) DEFAULT NULL,
-  `password` char(32) DEFAULT NULL,
-  `custype` varchar(5) DEFAULT NULL,
-  `isteacher` int(1) DEFAULT '1',
-  `coursetype` varchar(5) DEFAULT NULL,
-  `realname` varchar(10) DEFAULT NULL,
-  `path` varchar(200) DEFAULT NULL,
-  `img` varchar(32) DEFAULT NULL,
-  `state` varchar(5) DEFAULT '正常',
-  `course` varchar(10) DEFAULT NULL,
-  `remark` text,
-  `adder` varchar(10) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `ctime` int(11) DEFAULT NULL,
-  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `phone` varchar(11) DEFAULT NULL COMMENT '手机号',
+  `password` char(32) DEFAULT NULL COMMENT '密码',
+  `realname` varchar(10) DEFAULT NULL COMMENT '姓名',
+  `cate` smallint(6) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL COMMENT '图片路径',
+  `img` varchar(32) DEFAULT NULL COMMENT '图片',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `adder` varchar(10) DEFAULT NULL COMMENT '添加者',
+  `moder` varchar(10) DEFAULT NULL COMMENT '修改者',
+  `ctime` int(11) DEFAULT NULL COMMENT '创建时间',
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `phone` (`phone`) USING HASH
 ) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
@@ -6390,10 +6386,10 @@ CREATE TABLE `zt_xl_customer` (
 -- ----------------------------
 -- Records of zt_xl_customer
 -- ----------------------------
-INSERT INTO `zt_xl_customer` VALUES ('1', '15803114069', 'c33367701511b4f6020ec61ded352059', '老师', '1', '中学课程', '孙云云', '/Customer/2016-12-13/', '584fbda821498.png', '发布', '初、高中物理', '孙云云，2007年毕业于河北师范大学，从事教育工作十余年，曾任上海精锐教育集团教研组长，教学校长，所带学生进步率高达100%，多名学生进入上海中学，复旦大学，上海交大等一流学府；', '腰立辉', '梁小伟', '1478415695', '2016-12-13 17:21:44');
-INSERT INTO `zt_xl_customer` VALUES ('12', '12314242342', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '小学课程', 'werer', null, null, '正常', '', '', '腰立辉', '腰立辉', '1479042931', '2016-11-13 21:17:14');
-INSERT INTO `zt_xl_customer` VALUES ('13', '13931162537', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '中学课程', '刘一玮（男、44中）', null, null, '发布', '初一数学', '一对二', '梁小伟', '梁小伟', '1479302465', '2016-12-13 17:28:34');
-INSERT INTO `zt_xl_customer` VALUES ('14', '15803114068', 'f379eaf3c831b04de153469d1bec345e', '老师', '1', '小学课程', '康国胜', '/Customer/2016-12-13/', '584fc143123a2.jpg', '发布', '小学奥数、初高中物理', '康国胜，2007年毕业于河北师范大学，后进修于河北师范大学教育管理研究生院；从事教育工作十余年，曾任上海精锐集团教研组长，教学校长；邯郸环球雅思校长等教学和管理工作；对教学有自己独到的认识，擅长鼓励教育和引导教学，善于激发学生内在的动力，挖掘最大的潜能', '梁小伟', '梁小伟', '1481619189', '2016-12-13 17:37:07');
+INSERT INTO `zt_xl_customer` VALUES ('1', '15803114069', 'c33367701511b4f6020ec61ded352059', '孙云云', null, '/Customer/2016-12-13/', '584fbda821498.png', '发布', '腰立辉', '梁小伟', '1478415695', '2016-12-13 17:21:44');
+INSERT INTO `zt_xl_customer` VALUES ('12', '12314242342', 'f379eaf3c831b04de153469d1bec345e', 'werer', null, null, null, '正常', '腰立辉', '腰立辉', '1479042931', '2016-11-13 21:17:14');
+INSERT INTO `zt_xl_customer` VALUES ('13', '13931162537', 'f379eaf3c831b04de153469d1bec345e', '刘一玮（男、44中）', null, null, null, '发布', '梁小伟', '梁小伟', '1479302465', '2016-12-13 17:28:34');
+INSERT INTO `zt_xl_customer` VALUES ('14', '15803114068', 'f379eaf3c831b04de153469d1bec345e', '康国胜', null, '/Customer/2016-12-13/', '584fc143123a2.jpg', '发布', '梁小伟', '梁小伟', '1481619189', '2016-12-13 17:37:07');
 
 -- ----------------------------
 -- Table structure for `zt_xl_order`
@@ -6457,7 +6453,7 @@ CREATE TABLE `zt_xl_prodservice` (
 -- ----------------------------
 -- Records of zt_xl_prodservice
 -- ----------------------------
-INSERT INTO `zt_xl_prodservice` VALUES ('12', '', '名片制作', '', '0', null, '0', '0', '0', '0', null, '0', null, '2', '18', null, null, '腰立辉', '2017-01-21 22:57:02');
+INSERT INTO `zt_xl_prodservice` VALUES ('12', '', '名片制作', '', '0', null, '0', '0', '0', '0', null, '0', null, '2', '18', '/Product/2017-01-22/', '5884cdb1163b1.jpg', '腰立辉', '2017-01-22 23:20:17');
 INSERT INTO `zt_xl_prodservice` VALUES ('14', '', '微信订阅号（个人申请）', '', '0', null, '0', '300', '0', '1', null, '0', null, '1', '22', null, null, '腰立辉', '2017-01-21 21:58:58');
 INSERT INTO `zt_xl_prodservice` VALUES ('15', '', '微信订阅号（企业申请）', '', '0', null, '0', '500', '0', '1', null, '0', null, '2', '22', null, null, '腰立辉', '2017-01-21 22:01:41');
 INSERT INTO `zt_xl_prodservice` VALUES ('16', '', '微信公众号运维', '200/月', '0', null, '0', '200', '0', '1', null, '0', null, '1', '20', null, null, '腰立辉', '2017-01-21 22:04:15');

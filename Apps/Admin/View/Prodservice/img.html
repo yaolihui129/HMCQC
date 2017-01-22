@@ -3,10 +3,17 @@
 	<h3>商品&服务传图</h3>
 	<div class="panel panel-default">
 	    <div class="panel-body">
-	        <form action="__URL__/pic" method="post" enctype='multipart/form-data'  role="form">
-	         <input type="hidden" name="id" value="<{$arr.id}>" />
+	    <div class="row">
+			<div class="col-md-4">
+				<form action="__URL__/pic" method="post" enctype='multipart/form-data'  role="form">
+	         	<input type="hidden" name="id" value="<{$arr.id}>" />	         
 				<img alt="图片" src="__UPLOAD__/<{$_SESSION['qz']}><{$arr.path}><{$arr.img}>" height="300" class="pull-left">
-	            <label for="exampleupdateTime">货号：</label>
+			</div>
+			<div class="col-md-1">
+				&nbsp;
+			</div>
+			<div class="col-md-6">
+				<label for="exampleupdateTime">货号：</label>
 	            <{$arr.mark}> <br>名字：
 	            <{$arr.name}><br>分类： 
 	            <{$arr.cate|getCatname=###}><br>路径：
@@ -15,7 +22,11 @@
 	            <br> <br>  
 	             <button type="submit" class="btn btn-info  pull-left" >提 交</button>
 	          </form>
-	          <a href="__URL__" type="button" class="btn btn-warning pull-left">返 回</a>            
+	          <a href="__URL__/index/cate/<{$arr.cate}>" type="button" class="btn btn-warning pull-left">返 回</a>
+			</div>
+			
+	        
+	                        
 	      </div>                    
 	</div>
 </div>

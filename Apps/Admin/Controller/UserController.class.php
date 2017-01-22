@@ -93,39 +93,47 @@ class UserController extends CommonController {
     }
 
 
-    public function image(){     
-        $upload = new \Think\Upload();// 实例化上传类
-        $upload->maxSize   =     3145728 ;// 设置附件上传大小
-        $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
-        $upload->rootPath  =  './Upload/'.$_SESSION['qz'];// 设置附件上传目录
-        $upload->savePath  = '/user/'; // 设置附件上传目录
-        // 上传文件
-        $info  =   $upload->upload();
-        
-        if(!$info) {// 上传错误提示错误信息
-            $this->error($upload->getError());
-        }else{// 上传成功 获取上传文件信息
-           $_POST['path']=$info['photo']['savepath'];
-           $_POST['photo']=$info['photo']['savename'];
-           /* 实例化模型*/
-           $db=D('tp_admin');
-              if ($db->save($_POST)){
-                  $this->success("修改成功！");
-              }else{
-                  $this->error("修改失败！");
-              }
-        }      
-    }
-
     public function update(){
         /* 实例化模型*/
         $db=D('tp_admin');
+        
+        dump($_POST);
         $_POST['moder']=$_SESSION['realname'];
-        if ($db->save($_POST)){
-            $this->success("修改成功！");
-        }else{
-            $this->error("修改失败！");
+        if ($_POST['img']){
+            $upload = new \Think\Upload();// 实例化上传类
+            $upload->maxSize   =     3145728 ;// 设置附件上传大小
+            $upload->exts      =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
+            $upload->rootPath  =  './Upload/'.$_SESSION['qz'];// 设置附件上传目录
+            $upload->savePath  = '/user/'; // 设置附件上传目录
+            // 上传文件
+            $info  =   $upload->upload(); 
+            dump($info);
+            if(!$info) {// 上传错误提示错误信息
+                $this->error($upload->getError());
+            }else{// 上传成功 获取上传文件信息
+                $_POST['path']=$info['img']['savepath'];
+                $_POST['img']=$info['img']['savename'];
+                /* 实例化模型*/
+                
+                if ($db->save($_POST)){
+                    $this->success("修改成功！");
+                }else{
+                    $this->error("修改失败！");
+                }
+            }
+            
+        }else {
+            
+            if ($db->save($_POST)){
+                $this->success("修改成功！");
+            }else{
+                $this->error("修改失败！");
+            }
         }
+        
+        
+        
+        
     }
 
  public function setpass(){
@@ -147,8 +155,7 @@ class UserController extends CommonController {
        $pass2= $_POST['pass2'];
        $pass3= $_POST['pass3'];
        /* 实例化模型*/
-        $m=M('tp_admin');
-        
+        $m=M('tp_admin');        
         $user=$m->find($id);
         if (md5($pass1)==$user['password']) {
             if ($pass2==$pass3) {

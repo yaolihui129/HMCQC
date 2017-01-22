@@ -23,16 +23,19 @@
 						</div>		        					          
 					</div>				        
 				</form>
-				<li><a href="__URL__/add"  class="btn btn-info ">添加</a></li>
+				
 			</ul>
+			<ul class="nav navbar-nav navbar-right">
+		        <li><a href="__URL__/add" type="button" class="btn btn-info">添加</a></li>		        
+		   </ul>
 		</div>				  
 </nav>
 <div class="row">
-	<div class="col-md-10">
-	<ol class="breadcrumb">
-	  <li><a href="#">Home</a></li>
-	  <li><a href="#">Library</a></li>
-	  <li class="active">Data</li>
+	<div class="col-md-12">
+	<ol class="breadcrumb">	  
+	  <li><a href="__APP__/Admin/Cate/index/pid/<{$arr.pid}>"><{$arr.pid|getCatname=###}></a></li>
+	  <li class="active"><{$arr.catname}></li>
+	  <li><a href="__APP__/Admin/Cate/index/pid/<{$arr.pid}>">返回上一级</a></li>
 	</ol>
 		<div class="panel panel-primary">
 			<table class="table table-striped table-bordered table-hover table-condensed ">
@@ -44,7 +47,8 @@
 	         <volist name='data' id='st' empty="没有数据">
 	            <tr> 	            	
 	                <td align="center" ><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/></td>
-	                <td ><a href="__URL__/index/pid/<{$st.id}>"><{$st.pid|getCatname=###}>-<{$st.catname}></a>
+	                <td ><a href="__URL__/index/pid/<{$st.id}>">
+	                <{$st.pid|getCatname=###}>-<{$st.catname}><span class="badge"><{$st.id|countCate=###}></span></a>
 	                    <div class="btn-group pull-right">	
 	                    	<a href="__URL__/mod/id/<{$st.id}>" class="btn btn-info btn-xs">修改</a>		                
 			                <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -64,28 +68,6 @@
 		</div>
 	
 	</div>
-	<div class="col-sm-2">
-       <div class="panel panel-primary">
-           <div class="panel-heading"><h3 class="panel-title">设置</h3></div>            
-               <ul class="list-group">
-                	<li class="list-group-item">
-                		<a href="__APP__/Admin/Setting" title="基础设置">基础设置</a>
-                	</li>
-			        <li class="list-group-item">
-                  		<a href="__APP__/Admin/User" title="用户管理">用户管理</a>
-                  	</li>
-			        <li class="list-group-item">
-			        	<a href="__APP__/Admin/Hr" title="诚聘人才">诚聘人才</a>
-			        </li>
-			        <li class="list-group-item">
-			        	<a href="__APP__/Admin/Ad" title="广告图">广告图</a>
-			        </li>
-			         <li class="list-group-item">分类管理</li>
-			        <li class="list-group-item">
-			        	<a target="_blank" href="http://www.xiuliguanggao.com/zentao/www" title="需求管理">需求管理</a>
-			        </li>
-			  </ul>                        
-        </div>          
-    </div>
+	
 </div>
 </div>

@@ -21,23 +21,36 @@
 					</div>		        					          
 				</div>				        
 			</form>
-			<li><a href="__URL__/add/cate/<{$cate}>" >添加</a></li>
+			
+			
 		</ul>
+		<ul class="nav navbar-nav navbar-right">		        
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><{$cate}>&nbsp;<{$cate|getCatname=###}> 
+		          <span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">		            
+		            <volist name='arr' id='st' empty="暂无分类">            
+                	<li><a href="__URL__/index/cate/<{$st.id}>" title="#"><{$st.pid|getCatname=###}>-<{$st.catname}></a></li>
+			    </volist>  
+		          </ul>
+		        </li>
+		        <li><a href="__URL__/add/cate/<{$cate}>" >添加</a></li>
+		    </ul>
 	</div>			  
 </nav> 
 <div class="row">
-	<div class="col-md-9">
+	<div class="col-md-12">
 		<div class="panel panel-primary">
 			<table class="table table-striped table-bordered table-hover table-condensed ">
 	          <tr >	          	
-	            <th width=3% align="center" bgcolor="#ccc">顺序</th>
-	            <th width=80% align="left"  bgcolor="#ccc"><{$cate}>.<{$cate|getCatname=###}></th>  
+	            <th width=5% align="center" bgcolor="#ccc">顺序</th>
+	            <th width=90% align="left"  bgcolor="#ccc"><{$cate}>&nbsp;<{$cate|getCatname=###}></th>  
 	         </tr>
 	         <form action="__URL__/order" method="post" >
 	         <volist name='data' id='st' empty="没有数据">
 	            <tr> 	            	
 	                <td align="center" ><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/></td>
-	                <td ><{$st.id|}>-<{$st.name}>
+	                <td ><{$st.id|}>.<{$st.name}>
 	                    <div class="btn-group pull-right">	
 	                    	<a href="__URL__/img/id/<{$st.id}>" class="btn btn-success btn-xs">传图</a>
 	                    	<a href="__URL__/fabu/id/<{$st.id}>" class="btn btn-success btn-xs">发布</a>
@@ -58,17 +71,5 @@
 	         </form>
 	     </table>
 		</div>
-	</div>
-	<div class="col-md-3">
-		<div class="panel panel-primary"> 
-           <div class="panel-heading"><h3 class="panel-title">分类</h3></div>            		                     
-             <ul class="list-group">
- 				<volist name='arr' id='st' empty="暂无分类">            
-                	<li class="list-group-item">
-                		<a href="__URL__/index/cate/<{$st.id}>" title="#"><{$st.pid|getCatname=###}>-<{$st.catname}></a>
-                	</li>
-			    </volist>    
-			 </ul>                        
-        </div>
-	</div>
+	</div>	
 </div>	
