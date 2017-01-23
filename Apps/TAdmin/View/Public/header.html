@@ -7,8 +7,6 @@
     <title>测试管理平台</title>
 	<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 	<import type="css" file="Css.admin" />	
-	    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-	    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	    <!--[if lt IE 9]>
 	      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -37,12 +35,15 @@
 		           <li><a href="__APP__/TAdmin/Exescene/index/type/C"> 用例<span class="badge"></span></a></li>
 		           <li class="divider"></li>
 		           <li><a href="__APP__/TAdmin/Exescene/index/type/M">手工<span class="badge"></span></a></li>
-		           <li class="divider"></li>
-		           <li><a href="__APP__/TAdmin/Exescene/test/type/A">自动<span class="badge"></span></a></li>		                 
+		           <!-- <li class="divider"></li>
+		           <li><a href="__APP__/TAdmin/Exescene/test/type/A">自动<span class="badge"></span></a></li> -->		                 
 		       </ul>
            </li>          
             <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> 设置&nbsp;<span class="caret"></span></a>
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+	               <span class="glyphicon glyphicon-cog"> 设置</span>
+	               <span class="caret"></span>
+               </a>
                <ul class="dropdown-menu" role="menu">
                  <li><a href="__APP__/TAdmin/User">用户</a></li>
                  <li class="divider"></li>                 
@@ -53,15 +54,15 @@
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">             
-             <li class="dropdown">
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <b>欢迎您-</b><{$_SESSION.realname}> 
-                 <span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
-                 <ul class="dropdown-menu" role="menu">                   
-                    <li><a href="__APP__/TAdmin/User/setpass">修改密码</a></li>             
-                    <li class="divider"></li>
-                    <li><a href="__APP__/TAdmin/Login/logout" onclick="return confirm('你确定要退出系统吗？')" >退出</a></li>
-                </ul>
-          </li>
+             	<li class="dropdown">
+	                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <b>欢迎您-</b><{$_SESSION.realname}> 
+	                 <span class="glyphicon glyphicon-user"></span> <span class="caret"></span></a>
+	                 <ul class="dropdown-menu" role="menu">                   
+	                    <li><a href="__APP__/TAdmin/User/setpass">修改密码</a></li>             
+	                    <li class="divider"></li>
+	                    <li><a href="__APP__/TAdmin/Login/logout" onclick="return confirm('你确定要退出系统吗？')" >退出</a></li>
+	                </ul>
+          		</li>
           </ul>
         </div>
       </div>

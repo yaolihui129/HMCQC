@@ -47,31 +47,6 @@ body{
 .hei30{height:30px;}
 .hei60{height:60px;}
 
-textarea{font-size:14px; line-height:24px;border:1px #cecece solid; border-top:1px #707070 solid; border-left:1px #707070 solid; border-radius:2px; padding:2px 5px; background:#fefefe}
-.input20{width:20px;}
-.input40{width:40px;}
-.input50{width:50px;}
-.input60{width:60px;}
-.input80{width:80px;}
-.input100{width:100px;}
-.input150{width:150px;}
-.input200{width:200px;}
-.input250{width:250px;}
-.input300{width:300px;}
-.input350{width:350px;}
-.input400{width:400px;}
-.input500{width:500px;}
-.input550{width:550px;}
-.input600{width:600px;}
-.input650{width:650px;}
 
 
-/*首页*/
-#shouyegg{
-	height: 370px;
-}
-.img{
-	width: 100%;
-    overflow:hidden;
-}
 

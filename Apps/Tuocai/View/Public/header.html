@@ -8,11 +8,8 @@
     <meta name="keywords" content="<{$_SESSION['keywords']}>" />
 	<meta name="description" content="<{$_SESSION['desc']}>" />
 	<link rel="shortcut icon" href="favicon.ico"/>
-	<!-- Bootstrap -->
     <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <import type="css" file="Css.home" />
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <import type="css" file="Css.home" />    
     <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -49,8 +46,12 @@
                  <li><a href="__APP__/Tuocai/Course/index/coursetype/兴趣拓展">兴趣拓展</a></li>
                </ul>
             </li>
-            <li><a href="__APP__/Tuocai/Customer/index/isteacher/1"><span class="glyphicon glyphicon-user"></span> 师资力量</a></li>
-            <li><a href="__APP__/Tuocai/About/index"><span class="glyphicon glyphicon-phone-alt"></span> 关于我们</a></li>
+            <li><a href="__APP__/Tuocai/Customer/index/isteacher/1">
+            	<span class="glyphicon glyphicon-user"> 师资力量</span> </a>
+            </li>
+            <li><a href="__APP__/Tuocai/About/index">
+            	<span class="glyphicon glyphicon-phone-alt"> 关于我们</span></a>
+            </li>
             
             <empty name="_SESSION['isCLogin']">
             <li class="divider"></li>
@@ -61,8 +62,7 @@
 				   
 				  </div>
 				  <button type="submit" class="btn btn-inverse btn-sm"><span class="glyphicon glyphicon-log-in"></span></button>
-				</form></li>
-             
+				</form></li>            
           <else />
           <li class="divider"></li>
               <li class="dropdown">
@@ -75,14 +75,8 @@
                 </ul>
               </li>
           </empty>
-
-          </ul>
-          
-          
-        </div><!--/.nav-collapse -->
+          </ul>                   
+        </div>
       </div>
-    </nav>
-		
+    </nav>		
     <div class="container">
-
-
