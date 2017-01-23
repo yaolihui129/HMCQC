@@ -19,9 +19,9 @@ class IndexController extends Controller {
         $_SESSION['img']=$data['path'].$data['img'];
         $_SESSION['init']=1;
        
-        $m=D('tc_ad');
+        $m=D('tp_ad');
         $where['prodid']=2;
-        $pic=$m->where($where)->order('updateTime desc')->select();
+        $pic=$m->where($where)->order('utime desc')->select();
         $this->assign('pic',$pic);
         
         

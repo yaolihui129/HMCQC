@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : mysql:3306
 Source Server Version : 50532
 Source Host           : localhost:3306
 Source Database       : zentao
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2017-01-23 17:37:21
+Date: 2017-01-23 23:58:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -4314,15 +4314,11 @@ INSERT INTO `zt_tp_cate` VALUES ('5', '40', '0', '微网站', '1', '腰立辉', 
 INSERT INTO `zt_tp_cate` VALUES ('6', '50', '0', '公众号', '1', '腰立辉', '2017-01-21 22:27:16');
 INSERT INTO `zt_tp_cate` VALUES ('7', '80', '0', '成功案例', '1', '腰立辉', '2017-01-21 22:28:45');
 INSERT INTO `zt_tp_cate` VALUES ('8', '1000', '0', '课程', '2', '腰立辉', '2017-01-22 16:55:58');
-INSERT INTO `zt_tp_cate` VALUES ('9', '1', '0', '客户', '2', '腰立辉', '2017-01-22 16:53:10');
 INSERT INTO `zt_tp_cate` VALUES ('10', '1100', '8', '学前少儿', '2', '腰立辉', '2017-01-22 16:55:58');
 INSERT INTO `zt_tp_cate` VALUES ('11', '1200', '8', '小学课程', '2', '腰立辉', '2017-01-22 16:55:58');
 INSERT INTO `zt_tp_cate` VALUES ('12', '2000', '8', '中学课程', '2', '腰立辉', '2017-01-22 17:00:16');
 INSERT INTO `zt_tp_cate` VALUES ('13', '3000', '8', '作业托管', '2', '腰立辉', '2017-01-22 17:00:16');
 INSERT INTO `zt_tp_cate` VALUES ('14', '4000', '8', '兴趣拓展', '2', '腰立辉', '2017-01-22 17:00:16');
-INSERT INTO `zt_tp_cate` VALUES ('15', '10', '9', '老师', '2', '腰立辉', '2017-01-22 16:53:10');
-INSERT INTO `zt_tp_cate` VALUES ('16', '20', '9', '助教', '2', '腰立辉', '2017-01-22 16:53:10');
-INSERT INTO `zt_tp_cate` VALUES ('17', '30', '9', '学生', '2', '腰立辉', '2017-01-22 16:53:10');
 INSERT INTO `zt_tp_cate` VALUES ('18', '10', '4', '文印', '1', '腰立辉', '2017-01-21 22:29:44');
 INSERT INTO `zt_tp_cate` VALUES ('19', '20', '4', '广告牌', '1', '腰立辉', '2017-01-21 22:33:56');
 INSERT INTO `zt_tp_cate` VALUES ('20', '60', '6', '微信公众号', '1', '腰立辉', '2017-01-21 22:27:16');
@@ -4339,29 +4335,6 @@ INSERT INTO `zt_tp_cate` VALUES ('30', '42', '5', '宣传页', '1', '腰立辉',
 INSERT INTO `zt_tp_cate` VALUES ('31', '43', '5', '服务器', '1', '腰立辉', '2017-01-21 22:29:06');
 INSERT INTO `zt_tp_cate` VALUES ('32', '44', '5', '域名', '1', '腰立辉', '2017-01-21 22:29:06');
 INSERT INTO `zt_tp_cate` VALUES ('33', '45', '5', '第三方授权', '1', '腰立辉', '2017-01-21 22:29:06');
-INSERT INTO `zt_tp_cate` VALUES ('34', '1110', '10', '三字经', '2', '腰立辉', '2017-01-22 16:56:31');
-INSERT INTO `zt_tp_cate` VALUES ('35', '1120', '10', '百家姓', '2', '腰立辉', '2017-01-22 16:56:31');
-INSERT INTO `zt_tp_cate` VALUES ('36', '1210', '11', '一年级', '2', '腰立辉', '2017-01-22 16:57:05');
-INSERT INTO `zt_tp_cate` VALUES ('37', '1220', '11', '二年级', '2', '腰立辉', '2017-01-22 16:57:05');
-INSERT INTO `zt_tp_cate` VALUES ('38', '1230', '11', '三年级', '2', '腰立辉', '2017-01-22 16:57:05');
-INSERT INTO `zt_tp_cate` VALUES ('39', '1240', '11', '四年级', '2', '腰立辉', '2017-01-22 16:57:05');
-INSERT INTO `zt_tp_cate` VALUES ('40', '1250', '11', '五年级', '2', '腰立辉', '2017-01-22 16:57:05');
-INSERT INTO `zt_tp_cate` VALUES ('41', '1260', '11', '六年级', '2', '腰立辉', '2017-01-22 16:57:05');
-INSERT INTO `zt_tp_cate` VALUES ('42', '2100', '12', '初中', '2', '腰立辉', '2017-01-22 17:00:16');
-INSERT INTO `zt_tp_cate` VALUES ('43', '2200', '12', '高中', '2', '腰立辉', '2017-01-22 17:00:16');
-INSERT INTO `zt_tp_cate` VALUES ('44', '2110', '42', '七年级', '2', '腰立辉', '2017-01-22 17:00:52');
-INSERT INTO `zt_tp_cate` VALUES ('45', '2120', '42', '八年级', '2', '腰立辉', '2017-01-22 17:00:52');
-INSERT INTO `zt_tp_cate` VALUES ('46', '2130', '42', '九年级', '2', '腰立辉', '2017-01-22 17:00:52');
-INSERT INTO `zt_tp_cate` VALUES ('47', '2210', '43', '高一', '2', '腰立辉', '2017-01-22 17:01:45');
-INSERT INTO `zt_tp_cate` VALUES ('48', '2220', '43', '高二', '2', '腰立辉', '2017-01-22 17:01:45');
-INSERT INTO `zt_tp_cate` VALUES ('49', '2230', '43', '高三', '2', '腰立辉', '2017-01-22 17:01:45');
-INSERT INTO `zt_tp_cate` VALUES ('50', '1211', '36', '语文（一年级）', '2', '腰立辉', '2017-01-22 17:03:54');
-INSERT INTO `zt_tp_cate` VALUES ('51', '1212', '36', '数学（一年级）', '2', '腰立辉', '2017-01-22 17:03:54');
-INSERT INTO `zt_tp_cate` VALUES ('52', '1221', '37', '语文（二年级）', '2', '腰立辉', '2017-01-22 17:04:51');
-INSERT INTO `zt_tp_cate` VALUES ('53', '1222', '37', '数学（二年级）', '2', '腰立辉', '2017-01-22 17:04:51');
-INSERT INTO `zt_tp_cate` VALUES ('54', '4001', '14', '跆拳道', '2', '腰立辉', '2017-01-22 17:09:07');
-INSERT INTO `zt_tp_cate` VALUES ('55', '4002', '14', '围棋', '2', '腰立辉', '2017-01-22 17:09:07');
-INSERT INTO `zt_tp_cate` VALUES ('56', '4003', '14', '书法国画', '2', '腰立辉', '2017-01-22 17:09:07');
 INSERT INTO `zt_tp_cate` VALUES ('57', '1', '0', '主营业务', '4', '腰立辉', '2017-01-22 18:06:02');
 INSERT INTO `zt_tp_cate` VALUES ('58', '50', '0', '汽车用品', '4', '腰立辉', '2017-01-22 18:07:19');
 INSERT INTO `zt_tp_cate` VALUES ('59', '10', '57', '钣金喷漆', '4', '腰立辉', '2017-01-22 18:07:33');
