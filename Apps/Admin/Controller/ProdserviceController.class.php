@@ -2,13 +2,14 @@
 namespace Admin\Controller;
 class ProdserviceController extends CommonController {
     public function index(){
+        /*实例化模型*/        
         $m=D('tp_cate');
         $where['prodid']=$_SESSION['prodid'];
         $arr=$m->where($where)->order('sn')->select();
         $this->assign('arr',$arr);
         /*实例化模型*/
         $cate=!empty($_GET['cate']) ? $_GET['cate'] : $arr['0']['id'];
-        $m=D('xl_prodservice');
+        $m=D($_SESSION['db'].'prodservice');
         $map[cate]=$cate;
         $data=$m->where($map)->select();
         $this->assign('data',$data);
@@ -35,7 +36,7 @@ class ProdserviceController extends CommonController {
         $arr=$m->where($where)->select();
         $this->assign('arr',$arr);
         //dump($arr);
-        $m=D('xl_prodservice');
+        $m=D($_SESSION['db'].'prodservice');
         $map['cate']=$arr['id'];
         $count=$m->where($map)->count()+1;
         $this->assign("c",$count);       
@@ -47,7 +48,7 @@ class ProdserviceController extends CommonController {
     
     public function insert(){
     
-        $m=D('xl_prodservice');
+        $m=D($_SESSION['db'].'prodservice');
          
         $_POST['moder']=$_SESSION['realname'];
         $_POST['prodid']=$_SESSION['prodid'];
@@ -65,7 +66,7 @@ class ProdserviceController extends CommonController {
     
     public function order(){
         /* 实例化模型*/
-        $db = D('xl_prodservice');
+        $db = D($_SESSION['db'].'prodservice');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
@@ -79,7 +80,7 @@ class ProdserviceController extends CommonController {
     }
     
     public function mod(){
-        $m=D('xl_prodservice');
+        $m=D($_SESSION['db'].'prodservice');
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
                
@@ -89,7 +90,7 @@ class ProdserviceController extends CommonController {
     
     public function update(){
         /* 实例化模型*/
-        $db=D('xl_prodservice');
+        $db=D($_SESSION['db'].'prodservice');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
@@ -99,7 +100,7 @@ class ProdserviceController extends CommonController {
     }
     
     public function img(){
-        $m=D('xl_prodservice');
+        $m=D($_SESSION['db'].'prodservice');
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
     
@@ -121,7 +122,7 @@ class ProdserviceController extends CommonController {
             $_POST['path']=$info['img']['savepath'];
             $_POST['img']=$info['img']['savename'];
             /* 实例化模型*/
-            $db=D('xl_prodservice');
+            $db=D($_SESSION['db'].'prodservice');
             if ($db->save($_POST)){
                 $image = new \Think\Image();
                 $image->open('./Upload/'.$_SESSION['qz'].$info['img']['savepath'].$info['img']['savename']);
@@ -138,7 +139,7 @@ class ProdserviceController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=D('xl_prodservice');
+        $m=D($_SESSION['db'].'prodservice');
         $count =$m->delete($id);
         if ($count>0) {
             $this->success('删除成功');

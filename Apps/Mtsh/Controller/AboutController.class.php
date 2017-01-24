@@ -9,8 +9,10 @@ class AboutController extends Controller {
         $_SESSION['adress']=$data['adress'];
         $_SESSION['desc']=$data['desc'];
         $_SESSION['phone']=$data['phone'];
+        $_SESSION['tel']=$data['tel'];
         $_SESSION['qq']=$data['qq'];
         $_SESSION['weburl']=$data['url'];
+        $_SESSION['record']=$data['record'];
         $_SESSION['ip']=get_client_ip();
         $_SESSION['browser']=GetBrowser();
         $_SESSION['os']=GetOs();

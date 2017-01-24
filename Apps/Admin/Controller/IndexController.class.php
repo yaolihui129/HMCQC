@@ -69,7 +69,7 @@ class IndexController extends CommonController {
         $where['userid']=$_SESSION['id'];
         $data=$m->where($where)->select();
         $this->assign('data',$data);
-        
+
         $_SESSION['ip']=get_client_ip();
         $_SESSION['browser']=GetBrowser();
         $_SESSION['os']=GetOs();
