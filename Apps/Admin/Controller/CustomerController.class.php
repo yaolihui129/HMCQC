@@ -3,29 +3,36 @@ namespace Admin\Controller;
 class CustomerController extends CommonController {
 
 	public function index(){
-	    /* 实例化模型*/
-		$m=M($_SESSION['db'].'customer');
-        $data=$m->order("utime desc")->select();
+	    $m=D('tp_customer');
+	    $data=$m
+	    ->join('zt_'.$_SESSION['db'].'customer ON zt_tp_customer.id =zt_'.$_SESSION['db'].'customer.tpid')
+	    ->select();
+	    
         $this->assign('data',$data);
-        
-        $this->assign("state", PublicController::stateSelect("正常","state","state"));
-                
+         
 	    $this->display();
     }
-
-    public function add(){
-
-        $this->assign("state", PublicController::stateSelect("正常","state","state"));
-
-        $this->display();
-    }
+    
+   public function add(){
+       /* 接收参数*/
+       $tpid=$_GET['tpid'];
+       $m=D($_SESSION['db'].'customer');
+       $where['tpid']=$tpid;
+       $data=$m->where($where)->find();
+       if ($data){
+           $this->error("TA已经是你的客户，无需重复添加");
+       }else {
+           $this->assign('tpid',$tpid);           
+           $this->display();
+       }
+       
+      
+   }
 
     public function insert(){
 
         /* 实例化模型*/
-        $m=D($_SESSION['db'].'customer');
-        
-        $_POST['password']=md5("666666");
+        $m=D($_SESSION['db'].'customer');     
         $_POST['adder']=$_SESSION['realname'];
         $_POST['moder']=$_SESSION['realname'];
         $_POST['ctime']=time();
@@ -34,9 +41,9 @@ class CustomerController extends CommonController {
         }
         $lastId=$m->add();
         if($lastId){
-            $this->success("添加成功");
+            $this->success("成功");
         }else{
-            $this->error("添加失败");
+            $this->error("失败");
         }
 
     }
@@ -46,11 +53,13 @@ class CustomerController extends CommonController {
         $search=$_POST['search'];
         $map['realname|phone']=array('like','%'.$search.'%');
         /* 实例化模型*/
-        $m=M($_SESSION['db'].'customer');
-        $arr=$m->where($map)->order("utime desc")->select();
+        $m=M('tp_customer');
+        $arr=$m
+        ->join('zt_'.$_SESSION['db'].'customer ON zt_tp_customer.id =zt_'.$_SESSION['db'].'customer.tpid')
+        ->where($map)->order('zt_'.$_SESSION['db'].'customer.utime desc')->select();
         $this->assign('data',$arr);
-        $where=array("search"=>$search);
-        $this->assign('w',$where);
+        $search=array("search"=>$search);
+        $this->assign('w',$search);
          
         $this->display('index');
          
@@ -133,7 +142,10 @@ class CustomerController extends CommonController {
         }
     }
     
-
+    public function create(){
+        
+        $this->display();
+    }
 
 
 }

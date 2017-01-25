@@ -30,3 +30,26 @@ function countCate($pid){
 function countProdService($cate){
 
 }
+
+
+//获取手机号
+function getPhone($id){
+    if($id){
+        $m=M('tp_customer');
+        $data=$m->find($id);
+        return $data['phone'];
+    }else{
+        return ;
+    }
+}
+
+//获取手机号
+function getCRealname($id){
+    if($id){
+        $m=M('tp_customer');
+        $data=$m->find($id);
+        return $data['realname'];
+    }else{
+        return ;
+    }
+}

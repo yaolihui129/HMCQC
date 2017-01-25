@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2017-01-24 18:10:31
+Date: 2017-01-25 17:56:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -79,6 +79,95 @@ INSERT INTO `zt_action` VALUES ('38', 'product', '5', ',5,', '0', 'yao', 'edited
 INSERT INTO `zt_action` VALUES ('39', 'product', '12', ',12,', '0', 'yao', 'opened', '2017-01-12 12:44:28', '', '', '0');
 INSERT INTO `zt_action` VALUES ('40', 'product', '12', ',12,', '0', 'yao', 'edited', '2017-01-12 12:46:11', '', '', '0');
 INSERT INTO `zt_action` VALUES ('41', 'user', '2', ',0,', '0', 'yao', 'login', '2017-01-12 14:00:56', '', '', '0');
+
+-- ----------------------------
+-- Table structure for `zt_as_customer`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_as_customer`;
+CREATE TABLE `zt_as_customer` (
+  `wid` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `tpid` smallint(6) NOT NULL,
+  `type` varchar(5) DEFAULT NULL,
+  `isteacher` int(1) DEFAULT '1',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `coursetype` varchar(5) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(32) DEFAULT NULL,
+  `course` varchar(10) DEFAULT NULL,
+  `remark` text,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `ctime` int(11) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`wid`),
+  UNIQUE KEY `customerid` (`tpid`) USING HASH
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_as_customer
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `zt_as_prodservice`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_as_prodservice`;
+CREATE TABLE `zt_as_prodservice` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '商品ID',
+  `mark` varchar(20) DEFAULT NULL COMMENT '商品货号(二维码号)',
+  `name` varchar(15) DEFAULT NULL COMMENT '商品名称',
+  `content` text COMMENT '商品描述',
+  `weight` decimal(10,0) DEFAULT NULL COMMENT '商品尺寸',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `money` decimal(10,0) DEFAULT '0' COMMENT '优惠商品价格',
+  `smoney` decimal(10,0) DEFAULT '0' COMMENT '市场价格',
+  `wlmoney` decimal(10,0) DEFAULT '0' COMMENT '物流价格',
+  `num` smallint(5) DEFAULT NULL COMMENT '商品库存数',
+  `sellnum` int(10) DEFAULT NULL COMMENT '卖出数量',
+  `istj` tinyint(1) DEFAULT '0' COMMENT '特价商品',
+  `atime` timestamp NULL DEFAULT NULL COMMENT '发布时间',
+  `sn` int(2) DEFAULT NULL,
+  `cate` smallint(6) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(48) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_as_prodservice
+-- ----------------------------
+INSERT INTO `zt_as_prodservice` VALUES ('1', '', '大保养', '', '0', '正常', '0', '0', '0', '1', null, '0', null, '1', '61', null, null, '腰立辉', '2017-01-24 22:03:55');
+INSERT INTO `zt_as_prodservice` VALUES ('2', '', '小保养', '', '0', '正常', '0', '0', '0', '1', null, '0', null, '1', '61', null, null, '腰立辉', '2017-01-24 22:04:13');
+
+-- ----------------------------
+-- Table structure for `zt_as_usecar`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_as_usecar`;
+CREATE TABLE `zt_as_usecar` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `content` text,
+  `type` smallint(6) DEFAULT NULL,
+  `url` varchar(200) DEFAULT NULL,
+  `state` varchar(5) DEFAULT NULL,
+  `path` varchar(100) DEFAULT NULL,
+  `img` varchar(48) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_as_usecar
+-- ----------------------------
+INSERT INTO `zt_as_usecar` VALUES ('3', '避免预热时间过长', '<p>\r\n	启动车后，大多数人都习惯让发动机怠速运转，等水温达到正常温度后再把车开走，其实这种预热的方法是非常错误的，因为电喷发动机不像化油器发动机，在达到工作温度之前，供油系统不能正常工作。电喷发动机如果采用长时间预热，不仅没有必要而且还是有害的。缩短预热时间可以延长三元催化器的使用寿命，还会节省燃油。动机起动后，只要能维持稳定的转速就可以起步行车，在水温未升高前，适当控制一下车速，等水温正常后就可以正常驾驶了。</p>\r\n', '6', '#', '发布', '/Admin/usecar/2016-10-31/', '5816dd28045c6.jpg', '腰立辉', '2016-10-31 14:01:15');
+INSERT INTO `zt_as_usecar` VALUES ('4', '开窗和开空调哪个更省油呢?', '<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">夏天在高速（速度一般都要&ge;80km/h）行驶时，到底是开着窗户省油还是开着空调省油呢？支持前者的人认为：不开空调即压缩机不用工作，也就不会给</span><a class=\"ShuKeyWordLink\" href=\"http://car.autohome.com.cn/shuyu/detail_8_9_555.html\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: rgb(59, 89, 152); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">发动机</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">造成额外的负担，因此会更省油。支持后者观点的人则认为：高速时开着车窗会扰乱空气流动，形成更大的风阻，因此产生的阻力会消耗比空调还多的燃油。</span></p>\r\n<p>\r\n	<strong>结果：</strong></p>\r\n<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">在开空调的测试中，</span><a class=\"blackclink\" href=\"http://www.autohome.com.cn/81/\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">飞度</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">的百公里油耗为6.15升，而</span><a class=\"blackclink\" href=\"http://www.autohome.com.cn/694/\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">锋范</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">的则达到了7.3升。这两个数据分别比开车窗行驶时上升了0.87升和0.17升，</span><a class=\"blackclink\" href=\"http://www.autohome.com.cn/81/\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">飞度</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">油耗上升的幅度非常明显。而我们最终的定论也可以得出了。在车速为100km/h以下时，开车窗行驶的确比开空调要更加省油，但是其恶劣的驾车感受是必须用足够的忍耐力才能承受的</span></p>\r\n', '7', 'http://www.autohome.com.cn/user/201007/128126.html#pvareaid=103453', '发布', '/Admin/usecar/2016-10-31/', '5816db69ef7da.jpg', '腰立辉', '2016-10-31 13:49:29');
+INSERT INTO `zt_as_usecar` VALUES ('5', '遭遇鸡蛋袭击不能用雨刮?', '<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">相信不少人曾对网络中的一则流言有所耳闻：某地频繁现劫匪用生鸡蛋袭击挡风玻璃的抢劫伎俩，千万不要开启雨刷喷水。因为鸡蛋遇玻璃水将凝固，阻挡视线达90%，在你被迫停车清理玻璃时，劫匪趁机抢劫......。上网一搜，类似流言高达百万条以上。</span></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验1：普通生鸡蛋</strong></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验2：普通生鸡蛋停留一段时间再清理</strong></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验3：普通鸡蛋夜间效果</strong></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验4：普通生鸡蛋+神秘配方</strong></p>\r\n<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">同样以20km/h的速度驾驶车辆，路边砸来的鸡蛋在挡风玻璃上破碎，开启雨刮器后大部分鸡蛋残渣被清除，不过一些神秘的残留物质仍然不能完全清除，尝试数次后效果仍然不明显。</span></p>\r\n<p>\r\n	&nbsp;</p>\r\n', '7', 'http://www.autohome.com.cn/user/201112/281437.html#pvareaid=103453', '发布', '/Admin/usecar/2016-10-31/', '5816cd97d33bb.jpg', '腰立辉', '2016-10-31 13:00:58');
+INSERT INTO `zt_as_usecar` VALUES ('8', '开车不喝酒，喝酒不开车', '<p>\r\n	可你喝了酒又需要回家怎么办？</p>\r\n<p>\r\n	1. 自己打车回家，转天再去开回来。</p>\r\n<p>\r\n	2. 请会开车没喝酒的朋友帮忙。</p>\r\n<p>\r\n	3. 请个代驾帮忙把车开回家。</p>\r\n<p>\r\n	<strong>看看后面的规定，你就知道我们的3个办法还是最有效的。</strong></p>\r\n<p>\r\n	中华人民共和国道路交通安全法》规定，饮酒后驾驶机动车的处暂扣1个月以上3个月以下机动车驾驶证，并处200元以上元以下罚款;醉酒后驾驶机动车的，由公安机关交通管理部门约束至酒醒，处15日以下拘留和暂扣3个月以上6个月以下机动车驾驶证，并处00元以上2000元以下罚款。1年内醉酒后驾驶机动车被处罚2次以上的，吊销机动车驾驶证.5年内不得驾驶营运机动车。</p>\r\n', '6', '', '发布', '/Admin/usecar/2016-10-31/', '5816e1c4c2325.jpg', '腰立辉', '2016-10-31 14:16:36');
+INSERT INTO `zt_as_usecar` VALUES ('6', '保护漆面从新车做起', '<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体; font-size: 14px; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);\">新车漆面虽无老化问题，但使用前应该做彻底的保护处理，从出厂到运输至停车场，车表漆就已经接触了空气、酸气、风沙的侵袭。及时正确的养护，能令漆面保持良好外观。如果买的是进口轿车，要首先考虑的是车蜡中含有石蜡、树脂及特氟隆等材料。除蜡时不要用汽油或煤油擦拭，应选用专业的开蜡液，或者到专业的美容养护店，请技师帮助处理。至于国产车，车身大多采用静电喷涂，漆面呈镜面光泽，故无开蜡需要。</span></p>\r\n', '6', '#', '发布', '/Admin/usecar/2016-10-31/', '5816dedc34c66.jpeg', '腰立辉', '2016-10-31 14:04:12');
+INSERT INTO `zt_as_usecar` VALUES ('7', '调整后视镜', '调整后视镜左侧后视镜上、下位置是把远处的地平线置于中央，左、右位置则调整至车身占据镜面范围的14。右侧后视镜因为驾驶座位于左侧，因此驾驶人对车耳右侧的掌握不是那么容易，再加上有时路边停车的需要，在调整右侧后视镜上、下位置时地面面积要较大，约占镜面的23。而左、右位置则同样调整到车身占14面积即可。\r\n', '6', '', '发布', '/Admin/usecar/2016-10-31/', '5816dfa12179c.png', '腰立辉', '2016-10-31 14:07:29');
 
 -- ----------------------------
 -- Table structure for `zt_block`
@@ -3631,33 +3720,30 @@ INSERT INTO `zt_tc_course` VALUES ('18', '初中化学', '中学课程', '', '/C
 -- ----------------------------
 DROP TABLE IF EXISTS `zt_tc_customer`;
 CREATE TABLE `zt_tc_customer` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(11) DEFAULT NULL,
-  `password` char(32) DEFAULT NULL,
-  `custype` varchar(5) DEFAULT NULL,
+  `wid` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `tpid` smallint(6) NOT NULL,
+  `type` varchar(5) DEFAULT NULL,
   `isteacher` int(1) DEFAULT '1',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
   `coursetype` varchar(5) DEFAULT NULL,
-  `realname` varchar(10) DEFAULT NULL,
   `path` varchar(200) DEFAULT NULL,
   `img` varchar(32) DEFAULT NULL,
-  `state` varchar(5) DEFAULT '正常',
   `course` varchar(10) DEFAULT NULL,
   `remark` text,
   `adder` varchar(10) DEFAULT NULL,
   `moder` varchar(10) DEFAULT NULL,
-  `createTime` int(11) DEFAULT NULL,
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `phone` (`phone`) USING HASH
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+  `ctime` int(11) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`wid`),
+  UNIQUE KEY `customerid` (`tpid`) USING HASH
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zt_tc_customer
 -- ----------------------------
-INSERT INTO `zt_tc_customer` VALUES ('1', '15803114069', 'c33367701511b4f6020ec61ded352059', '老师', '1', '中学课程', '孙云云', '/Customer/2016-12-18/', '585693e5ec634.png', '发布', '初、高中物理', '孙云云，2007年毕业于河北师范大学，从事教育工作十余年，曾任上海精锐教育集团教研组长，教学校长，所带学生进步率高达100%，多名学生进入上海中学，复旦大学，上海交大等一流学府；', '腰立辉', '梁小伟', '1478415695', '2016-12-18 21:49:25');
-INSERT INTO `zt_tc_customer` VALUES ('12', '12314242342', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '小学课程', 'werer', null, null, '正常', '', '', '腰立辉', '腰立辉', '1479042931', '2016-11-13 21:17:14');
-INSERT INTO `zt_tc_customer` VALUES ('13', '13931162537', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '中学课程', '刘一玮（男、44中）', null, null, '发布', '初一数学', '一对二', '梁小伟', '梁小伟', '1479302465', '2016-12-13 17:28:34');
-INSERT INTO `zt_tc_customer` VALUES ('14', '15803114068', 'f379eaf3c831b04de153469d1bec345e', '老师', '1', '小学课程', '康国胜', '/Customer/2016-12-18/', '58569232eda33.jpg', '发布', '小学奥数、初高中物理', '康国胜，2007年毕业于河北师范大学，后进修于河北师范大学教育管理研究生院；从事教育工作十余年，曾任上海精锐集团教研组长，教学校长；邯郸环球雅思校长等教学和管理工作；对教学有自己独到的认识，擅长鼓励教育和引导教学，善于激发学生内在的动力，挖掘最大的潜能', '梁小伟', '梁小伟', '1481619189', '2016-12-18 21:42:10');
+INSERT INTO `zt_tc_customer` VALUES ('15', '1', '老师', '1', '发布', '中学课程', '/Customer/2016-12-18/', '585693e5ec634.png', '初、高中物理', '孙云云，2007年毕业于河北师范大学，从事教育工作十余年，曾任上海精锐教育集团教研组长，教学校长，所带学生进步率高达100%，多名学生进入上海中学，复旦大学，上海交大等一流学府；', '腰立辉', '梁小伟', '1478415695', '2017-01-25 15:33:07');
+INSERT INTO `zt_tc_customer` VALUES ('17', '13', '学生', '0', '正常', '中学课程', null, null, '初一数学', '一对二', '梁小伟', '腰立辉', '1479302465', '2017-01-25 16:47:18');
+INSERT INTO `zt_tc_customer` VALUES ('18', '14', '老师', '1', '发布', '小学课程', '/Customer/2016-12-18/', '58569232eda33.jpg', '小学奥数、初高中物理', '康国胜，2007年毕业于河北师范大学，后进修于河北师范大学教育管理研究生院；从事教育工作十余年，曾任上海精锐集团教研组长，教学校长；邯郸环球雅思校长等教学和管理工作；对教学有自己独到的认识，擅长鼓励教育和引导教学，善于激发学生内在的动力，挖掘最大的潜能', '梁小伟', '梁小伟', '1481619189', '2017-01-25 15:33:11');
 
 -- ----------------------------
 -- Table structure for `zt_tc_date`
@@ -3745,6 +3831,45 @@ INSERT INTO `zt_tc_plan` VALUES ('4', '8', '2016-11-14', '星期一', '10:00-12:
 INSERT INTO `zt_tc_plan` VALUES ('6', '13', '2016-11-15', '星期二', '13:00-15:00', '4', '6', 'gssgd', '待确认', '腰立辉', '腰立辉', '1479214748', '2016-11-15 20:59:08');
 INSERT INTO `zt_tc_plan` VALUES ('7', '21', '2016-11-17', '星期四', '13:00-15:00', '4', '6', 'qqq', '待确认', '腰立辉', '腰立辉', '1479214778', '2016-11-15 20:59:38');
 INSERT INTO `zt_tc_plan` VALUES ('8', '15', '2016-11-16', '星期三', '8:00-10:00', '4', '6', 'qw', '待确认', '腰立辉', '腰立辉', '1479304493', '2016-11-16 21:54:53');
+
+-- ----------------------------
+-- Table structure for `zt_tc_prodservice`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_tc_prodservice`;
+CREATE TABLE `zt_tc_prodservice` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '商品ID',
+  `mark` varchar(20) DEFAULT NULL COMMENT '商品货号(二维码号)',
+  `name` varchar(15) DEFAULT NULL COMMENT '商品名称',
+  `content` text COMMENT '商品描述',
+  `weight` decimal(10,0) DEFAULT NULL COMMENT '商品尺寸',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `money` decimal(10,0) DEFAULT '0' COMMENT '优惠商品价格',
+  `smoney` decimal(10,0) DEFAULT '0' COMMENT '市场价格',
+  `wlmoney` decimal(10,0) DEFAULT '0' COMMENT '物流价格',
+  `num` smallint(5) DEFAULT NULL COMMENT '商品库存数',
+  `sellnum` int(10) DEFAULT NULL COMMENT '卖出数量',
+  `istj` tinyint(1) DEFAULT '0' COMMENT '特价商品',
+  `atime` timestamp NULL DEFAULT NULL COMMENT '发布时间',
+  `sn` int(2) DEFAULT NULL,
+  `cate` smallint(6) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(48) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_tc_prodservice
+-- ----------------------------
+INSERT INTO `zt_tc_prodservice` VALUES ('1', '', '三字经', '', '0', '正常', '0', '0', '0', '1', null, '0', null, '1', '10', null, null, '腰立辉', '2017-01-24 22:09:28');
+INSERT INTO `zt_tc_prodservice` VALUES ('2', '', '百家姓', '', '0', '正常', '0', '0', '0', '1', null, '0', null, '2', '10', null, null, '腰立辉', '2017-01-25 15:03:04');
+INSERT INTO `zt_tc_prodservice` VALUES ('3', '', '唐诗三百首', '', '0', '正常', '0', '0', '0', '1', null, '0', null, '3', '10', null, null, '腰立辉', '2017-01-25 15:03:04');
+INSERT INTO `zt_tc_prodservice` VALUES ('4', '', '一年级语文（小学）', '', '0', '正常', '0', '0', '0', '1', null, '0', null, '1', '11', null, null, '腰立辉', '2017-01-24 22:13:31');
+INSERT INTO `zt_tc_prodservice` VALUES ('5', '', '一年级数学（小学）', '', '0', '正常', '0', '0', '0', '1', null, '0', null, '1', '11', null, null, '腰立辉', '2017-01-24 22:13:51');
+INSERT INTO `zt_tc_prodservice` VALUES ('6', '', '围棋', '', '0', '正常', '0', '0', '0', '1', null, '0', null, '1', '14', null, null, '腰立辉', '2017-01-24 22:49:27');
+INSERT INTO `zt_tc_prodservice` VALUES ('7', '', '跆拳道', '', '0', '正常', '0', '0', '0', '1', null, '0', null, '1', '14', null, null, '腰立辉', '2017-01-24 22:49:45');
+INSERT INTO `zt_tc_prodservice` VALUES ('8', '', '书法国画', '', '0', '正常', '0', '0', '0', '1', null, '0', null, '1', '14', null, null, '腰立辉', '2017-01-24 22:50:34');
 
 -- ----------------------------
 -- Table structure for `zt_tc_studentcla`
@@ -4023,67 +4148,6 @@ CREATE TABLE `zt_tp_article` (
 INSERT INTO `zt_tp_article` VALUES ('1', '请问请问', '<p>\r\n	去委屈委屈我</p>\r\n', '1471489591', '0', '1');
 
 -- ----------------------------
--- Table structure for `zt_tp_as_customer`
--- ----------------------------
-DROP TABLE IF EXISTS `zt_tp_as_customer`;
-CREATE TABLE `zt_tp_as_customer` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(11) DEFAULT NULL,
-  `password` char(32) DEFAULT NULL,
-  `custype` varchar(5) DEFAULT NULL,
-  `isteacher` int(1) DEFAULT '1',
-  `coursetype` varchar(5) DEFAULT NULL,
-  `realname` varchar(10) DEFAULT NULL,
-  `path` varchar(200) DEFAULT NULL,
-  `img` varchar(32) DEFAULT NULL,
-  `state` varchar(5) DEFAULT '正常',
-  `course` varchar(10) DEFAULT NULL,
-  `remark` text,
-  `adder` varchar(10) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `phone` (`phone`) USING HASH
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of zt_tp_as_customer
--- ----------------------------
-INSERT INTO `zt_tp_as_customer` VALUES ('1', '15803114069', 'c33367701511b4f6020ec61ded352059', '老师', '1', '中学课程', '孙云云', '/Customer/2016-12-13/', '584fbda821498.png', '发布', '初、高中物理', '孙云云，2007年毕业于河北师范大学，从事教育工作十余年，曾任上海精锐教育集团教研组长，教学校长，所带学生进步率高达100%，多名学生进入上海中学，复旦大学，上海交大等一流学府；', '腰立辉', '梁小伟', '2016-12-13 17:21:44');
-INSERT INTO `zt_tp_as_customer` VALUES ('12', '12314242342', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '小学课程', 'werer', null, null, '正常', '', '', '腰立辉', '腰立辉', '2016-11-13 21:17:14');
-INSERT INTO `zt_tp_as_customer` VALUES ('13', '13931162537', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '中学课程', '刘一玮（男、44中）', null, null, '发布', '初一数学', '一对二', '梁小伟', '梁小伟', '2016-12-13 17:28:34');
-INSERT INTO `zt_tp_as_customer` VALUES ('14', '15803114068', 'f379eaf3c831b04de153469d1bec345e', '老师', '1', '小学课程', '康国胜', '/Customer/2016-12-13/', '584fc143123a2.jpg', '发布', '小学奥数、初高中物理', '康国胜，2007年毕业于河北师范大学，后进修于河北师范大学教育管理研究生院；从事教育工作十余年，曾任上海精锐集团教研组长，教学校长；邯郸环球雅思校长等教学和管理工作；对教学有自己独到的认识，擅长鼓励教育和引导教学，善于激发学生内在的动力，挖掘最大的潜能', '梁小伟', '梁小伟', '2016-12-13 17:37:07');
-
--- ----------------------------
--- Table structure for `zt_tp_as_usecar`
--- ----------------------------
-DROP TABLE IF EXISTS `zt_tp_as_usecar`;
-CREATE TABLE `zt_tp_as_usecar` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) DEFAULT NULL,
-  `content` text,
-  `type` smallint(6) DEFAULT NULL,
-  `url` varchar(200) DEFAULT NULL,
-  `state` varchar(5) DEFAULT NULL,
-  `path` varchar(100) DEFAULT NULL,
-  `img` varchar(48) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of zt_tp_as_usecar
--- ----------------------------
-INSERT INTO `zt_tp_as_usecar` VALUES ('3', '避免预热时间过长', '<p>\r\n	启动车后，大多数人都习惯让发动机怠速运转，等水温达到正常温度后再把车开走，其实这种预热的方法是非常错误的，因为电喷发动机不像化油器发动机，在达到工作温度之前，供油系统不能正常工作。电喷发动机如果采用长时间预热，不仅没有必要而且还是有害的。缩短预热时间可以延长三元催化器的使用寿命，还会节省燃油。动机起动后，只要能维持稳定的转速就可以起步行车，在水温未升高前，适当控制一下车速，等水温正常后就可以正常驾驶了。</p>\r\n', '6', '#', '发布', '/Admin/usecar/2016-10-31/', '5816dd28045c6.jpg', '腰立辉', '2016-10-31 14:01:15');
-INSERT INTO `zt_tp_as_usecar` VALUES ('4', '开窗和开空调哪个更省油呢?', '<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">夏天在高速（速度一般都要&ge;80km/h）行驶时，到底是开着窗户省油还是开着空调省油呢？支持前者的人认为：不开空调即压缩机不用工作，也就不会给</span><a class=\"ShuKeyWordLink\" href=\"http://car.autohome.com.cn/shuyu/detail_8_9_555.html\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: rgb(59, 89, 152); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">发动机</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">造成额外的负担，因此会更省油。支持后者观点的人则认为：高速时开着车窗会扰乱空气流动，形成更大的风阻，因此产生的阻力会消耗比空调还多的燃油。</span></p>\r\n<p>\r\n	<strong>结果：</strong></p>\r\n<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">在开空调的测试中，</span><a class=\"blackclink\" href=\"http://www.autohome.com.cn/81/\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">飞度</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">的百公里油耗为6.15升，而</span><a class=\"blackclink\" href=\"http://www.autohome.com.cn/694/\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">锋范</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">的则达到了7.3升。这两个数据分别比开车窗行驶时上升了0.87升和0.17升，</span><a class=\"blackclink\" href=\"http://www.autohome.com.cn/81/\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">飞度</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">油耗上升的幅度非常明显。而我们最终的定论也可以得出了。在车速为100km/h以下时，开车窗行驶的确比开空调要更加省油，但是其恶劣的驾车感受是必须用足够的忍耐力才能承受的</span></p>\r\n', '7', 'http://www.autohome.com.cn/user/201007/128126.html#pvareaid=103453', '发布', '/Admin/usecar/2016-10-31/', '5816db69ef7da.jpg', '腰立辉', '2016-10-31 13:49:29');
-INSERT INTO `zt_tp_as_usecar` VALUES ('5', '遭遇鸡蛋袭击不能用雨刮?', '<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">相信不少人曾对网络中的一则流言有所耳闻：某地频繁现劫匪用生鸡蛋袭击挡风玻璃的抢劫伎俩，千万不要开启雨刷喷水。因为鸡蛋遇玻璃水将凝固，阻挡视线达90%，在你被迫停车清理玻璃时，劫匪趁机抢劫......。上网一搜，类似流言高达百万条以上。</span></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验1：普通生鸡蛋</strong></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验2：普通生鸡蛋停留一段时间再清理</strong></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验3：普通鸡蛋夜间效果</strong></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验4：普通生鸡蛋+神秘配方</strong></p>\r\n<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">同样以20km/h的速度驾驶车辆，路边砸来的鸡蛋在挡风玻璃上破碎，开启雨刮器后大部分鸡蛋残渣被清除，不过一些神秘的残留物质仍然不能完全清除，尝试数次后效果仍然不明显。</span></p>\r\n<p>\r\n	&nbsp;</p>\r\n', '7', 'http://www.autohome.com.cn/user/201112/281437.html#pvareaid=103453', '发布', '/Admin/usecar/2016-10-31/', '5816cd97d33bb.jpg', '腰立辉', '2016-10-31 13:00:58');
-INSERT INTO `zt_tp_as_usecar` VALUES ('8', '开车不喝酒，喝酒不开车', '<p>\r\n	可你喝了酒又需要回家怎么办？</p>\r\n<p>\r\n	1. 自己打车回家，转天再去开回来。</p>\r\n<p>\r\n	2. 请会开车没喝酒的朋友帮忙。</p>\r\n<p>\r\n	3. 请个代驾帮忙把车开回家。</p>\r\n<p>\r\n	<strong>看看后面的规定，你就知道我们的3个办法还是最有效的。</strong></p>\r\n<p>\r\n	中华人民共和国道路交通安全法》规定，饮酒后驾驶机动车的处暂扣1个月以上3个月以下机动车驾驶证，并处200元以上元以下罚款;醉酒后驾驶机动车的，由公安机关交通管理部门约束至酒醒，处15日以下拘留和暂扣3个月以上6个月以下机动车驾驶证，并处00元以上2000元以下罚款。1年内醉酒后驾驶机动车被处罚2次以上的，吊销机动车驾驶证.5年内不得驾驶营运机动车。</p>\r\n', '6', '', '发布', '/Admin/usecar/2016-10-31/', '5816e1c4c2325.jpg', '腰立辉', '2016-10-31 14:16:36');
-INSERT INTO `zt_tp_as_usecar` VALUES ('6', '保护漆面从新车做起', '<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体; font-size: 14px; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);\">新车漆面虽无老化问题，但使用前应该做彻底的保护处理，从出厂到运输至停车场，车表漆就已经接触了空气、酸气、风沙的侵袭。及时正确的养护，能令漆面保持良好外观。如果买的是进口轿车，要首先考虑的是车蜡中含有石蜡、树脂及特氟隆等材料。除蜡时不要用汽油或煤油擦拭，应选用专业的开蜡液，或者到专业的美容养护店，请技师帮助处理。至于国产车，车身大多采用静电喷涂，漆面呈镜面光泽，故无开蜡需要。</span></p>\r\n', '6', '#', '发布', '/Admin/usecar/2016-10-31/', '5816dedc34c66.jpeg', '腰立辉', '2016-10-31 14:04:12');
-INSERT INTO `zt_tp_as_usecar` VALUES ('7', '调整后视镜', '调整后视镜左侧后视镜上、下位置是把远处的地平线置于中央，左、右位置则调整至车身占据镜面范围的14。右侧后视镜因为驾驶座位于左侧，因此驾驶人对车耳右侧的掌握不是那么容易，再加上有时路边停车的需要，在调整右侧后视镜上、下位置时地面面积要较大，约占镜面的23。而左、右位置则同样调整到车身占14面积即可。\r\n', '6', '', '发布', '/Admin/usecar/2016-10-31/', '5816dfa12179c.png', '腰立辉', '2016-10-31 14:07:29');
-
--- ----------------------------
 -- Table structure for `zt_tp_case`
 -- ----------------------------
 DROP TABLE IF EXISTS `zt_tp_case`;
@@ -4351,11 +4415,11 @@ INSERT INTO `zt_tp_cate` VALUES ('3', '100', '0', '社保福利', '3', '腰立�
 INSERT INTO `zt_tp_cate` VALUES ('4', '1', '0', '传统业务', '1', '腰立辉', '2017-01-24 17:16:30');
 INSERT INTO `zt_tp_cate` VALUES ('5', '40', '0', '微网站', '1', '腰立辉', '2017-01-21 22:28:45');
 INSERT INTO `zt_tp_cate` VALUES ('6', '50', '0', '公众号', '1', '腰立辉', '2017-01-21 22:27:16');
-INSERT INTO `zt_tp_cate` VALUES ('10', '1100', '0', '学前少儿', '2', '腰立辉', '2017-01-24 16:51:20');
-INSERT INTO `zt_tp_cate` VALUES ('11', '1200', '0', '小学课程', '2', '腰立辉', '2017-01-24 16:51:21');
-INSERT INTO `zt_tp_cate` VALUES ('12', '2000', '0', '中学课程', '2', '腰立辉', '2017-01-24 16:51:22');
-INSERT INTO `zt_tp_cate` VALUES ('13', '300', '0', '作业托管', '2', '腰立辉', '2017-01-24 16:51:35');
-INSERT INTO `zt_tp_cate` VALUES ('14', '4000', '8', '兴趣拓展', '2', '腰立辉', '2017-01-22 17:00:16');
+INSERT INTO `zt_tp_cate` VALUES ('10', '1', '0', '学前少儿', '2', '腰立辉', '2017-01-24 22:10:35');
+INSERT INTO `zt_tp_cate` VALUES ('11', '2', '0', '小学课程', '2', '腰立辉', '2017-01-24 22:10:37');
+INSERT INTO `zt_tp_cate` VALUES ('12', '3', '0', '中学课程', '2', '腰立辉', '2017-01-24 22:10:39');
+INSERT INTO `zt_tp_cate` VALUES ('13', '4', '0', '作业托管', '2', '腰立辉', '2017-01-24 22:10:42');
+INSERT INTO `zt_tp_cate` VALUES ('14', '5', '0', '兴趣拓展', '2', '腰立辉', '2017-01-24 22:10:47');
 INSERT INTO `zt_tp_cate` VALUES ('18', '10', '4', '文印', '1', '腰立辉', '2017-01-21 22:29:44');
 INSERT INTO `zt_tp_cate` VALUES ('19', '20', '4', '广告牌', '1', '腰立辉', '2017-01-21 22:33:56');
 INSERT INTO `zt_tp_cate` VALUES ('20', '60', '6', '微信公众号', '1', '腰立辉', '2017-01-21 22:27:16');
@@ -4365,14 +4429,42 @@ INSERT INTO `zt_tp_cate` VALUES ('30', '42', '5', '宣传页', '1', '腰立辉',
 INSERT INTO `zt_tp_cate` VALUES ('31', '43', '5', '服务器', '1', '腰立辉', '2017-01-21 22:29:06');
 INSERT INTO `zt_tp_cate` VALUES ('32', '44', '5', '域名', '1', '腰立辉', '2017-01-21 22:29:06');
 INSERT INTO `zt_tp_cate` VALUES ('33', '45', '5', '第三方授权', '1', '腰立辉', '2017-01-21 22:29:06');
-INSERT INTO `zt_tp_cate` VALUES ('58', '50', '0', '汽车用品', '4', '腰立辉', '2017-01-22 18:07:19');
-INSERT INTO `zt_tp_cate` VALUES ('59', '10', '0', '钣金喷漆', '4', '腰立辉', '2017-01-24 17:13:37');
-INSERT INTO `zt_tp_cate` VALUES ('60', '20', '0', '汽车维修', '4', '腰立辉', '2017-01-24 17:13:39');
-INSERT INTO `zt_tp_cate` VALUES ('61', '30', '0', '汽车保养', '4', '腰立辉', '2017-01-24 17:13:44');
+INSERT INTO `zt_tp_cate` VALUES ('58', '4', '0', '汽车用品', '4', '腰立辉', '2017-01-24 22:11:16');
+INSERT INTO `zt_tp_cate` VALUES ('59', '1', '0', '钣金喷漆', '4', '腰立辉', '2017-01-24 22:11:07');
+INSERT INTO `zt_tp_cate` VALUES ('60', '3', '0', '汽车维修', '4', '腰立辉', '2017-01-24 22:11:14');
+INSERT INTO `zt_tp_cate` VALUES ('61', '2', '0', '汽车保养', '4', '腰立辉', '2017-01-24 22:11:12');
 INSERT INTO `zt_tp_cate` VALUES ('62', '1', '0', '人力中介', '3', '腰立辉', '2017-01-24 17:03:53');
 INSERT INTO `zt_tp_cate` VALUES ('63', '200', '0', '健康体检', '3', '腰立辉', '2017-01-24 17:04:56');
 INSERT INTO `zt_tp_cate` VALUES ('64', '300', '0', '职业培训', '3', '腰立辉', '2017-01-22 18:13:56');
 INSERT INTO `zt_tp_cate` VALUES ('68', '4', '0', '房产中介', '3', '腰立辉', '2017-01-24 17:04:19');
+
+-- ----------------------------
+-- Table structure for `zt_tp_customer`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_tp_customer`;
+CREATE TABLE `zt_tp_customer` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `phone` varchar(11) DEFAULT NULL COMMENT '手机号',
+  `pincodes` char(18) DEFAULT NULL COMMENT '身份证号码',
+  `password` char(32) DEFAULT NULL,
+  `realname` varchar(10) DEFAULT NULL,
+  `weixin` varchar(255) DEFAULT NULL,
+  `qq` varchar(13) DEFAULT NULL,
+  `remark` text,
+  `moder` varchar(10) DEFAULT NULL,
+  `ctime` int(11) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `phone` (`phone`) USING HASH
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_tp_customer
+-- ----------------------------
+INSERT INTO `zt_tp_customer` VALUES ('1', '15803114069', null, 'c33367701511b4f6020ec61ded352059', '孙云云', null, null, '孙云云，2007年毕业于河北师范大学，从事教育工作十余年，曾任上海精锐教育集团教研组长，教学校长，所带学生进步率高达100%，多名学生进入上海中学，复旦大学，上海交大等一流学府；', '梁小伟', '1478415695', '2016-12-18 21:49:25');
+INSERT INTO `zt_tp_customer` VALUES ('13', '13931162537', null, 'f379eaf3c831b04de153469d1bec345e', '刘一玮', null, null, '一对二', '梁小伟', '1479302465', '2017-01-25 16:47:52');
+INSERT INTO `zt_tp_customer` VALUES ('14', '15803114068', null, 'f379eaf3c831b04de153469d1bec345e', '康国胜', null, null, '康国胜，2007年毕业于河北师范大学，后进修于河北师范大学教育管理研究生院；从事教育工作十余年，曾任上海精锐集团教研组长，教学校长；邯郸环球雅思校长等教学和管理工作；对教学有自己独到的认识，擅长鼓励教育和引导教学，善于激发学生内在的动力，挖掘最大的潜能', '梁小伟', '1481619189', '2016-12-18 21:42:10');
+INSERT INTO `zt_tp_customer` VALUES ('15', '18801043607', '132223198401040613', '18801043607', '腰立辉', 'yaolihui129', '83000892', null, '腰立辉', '1485337267', '2017-01-25 17:41:07');
 
 -- ----------------------------
 -- Table structure for `zt_tp_dict`
@@ -5583,56 +5675,6 @@ INSERT INTO `zt_tp_path` VALUES ('10229', '7', ' 项目管理-材料清单', '�
 INSERT INTO `zt_tp_path` VALUES ('10230', '8', ' 项目-图片', '正常', '3', '腰立辉', '2017-01-15 12:55:13');
 
 -- ----------------------------
--- Table structure for `zt_tp_projectbranch`
--- ----------------------------
-DROP TABLE IF EXISTS `zt_tp_projectbranch`;
-CREATE TABLE `zt_tp_projectbranch` (
-  `id` smallint(5) NOT NULL AUTO_INCREMENT,
-  `branchid` smallint(6) DEFAULT NULL,
-  `proid` smallint(6) DEFAULT NULL,
-  `moder` varchar(10) DEFAULT NULL,
-  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of zt_tp_projectbranch
--- ----------------------------
-INSERT INTO `zt_tp_projectbranch` VALUES ('56', '54', '24', '腰立辉', '2016-09-22 10:06:44');
-INSERT INTO `zt_tp_projectbranch` VALUES ('67', '4', '45', '腰立辉', '2016-09-25 19:12:47');
-INSERT INTO `zt_tp_projectbranch` VALUES ('61', '4', '47', '腰立辉', '2016-09-23 09:46:13');
-INSERT INTO `zt_tp_projectbranch` VALUES ('68', '11', '46', '腰立辉', '2016-09-26 11:26:22');
-INSERT INTO `zt_tp_projectbranch` VALUES ('62', '56', '48', '腰立辉', '2016-09-24 20:47:58');
-INSERT INTO `zt_tp_projectbranch` VALUES ('63', '4', '48', '腰立辉', '2016-09-24 20:48:09');
-INSERT INTO `zt_tp_projectbranch` VALUES ('64', '56', '49', '腰立辉', '2016-09-24 21:16:03');
-INSERT INTO `zt_tp_projectbranch` VALUES ('65', '4', '49', '腰立辉', '2016-09-24 21:16:05');
-INSERT INTO `zt_tp_projectbranch` VALUES ('69', '11', '50', '腰立辉', '2016-10-19 12:50:06');
-INSERT INTO `zt_tp_projectbranch` VALUES ('70', '54', '45', '王鑫彤', '2016-10-21 10:27:07');
-INSERT INTO `zt_tp_projectbranch` VALUES ('79', '11', '97', '腰立辉', '2016-11-18 09:23:11');
-INSERT INTO `zt_tp_projectbranch` VALUES ('74', '11', '51', '腰立辉', '2016-10-25 15:17:08');
-INSERT INTO `zt_tp_projectbranch` VALUES ('73', '3', '65', '腰立辉', '2016-10-24 09:21:35');
-INSERT INTO `zt_tp_projectbranch` VALUES ('75', '6', '51', '腰立辉', '2016-10-25 17:11:04');
-INSERT INTO `zt_tp_projectbranch` VALUES ('76', '11', '80', '腰立辉', '2016-11-18 09:24:01');
-INSERT INTO `zt_tp_projectbranch` VALUES ('82', '62', '107', '腰立辉', '2016-12-05 16:06:15');
-INSERT INTO `zt_tp_projectbranch` VALUES ('83', '63', '107', '腰立辉', '2016-12-05 16:09:42');
-INSERT INTO `zt_tp_projectbranch` VALUES ('89', '64', '109', '腰立辉', '2016-12-06 10:15:42');
-INSERT INTO `zt_tp_projectbranch` VALUES ('85', '66', '107', '腰立辉', '2016-12-05 16:30:45');
-INSERT INTO `zt_tp_projectbranch` VALUES ('87', '68', '108', '腰立辉', '2016-12-05 17:42:53');
-INSERT INTO `zt_tp_projectbranch` VALUES ('88', '4', '108', '腰立辉', '2016-12-05 17:42:56');
-INSERT INTO `zt_tp_projectbranch` VALUES ('91', '66', '110', '腰立辉', '2016-12-12 09:44:55');
-INSERT INTO `zt_tp_projectbranch` VALUES ('92', '69', '111', '腰立辉', '2016-12-17 22:59:59');
-INSERT INTO `zt_tp_projectbranch` VALUES ('93', '70', '111', '腰立辉', '2016-12-17 23:00:02');
-INSERT INTO `zt_tp_projectbranch` VALUES ('94', '72', '112', '腰立辉', '2016-12-17 23:05:50');
-INSERT INTO `zt_tp_projectbranch` VALUES ('95', '71', '112', '腰立辉', '2016-12-17 23:05:53');
-INSERT INTO `zt_tp_projectbranch` VALUES ('96', '73', '113', '腰立辉', '2016-12-17 23:09:33');
-INSERT INTO `zt_tp_projectbranch` VALUES ('97', '74', '113', '腰立辉', '2016-12-17 23:09:35');
-INSERT INTO `zt_tp_projectbranch` VALUES ('98', '76', '114', '腰立辉', '2016-12-17 23:15:52');
-INSERT INTO `zt_tp_projectbranch` VALUES ('99', '75', '114', '腰立辉', '2016-12-17 23:15:54');
-INSERT INTO `zt_tp_projectbranch` VALUES ('100', '64', '107', '腰立辉', '2016-12-19 15:41:11');
-INSERT INTO `zt_tp_projectbranch` VALUES ('102', '63', '116', '腰立辉', '2016-12-21 13:10:31');
-INSERT INTO `zt_tp_projectbranch` VALUES ('103', '66', '116', '腰立辉', '2016-12-21 13:10:33');
-
--- ----------------------------
 -- Table structure for `zt_tp_prosys`
 -- ----------------------------
 DROP TABLE IF EXISTS `zt_tp_prosys`;
@@ -6364,29 +6406,28 @@ CREATE TABLE `zt_usertpl` (
 -- ----------------------------
 DROP TABLE IF EXISTS `zt_xl_customer`;
 CREATE TABLE `zt_xl_customer` (
-  `id` smallint(6) NOT NULL AUTO_INCREMENT,
-  `phone` varchar(11) DEFAULT NULL COMMENT '手机号',
-  `password` char(32) DEFAULT NULL COMMENT '密码',
-  `realname` varchar(10) DEFAULT NULL COMMENT '姓名',
-  `cate` smallint(6) DEFAULT NULL,
-  `path` varchar(200) DEFAULT NULL COMMENT '图片路径',
-  `img` varchar(32) DEFAULT NULL COMMENT '图片',
+  `wid` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `tpid` smallint(6) NOT NULL,
+  `type` varchar(5) DEFAULT NULL,
+  `isteacher` int(1) DEFAULT '1',
   `state` varchar(5) DEFAULT '正常' COMMENT '状态',
-  `adder` varchar(10) DEFAULT NULL COMMENT '添加者',
-  `moder` varchar(10) DEFAULT NULL COMMENT '修改者',
-  `ctime` int(11) DEFAULT NULL COMMENT '创建时间',
-  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `phone` (`phone`) USING HASH
-) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+  `coursetype` varchar(5) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(32) DEFAULT NULL,
+  `course` varchar(10) DEFAULT NULL,
+  `remark` text,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `ctime` int(11) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`wid`),
+  UNIQUE KEY `customerid` (`tpid`) USING HASH
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zt_xl_customer
 -- ----------------------------
-INSERT INTO `zt_xl_customer` VALUES ('1', '15803114069', 'c33367701511b4f6020ec61ded352059', '孙云云', null, '/Customer/2016-12-13/', '584fbda821498.png', '发布', '腰立辉', '梁小伟', '1478415695', '2016-12-13 17:21:44');
-INSERT INTO `zt_xl_customer` VALUES ('12', '12314242342', 'f379eaf3c831b04de153469d1bec345e', 'werer', null, null, null, '正常', '腰立辉', '腰立辉', '1479042931', '2016-11-13 21:17:14');
-INSERT INTO `zt_xl_customer` VALUES ('13', '13931162537', 'f379eaf3c831b04de153469d1bec345e', '刘一玮（男、44中）', null, null, null, '发布', '梁小伟', '梁小伟', '1479302465', '2016-12-13 17:28:34');
-INSERT INTO `zt_xl_customer` VALUES ('14', '15803114068', 'f379eaf3c831b04de153469d1bec345e', '康国胜', null, '/Customer/2016-12-13/', '584fc143123a2.jpg', '发布', '梁小伟', '梁小伟', '1481619189', '2016-12-13 17:37:07');
+INSERT INTO `zt_xl_customer` VALUES ('15', '1', '老师', '1', '发布', '中学课程', '/Customer/2016-12-18/', '585693e5ec634.png', '初、高中物理', '孙云云，2007年毕业于河北师范大学，从事教育工作十余年，曾任上海精锐教育集团教研组长，教学校长，所带学生进步率高达100%，多名学生进入上海中学，复旦大学，上海交大等一流学府；', '腰立辉', '梁小伟', '1478415695', '2017-01-25 15:33:07');
 
 -- ----------------------------
 -- Table structure for `zt_xl_order`
@@ -6431,9 +6472,9 @@ CREATE TABLE `zt_xl_prodservice` (
   `content` text COMMENT '商品描述',
   `weight` decimal(10,0) DEFAULT NULL COMMENT '商品尺寸',
   `state` varchar(5) DEFAULT '正常' COMMENT '状态',
-  `money` decimal(10,0) DEFAULT '0' COMMENT '优惠商品价格',
-  `smoney` decimal(10,0) DEFAULT '0' COMMENT '市场价格',
-  `wlmoney` decimal(10,0) DEFAULT '0' COMMENT '物流价格',
+  `money` float(10,0) DEFAULT '0' COMMENT '优惠商品价格',
+  `smoney` float(10,0) DEFAULT '0' COMMENT '市场价格',
+  `wlmoney` float(10,0) DEFAULT '0' COMMENT '物流价格',
   `num` smallint(5) DEFAULT NULL COMMENT '商品库存数',
   `sellnum` int(10) DEFAULT NULL COMMENT '卖出数量',
   `istj` tinyint(1) DEFAULT '0' COMMENT '推荐首页',
@@ -6450,38 +6491,38 @@ CREATE TABLE `zt_xl_prodservice` (
 -- ----------------------------
 -- Records of zt_xl_prodservice
 -- ----------------------------
-INSERT INTO `zt_xl_prodservice` VALUES ('12', '', '名片制作', '', '0', null, '0', '0', '0', '0', null, '1', null, '2', '18', '/Product/2017-01-24/', '5886f5c927bd1.png', '腰立辉', '2017-01-24 14:35:53');
-INSERT INTO `zt_xl_prodservice` VALUES ('14', '', '微信订阅号（个人申请）', '', '0', null, '0', '300', '0', '1', null, '0', null, '1', '20', '/Product/2017-01-24/', '5886f28168eab.png', '腰立辉', '2017-01-24 17:15:14');
-INSERT INTO `zt_xl_prodservice` VALUES ('15', '', '微信订阅号（企业申请）', '', '0', null, '0', '500', '0', '1', null, '0', null, '2', '20', '/Product/2017-01-24/', '5886f28973c57.png', '腰立辉', '2017-01-24 17:15:16');
-INSERT INTO `zt_xl_prodservice` VALUES ('16', '', '微信公众号运维', '200/月', '0', null, '0', '200', '0', '1', null, '0', null, '1', '20', null, null, '腰立辉', '2017-01-21 22:04:15');
-INSERT INTO `zt_xl_prodservice` VALUES ('17', '', '阿里钉钉（申请）', '', '0', null, '0', '300', '0', '1', null, '1', null, '1', '21', '/Product/2017-01-24/', '5886f2d4491d7.png', '腰立辉', '2017-01-24 17:15:31');
-INSERT INTO `zt_xl_prodservice` VALUES ('18', '', '支付宝生活号（仅企业）', '', '0', null, '0', '300', '0', '1', null, '0', null, '1', '21', null, null, '腰立辉', '2017-01-24 17:15:34');
-INSERT INTO `zt_xl_prodservice` VALUES ('19', '', '支付宝运维', '200/月', '0', null, '0', '200', '0', '1', null, '0', null, '1', '21', null, null, '腰立辉', '2017-01-21 22:06:00');
-INSERT INTO `zt_xl_prodservice` VALUES ('20', '', '标准企业站', '含一年的服务器和域名的费用', '0', null, '0', '2499', '0', '1', null, '1', null, '1', '29', '/Product/2017-01-24/', '5886f207cad40.png', '腰立辉', '2017-01-24 14:19:51');
-INSERT INTO `zt_xl_prodservice` VALUES ('21', '', '服务器租赁（国内）', '域名必须备案', '0', null, '0', '799', '0', '1', null, '1', null, '1', '31', '/Product/2017-01-24/', '5886f2573414c.png', '腰立辉', '2017-01-24 14:21:11');
-INSERT INTO `zt_xl_prodservice` VALUES ('22', '', '服务器租赁（香港）', '', '0', null, '0', '1200', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e83ba4245.jpg', '腰立辉', '2017-01-24 13:39:41');
-INSERT INTO `zt_xl_prodservice` VALUES ('23', '', '服务器租赁（国外）', '', '1200', null, '0', '0', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e84736322.jpg', '腰立辉', '2017-01-24 13:39:43');
-INSERT INTO `zt_xl_prodservice` VALUES ('24', '', '.com域名', '', '0', null, '0', '100', '0', '1', null, '1', null, '1', '32', '/Product/2017-01-24/', '5886f1e05de10.png', '腰立辉', '2017-01-24 14:19:12');
-INSERT INTO `zt_xl_prodservice` VALUES ('25', '', '.net域名', '', '0', null, '0', '100', '0', '1', null, '0', null, '1', '32', '/Product/2017-01-24/', '5886f1e96f186.png', '腰立辉', '2017-01-24 14:19:21');
-INSERT INTO `zt_xl_prodservice` VALUES ('26', '', '.中国（域名）', '', '0', null, '0', '300', '0', '1', null, '0', null, '1', '32', '/Product/2017-01-24/', '5886f1f1dae11.png', '腰立辉', '2017-01-24 14:19:29');
-INSERT INTO `zt_xl_prodservice` VALUES ('27', '', '.top域名', '', '0', null, '0', '100', '0', '1', null, '0', null, '1', '32', '/Product/2017-01-24/', '5886f1f8e72f5.png', '腰立辉', '2017-01-24 14:19:36');
-INSERT INTO `zt_xl_prodservice` VALUES ('28', '', 'QQ用户登录', '', '0', null, '0', '500', '0', '1', null, '0', null, '1', '33', null, null, '腰立辉', '2017-01-21 22:17:50');
-INSERT INTO `zt_xl_prodservice` VALUES ('29', '', '微信用户登录', '1.网站必须备案\r\n2.微信号必须为企业注册且通过实名认证', '0', null, '0', '500', '0', '1', null, '0', null, '1', '33', null, null, '腰立辉', '2017-01-21 22:19:04');
-INSERT INTO `zt_xl_prodservice` VALUES ('30', '', '微博账号登录', '', '0', null, '0', '700', '0', '1', null, '0', null, '1', '33', null, null, '腰立辉', '2017-01-21 22:19:29');
-INSERT INTO `zt_xl_prodservice` VALUES ('31', '', '纯文字网页（单页）', '', '0', null, '0', '70', '0', '1', null, '0', null, '1', '30', null, null, '腰立辉', '2017-01-24 13:39:55');
-INSERT INTO `zt_xl_prodservice` VALUES ('32', '', '单图文网页（单页）', '', '0', null, '0', '100', '0', '1', null, '1', null, '1', '30', '/Product/2017-01-24/', '5886f4d18a937.png', '腰立辉', '2017-01-24 14:31:45');
-INSERT INTO `zt_xl_prodservice` VALUES ('33', '', '寻人启事', '交100押金，下线后退还', '0', null, '0', '0', '0', '1', null, '0', null, '1', '30', null, null, '腰立辉', '2017-01-24 13:41:06');
-INSERT INTO `zt_xl_prodservice` VALUES ('34', '', '多图文定制网页', '300起', '0', null, '0', '300', '0', '1', null, '0', null, '1', '30', '/Product/2017-01-24/', '5886f21a71fa2.png', '腰立辉', '2017-01-24 14:20:10');
-INSERT INTO `zt_xl_prodservice` VALUES ('35', '', '抽奖活动', '', '0', null, '0', '888', '0', '1', null, '0', null, '1', '30', null, null, '腰立辉', '2017-01-21 22:23:27');
-INSERT INTO `zt_xl_prodservice` VALUES ('36', '', '微信服务号（企业申请）', '', '0', null, '0', '300', '0', '1', null, '1', null, '1', '20', '/Product/2017-01-24/', '5886f2938444f.png', '腰立辉', '2017-01-24 17:15:17');
-INSERT INTO `zt_xl_prodservice` VALUES ('37', '', '微信企业号（企业申请）', '', '0', null, '0', '500', '0', '1', null, '0', null, '1', '20', '/Product/2017-01-24/', '5886f2a7199be.png', '腰立辉', '2017-01-24 17:15:21');
-INSERT INTO `zt_xl_prodservice` VALUES ('38', '', '微信小程序（查询类）', '', '0', null, '0', '500', '0', '1', null, '0', null, '1', '20', null, null, '腰立辉', '2017-01-24 17:15:22');
-INSERT INTO `zt_xl_prodservice` VALUES ('39', '', 'QQ电商平台（申请）', '', '0', null, '0', '300', '0', '1', null, '0', null, '1', '20', null, null, '腰立辉', '2017-01-24 17:15:27');
-INSERT INTO `zt_xl_prodservice` VALUES ('45', '', '服务器运维(1年)', '', '0', null, '0', '0', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e742ae17e.jpg', '腰立辉', '2017-01-24 13:33:54');
-INSERT INTO `zt_xl_prodservice` VALUES ('46', '', '数据库备份(1次)', '', '0', null, '0', '0', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e71fc3171.jpg', '腰立辉', '2017-01-24 13:33:19');
-INSERT INTO `zt_xl_prodservice` VALUES ('47', '', '数据库备份(每月)', '', '0', null, '0', '0', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e72aa8a18.jpg', '腰立辉', '2017-01-24 13:33:30');
-INSERT INTO `zt_xl_prodservice` VALUES ('48', '', '数据库备份(每年)', '', '0', null, '0', '0', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e737879b8.jpg', '腰立辉', '2017-01-24 13:33:43');
-INSERT INTO `zt_xl_prodservice` VALUES ('49', '', '户外广告牌', '', '0', null, '0', '0', '0', '1', null, '1', null, '1', '19', '/Product/2017-01-24/', '5886f672d0db3.png', '腰立辉', '2017-01-24 14:39:09');
+INSERT INTO `zt_xl_prodservice` VALUES ('12', '', '名片制作', '12312', '0', '正常', '50', '70', '0', '0', null, '1', null, '2', '18', '/Product/2017-01-24/', '5886f5c927bd1.png', '腰立辉', '2017-01-25 13:38:40');
+INSERT INTO `zt_xl_prodservice` VALUES ('14', '', '微信订阅号（个人申请）', '', '0', '正常', '300', '300', '0', '1', null, '0', null, '1', '20', '/Product/2017-01-24/', '5886f28168eab.png', '腰立辉', '2017-01-25 13:38:41');
+INSERT INTO `zt_xl_prodservice` VALUES ('15', '', '微信订阅号（企业申请）', '', '0', '正常', '300', '500', '0', '1', null, '0', null, '2', '20', '/Product/2017-01-24/', '5886f28973c57.png', '腰立辉', '2017-01-25 13:38:42');
+INSERT INTO `zt_xl_prodservice` VALUES ('16', '', '微信公众号运维', '200/月', '0', '正常', '200', '200', '0', '1', null, '0', null, '1', '20', null, null, '腰立辉', '2017-01-25 13:38:43');
+INSERT INTO `zt_xl_prodservice` VALUES ('17', '', '阿里钉钉（申请）', '', '0', '正常', '500', '500', '0', '1', null, '1', null, '1', '21', '/Product/2017-01-24/', '5886f2d4491d7.png', '腰立辉', '2017-01-25 13:38:44');
+INSERT INTO `zt_xl_prodservice` VALUES ('18', '', '支付宝生活号（仅企业）', '', '0', '正常', '0', '300', '0', '1', null, '0', null, '1', '21', null, null, '腰立辉', '2017-01-25 13:38:44');
+INSERT INTO `zt_xl_prodservice` VALUES ('19', '', '支付宝运维', '200/月', '0', '正常', '200', '200', '0', '1', null, '0', null, '1', '21', null, null, '腰立辉', '2017-01-25 13:38:45');
+INSERT INTO `zt_xl_prodservice` VALUES ('20', '', '标准企业站', '为秀丽广告网站下的子网站，无需域名和服务器，也无需备案；数据寄存在秀丽广告网站的官方数据库，没有自主的发布权限（以防发布违规内容，网站被屏蔽），', '0', '正常', '1666', '1888', '0', '1', null, '1', null, '1', '29', '/Product/2017-01-24/', '5886f207cad40.png', '腰立辉', '2017-01-25 13:38:46');
+INSERT INTO `zt_xl_prodservice` VALUES ('21', '', '服务器租赁（国内）', '网络宅基地，它的配置直接影响网站的性能，域名必须备案，才可以使用，以后可以增值与QQ，微信，支付宝做深度的页面及数据连接', '0', '正常', '799', '799', '0', '1', null, '1', null, '1', '31', '/Product/2017-01-24/', '5886f2573414c.png', '腰立辉', '2017-01-25 13:44:22');
+INSERT INTO `zt_xl_prodservice` VALUES ('22', '', '服务器租赁（香港）', '无需备案，付费及开通，但是不可以做增值营销服务', '0', '正常', '1200', '1200', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e83ba4245.jpg', '腰立辉', '2017-01-25 13:38:47');
+INSERT INTO `zt_xl_prodservice` VALUES ('23', '', '服务器租赁（国外）', '无需备案，付费及开通，但是不可以做增值营销服务', '0', '正常', '1200', '1200', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e84736322.jpg', '腰立辉', '2017-01-25 13:40:48');
+INSERT INTO `zt_xl_prodservice` VALUES ('24', '', '.com域名', '网络门牌号，每年一续期；如www.xiuliguanggao.com,用它就可以直接访问自己的网站', '0', '正常', '100', '120', '0', '1', null, '1', null, '1', '32', '/Product/2017-01-24/', '5886f1e05de10.png', '腰立辉', '2017-01-25 13:43:20');
+INSERT INTO `zt_xl_prodservice` VALUES ('25', '', '.net域名', '网络门牌号，每年一续期；如www.xiuliguanggao.com,用它就可以直接访问自己的网站', '0', '正常', '100', '120', '0', '1', null, '0', null, '1', '32', '/Product/2017-01-24/', '5886f1e96f186.png', '腰立辉', '2017-01-25 13:43:23');
+INSERT INTO `zt_xl_prodservice` VALUES ('26', '', '.中国（域名）', '网络门牌号，每年一续期；如www.xiuliguanggao.com,用它就可以直接访问自己的网站', '0', '正常', '100', '360', '0', '1', null, '0', null, '1', '32', '/Product/2017-01-24/', '5886f1f1dae11.png', '腰立辉', '2017-01-25 13:43:26');
+INSERT INTO `zt_xl_prodservice` VALUES ('27', '', '.top域名', '网络门牌号，每年一续期；如www.xiuliguanggao.com,用它就可以直接访问自己的网站', '0', '正常', '100', '100', '0', '1', null, '0', null, '1', '32', '/Product/2017-01-24/', '5886f1f8e72f5.png', '腰立辉', '2017-01-25 13:43:33');
+INSERT INTO `zt_xl_prodservice` VALUES ('28', '', 'QQ用户登录', '', '0', '正常', '0', '500', '0', '1', null, '0', null, '1', '33', null, null, '腰立辉', '2017-01-25 13:38:53');
+INSERT INTO `zt_xl_prodservice` VALUES ('29', '', '微信用户登录', '1.网站必须备案\r\n2.微信号必须为企业注册且通过实名认证', '0', '正常', '0', '500', '0', '1', null, '0', null, '1', '33', null, null, '腰立辉', '2017-01-25 13:38:55');
+INSERT INTO `zt_xl_prodservice` VALUES ('30', '', '微博账号登录', '', '0', '正常', '0', '700', '0', '1', null, '0', null, '1', '33', null, null, '腰立辉', '2017-01-25 13:38:56');
+INSERT INTO `zt_xl_prodservice` VALUES ('31', '', '纯文字网页（单页）', '', '0', '正常', '0', '70', '0', '1', null, '0', null, '1', '30', null, null, '腰立辉', '2017-01-25 13:38:58');
+INSERT INTO `zt_xl_prodservice` VALUES ('32', '', '单图文网页（单页）', '', '0', '正常', '0', '100', '0', '1', null, '1', null, '1', '30', '/Product/2017-01-24/', '5886f4d18a937.png', '腰立辉', '2017-01-25 13:38:59');
+INSERT INTO `zt_xl_prodservice` VALUES ('33', '', '寻人启事', '交100押金，下线后退还', '0', '正常', '0', '0', '0', '1', null, '0', null, '1', '30', null, null, '腰立辉', '2017-01-25 13:39:00');
+INSERT INTO `zt_xl_prodservice` VALUES ('34', '', '多图文定制网页', '300起', '0', '正常', '0', '300', '0', '1', null, '0', null, '1', '30', '/Product/2017-01-24/', '5886f21a71fa2.png', '腰立辉', '2017-01-25 13:39:00');
+INSERT INTO `zt_xl_prodservice` VALUES ('35', '', '抽奖活动', '', '0', '正常', '0', '888', '0', '1', null, '0', null, '1', '30', null, null, '腰立辉', '2017-01-25 13:39:01');
+INSERT INTO `zt_xl_prodservice` VALUES ('36', '', '微信服务号（企业申请）', '', '0', '正常', '500', '500', '0', '1', null, '1', null, '1', '20', '/Product/2017-01-24/', '5886f2938444f.png', '腰立辉', '2017-01-25 13:39:02');
+INSERT INTO `zt_xl_prodservice` VALUES ('37', '', '微信企业号（企业申请）', '', '0', '正常', '500', '500', '0', '1', null, '0', null, '1', '20', '/Product/2017-01-24/', '5886f2a7199be.png', '腰立辉', '2017-01-25 13:39:03');
+INSERT INTO `zt_xl_prodservice` VALUES ('38', '', '微信小程序（查询类）', '', '0', '正常', '0', '500', '0', '1', null, '0', null, '1', '20', null, null, '腰立辉', '2017-01-25 13:39:04');
+INSERT INTO `zt_xl_prodservice` VALUES ('39', '', 'QQ电商平台（申请）', '', '0', '正常', '500', '500', '0', '1', null, '0', null, '1', '20', null, null, '腰立辉', '2017-01-25 13:39:04');
+INSERT INTO `zt_xl_prodservice` VALUES ('45', '', '服务器运维(1年)', '', '0', '正常', '600', '600', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e742ae17e.jpg', '腰立辉', '2017-01-25 13:39:06');
+INSERT INTO `zt_xl_prodservice` VALUES ('46', '', '数据库备份(1次)', '', '0', '正常', '50', '50', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e71fc3171.jpg', '腰立辉', '2017-01-25 13:39:06');
+INSERT INTO `zt_xl_prodservice` VALUES ('47', '', '数据库备份(每月)', '', '0', '正常', '100', '120', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e72aa8a18.jpg', '腰立辉', '2017-01-25 13:39:07');
+INSERT INTO `zt_xl_prodservice` VALUES ('48', '', '数据库备份(每年)', '', '0', '正常', '500', '600', '0', '1', null, '0', null, '1', '31', '/Product/2017-01-24/', '5886e737879b8.jpg', '腰立辉', '2017-01-25 13:39:08');
+INSERT INTO `zt_xl_prodservice` VALUES ('49', '', '户外广告牌', '', '0', '正常', '0', '0', '0', '1', null, '1', null, '1', '19', '/Product/2017-01-24/', '5886f672d0db3.png', '腰立辉', '2017-01-25 13:39:09');
 
 -- ----------------------------
 -- Table structure for `zt_xl_tickets`
