@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : mysql:3306
 Source Server Version : 50532
 Source Host           : localhost:3306
 Source Database       : zentao
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2017-01-25 17:56:39
+Date: 2017-01-26 00:05:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -4148,6 +4148,67 @@ CREATE TABLE `zt_tp_article` (
 INSERT INTO `zt_tp_article` VALUES ('1', '请问请问', '<p>\r\n	去委屈委屈我</p>\r\n', '1471489591', '0', '1');
 
 -- ----------------------------
+-- Table structure for `zt_tp_as_customer`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_tp_as_customer`;
+CREATE TABLE `zt_tp_as_customer` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `phone` varchar(11) DEFAULT NULL,
+  `password` char(32) DEFAULT NULL,
+  `custype` varchar(5) DEFAULT NULL,
+  `isteacher` int(1) DEFAULT '1',
+  `coursetype` varchar(5) DEFAULT NULL,
+  `realname` varchar(10) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(32) DEFAULT NULL,
+  `state` varchar(5) DEFAULT '正常',
+  `course` varchar(10) DEFAULT NULL,
+  `remark` text,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `phone` (`phone`) USING HASH
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_tp_as_customer
+-- ----------------------------
+INSERT INTO `zt_tp_as_customer` VALUES ('1', '15803114069', 'c33367701511b4f6020ec61ded352059', '老师', '1', '中学课程', '孙云云', '/Customer/2016-12-13/', '584fbda821498.png', '发布', '初、高中物理', '孙云云，2007年毕业于河北师范大学，从事教育工作十余年，曾任上海精锐教育集团教研组长，教学校长，所带学生进步率高达100%，多名学生进入上海中学，复旦大学，上海交大等一流学府；', '腰立辉', '梁小伟', '2016-12-13 17:21:44');
+INSERT INTO `zt_tp_as_customer` VALUES ('12', '12314242342', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '小学课程', 'werer', null, null, '正常', '', '', '腰立辉', '腰立辉', '2016-11-13 21:17:14');
+INSERT INTO `zt_tp_as_customer` VALUES ('13', '13931162537', 'f379eaf3c831b04de153469d1bec345e', '学生', '0', '中学课程', '刘一玮（男、44中）', null, null, '发布', '初一数学', '一对二', '梁小伟', '梁小伟', '2016-12-13 17:28:34');
+INSERT INTO `zt_tp_as_customer` VALUES ('14', '15803114068', 'f379eaf3c831b04de153469d1bec345e', '老师', '1', '小学课程', '康国胜', '/Customer/2016-12-13/', '584fc143123a2.jpg', '发布', '小学奥数、初高中物理', '康国胜，2007年毕业于河北师范大学，后进修于河北师范大学教育管理研究生院；从事教育工作十余年，曾任上海精锐集团教研组长，教学校长；邯郸环球雅思校长等教学和管理工作；对教学有自己独到的认识，擅长鼓励教育和引导教学，善于激发学生内在的动力，挖掘最大的潜能', '梁小伟', '梁小伟', '2016-12-13 17:37:07');
+
+-- ----------------------------
+-- Table structure for `zt_tp_as_usecar`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_tp_as_usecar`;
+CREATE TABLE `zt_tp_as_usecar` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) DEFAULT NULL,
+  `content` text,
+  `type` smallint(6) DEFAULT NULL,
+  `url` varchar(200) DEFAULT NULL,
+  `state` varchar(5) DEFAULT NULL,
+  `path` varchar(100) DEFAULT NULL,
+  `img` varchar(48) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_tp_as_usecar
+-- ----------------------------
+INSERT INTO `zt_tp_as_usecar` VALUES ('3', '避免预热时间过长', '<p>\r\n	启动车后，大多数人都习惯让发动机怠速运转，等水温达到正常温度后再把车开走，其实这种预热的方法是非常错误的，因为电喷发动机不像化油器发动机，在达到工作温度之前，供油系统不能正常工作。电喷发动机如果采用长时间预热，不仅没有必要而且还是有害的。缩短预热时间可以延长三元催化器的使用寿命，还会节省燃油。动机起动后，只要能维持稳定的转速就可以起步行车，在水温未升高前，适当控制一下车速，等水温正常后就可以正常驾驶了。</p>\r\n', '6', '#', '发布', '/Admin/usecar/2016-10-31/', '5816dd28045c6.jpg', '腰立辉', '2016-10-31 14:01:15');
+INSERT INTO `zt_tp_as_usecar` VALUES ('4', '开窗和开空调哪个更省油呢?', '<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">夏天在高速（速度一般都要&ge;80km/h）行驶时，到底是开着窗户省油还是开着空调省油呢？支持前者的人认为：不开空调即压缩机不用工作，也就不会给</span><a class=\"ShuKeyWordLink\" href=\"http://car.autohome.com.cn/shuyu/detail_8_9_555.html\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: rgb(59, 89, 152); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">发动机</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">造成额外的负担，因此会更省油。支持后者观点的人则认为：高速时开着车窗会扰乱空气流动，形成更大的风阻，因此产生的阻力会消耗比空调还多的燃油。</span></p>\r\n<p>\r\n	<strong>结果：</strong></p>\r\n<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">在开空调的测试中，</span><a class=\"blackclink\" href=\"http://www.autohome.com.cn/81/\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">飞度</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">的百公里油耗为6.15升，而</span><a class=\"blackclink\" href=\"http://www.autohome.com.cn/694/\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">锋范</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">的则达到了7.3升。这两个数据分别比开车窗行驶时上升了0.87升和0.17升，</span><a class=\"blackclink\" href=\"http://www.autohome.com.cn/81/\" style=\"color: rgb(51, 51, 51); outline: 0px; text-decoration: none; font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\" target=\"_blank\">飞度</a><span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">油耗上升的幅度非常明显。而我们最终的定论也可以得出了。在车速为100km/h以下时，开车窗行驶的确比开空调要更加省油，但是其恶劣的驾车感受是必须用足够的忍耐力才能承受的</span></p>\r\n', '7', 'http://www.autohome.com.cn/user/201007/128126.html#pvareaid=103453', '发布', '/Admin/usecar/2016-10-31/', '5816db69ef7da.jpg', '腰立辉', '2016-10-31 13:49:29');
+INSERT INTO `zt_tp_as_usecar` VALUES ('5', '遭遇鸡蛋袭击不能用雨刮?', '<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">相信不少人曾对网络中的一则流言有所耳闻：某地频繁现劫匪用生鸡蛋袭击挡风玻璃的抢劫伎俩，千万不要开启雨刷喷水。因为鸡蛋遇玻璃水将凝固，阻挡视线达90%，在你被迫停车清理玻璃时，劫匪趁机抢劫......。上网一搜，类似流言高达百万条以上。</span></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验1：普通生鸡蛋</strong></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验2：普通生鸡蛋停留一段时间再清理</strong></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验3：普通鸡蛋夜间效果</strong></p>\r\n<p>\r\n	<strong style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">实验4：普通生鸡蛋+神秘配方</strong></p>\r\n<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体, arial, tahoma, sans-serif; font-size: 16px; line-height: 28px; white-space: normal; background-color: rgb(255, 255, 255);\">同样以20km/h的速度驾驶车辆，路边砸来的鸡蛋在挡风玻璃上破碎，开启雨刮器后大部分鸡蛋残渣被清除，不过一些神秘的残留物质仍然不能完全清除，尝试数次后效果仍然不明显。</span></p>\r\n<p>\r\n	&nbsp;</p>\r\n', '7', 'http://www.autohome.com.cn/user/201112/281437.html#pvareaid=103453', '发布', '/Admin/usecar/2016-10-31/', '5816cd97d33bb.jpg', '腰立辉', '2016-10-31 13:00:58');
+INSERT INTO `zt_tp_as_usecar` VALUES ('8', '开车不喝酒，喝酒不开车', '<p>\r\n	可你喝了酒又需要回家怎么办？</p>\r\n<p>\r\n	1. 自己打车回家，转天再去开回来。</p>\r\n<p>\r\n	2. 请会开车没喝酒的朋友帮忙。</p>\r\n<p>\r\n	3. 请个代驾帮忙把车开回家。</p>\r\n<p>\r\n	<strong>看看后面的规定，你就知道我们的3个办法还是最有效的。</strong></p>\r\n<p>\r\n	中华人民共和国道路交通安全法》规定，饮酒后驾驶机动车的处暂扣1个月以上3个月以下机动车驾驶证，并处200元以上元以下罚款;醉酒后驾驶机动车的，由公安机关交通管理部门约束至酒醒，处15日以下拘留和暂扣3个月以上6个月以下机动车驾驶证，并处00元以上2000元以下罚款。1年内醉酒后驾驶机动车被处罚2次以上的，吊销机动车驾驶证.5年内不得驾驶营运机动车。</p>\r\n', '6', '', '发布', '/Admin/usecar/2016-10-31/', '5816e1c4c2325.jpg', '腰立辉', '2016-10-31 14:16:36');
+INSERT INTO `zt_tp_as_usecar` VALUES ('6', '保护漆面从新车做起', '<p>\r\n	<span style=\"color: rgb(51, 51, 51); font-family: 宋体; font-size: 14px; line-height: 26px; white-space: normal; background-color: rgb(255, 255, 255);\">新车漆面虽无老化问题，但使用前应该做彻底的保护处理，从出厂到运输至停车场，车表漆就已经接触了空气、酸气、风沙的侵袭。及时正确的养护，能令漆面保持良好外观。如果买的是进口轿车，要首先考虑的是车蜡中含有石蜡、树脂及特氟隆等材料。除蜡时不要用汽油或煤油擦拭，应选用专业的开蜡液，或者到专业的美容养护店，请技师帮助处理。至于国产车，车身大多采用静电喷涂，漆面呈镜面光泽，故无开蜡需要。</span></p>\r\n', '6', '#', '发布', '/Admin/usecar/2016-10-31/', '5816dedc34c66.jpeg', '腰立辉', '2016-10-31 14:04:12');
+INSERT INTO `zt_tp_as_usecar` VALUES ('7', '调整后视镜', '调整后视镜左侧后视镜上、下位置是把远处的地平线置于中央，左、右位置则调整至车身占据镜面范围的14。右侧后视镜因为驾驶座位于左侧，因此驾驶人对车耳右侧的掌握不是那么容易，再加上有时路边停车的需要，在调整右侧后视镜上、下位置时地面面积要较大，约占镜面的23。而左、右位置则同样调整到车身占14面积即可。\r\n', '6', '', '发布', '/Admin/usecar/2016-10-31/', '5816dfa12179c.png', '腰立辉', '2016-10-31 14:07:29');
+
+-- ----------------------------
 -- Table structure for `zt_tp_case`
 -- ----------------------------
 DROP TABLE IF EXISTS `zt_tp_case`;
@@ -5548,16 +5609,17 @@ CREATE TABLE `zt_tp_hr` (
   `prodid` smallint(6) DEFAULT NULL,
   `place` varchar(20) DEFAULT NULL,
   `moder` varchar(10) DEFAULT NULL,
-  `ctime` timestamp NULL DEFAULT NULL,
   `rtime` timestamp NULL DEFAULT NULL COMMENT '发布时间',
   `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zt_tp_hr
 -- ----------------------------
-INSERT INTO `zt_tp_hr` VALUES ('3', '公司CEO', '1', '发布', '121', '面议', '1', '安顺汽修', '腰立辉', null, null, '2017-01-21 21:07:47');
+INSERT INTO `zt_tp_hr` VALUES ('3', '公司CEO', '1', '发布', '121', '面议', '1', '安顺汽修', '腰立辉', null, '2017-01-21 21:07:47');
+INSERT INTO `zt_tp_hr` VALUES ('10', 'ajsdja', '1', '正常', 'asdas', '面议', '0', '河北-临城', '', null, '2017-01-25 23:54:08');
+INSERT INTO `zt_tp_hr` VALUES ('11', 'werwe', '1', '正常', 'asda', '面议', '0', '河北-临城', '', null, '2017-01-25 23:56:30');
 
 -- ----------------------------
 -- Table structure for `zt_tp_link`
@@ -5673,6 +5735,56 @@ INSERT INTO `zt_tp_path` VALUES ('10227', '5', ' 项目管理-申请流程', '�
 INSERT INTO `zt_tp_path` VALUES ('10228', '6', ' 项目管理-费用详情', '正常', '3', '腰立辉', '2017-01-15 12:56:28');
 INSERT INTO `zt_tp_path` VALUES ('10229', '7', ' 项目管理-材料清单', '正常', '3', '腰立辉', '2017-01-15 12:55:59');
 INSERT INTO `zt_tp_path` VALUES ('10230', '8', ' 项目-图片', '正常', '3', '腰立辉', '2017-01-15 12:55:13');
+
+-- ----------------------------
+-- Table structure for `zt_tp_projectbranch`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_tp_projectbranch`;
+CREATE TABLE `zt_tp_projectbranch` (
+  `id` smallint(5) NOT NULL AUTO_INCREMENT,
+  `branchid` smallint(6) DEFAULT NULL,
+  `proid` smallint(6) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_tp_projectbranch
+-- ----------------------------
+INSERT INTO `zt_tp_projectbranch` VALUES ('56', '54', '24', '腰立辉', '2016-09-22 10:06:44');
+INSERT INTO `zt_tp_projectbranch` VALUES ('67', '4', '45', '腰立辉', '2016-09-25 19:12:47');
+INSERT INTO `zt_tp_projectbranch` VALUES ('61', '4', '47', '腰立辉', '2016-09-23 09:46:13');
+INSERT INTO `zt_tp_projectbranch` VALUES ('68', '11', '46', '腰立辉', '2016-09-26 11:26:22');
+INSERT INTO `zt_tp_projectbranch` VALUES ('62', '56', '48', '腰立辉', '2016-09-24 20:47:58');
+INSERT INTO `zt_tp_projectbranch` VALUES ('63', '4', '48', '腰立辉', '2016-09-24 20:48:09');
+INSERT INTO `zt_tp_projectbranch` VALUES ('64', '56', '49', '腰立辉', '2016-09-24 21:16:03');
+INSERT INTO `zt_tp_projectbranch` VALUES ('65', '4', '49', '腰立辉', '2016-09-24 21:16:05');
+INSERT INTO `zt_tp_projectbranch` VALUES ('69', '11', '50', '腰立辉', '2016-10-19 12:50:06');
+INSERT INTO `zt_tp_projectbranch` VALUES ('70', '54', '45', '王鑫彤', '2016-10-21 10:27:07');
+INSERT INTO `zt_tp_projectbranch` VALUES ('79', '11', '97', '腰立辉', '2016-11-18 09:23:11');
+INSERT INTO `zt_tp_projectbranch` VALUES ('74', '11', '51', '腰立辉', '2016-10-25 15:17:08');
+INSERT INTO `zt_tp_projectbranch` VALUES ('73', '3', '65', '腰立辉', '2016-10-24 09:21:35');
+INSERT INTO `zt_tp_projectbranch` VALUES ('75', '6', '51', '腰立辉', '2016-10-25 17:11:04');
+INSERT INTO `zt_tp_projectbranch` VALUES ('76', '11', '80', '腰立辉', '2016-11-18 09:24:01');
+INSERT INTO `zt_tp_projectbranch` VALUES ('82', '62', '107', '腰立辉', '2016-12-05 16:06:15');
+INSERT INTO `zt_tp_projectbranch` VALUES ('83', '63', '107', '腰立辉', '2016-12-05 16:09:42');
+INSERT INTO `zt_tp_projectbranch` VALUES ('89', '64', '109', '腰立辉', '2016-12-06 10:15:42');
+INSERT INTO `zt_tp_projectbranch` VALUES ('85', '66', '107', '腰立辉', '2016-12-05 16:30:45');
+INSERT INTO `zt_tp_projectbranch` VALUES ('87', '68', '108', '腰立辉', '2016-12-05 17:42:53');
+INSERT INTO `zt_tp_projectbranch` VALUES ('88', '4', '108', '腰立辉', '2016-12-05 17:42:56');
+INSERT INTO `zt_tp_projectbranch` VALUES ('91', '66', '110', '腰立辉', '2016-12-12 09:44:55');
+INSERT INTO `zt_tp_projectbranch` VALUES ('92', '69', '111', '腰立辉', '2016-12-17 22:59:59');
+INSERT INTO `zt_tp_projectbranch` VALUES ('93', '70', '111', '腰立辉', '2016-12-17 23:00:02');
+INSERT INTO `zt_tp_projectbranch` VALUES ('94', '72', '112', '腰立辉', '2016-12-17 23:05:50');
+INSERT INTO `zt_tp_projectbranch` VALUES ('95', '71', '112', '腰立辉', '2016-12-17 23:05:53');
+INSERT INTO `zt_tp_projectbranch` VALUES ('96', '73', '113', '腰立辉', '2016-12-17 23:09:33');
+INSERT INTO `zt_tp_projectbranch` VALUES ('97', '74', '113', '腰立辉', '2016-12-17 23:09:35');
+INSERT INTO `zt_tp_projectbranch` VALUES ('98', '76', '114', '腰立辉', '2016-12-17 23:15:52');
+INSERT INTO `zt_tp_projectbranch` VALUES ('99', '75', '114', '腰立辉', '2016-12-17 23:15:54');
+INSERT INTO `zt_tp_projectbranch` VALUES ('100', '64', '107', '腰立辉', '2016-12-19 15:41:11');
+INSERT INTO `zt_tp_projectbranch` VALUES ('102', '63', '116', '腰立辉', '2016-12-21 13:10:31');
+INSERT INTO `zt_tp_projectbranch` VALUES ('103', '66', '116', '腰立辉', '2016-12-21 13:10:33');
 
 -- ----------------------------
 -- Table structure for `zt_tp_prosys`

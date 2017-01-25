@@ -6,7 +6,7 @@ public function index(){
         
         if(!($_SESSION['init'])){
                 $m=D('product');
-                $data=$m->find(1);
+                $data=$m->find(4);
                 $_SESSION['web']=$data['web'];
                 $_SESSION['adress']=$data['adress'];
                 $_SESSION['desc']=$data['desc'];
@@ -26,7 +26,15 @@ public function index(){
         $where['prodid']=4;
         $pic=$m->where($where)->order('utime desc')->select();
         $this->assign('pic',$pic);
-                
+        
+        $m=D('as_prodservice');
+        $where['istj']=1;
+        $data=$m->where($where)
+        ->field("id,mark,name,state,money,smoney,num,istj,cate,path,img,utime")
+        ->order('utime desc')
+        ->select();
+        $this->assign('data',$data);
+        
         $this->display();
     }
 }
