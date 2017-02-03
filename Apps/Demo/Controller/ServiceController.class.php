@@ -1,5 +1,5 @@
 <?php
-namespace Xiuli\Controller;
+namespace Demo\Controller;
 use Think\Controller;
 class ServiceController extends Controller {
     public function index(){
