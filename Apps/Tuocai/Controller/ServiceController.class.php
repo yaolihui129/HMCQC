@@ -1,12 +1,12 @@
 <?php
-namespace Xiuli\Controller;
+namespace Tuicai\Controller;
 use Think\Controller;
 class ServiceController extends Controller {
     public function Index(){
 
         if(!($_SESSION['init'])){
            $m=D('product');
-           $data=$m->find(1);
+           $data=$m->find(2);
            $_SESSION['web']=$data['web'];
            $_SESSION['adress']=$data['adress'];
            $_SESSION['desc']=$data['desc'];
@@ -22,12 +22,10 @@ class ServiceController extends Controller {
            $_SESSION['init']=1;                               
         }
         
-        $m=D('xl_prodservice');
+        $m=D('tc_prodservice');
         $arr=$m->find($_GET['id']);
         $this->assign('arr',$arr);
-//         dump($arr);
-        
-        
+                
         $this->display();
     }
     

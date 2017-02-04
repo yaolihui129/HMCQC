@@ -58,7 +58,7 @@
 				      <div class="form-group ">
 				          <label for="exampleInputusername" class="col-sm-2 control-label">库存：</label>
 				          <div class="col-sm-10">
-				            	<input type="text" class="form-control" name="num" value="1" placeholder="库存" >
+				            	<input type="text" class="form-control" name="num" value="999" placeholder="库存" >
 						  </div>
 				      </div>
 				      
@@ -98,7 +98,19 @@
 			             </li>
 					 </volist>    
 				</ul>                        
-			 </div> 
+			 </div>
+			 <div class="panel panel-primary"> 
+				<div class="panel-heading">
+					<h3 class="panel-title"><{$cate}></h3>
+				</div>            		                     
+			    <ul class="list-group">
+			 		<volist name='data' id='st' empty="暂无产品&服务">            
+			             <li class="list-group-item">
+			                <a href="#" title="#"><{$st.sn}>.<{$st.name}></a>
+			             </li>
+					 </volist>    
+				</ul>                        
+			 </div>  
 		</div>           
       </div> 
 </div>

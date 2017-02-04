@@ -1,12 +1,11 @@
 <?php
-namespace Xiuli\Controller;
+namespace Tuocai\Controller;
 use Think\Controller;
 class ServicelistController extends Controller {
     public function index(){
-
         if(!($_SESSION['init'])){
                 $m=D('product');
-                $data=$m->find(1);
+                $data=$m->find(2);
                 $_SESSION['web']=$data['web'];
                 $_SESSION['adress']=$data['adress'];
                 $_SESSION['desc']=$data['desc'];
@@ -22,12 +21,12 @@ class ServicelistController extends Controller {
                 $_SESSION['init']=1;                              
             }
             
-            $where['prodid']=1;            
+            $where['prodid']=2;            
             $m=D('tp_cate');
             $arr=$m->where($where)->order('sn')->select();                        
             $this->assign('arr',$arr);
 //             dump($arr);
-            $m=D('xl_prodservice');
+            $m=D('tc_prodservice');
             if($_GET['cate']){
                 $map['cate']=$_GET['cate'];
                 //$map['state']='发布';

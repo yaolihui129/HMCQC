@@ -11,12 +11,10 @@ class ProdserviceController extends CommonController {
         $cate=!empty($_GET['cate']) ? $_GET['cate'] : $arr['0']['id'];
         $m=D($_SESSION['db'].'prodservice');
         $map[cate]=$cate;
-        $data=$m->where($map)->select();
+        $data=$m->where($map)->order('sn')->select();
         $this->assign('data',$data);
-//         dump($data);
-        $this->assign('cate',$cate);
-        /*新增*/
-        $this -> assign("state", formselect());
+
+        $this->assign('cate',$cate);       
         
         $this->display();
     }
@@ -30,17 +28,22 @@ class ProdserviceController extends CommonController {
             $where['pid']=$arr['pid'];             
         }else {
             $where['pid']=0;
-        }
-        $m=D('tp_cate');
+        }      
         $where['prodid']=$_SESSION['prodid'];
         $arr=$m->where($where)->select();
         $this->assign('arr',$arr);
-        //dump($arr);
+        
+        /*实例化模型*/
         $m=D($_SESSION['db'].'prodservice');
-        $map['cate']=$arr['id'];
+        $map['cate']=$_GET['cate'];        
         $count=$m->where($map)->count()+1;
-        $this->assign("c",$count);       
+        $this->assign("c",$count);
+        
+        $data=$m->where($map)->order('sn')->select();
+        $this->assign('data',$data);
+//         dump($data);
         $this->assign("cate",$_GET['cate']);
+        
         $this->display();
     
     } 
@@ -80,6 +83,7 @@ class ProdserviceController extends CommonController {
     }
     
     public function mod(){
+        /* 实例化模型*/
         $m=D($_SESSION['db'].'prodservice');
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
@@ -100,6 +104,7 @@ class ProdserviceController extends CommonController {
     }
     
     public function img(){
+        /* 实例化模型*/
         $m=D($_SESSION['db'].'prodservice');
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
@@ -109,7 +114,7 @@ class ProdserviceController extends CommonController {
     
     public function pic(){
         $upload = new \Think\Upload();// 实例化上传类
-        $upload->maxSize =     7145728 ;// 设置附件上传大小
+        $upload->maxSize  =     7145728 ;// 设置附件上传大小
         $upload->exts     =     array('jpg', 'gif', 'png', 'jpeg');// 设置附件上传类型
         $upload->rootPath =  './Upload/'.$_SESSION['qz'].'/';// 设置附件上传目录
         $upload->savePath = '/Product/'; // 设置附件上传目录
@@ -126,7 +131,6 @@ class ProdserviceController extends CommonController {
             if ($db->save($_POST)){
                 $image = new \Think\Image();
                 $image->open('./Upload/'.$_SESSION['qz'].$info['img']['savepath'].$info['img']['savename']);
-                //$image->thumb(800, 400,\Think\Image::IMAGE_THUMB_SCALE)->save('./Upload/'.$info['img']['savepath'].$info['img']['savename']);  //从中央剪裁
                 $image->thumb(800, 400)->save('./Upload/'.$_SESSION['qz'].$info['img']['savepath'].$info['img']['savename']);   //等比例缩放
                 $this->success("上传成功！");
             }else{

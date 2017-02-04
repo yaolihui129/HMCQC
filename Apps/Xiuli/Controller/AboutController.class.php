@@ -17,9 +17,7 @@ class AboutController extends Controller {
          $_SESSION['os']=GetOs();
          $_SESSION['img']=$data['path'].$data['img'];
          $_SESSION['init']=1;
-        
-        
-        
+         
         $this->display();
     }
     
