@@ -32,7 +32,12 @@ class IndexController extends Controller {
         ->order('utime desc')
         ->select();
         $this->assign('data',$data);
-         
+        
+        $map['isteacher'] = !empty($_GET['isteacher']) ? $_GET['isteacher'] : 1;
+        $map['state']="发布";
+        $m=M('tc_customer');
+        $arr=$m->where($map)->order('utime desc')->select();
+        $this->assign('arr',$arr);                
         
         $this->display();
     }

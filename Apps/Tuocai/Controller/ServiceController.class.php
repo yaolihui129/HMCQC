@@ -1,5 +1,5 @@
 <?php
-namespace Tuicai\Controller;
+namespace Tuocai\Controller;
 use Think\Controller;
 class ServiceController extends Controller {
     public function Index(){

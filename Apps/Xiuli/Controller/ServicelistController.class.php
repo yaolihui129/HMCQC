@@ -22,15 +22,16 @@ class ServicelistController extends Controller {
                 $_SESSION['init']=1;                              
             }
             
-            $where['prodid']=1;            
+            $where['prodid']=1;
+            $where['state']='正常';
             $m=D('tp_cate');
             $arr=$m->where($where)->order('sn')->select();                        
             $this->assign('arr',$arr);
-//             dump($arr);
+
             $m=D('xl_prodservice');
             if($_GET['cate']){
                 $map['cate']=$_GET['cate'];
-                //$map['state']='发布';
+                $map['state']='发布';
                 $data=$m->where($map)
                 ->field("id,mark,name,state,money,smoney,num,istj,cate,path,img,utime")
                 ->order('utime desc')->select();

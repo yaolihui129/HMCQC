@@ -11,6 +11,7 @@ class CustomerController extends Controller {
              $_SESSION['adress']=$data['adress'];
              $_SESSION['desc']=$data['desc'];
              $_SESSION['phone']=$data['phone'];
+             $_SESSION['tel']=$data['tel'];
              $_SESSION['qq']=$data['qq'];
              $_SESSION['weburl']=$data['url'];
              $_SESSION['ip']=get_client_ip();
@@ -23,7 +24,7 @@ class CustomerController extends Controller {
         $where['isteacher'] = !empty($_GET['isteacher']) ? $_GET['isteacher'] : 1;
         $where['state']="发布";
 		$m=M('tc_customer');
-        $data=$m->where($where)->order('updateTime desc')->select();
+        $data=$m->where($where)->order('utime desc')->select();
         $this->assign('data',$data);
         $this->assign('w',$where);       
 	    $this->display();

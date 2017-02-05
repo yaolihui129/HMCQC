@@ -78,3 +78,25 @@
 		</volist>			       		
 	</div>					  		 
 </div>
+
+<div class="row">
+    <div class="panel panel-success">
+		<div class="panel-heading"><h3 class="panel-title">师资力量
+			<span class="pull-right">
+			<a href="__APP__/Tuocai/Customer/index/isteacher/1">更多</a></span></h3>
+		</div>
+		<volist name='arr' id='ar' empty="没有数据">
+			<div class="panel panel-default">    
+				<div class="media">
+					<a class="media-left" href="#">
+						<img src="__UPLOAD__<{$ar.path}><{$ar.img}>" alt="<{$ar.img}>" class="img-thumbnail">
+					</a>
+					<div class="media-body">
+						<h4 class="media-heading"><{$ar.realname}>【<{$ar.course}>】<{$ar.coursetype}></h4>
+						<{$ar.remark}>
+					</div>
+				</div>     
+			</div>
+		</volist> 			       		
+	</div>					  		 
+</div>

@@ -5,6 +5,7 @@ class ProdserviceController extends CommonController {
         /*实例化模型*/        
         $m=D('tp_cate');
         $where['prodid']=$_SESSION['prodid'];
+        $where['state']='正常';
         $arr=$m->where($where)->order('sn')->select();
         $this->assign('arr',$arr);
         /*实例化模型*/
@@ -100,6 +101,36 @@ class ProdserviceController extends CommonController {
             $this->success("修改成功！");
         }else{
             $this->error("修改失败！");
+        }
+    }
+    
+    public function fabu(){
+        /* 接收参数*/
+        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
+        /* 实例化模型*/
+        $db=D($_SESSION['db'].'prodservice');
+        $arr['id']=$id;
+        $arr['state']="发布";
+        $arr['moder']=$_SESSION['realname'];
+        if ($db->save($arr)){
+            $this->success("发布成功！");
+        }else{
+            $this->error("发布失败！");
+        }
+    }
+    
+    public function xiax(){
+        /* 接收参数*/
+        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
+        /* 实例化模型*/
+        $db=D($_SESSION['db'].'prodservice');
+        $arr['id']=$id;
+        $arr['state']="下线";
+        $arr['moder']=$_SESSION['realname'];
+        if ($db->save($arr)){
+            $this->success("下线成功！");
+        }else{
+            $this->error("下线失败！");
         }
     }
     

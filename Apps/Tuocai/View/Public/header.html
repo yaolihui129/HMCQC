@@ -8,16 +8,14 @@
     <meta name="keywords" content="<{$_SESSION['keywords']}>" />
 	<meta name="description" content="<{$_SESSION['desc']}>" />
 	<link rel="shortcut icon" href="favicon.ico"/>
-    <!-- <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet"> -->
-    <import type="css" file="css.bootstrap"/>
-    <import type="css" file="css.home" />    
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <import type="css" file="Css.home" />    
     <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
   <body>
-
      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -27,14 +25,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="__APP__/Tuocai/Index/index"><span class="ico">
+          <a class="navbar-brand" href="__APP__/Tuocai"><span class="ico">
               <img alt="Brand" src="__IMAGES__/ico.jpg"  style="margin-top:-15px;height:70px;"></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse ">
-          <ul class="nav navbar-nav pull-right">
-            <li><a href="__APP__/Tuocai/Index/index"> <span class="glyphicon glyphicon-home"></span> 首页</a></li>
+          <ul class="nav navbar-nav pull-right">           
             <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="#"><span class="glyphicon glyphicon-book"></span> 课程导航<span class="caret"></span></a>
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="#">
+               		<span class="glyphicon glyphicon-book"> 课程导航</span><span class="caret"></span>
+               </a>
                <ul class="dropdown-menu" role="menu">
                  <li ><a href="__APP__/Tuocai/Servicelist/index/cate/10">学前少儿</a></li>
                  <li class="divider"></li>
