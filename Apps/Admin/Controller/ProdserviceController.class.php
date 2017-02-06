@@ -42,7 +42,7 @@ class ProdserviceController extends CommonController {
         
         $data=$m->where($map)->order('sn')->select();
         $this->assign('data',$data);
-//         dump($data);
+
         $this->assign("cate",$_GET['cate']);
         
         $this->display();
@@ -88,6 +88,19 @@ class ProdserviceController extends CommonController {
         $m=D($_SESSION['db'].'prodservice');
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
+        $this->assign("cate",$arr['cate']);
+        
+        $m=D('tp_cate');
+        $arr=$m->find($arr['cate']);
+        
+      
+        $m=D($_SESSION['db'].'prodservice');
+        $where['cate']=$arr['id'];
+        $where['prodid']=$_SESSION['prodid'];
+        $data=$m->where($where)->order('sn')->select();
+        $this->assign('data',$data);
+        
+        
                
         $this->display();
     }
@@ -106,32 +119,55 @@ class ProdserviceController extends CommonController {
     
     public function fabu(){
         /* 接收参数*/
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
+        $arr['id']=$_GET['id'];
         /* 实例化模型*/
         $db=D($_SESSION['db'].'prodservice');
-        $arr['id']=$id;
-        $arr['state']="发布";
+        if ($_GET['state']=='发布'){
+            $arr['state']="下线";
+        }else{
+            $arr['state']="发布";
+        }
+        
         $arr['moder']=$_SESSION['realname'];
         if ($db->save($arr)){
-            $this->success("发布成功！");
+            $this->success("成功！");
         }else{
-            $this->error("发布失败！");
+            $this->error("失败！");
         }
     }
     
-    public function xiax(){
+    public function istj(){
         /* 接收参数*/
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
+        $arr['id']=$_GET['id'];
         /* 实例化模型*/
         $db=D($_SESSION['db'].'prodservice');
-        $arr['id']=$id;
-        $arr['state']="下线";
+        if ($_GET['istj']==1){
+            $arr['istj']=0;
+        }else{
+            $arr['istj']=1;
+        }
+        
         $arr['moder']=$_SESSION['realname'];
         if ($db->save($arr)){
-            $this->success("下线成功！");
+            $this->success("成功！");
         }else{
-            $this->error("下线失败！");
+            $this->error("失败！");
         }
+    }
+    
+    public function search(){
+        /* 接收参数*/
+        $search=$_POST['search'];
+        $map['name|mark|content|money|smoney']=array('like','%'.$search.'%');
+        /* 实例化模型*/
+        $m=D($_SESSION['db'].'prodservice');
+        $arr=$m->where($map)->order('utime desc')->select();
+        $this->assign('data',$arr);
+        $search=array("search"=>$search);
+        $this->assign('w',$search);
+         
+        $this->display('index');
+         
     }
     
     public function img(){
@@ -139,6 +175,16 @@ class ProdserviceController extends CommonController {
         $m=D($_SESSION['db'].'prodservice');
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
+        $this->assign("cate",$arr['cate']);
+        
+        $m=D('tp_cate');
+        $arr=$m->find($arr['cate']);        
+         
+        $m=D($_SESSION['db'].'prodservice');
+        $where['cate']=$arr['id'];
+        $where['prodid']=$_SESSION['prodid'];
+        $data=$m->where($where)->order('sn')->select();
+        $this->assign('data',$data);
     
         $this->display();
     }

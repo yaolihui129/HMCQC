@@ -14,7 +14,7 @@
 			<form action="__URL__/search " method="post" class="navbar-form navbar-left" role="search">
 				<div class="form-group">
 					<div class="input-group">
-						<input type="text" name="search" class="form-control" value="<{$w.search}>" placeholder="商品、分类、货号">
+						<input type="text" name="search" class="form-control" value="<{$w.search}>" placeholder="商品、货号、描述、优惠价、市场价">
 						<span class="input-group-btn">
 							 <button type="submit" class="btn btn-default" type="button">Go!</button>
 						</span>
@@ -54,24 +54,30 @@
 				<div class="media-body">
 					<h4 >
 						<input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/>
-						<{$st.name}>(ID:<{$st.id|}>)【<{$st.state}>-<{$st.istj}>】<br>优惠价：￥									
+						<{$st.name}>(ID:<{$st.id|}>)<br>优惠价：￥									
 						<{$st.money}>元（市场价：<s><em>￥<{$st.smoney}>元</em></s>）<br>路径：
 						<{$st.path}><br>库存：<{$st.num}>
+						<a href="__URL__/fabu/id/<{$st.id}>/state/<{$st.state}>" >
+							<span class="label label-primary"><{$st.state}></span>
+						</a>
+						<a href="__URL__/istj/id/<{$st.id}>/istj/<{$st.istj}>" >
+							<span class="label label-warning"><{$st.istj|getIstj=###}></span>
+						</a>
 					</h4>   
 					<div class="btn-group">
-						<a href="__URL__/img/id/<{$st.id}>" class="btn btn-success btn-xs">传图</a>
-						<a href="__URL__/fabu/id/<{$st.id}>" class="btn btn-success btn-xs">发布</a>
-	                    <a href="__URL__/xiax/id/<{$st.id}>" class="btn btn-danger btn-xs">下线</a>
-	                    <a href="__URL__/mod/id/<{$st.id}>" class="btn btn-info btn-xs">修改</a>
-	                    <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
+						<a href="__URL__/img/id/<{$st.id}>" class="btn btn-success ">传 图</a>
+						<a href="__APP__/Admin/Order/add/id/<{$st.id}>" class="btn btn-warning">下 单</a>						
+	                    <a href="__URL__/mod/id/<{$st.id}>" class="btn btn-info ">修 改</a>
+	                    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
 			               <span class="caret"></span>
 			               <span class="sr-only">Toggle Dropdown</span>
 			            </button>
 			            <ul class="dropdown-menu" role="menu">			                  
-			               <li><a href="__URL__/del/id/<{$st.id}>">删除</a></li>                 			                 
+			               <li><a href="__URL__/del/id/<{$st.id}>">删 除</a></li>                 			                 
 			            </ul>
 					</div>     	            				
-				</div>				
+				</div>
+				<p><b>&nbsp;&nbsp;描述：</b><br>&nbsp;&nbsp;<{$st.content}></p>				
 			</div>
 	         </div>
 	         </volist>

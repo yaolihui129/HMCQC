@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
+Source Server         : mysql:3306
 Source Server Version : 50532
 Source Host           : localhost:3306
 Source Database       : zentao
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2017-02-06 18:08:56
+Date: 2017-02-07 00:03:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -6505,12 +6505,11 @@ CREATE TABLE `zt_xl_order` (
   `uaddress` varchar(255) NOT NULL COMMENT '用户地址',
   PRIMARY KEY (`id`),
   KEY `order_uid` (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=1608180002 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=100000 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zt_xl_order
 -- ----------------------------
-INSERT INTO `zt_xl_order` VALUES ('1608180001', '5288.0', '5288.0', '4', '3', '尽快发货', '1471488598', '1471488742', '1471488709', '顺丰快递', '1231312314', '0.0', '1', 'admin', '腰立辉', '18801043607', '', '北京市北京市北京市海淀区西外大街168号');
 
 -- ----------------------------
 -- Table structure for `zt_xl_prodservice`
@@ -6580,7 +6579,7 @@ INSERT INTO `zt_xl_prodservice` VALUES ('53', '', '钛金牌', '适用于：单�
 INSERT INTO `zt_xl_prodservice` VALUES ('54', '', 'LED显示屏', '适用于：宾馆、公司、会议室、饭店、学校、门市、小区等地 特点是：使用寿命长，可随时更换内容。 分类：室内、室外、半室外；或单基色、双基色、三基色；', '0', '发布', '0', '0', '0', '999', null, '0', null, '8', '19', '/Product/2017-02-04/', '58954486bc30e.png', '腰立辉', '2017-02-06 14:55:58');
 INSERT INTO `zt_xl_prodservice` VALUES ('55', '', '发光字', '适用于：宾馆、饭店、展厅、学校、商场、商铺门头等 分类：LED发光字、吸塑发光字、不锈钢包边发光字、树脂发光字、迷你发光字、黑白板发光字 特点：亮化效果', '0', '发布', '0', '0', '0', '0', null, '0', null, '9', '19', '/Product/2017-02-04/', '5895449c1a8fc.png', '腰立辉', '2017-02-06 14:50:47');
 INSERT INTO `zt_xl_prodservice` VALUES ('56', '', '楼体亮化', '', '0', '发布', '0', '0', '0', '1', null, '0', null, '10', '19', '/Product/2017-02-04/', '589544aa4c48c.png', '腰立辉', '2017-02-05 18:27:35');
-INSERT INTO `zt_xl_prodservice` VALUES ('60', '', '打印', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '1', '18', '/Product/2017-02-04/', '58954be569ec5.png', '腰立辉', '2017-02-05 18:25:45');
+INSERT INTO `zt_xl_prodservice` VALUES ('60', '', '打印', '', '0', '发布', '0', '0', '0', '999', null, '1', null, '1', '18', '/Product/2017-02-04/', '58954be569ec5.png', '腰立辉', '2017-02-06 23:53:28');
 INSERT INTO `zt_xl_prodservice` VALUES ('59', '', '钛金字', '适用于：单位机关、宾馆、饭店、门市、学校、小区门头装饰； 特点：多年不变色、抗老化性能好、光彩夺目，给人闪闪发光感觉。', '0', '发布', '0', '0', '0', '1', null, '0', null, '7', '19', '/Product/2017-02-04/', '5895432d19e3c.png', '腰立辉', '2017-02-06 14:55:09');
 INSERT INTO `zt_xl_prodservice` VALUES ('61', '', '复印', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '2', '18', '/Product/2017-02-04/', '58954bf69b009.png', '腰立辉', '2017-02-05 18:26:08');
 INSERT INTO `zt_xl_prodservice` VALUES ('62', '', '彩印', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '3', '18', '/Product/2017-02-04/', '58954c0711d4a.png', '腰立辉', '2017-02-05 18:26:13');

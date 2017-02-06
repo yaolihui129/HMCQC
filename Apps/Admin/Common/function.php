@@ -24,7 +24,13 @@ function countCate($pid){
     }
     
 }
-
+function getIstj($istj){
+    if ($istj==1){
+        return "首页";
+    }else {
+        return "非首页";
+    }
+}
 
 //根据id获取产品数数
 function countProdService($cate){
@@ -43,7 +49,7 @@ function getPhone($id){
     }
 }
 
-//获取手机号
+//获取姓名
 function getCRealname($id){
     if($id){
         $m=M('tp_customer');
