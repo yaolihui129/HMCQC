@@ -69,7 +69,7 @@ class CateController extends CommonController {
     
     public function mod(){
         $m=D('tp_cate');
-        $arr=$m->find($_GET[id]);
+        $arr=$m->order('sn')->find($_GET[id]);
         $this->assign('arr',$arr);
         
         $where['prodid']=$_SESSION['prodid'];
