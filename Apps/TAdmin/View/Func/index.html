@@ -4,9 +4,12 @@
   		<div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
-    	<{$arr.sn}>.<{$arr.path}>
-    	<button data-toggle="modal" href="#tianjfunc" class=" btn btn-info btn-xs pull-right" >
-    	<span class="glyphicon glyphicon-plus"> 添加</span></button>
+    	<{$arr.sn}>.<{$arr.branch|getBranchName=###}>-<{$arr.parent|getModuleName=###}><{$arr.name}>
+    	<div class="btn-group pull-right">
+    			<button data-toggle="modal" href="#tianjfunc" class=" btn btn-info btn-xs" >
+    			<span class="glyphicon glyphicon-plus"> 添加</span></button>	  		
+	  			<a href="__APP__/TAdmin/Path/index/sysid/<{$arr.branch}>/proid/<{$_SESSION['proid']}>" class=" btn btn-warning btn-xs ">返回</a>
+	  	</div>   	
     </h3>
   </div>
   <div class="panel-body table-responsive"> 
@@ -59,7 +62,7 @@
 				<default /><li class="list-group-item ">
 		 </switch> 
             <a href="__URL__/index/pathid/<{$vo.id}>">
-            	<{$vo.sn}>.<{$vo.path}>【<{$vo.pstate}>】</a><span class="badge"><{$vo.id|countFunc=###}></span></li>
+            	<{$vo.sn}>.<{$vo.parent|getModuleName=###}>-<{$vo.name}>【<{$vo.state}>】</a><span class="badge"><{$vo.id|countFunc=###}></span></li>
         </volist>
       </ul>	  
 	</div>

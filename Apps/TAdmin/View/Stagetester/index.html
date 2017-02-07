@@ -1,14 +1,15 @@
  <layout name="layout" />
  <h2>【<{$_SESSION["proid"]|getProNo=###}><{$type.type}>】人员安排
- <a href="__APP__/TAdmin/Stage/index/proid/<{$_SESSION['proid']}>"  class="btn btn-warning pull-right">返回</a></h2>      
+ <a href="__APP__/TAdmin/Stage/index/proid/<{$_SESSION['proid']}>"  class="btn btn-warning ">返回</a></h2>      
  <div class="row">
-  <div class="col-md-7">
+  <div class="col-md-5">
   	<div class="panel panel-info">
 	  <div class="panel-heading"> <{$type.stageid|getStage=###}></div>
 	   <form action="__URL__/order" method="post" >
 	     <volist name='testers' id='tester'>
 	       <li class="list-group-item">
-		       	<input type="text" name="sn[<{$tester.id}>]" value="<{$tester.sn}>"  class="input40"/><{$tester.tester}>			        
+		       	<input type="text" name="sn[<{$tester.id}>]" value="<{$tester.sn}>"  class="input40"/>
+		       	&nbsp;<{$tester.tester}>			        
 				<a href="__APP__/TAdmin/Exescene/queue/stagetesterid/<{$tester.id}>" class="btn btn-info btn-xs pull-right">列队
 				<span class="badge"><{$tester.id|countExescene=###}></span></a>					  					  							       
 	        </li>
@@ -27,7 +28,7 @@
 	            	<span class="badge"><{$user.usergp}></span>
 	            	<{$user.realname}>
 	        	</span>
-	        	<a href="__URL__/insert/tester/<{$user.realname}>/stageid/<{$w.stageid}>/type/<{$w.type}>"  
+	        	<a href="__URL__/insert/tester/<{$user.realname}>/stageid/<{$type.stageid}>/type/<{$type.type}>"  
 	        	type="button" class="btn btn-info btn-xs pull-right">安排</a>	        
 	        </li>
 	      </volist>

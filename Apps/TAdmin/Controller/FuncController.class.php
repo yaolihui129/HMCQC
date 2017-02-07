@@ -6,13 +6,13 @@ class FuncController extends CommonController{
          /* 接收参数*/
         $pathid=$_GET['pathid'];
         $proid=$_SESSION['proid'];
-
+dump($_SESSION);
         /* 实例化模型*/
-        $m=D('tp_path');
+        $m=D('module');
         $arr=$m->find($pathid);
         $this->assign("arr",$arr);
          
-        $where['sysid']=$arr['sysid'];
+        $where['branch']=$arr['branch'];
         $where['state']="正常";        
         $data=$m->where($where)->order("sn,id")->select();
         $this->assign("data",$data);

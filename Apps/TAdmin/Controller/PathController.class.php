@@ -18,6 +18,7 @@ class PathController extends CommonController {
          /* 实例化模型*/
         $m=D('module');
         $where['branch']=$sysid;
+        $where['state']='正常';
         $pathes= $m->where($where)->order("sn,id")->select();
         $this->assign("pathes",$pathes);
         $this->assign("proid",$proid);

@@ -34,6 +34,7 @@ class StagetesterController extends CommonController {
         $where=array("stageid"=>$_GET['stageid'],"type"=>$_GET['type']);
         $_GET['sn']=$m->where($where)->count()+1;
         $_GET['moder']=$_SESSION['realname'];
+
         if(!$m->create($_GET)){
             $this->error($m->getError());
         }

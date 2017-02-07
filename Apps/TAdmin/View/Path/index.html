@@ -4,9 +4,8 @@
   	<div class="panel panel-default">
 	  <div class="panel-heading">
 	  	<h3 class="panel-title"><{$arr.name}>
-	  		<div class="btn-group pull-right">
-	  		<a data-toggle="modal" href="#tianjpath" class=" btn btn-info btn-xs" >添加</a>
-	  		<a href="__APP__/TAdmin/Prosys/index/proid/<{$proid}>" class=" btn btn-warning btn-xs ">返回</a>
+	  		<div class="btn-group pull-right">	  		
+	  			<a href="__APP__/TAdmin/Prosys/index/proid/<{$proid}>" class=" btn btn-warning btn-xs ">返回</a>
 	  		</div>
 	  	</h3>
 	  </div>
@@ -20,7 +19,7 @@
 	         <volist name='pathes' id='st' empty="没有数据">
 	            <tr> 	            	
 	                <td align="center" ><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/></td>
-	                <td ><{$st.branch|getBranchName=###}>-<{$st.parent|getModuleName=###}>-<{$st.name}>【<{$st.state}>】
+	                <td ><{$st.id}><{$st.branch|getBranchName=###}>-<{$st.parent|getModuleName=###}>-<{$st.name}>【<{$st.state}>】
 	                    <div class="btn-group pull-right">
 			                <a href="__APP__/TAdmin/Func/index/pathid/<{$st.id}>" type="button" class="btn btn-info btn-xs">功能点<{$st.id|countFunc=###}></a>
 			                <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -52,7 +51,7 @@
 				<default /><li class="list-group-item ">
 		 </switch> 
             <a href="__URL__/index/sysid/<{$vo.id}>/proid/<{$proid}>">
-            	<{$vo.code}>:<{$vo.name}></a><span class="badge"><{$vo.id|countPath=###}></span></li>
+            	<{$vo.sysno}>:<{$vo.name}></a><span class="badge"><{$vo.id|countPath=###}></span></li>
         </volist>
       </ul>	  
 	</div>
@@ -61,42 +60,3 @@
   
 </div> 
 
-
-<!-- 添加-模态框 -->
-<div class="modal fade " id="tianjpath" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-    	<div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-	        <h4 class="modal-title" id="myModalLabel">路径-添加</h4>
-	    </div>
-	    <div class="modal-body">
-	      	<form action="__URL__/insert" method="post" class="form-horizontal" role="form" >
-	      	<input type="hidden" name="branch" value="<{$arr.id}>" />
-				<div class="form-group">
-					<label for="short" class="col-sm-2 control-label">顺序:</label>
-					<div class="col-sm-10"><input type="text" class="form-control" name="sn" value="<{$c}>" placeholder="顺序"></div>
-				</div>
-				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">路径:</label>
-					<div class="col-sm-10"><input type="text" class="form-control" name="name" value=" " placeholder="路径"></div>
-				</div>
-				<div class="form-group">
-					<label for="parent" class="col-sm-2 control-label">父级:</label>
-					<div class="col-sm-10"><input type="text" class="form-control" name="parent" value="0" placeholder="父级"></div>
-				</div>
-				<div class="form-group">
-					<label for="parent" class="col-sm-2 control-label">简称:</label>
-					<div class="col-sm-10"><input type="text" class="form-control" name="short" value=" " placeholder="简称"></div>
-				</div>
-				<div class="form-group">
-					<label for="state" class="col-sm-2 control-label">状态:</label>
-					<div class="col-sm-10"><{$state}></div>
-				</div>											
-		</div>
-		<div class="modal-footer">
-		     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-		     <button type="submit" class="btn btn-primary">提交</button></form>
-		</div>
-    </div>       
-  </div>

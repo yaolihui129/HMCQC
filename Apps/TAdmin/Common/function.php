@@ -245,7 +245,7 @@ function countRisk($id){
  */
 function countProsys($id){
     $m=M("tp_prosys");
-    $where=array("proid"=>$id);
+    $where=array("project"=>$id);
     $count=$m->where($where)->count();
     return $count;
 }
