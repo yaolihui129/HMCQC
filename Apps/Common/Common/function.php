@@ -229,6 +229,31 @@ function getPlan($dateid){
     }
     
 
+    /**
+     * 根据阶段id获取测试人员
+     */
+    function countATester($id){
+        $m=M("tp_stagetester");
+        $where=array("stageid"=>$id,"type"=>"A");
+        $count=$m->where($where)->count();
+        return $count;
+    }
+    
+    function countCTester($id){
+        $m=M("tp_stagetester");
+        $where=array("stageid"=>$id,"type"=>"C");
+        $count=$m->where($where)->count();
+        return $count;
+    }
+    
+    
+    function countMTester($id){
+        $m=M("tp_stagetester");
+        $where=array("stageid"=>$id,"type"=>"M");
+        $count=$m->where($where)->count();
+        return $count;
+    }
+
  //获取里程碑信息
 
     function getStage($id){
@@ -236,6 +261,23 @@ function getPlan($dateid){
             $m=M('tp_stage');
             $data=$m->find($id);
             $str=$data['sn'].'.'.$data['stage']."【".$data['state']."】";
+            return $str;
+        }else {
+            return ;
+        }
+    }
+    
+    /**
+     * 根据功能id获取功能信息
+     */
+    function getSPFunc($id){
+        if ($id){
+            $s = D("branch");
+            $where=array("zt_tp_func.id"=>$id);
+            $data=$s->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
+            ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
+            ->where($where)->select();
+            $str=$data[0]['branch'].">".$data[0]['name'].">".$data[0]['func'];
             return $str;
         }else {
             return ;

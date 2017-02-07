@@ -35,7 +35,7 @@
 					<case value="作废"><tr class="danger"></case>
 					<default /><tr class="info">
 				</switch>
-                    <td align="left" ><{$st.id}>.<{$st.system}>-<{$st.path}>-<b><{$st.func}></b>【<{$st.state}>】
+                    <td align="left" ><{$st.id}>.<{$st.branch|getBranchName=###}>-<{$st.parent|getModuleName=###}>-<{$st.name}>-<b><{$st.func}></b>【<{$st.state}>】
                     	<span class="badge"><{$st.fproid|getProNo=###}></span>
                        	<div class="btn-group pull-right">
 							<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown">

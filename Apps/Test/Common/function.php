@@ -91,22 +91,7 @@ function getFResult($id){
     }
 }
 
-/**
- * 根据功能id获取功能信息
- */
-function getSPFunc($id){
-    if ($id){
-        $s = D("system");
-        $where=array("tp_func.id"=>$id);
-        $data=$s->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
-        ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
-        ->where($where)->select();
-        $str=$data[0]['system'].">".$data[0]['path'].">".$data[0]['func'];
-        return $str;
-    }else {
-        return ;
-    }
-}
+
 
 
 /**
@@ -221,30 +206,6 @@ function countCase($id){
     return $count;
 }
 
-/**
- * 根据阶段id获取测试人员
- */
-function countATester($id){
-    $m=M("tp_stagetester");
-    $where=array("stageid"=>$id,"type"=>"A");
-    $count=$m->where($where)->count();
-    return $count;
-}
-
-function countCTester($id){
-    $m=M("tp_stagetester");
-    $where=array("stageid"=>$id,"type"=>"C");
-    $count=$m->where($where)->count();
-    return $count;
-}
-
-
-function countMTester($id){
-    $m=M("tp_stagetester");
-    $where=array("stageid"=>$id,"type"=>"M");
-    $count=$m->where($where)->count();
-    return $count;
-}
 
 /**
  * 根据分组获取项目数

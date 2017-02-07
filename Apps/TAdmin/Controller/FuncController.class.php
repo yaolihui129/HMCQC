@@ -6,7 +6,7 @@ class FuncController extends CommonController{
          /* 接收参数*/
         $pathid=$_GET['pathid'];
         $proid=$_SESSION['proid'];
-dump($_SESSION);
+// dump($_SESSION);
         /* 实例化模型*/
         $m=D('module');
         $arr=$m->find($pathid);
@@ -138,16 +138,16 @@ dump($_SESSION);
         $this->assign("arr",$arr);
 
         /* 实例化模型*/
-//         $s = D('branch');
-//         $where=array("zt_tp_func.fproid"=>$proid,"zt_tp_func.state"=>'正常');
-//         $data=$s->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
-//         ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
-//         ->where($where)
-//         ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id")
-//         ->select();
-        $m=D('tp_func');
-        $where=array("fproid"=>$proid,"state"=>'正常');
-        $data=$m->where($where)->select();
+        $s = D('branch');
+        $where=array('zt_tp_func.fproid'=>$proid,'zt_tp_func.state'=>'正常','zt_module.state'=>'正常');
+        $data=$s->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
+        ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
+        ->where($where)
+        ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id")
+        ->select();
+//         $m=D('tp_func');
+//         $where=array("fproid"=>$proid,"state"=>'正常');
+//         $data=$m->where($where)->select();
         $this->assign("data",$data);
 // dump($data);
        

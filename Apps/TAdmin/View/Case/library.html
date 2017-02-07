@@ -43,7 +43,7 @@
          <volist name='cases' id='case' empty="没有数据">
 		 <tr>
             <td align="center" ><{$case.id}></td>
-            <td align="left" ><{$case.path}></td>
+            <td align="left" ><{$case.branch|getBranchName=###}>-<{$case.parent|getModuleName=###}>-<{$case.name}></td>
             <td align="left" ><{$case.func}></td>
             <form action="__URL__/update" method="post" >
                <input type="hidden" name="id" value="<{$case.id}>" />

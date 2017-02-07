@@ -3,7 +3,7 @@
  * 项目选择
  * @param $value 选中值
  */
-function proselect($value=1,$name=prono) {
+function proselect($value=1,$name=code) {
     $html = '<select name="'.$name.'" class="form-control">';
     $m =M('project');
     $where=array("testgp"=>$_SESSION['testgp']);
@@ -11,7 +11,7 @@ function proselect($value=1,$name=prono) {
     $cats = $m->where($where)->order("end desc")->select();
     foreach($cats as $v) {
         $selected = ($v['id']==$value) ? "selected" : "";
-        $html .= '<option '.$selected.' value="'.$v['id'].'">'.$v['prono'].'</option>';
+        $html .= '<option '.$selected.' value="'.$v['id'].'">'.$v['code'].'</option>';
     }
     $html .='<select>';
     return $html;
@@ -130,24 +130,6 @@ function getFResult($id){
     }
 }
 
-/**
- * 根据功能id获取功能信息
- */
-function getSPFunc($id){
-    if ($id){
-        $s = D("system");
-        $where=array("tp_func.id"=>$id);
-        $data=$s->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
-        ->join(' inner JOIN tp_func ON tp_path.id = tp_func.pathid')
-        ->where($where)
-        ->select();
-
-        $str=$data[0]['system'].">".$data[0]['path'].">".$data[0]['func'];
-        return $str;
-    }else {
-        return ;
-    }
-}
 
 
 /**
@@ -155,13 +137,13 @@ function getSPFunc($id){
  */
 function getSPath($id){
     if ($id){
-        $s = D("system");
-        $where=array("tp_path.id"=>$id);
-        $data=$s->join('inner JOIN tp_path ON tp_system.id = tp_path.sysid')
+        $s = D("branch");
+        $where=array("zt_module.id"=>$id);
+        $data=$s->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
         ->where($where)
         ->select();
 
-        $str=$data[0]['system']."-".$data[0]['path'];
+        $str=$data[0]['branch']."-".$data[0]['name'];
         return $str;
     }else {
         return ;
@@ -173,15 +155,15 @@ function getSPath($id){
  */
 function getSceneFunc($id){
     if ($id){
-        $m=D('system');
+        $m=D('branch');
         $where=array("tp_scenefunc.id"=>$id);
         $data=$m
-        ->join("inner JOIN tp_path ON tp_system.id = tp_path.sysid")
-        ->join("inner JOIN tp_func ON tp_path.id = tp_func.pathid")
-        ->join("inner JOIN tp_scenefunc ON tp_func.id = tp_scenefunc.funcid")
-        ->where($where)->order('tp_scenefunc.sn')->select();
+        ->join("inner JOIN zt_module ON zt_branch.id = zt_module.branch")
+        ->join("inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid")
+        ->join("inner JOIN zt_tp_scenefunc ON zt_tp_func.id = zt_tp_scenefunc.funcid")
+        ->where($where)->order('zt_tp_scenefunc.sn')->select();
 
-        $str=$data[0]['system'].">".$data[0]['path'].">".$data[0]['func']."【".$data[0]['remarks']."】";
+        $str=$data[0]['branch'].">".$data[0]['name'].">".$data[0]['func']."【".$data[0]['remarks']."】";
         return $str;
     }else {
         return ;
@@ -224,18 +206,18 @@ function getESceneFunc($id){
 /**
  * 根据项目获取里程碑数
  */
-function countStage($id){
+function countStage($proid){
     $m=M("tp_stage");
-    $where=array("proid"=>$id);
+    $where=array("proid"=>$proid);
     $count=$m->where($where)->count();
     return $count;
 }
 /**
  * 根据项目获取风险数
  */
-function countRisk($id){
+function countRisk($proid){
     $m=M("tp_risk");
-    $where=array("proid"=>$id);
+    $where=array("proid"=>$proid);
     $count=$m->where($where)->count();
     return $count;
 }
@@ -243,9 +225,9 @@ function countRisk($id){
 /**
  * 根据项目获取系统数
  */
-function countProsys($id){
+function countProsys($proid){
     $m=M("tp_prosys");
-    $where=array("project"=>$id);
+    $where=array("project"=>$proid);
     $count=$m->where($where)->count();
     return $count;
 }
@@ -274,37 +256,13 @@ function countSFunc($id){
 /**
  * 根据项目获取用例数
  */
-function countCase($id){
+function countCase($proid){
     $m=M("tp_case");
-    $where=array("fproid"=>$id);
+    $where=array("fproid"=>$proid);
     $count=$m->where($where)->count();
     return $count;
 }
 
-/**
- * 根据阶段id获取测试人员
- */
-function countATester($id){
-    $m=M("tp_stagetester");
-    $where=array("stageid"=>$id,"type"=>"A");
-    $count=$m->where($where)->count();
-    return $count;
-}
-
-function countCTester($id){
-    $m=M("tp_stagetester");
-    $where=array("stageid"=>$id,"type"=>"C");
-    $count=$m->where($where)->count();
-    return $count;
-}
-
-
-function countMTester($id){
-    $m=M("tp_stagetester");
-    $where=array("stageid"=>$id,"type"=>"M");
-    $count=$m->where($where)->count();
-    return $count;
-}
 
 /**
  * 根据分组获取项目数
@@ -327,15 +285,7 @@ function countFunc($id){
     return $count;
 }
 
-/**
- * 根据产品获取系统数
- */
-function countSys($id){
-    $m=M("system");
-    $where=array("prodid"=>$id);
-    $count=$m->where($where)->count();
-    return $count;
-}
+
 
 /**
  * 根据功能获取路径数

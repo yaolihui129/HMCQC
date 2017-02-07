@@ -10,12 +10,16 @@ class CaseController extends Controller {
          $arr=$m->find($funcid);
          $this->assign('arr',$arr);
          $where['pathid']=$arr['pathid'];
-         $data=$m->where($where)->order('sn,id')->select();
+         $data=$m->where($where)
+         ->order('sn,id')
+         ->select();
          $this->assign('data',$data);
          
-    	 $m=D('case');
-    	 $where['funcid']=$funcid;
-    	 $cases=$m->where($where)->order('sn,id')->select();
+    	 $m=D('tp_case');
+    	 $map['funcid']=$funcid;
+    	 $cases=$m->where($map)
+    	 ->order('sn,id')
+    	 ->select();
 	     $this->assign('cases',$cases);        
 
         $this->display();
@@ -36,7 +40,9 @@ class CaseController extends Controller {
         $data=$m->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
         ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
         ->join(' inner JOIN zt_tp_case ON zt_tp_func.id = zt_tp_case.funcid')
-        ->where($where)->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id,zt_tp_case.sn,zt_tp_case.id")->select();
+        ->where($where)
+//         ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id,zt_tp_case.sn,zt_tp_case.id")
+        ->select();
         $this->assign('data',$data);        
 
         $this->display();

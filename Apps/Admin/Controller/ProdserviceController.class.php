@@ -34,6 +34,7 @@ class ProdserviceController extends CommonController {
         $arr=$m->where($where)->select();
         $this->assign('arr',$arr);
         
+        
         /*实例化模型*/
         $m=D($_SESSION['db'].'prodservice');
         $map['cate']=$_GET['cate'];        
@@ -44,6 +45,7 @@ class ProdserviceController extends CommonController {
         $this->assign('data',$data);
 
         $this->assign("cate",$_GET['cate']);
+        $this->assign("desc",PublicController::editor("content",""));
         
         $this->display();
     
@@ -89,7 +91,7 @@ class ProdserviceController extends CommonController {
         $arr=$m->find($_GET[id]);
         $this->assign('arr',$arr);
         $this->assign("cate",$arr['cate']);
-        
+        $this->assign("desc",PublicController::editor("content",$arr['content']));
         $m=D('tp_cate');
         $arr=$m->find($arr['cate']);
         

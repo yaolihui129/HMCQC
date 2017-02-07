@@ -31,7 +31,7 @@
 		<ul class="list-group">
 		 <volist name='data' id='vo' empty="没有数据">
 			  <li class="list-group-item">
-			  <{$vo.id}>.<{$vo.system}>-<{$vo.path}>-<{$vo.func}>
+			  <{$vo.id}>.<{$vo.branch|getBranchName=###}>-<{$vo.parent|getModuleName=###}>-<{$vo.name}>-<{$vo.func}>
 			  ,<b>意图 :</b><{$vo.sn}>.<{$vo.main}>
 			  ,<b>预期:</b><{$vo.expected}>
 			  <span class="badge"><{$vo.state}></span>
