@@ -35,7 +35,11 @@
 				<div class="panel-heading" role="tab" id="heading<{$st.id}>">
 					<h4 class="panel-title">
 					    <a data-toggle="collapse" data-parent="#accordion" href="#<{$st.id}>" aria-expanded="true" aria-controls="<{$st.id}>">
-					      <{$st.id}>.<{$st.branch|getBranchName=###}>-<{$st.parent|getModuleName=###}>-<{$st.name}>-<b><{$st.func}></b>【<{$st.id|countFRules=###}>】<span class="badge pull-right"><{$st.state}></span>
+					      <span class="label label-default"><{$st.branch|getBranchName=###}></span>
+	                	  <span class="label label-info"><{$st.parent|getModuleName=###}></span>
+	                	  <span class="label label-info"><{$st.name}></span>
+	                	  <b><{$st.func}>(ID:<{$st.id}>)</b>【<{$st.id|countFRules=###}>】
+					      <span class="badge pull-right"><{$st.state}></span>
 					    </a>
 					  </h4>
 				</div>

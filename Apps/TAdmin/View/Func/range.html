@@ -42,7 +42,11 @@
 		        <div class="panel-heading" role="tab" id="heading<{$st.id}>">
 		          <h4 class="panel-title">
 		              <a data-toggle="collapse" data-parent="#accordion" href="#<{$st.id}>" aria-expanded="true" aria-controls="<{$st.id}>">
-		                  <span class="badge"><{$st.result}></span><{$st.id}>.<{$st.pathid}>-<b><{$st.func}></b>【<{$st.state}>】
+		                  <span class="badge"><{$st.result}></span>
+		                  <span class="label label-default"><{$st.branch|getBranchName=###}></span>
+		                  <span class="label label-info"><{$st.parent|getModuleName=###}></span>
+		                  <span class="label label-info"><{$st.name}></span><b><{$st.func}></b>
+		                  <span class="label label-default"><{$st.state}></span>
 		                  <span class="badge">历史:<{$st.id|countFResult=###}>/<{$st.id|countFQResult=###}></span>
 		              </a>
 		              <div class="btn-group pull-right">
@@ -60,7 +64,7 @@
 				          	<a href="__URL__/reset/funcid/<{$st.id}>" type="button" class="btn btn-warning btn-xs" onclick="return confirm('测试结果将被置为“未测试”')">重置</a>
 		                  	<a href="__URL__/pass/funcid/<{$st.id}>" type="button" class="btn btn-success btn-xs">通过</a>
                   		</div><br>
-		              <ul class="list-group"><{$st.id|getTest=###}></ul>
+		              <ul class="list-group"><{$st.id}></ul>
 		             		           
 		        </div>
 		      </div>

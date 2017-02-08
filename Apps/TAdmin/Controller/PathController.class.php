@@ -138,7 +138,7 @@ class PathController extends CommonController {
         $arr['results']='未测试';
         $arr['moder']=$_SESSION['realname'];
 
-        $m=D('exescene');               
+        $m=D('tp_exescene');               
         $where=array("stagetesterid"=>$stagetesterid,"type"=>$stt['type']);
         $arr['sn']=$m->where($where)->count()+1;
 
@@ -148,7 +148,7 @@ class PathController extends CommonController {
         }
         $lastId=$m->add($arr);
         
-        $m= D("func");
+        $m= D("tp_func");
         $where=array("pathid"=>$data['id'],"fproid"=>$_SESSION['proid']);
         $funcs=$m->where($where)->field("sn,id as funcid,func")->order("sn")->select();
 
@@ -157,7 +157,7 @@ class PathController extends CommonController {
             $a['path']=$arr['scene'];
             $a['exesceneid']=$lastId;
             $a['moder']=$_SESSION['realname'];
-            $m=D('exefunc');
+            $m=D('tp_exefunc');
             if(!$m->create($a)){
                 $this->error($m->getError());
             }

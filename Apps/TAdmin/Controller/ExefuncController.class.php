@@ -80,7 +80,7 @@ public function update(){
             $arr['result']='失败';
             $arr['moder']=$_SESSION['realname'];
             $arr['updateTime']=date("Y-m-d H:i:s",time());
-            $db=M('func');
+            $db=M('tp_func');
             if ($db->save($arr)){
                 $this->success("成功！");
             }else{

@@ -8,7 +8,7 @@ class ExesceneController extends CommonController{
         //初始化模型               
     	$m=M('project');
     	$where=array("zt_tp_stage.state"=>"进行中","zt_tp_stagetester.tester"=>$_SESSION['realname'],"zt_tp_stagetester.type"=>$type);
-    	$data=$m->join("zt_tp_stage ON zt_tp_program.id = zt_tp_stage.proid")
+    	$data=$m->join("zt_tp_stage ON zt_project.id = zt_tp_stage.proid")
     	 ->join("zt_tp_stagetester ON zt_tp_stage.id = zt_tp_stagetester.stageid")
     	 ->order("zt_project.end desc")->where($where)->select();
 	    $this->assign('data',$data);
@@ -145,7 +145,7 @@ public function insert(){
          $a['adder']=$_SESSION['realname'];
          $a['moder']=$_SESSION['realname'];
          $a['updateTime']=date("Y-m-d H:i:s",time());
-         $m=D('exefunc');
+         $m=D('tp_exefunc');
          if(!$m->create($a)){
              $this->error($m->getError());
          }

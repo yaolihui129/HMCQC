@@ -6,7 +6,7 @@ class FuncController extends CommonController{
          /* 接收参数*/
         $pathid=$_GET['pathid'];
         $proid=$_SESSION['proid'];
-// dump($_SESSION);
+
         /* 实例化模型*/
         $m=D('module');
         $arr=$m->find($pathid);
@@ -146,9 +146,7 @@ class FuncController extends CommonController{
         ->where($where)
         ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id")
         ->select();
-//         $m=D('tp_func');
-//         $where=array("fproid"=>$proid,"state"=>'正常');
-//         $data=$m->where($where)->select();
+
         $this->assign("data",$data);
 // dump($data);
        

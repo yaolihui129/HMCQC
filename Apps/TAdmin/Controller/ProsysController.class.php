@@ -58,7 +58,7 @@ class ProsysController extends CommonController {
         $sys=$m->find($_GET['id']);
         $this->assign('sys',$sys);
     
-        $where['prodid']=$sys['prodid'];
+        $where['product']=$sys['product'];
         $data=$m->where($where)->select();
         $this->assign('data',$data);
     
