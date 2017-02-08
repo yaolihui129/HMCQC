@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysql:3306
+Source Server         : localhost
 Source Server Version : 50532
 Source Host           : localhost:3306
 Source Database       : zentao
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50532
 File Encoding         : 65001
 
-Date: 2017-02-07 00:03:42
+Date: 2017-02-08 18:33:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -698,13 +698,13 @@ CREATE TABLE `zt_cron` (
 -- ----------------------------
 -- Records of zt_cron
 -- ----------------------------
-INSERT INTO `zt_cron` VALUES ('1', '*', '*', '*', '*', '*', '', '监控定时任务', 'zentao', '1', 'normal', '2017-02-06 18:08:12');
+INSERT INTO `zt_cron` VALUES ('1', '*', '*', '*', '*', '*', '', '监控定时任务', 'zentao', '1', 'normal', '2017-02-06 18:28:12');
 INSERT INTO `zt_cron` VALUES ('2', '30', '23', '*', '*', '*', 'moduleName=project&methodName=computeburn', '更新燃尽图', 'zentao', '1', 'normal', '2016-07-16 17:07:33');
 INSERT INTO `zt_cron` VALUES ('3', '0', '1', '*', '*', '*', 'moduleName=report&methodName=remind', '每日任务提醒', 'zentao', '1', 'normal', '2016-07-16 17:07:33');
-INSERT INTO `zt_cron` VALUES ('4', '*/5', '*', '*', '*', '*', 'moduleName=svn&methodName=run', '同步SVN', 'zentao', '1', 'normal', '2017-02-06 18:05:12');
+INSERT INTO `zt_cron` VALUES ('4', '*/5', '*', '*', '*', '*', 'moduleName=svn&methodName=run', '同步SVN', 'zentao', '1', 'normal', '2017-02-06 18:25:12');
 INSERT INTO `zt_cron` VALUES ('5', '*/5', '*', '*', '*', '*', 'moduleName=git&methodName=run', '同步GIT', 'zentao', '1', 'stop', '0000-00-00 00:00:00');
 INSERT INTO `zt_cron` VALUES ('6', '30', '0', '*', '*', '*', 'moduleName=backup&methodName=backup', '备份数据和附件', 'zentao', '1', 'normal', '2016-07-16 17:07:33');
-INSERT INTO `zt_cron` VALUES ('7', '*/5', '*', '*', '*', '*', 'moduleName=mail&methodName=asyncSend', '异步发信', 'zentao', '1', 'normal', '2017-02-06 18:05:12');
+INSERT INTO `zt_cron` VALUES ('7', '*/5', '*', '*', '*', '*', 'moduleName=mail&methodName=asyncSend', '异步发信', 'zentao', '1', 'normal', '2017-02-06 18:25:12');
 
 -- ----------------------------
 -- Table structure for `zt_dept`
@@ -5597,6 +5597,7 @@ DROP TABLE IF EXISTS `zt_tp_hr`;
 CREATE TABLE `zt_tp_hr` (
   `id` smallint(6) NOT NULL AUTO_INCREMENT,
   `title` varchar(20) DEFAULT NULL COMMENT '职位',
+  `sn` smallint(6) DEFAULT NULL,
   `num` smallint(3) DEFAULT '1' COMMENT '人数',
   `state` varchar(5) DEFAULT '正常' COMMENT '状态',
   `desc` text COMMENT '描述',
@@ -5604,17 +5605,16 @@ CREATE TABLE `zt_tp_hr` (
   `prodid` smallint(6) DEFAULT NULL,
   `place` varchar(20) DEFAULT NULL,
   `moder` varchar(10) DEFAULT NULL,
-  `rtime` timestamp NULL DEFAULT NULL COMMENT '发布时间',
+  `rtime` date DEFAULT NULL COMMENT '发布时间',
   `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zt_tp_hr
 -- ----------------------------
-INSERT INTO `zt_tp_hr` VALUES ('3', '公司CEO', '1', '发布', '121', '面议', '1', '安顺汽修', '腰立辉', null, '2017-01-21 21:07:47');
-INSERT INTO `zt_tp_hr` VALUES ('10', 'ajsdja', '1', '正常', 'asdas', '面议', '0', '河北-临城', '', null, '2017-01-25 23:54:08');
-INSERT INTO `zt_tp_hr` VALUES ('11', 'werwe', '1', '正常', 'asda', '面议', '0', '河北-临城', '', null, '2017-01-25 23:56:30');
+INSERT INTO `zt_tp_hr` VALUES ('13', '学徒工', '2', '1', '招聘中', '吃苦耐劳', '面议', '1', '临城县兴临街转盘北100米路西；', '腰立辉', '2017-02-08', '2017-02-08 13:15:45');
+INSERT INTO `zt_tp_hr` VALUES ('12', '设计人员', '1', '2', '招聘中', '有电脑基础', '面议', '1', '临城县兴临街转盘北100米路西；', '腰立辉', '2017-02-08', '2017-02-08 13:15:42');
 
 -- ----------------------------
 -- Table structure for `zt_tp_link`
@@ -6505,11 +6505,12 @@ CREATE TABLE `zt_xl_order` (
   `uaddress` varchar(255) NOT NULL COMMENT '用户地址',
   PRIMARY KEY (`id`),
   KEY `order_uid` (`uid`)
-) ENGINE=MyISAM AUTO_INCREMENT=100000 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=1608180002 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zt_xl_order
 -- ----------------------------
+INSERT INTO `zt_xl_order` VALUES ('1608180001', '5288.0', '5288.0', '4', '3', '尽快发货', '1471488598', '1471488742', '1471488709', '顺丰快递', '1231312314', '0.0', '1', 'admin', '腰立辉', '18801043607', '', '北京市北京市北京市海淀区西外大街168号');
 
 -- ----------------------------
 -- Table structure for `zt_xl_prodservice`
@@ -6579,7 +6580,7 @@ INSERT INTO `zt_xl_prodservice` VALUES ('53', '', '钛金牌', '适用于：单�
 INSERT INTO `zt_xl_prodservice` VALUES ('54', '', 'LED显示屏', '适用于：宾馆、公司、会议室、饭店、学校、门市、小区等地 特点是：使用寿命长，可随时更换内容。 分类：室内、室外、半室外；或单基色、双基色、三基色；', '0', '发布', '0', '0', '0', '999', null, '0', null, '8', '19', '/Product/2017-02-04/', '58954486bc30e.png', '腰立辉', '2017-02-06 14:55:58');
 INSERT INTO `zt_xl_prodservice` VALUES ('55', '', '发光字', '适用于：宾馆、饭店、展厅、学校、商场、商铺门头等 分类：LED发光字、吸塑发光字、不锈钢包边发光字、树脂发光字、迷你发光字、黑白板发光字 特点：亮化效果', '0', '发布', '0', '0', '0', '0', null, '0', null, '9', '19', '/Product/2017-02-04/', '5895449c1a8fc.png', '腰立辉', '2017-02-06 14:50:47');
 INSERT INTO `zt_xl_prodservice` VALUES ('56', '', '楼体亮化', '', '0', '发布', '0', '0', '0', '1', null, '0', null, '10', '19', '/Product/2017-02-04/', '589544aa4c48c.png', '腰立辉', '2017-02-05 18:27:35');
-INSERT INTO `zt_xl_prodservice` VALUES ('60', '', '打印', '', '0', '发布', '0', '0', '0', '999', null, '1', null, '1', '18', '/Product/2017-02-04/', '58954be569ec5.png', '腰立辉', '2017-02-06 23:53:28');
+INSERT INTO `zt_xl_prodservice` VALUES ('60', '', '打印', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '1', '18', '/Product/2017-02-04/', '58954be569ec5.png', '腰立辉', '2017-02-05 18:25:45');
 INSERT INTO `zt_xl_prodservice` VALUES ('59', '', '钛金字', '适用于：单位机关、宾馆、饭店、门市、学校、小区门头装饰； 特点：多年不变色、抗老化性能好、光彩夺目，给人闪闪发光感觉。', '0', '发布', '0', '0', '0', '1', null, '0', null, '7', '19', '/Product/2017-02-04/', '5895432d19e3c.png', '腰立辉', '2017-02-06 14:55:09');
 INSERT INTO `zt_xl_prodservice` VALUES ('61', '', '复印', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '2', '18', '/Product/2017-02-04/', '58954bf69b009.png', '腰立辉', '2017-02-05 18:26:08');
 INSERT INTO `zt_xl_prodservice` VALUES ('62', '', '彩印', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '3', '18', '/Product/2017-02-04/', '58954c0711d4a.png', '腰立辉', '2017-02-05 18:26:13');
@@ -6688,9 +6689,3 @@ CREATE TABLE `zt_xl_voucher` (
 -- Records of zt_xl_voucher
 -- ----------------------------
 INSERT INTO `zt_xl_voucher` VALUES ('19', '抽奖活动', '<p>\r\n	抽奖</p>\r\n', '抽奖', '2016-11-01', '2016-11-13', '发布', '40', '1', '2', '5', '10', '15', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:18:28');
-
--- ----------------------------
--- View structure for `finish`
--- ----------------------------
-DROP VIEW IF EXISTS `finish`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `finish` AS select `zt_task`.`finishedBy` AS `finishedby`,sum(`zt_task`.`estimate`) AS `estimate`,sum(`zt_task`.`consumed`) AS `consumed`,sum(`zt_task`.`left`) AS `left1` from `zt_task` where ((`zt_task`.`assignedTo` = 'closed') and (`zt_task`.`deleted` = '0')) group by `zt_task`.`finishedBy` ;

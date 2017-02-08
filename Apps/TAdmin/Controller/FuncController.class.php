@@ -109,7 +109,8 @@ class FuncController extends CommonController{
         /* 实例化模型*/
         $s = D("tp_prosys");
         $map['zt_tp_prosys.project']=$proid;
-//         $map['zt_tp_module.state']='正常';       
+        $map['zt_module.state']='正常';
+        $map['zt_tp_func.state']='正常';
         $data=$s->where($map)
         ->join('zt_branch ON zt_tp_prosys.branch =zt_branch.id')
         ->join('zt_module ON zt_branch.id = zt_module.branch')

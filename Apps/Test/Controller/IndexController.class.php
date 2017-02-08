@@ -7,9 +7,11 @@ class IndexController extends Controller {
         /* 实例化模型*/
         $m=D('projectproduct');
         $where['zt_projectproduct.product']=$id;
+        $where['zt_project.acl']='private';
+        $where['zt_project.deleted']= '0';
         $data=$m->where($where)
         ->join('zt_project ON zt_projectproduct.project = zt_project.id')
-        ->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order")
+        ->field("id,name,code,begin,end,testgp,status,pri,acl,deleted,desc,po,pm,qd,rd,order,deleted")
         ->limit(12)->select();            
         $this->assign('data',$data);
         

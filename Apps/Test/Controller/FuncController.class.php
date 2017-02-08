@@ -13,8 +13,10 @@ class FuncController extends Controller {
         $this->assign('arr',$arr);
         
         $m = D("tp_prosys");
-        $where=array("zt_tp_prosys.project"=>$proid);
-        $data=$m->where($where)->join('zt_branch ON zt_tp_prosys.branch =zt_branch.id')
+        $map['zt_tp_prosys.project']=$proid;
+        $map['zt_module.state']='正常';
+        $map['zt_tp_func.state']='正常';
+        $data=$m->where($map)->join('zt_branch ON zt_tp_prosys.branch =zt_branch.id')
         ->join('zt_module ON zt_branch.id = zt_module.branch')
         ->join('zt_tp_func ON zt_module.id = zt_tp_func.pathid')
         ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id")->select();

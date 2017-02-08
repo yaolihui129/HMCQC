@@ -46,8 +46,8 @@ function getFunc($id){
  */
 function countFResult($id){
     if ($id){
-        $where=array("proid"=>$_SESSION['proid'],"tp_exefunc.funcid"=>$id,"tp_exefunc.result"=>'失败');
-        $m=M('zt_stage');
+        $where=array("proid"=>$_SESSION['proid'],"zt_tp_exefunc.funcid"=>$id,"zt_tp_exefunc.result"=>'失败');
+        $m=M('tp_stage');
         $data=$m ->where($where)
         ->join('zt_tp_stagetester ON zt_tp_stage.id =zt_tp_stagetester.stageid')
         ->join('zt_tp_exescene ON zt_tp_stagetester.id=zt_tp_exescene.stagetesterid')
@@ -313,14 +313,14 @@ function getRules($id){
  * 根据funcid获取测试数据
  */
 function getTest($id){
-    $where['tp_exefunc.funcid']=$id;
-    $where['tp_stage.proid']=$_SESSION['proid'];   
-    $m=M('stage');
+    $where['zt_tp_exefunc.funcid']=$id;
+    $where['zt_tp_stage.proid']=$_SESSION['proid'];   
+    $m=M('tp_stage');
     $arr=$m ->where($where)
-    ->join('tp_stagetester ON tp_stage.id =tp_stagetester.stageid')
-    ->join('tp_exescene ON tp_stagetester.id=tp_exescene.stagetesterid')
-    ->join('tp_exefunc ON tp_exescene.id=tp_exefunc.exesceneid')
-    ->order('tp_exefunc.updateTime desc')
+    ->join('zt_tp_stagetester ON tp_stage.id =zt_tp_stagetester.stageid')
+    ->join('zt_tp_exescene ON zt_tp_stagetester.id=zt_tp_exescene.stagetesterid')
+    ->join('zt_tp_exefunc ON tp_exescene.id=zt_tp_exefunc.exesceneid')
+    ->order('zt_tp_exefunc.updateTime desc')
     ->select();
     
     foreach ($arr as $ar){

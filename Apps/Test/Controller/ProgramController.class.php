@@ -16,8 +16,10 @@ class ProgramController extends Controller {
         /* 实例化模型*/
         $m=M('project');
         $where=array("testgp"=>$testgp);
+        $where['acl']='private';
+        $where['deleted']= '0';
         $arr=$m->where($where)->order("end desc")->limit(12)
-        ->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order")
+        ->field("id,name,code,begin,end,testgp,status,pri,acl,deleted,desc,po,pm,qd,rd,order,deleted")
         ->select();
         $this->assign('arr',$arr);
    
