@@ -34,12 +34,11 @@
 					<default /><tr class="default">
 				</switch>
                     <td align="left" >
+	                    <span class="badge"><{$st.fproid|getProNo=###}></span>
 	                    <span class="label label-default"><{$st.branch|getBranchName=###}></span>
 	                	<span class="label label-info"><{$st.parent|getModuleName=###}></span>
 	                	<span class="label label-info"><{$st.name}></span>
-	                	<b><{$st.func}>(ID:<{$st.id}>)</b>
-	                	<span class="label label-default"><{$st.state}></span>
-                    	<span class="badge"><{$st.fproid|getProNo=###}></span>
+	                	<b><{$st.func}>(ID:<{$st.id}>)</b>	                	                    	
                        	<div class="btn-group pull-right">
 							<button type="button" class="btn btn-info btn-sm dropdown-toggle" data-toggle="dropdown">
 								 用例 <span class="badge"><{$st.id|countFCase=###}></span><span class="caret"></span>

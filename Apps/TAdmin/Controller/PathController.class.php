@@ -74,9 +74,9 @@ class PathController extends CommonController {
         $db=M('module');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
-            $this->success("修改成功！");
+            $this->success("成功！");
         }else{
-            $this->error("修改失败！");
+            $this->error("失败！");
         }
 
     }
@@ -130,10 +130,10 @@ class PathController extends CommonController {
         $arr['sceneid']=0;
         $arr['level']=2;
         $arr['stagetesterid']=$stagetesterid;
-        $arr['type']='M';
+        $arr['type']=$stt['type'];
         $arr['swho']='【功能】';
         $arr['swhen']='默认';
-        $arr['scene']=getSPath($data['id']);
+//         $arr['scene']=getSPath($data['id']);
         $arr['flow']='“'.$arr['scene'].'“下所有功能点';
         $arr['results']='未测试';
         $arr['moder']=$_SESSION['realname'];

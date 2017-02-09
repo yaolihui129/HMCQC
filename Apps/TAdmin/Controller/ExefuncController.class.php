@@ -17,8 +17,7 @@ public function index(){
     $m=D('tp_exescene');
     $arr=$m->find($id);  
     $this->assign('arr',$arr);
-    
-    
+
     $where=array("stagetesterid"=>$arr['stagetesterid'],"type"=>$arr['type']);
     $data=$m->where($where)->order("sn")->select();
     $this->assign('data',$data);    

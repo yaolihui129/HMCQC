@@ -1,19 +1,14 @@
- <layout name="layout" />
- <h2>规划列队
- 	<div class="btn-group pull-right">
-	    	<a href="__APP__/TAdmin/Stagetester/index/stageid/<{$arr.stageid}>/type/<{$arr.type}>"  class="btn btn-warning">
-	    	<span class="glyphicon glyphicon-arrow-left">返回</span></a>
-	</div>
- </h2>
+<layout name="layout" />
+<div class="container">
 <div class="row"> 
   <div class="col-md-9">
   	<div class="panel panel-info">
 	  <div class="panel-heading">
-	  	<h3 class="panel-title"><{$_SESSION['proid']|getProNo=###}>
+	  	<h3 class="panel-title">【<{$arr.type}>】规划列队(<{$_SESSION['proid']|getProNo=###}>)
 	  		<div class="btn-group pull-right">
-			  <a href="__URL__/library/stagetesterid/<{$arr.id}>"  class="btn btn-info btn-xs">
-			  <{$arr.type}>场景库<{$_SESSION['proid']|countScene=###}></a>
-			  <a href="__APP__/TAdmin/Path/library/stagetesterid/<{$arr.id}>" class="btn btn-warning btn-xs">待测模块（路径）</a>
+			  <a href="__URL__/library/stagetesterid/<{$arr.id}>"  class="btn btn-info btn-xs">场景库<{$_SESSION['proid']|countScene=###}></a>
+			  <a href="__APP__/TAdmin/Path/library/stagetesterid/<{$arr.id}>" class="btn btn-success btn-xs">待测模块</a>
+			  <a href="__APP__/TAdmin/Stagetester/index/stageid/<{$arr.stageid}>/type/<{$arr.type}>"  class="btn btn-warning btn-xs"> 返 回 </a>
 			</div>
 	  	</h3>
 	  </div>
@@ -26,14 +21,18 @@
 								<h4 class="panel-title">
 									<input  type="text" name="sn[<{$ex.id}>]" value="<{$ex.sn}>" class="input40"/>
 									<a data-toggle="collapse" data-parent="#accordion" href="#<{$ex.id}>" aria-expanded="true" aria-controls="<{$ex.id}>">								
-					                   	<{$ex.id}>：角色：<{$ex.swho}>，时间：<{$ex.swhen}>，场景：<{$ex.scene}>
+					                   	<{$ex.id}>：
+					                   	<switch name="ex.sceneid">
+							          		<case value="0"><{$ex.pathid|getSPath=###}></case>			          
+							         		 <default /><{$ex.swho}>【<{$ex.swhen}>】<{$ex.scene}>
+							      		</switch>
 					                   <span class="badge"><{$ex.id|countExeFunc=###}></span>			                   
 									</a>								
 									<span class="badge pull-right"><{$ex.results}></span>
 								</h4>
 							</div>
 							   <div id="<{$ex.id}>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading<{$ex.id}>">
-									<span class="badge pull-right"><{$ex.updatetime}></span><ul><{$ex.id|getESceneFunc=###}></ul>									
+									<ul><{$ex.id|getESceneFunc=###}></ul>									
 							   </div>
 				  		</div>
 		         	</volist>
@@ -65,6 +64,7 @@
   </div>
   
 </div> 
+</div>
 
 
               

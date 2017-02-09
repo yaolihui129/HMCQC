@@ -1,15 +1,34 @@
  <layout name="layout" />
- <h2>【<{$_SESSION["proid"]|getProNo=###}><{$type.type}>】人员安排
- <a href="__APP__/TAdmin/Stage/index/proid/<{$_SESSION['proid']}>"  class="btn btn-warning ">返回</a></h2>      
+ <div class="container">    
  <div class="row">
+  <div class="col-md-3 hidden-xs hidden-sm">
+    <div class="panel panel-info">
+    	<div class="panel-heading"><h3 class="panel-title">里程碑（<{$_SESSION["proid"]|getProNo=###}>）</h3></div>
+    	<ul class="list-group">
+      	<volist name='data' id='vo' empty="没有数据">      
+           <switch name="w.stageid">
+        	<case value="$vo.id"> <li class="list-group-item list-group-item-warning"></case>                          
+           <default />
+           	<li class="list-group-item ">
+     	   </switch> 
+           		<a href="__URL__/index/stageid/<{$vo.id}>/type/<{$type.type}>"><{$vo.sn}>.<{$vo.stage}></a>
+           		<span class="badge"><{$vo.state}></span>
+            </li>
+        </volist>
+     </ul>   
+  	</div>     
+  </div>
   <div class="col-md-5">
   	<div class="panel panel-info">
-	  <div class="panel-heading"> <{$type.stageid|getStage=###}></div>
+	  <div class="panel-heading">人员安排(<{$_SESSION["proid"]|getProNo=###}><{$type.type}>) -
+	  	<{$type.stageid|getStage=###}>
+	  	<a href="__APP__/TAdmin/Stage/index/proid/<{$_SESSION['proid']}>"  class="btn btn-warning btn-xs pull-right">返回</a>
+	  </div>
 	   <form action="__URL__/order" method="post" >
 	     <volist name='testers' id='tester'>
 	       <li class="list-group-item">
 		       	<input type="text" name="sn[<{$tester.id}>]" value="<{$tester.sn}>"  class="input40"/>
-		       	&nbsp;<{$tester.tester}>			        
+		       	&nbsp;<{$tester.id}>.<{$tester.tester}>			        
 				<a href="__APP__/TAdmin/Exescene/queue/stagetesterid/<{$tester.id}>" class="btn btn-info btn-xs pull-right">列队
 				<span class="badge"><{$tester.id|countExescene=###}></span></a>					  					  							       
 	        </li>
@@ -35,21 +54,6 @@
 	  </ul>
 	</div> 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm">
-    <div class="panel panel-default">
-    	<div class="panel-heading"><h3 class="panel-title"><{$_SESSION["proid"]|getProNo=###}></h3></div>
-    	<ul class="list-group">
-      	<volist name='data' id='vo' empty="没有数据">      
-           <switch name="w.stageid">
-        	<case value="$vo.id"> <li class="list-group-item list-group-item-warning"></case>                          
-           <default />
-           	<li class="list-group-item ">
-     	   </switch> 
-           		<a href="__URL__/index/stageid/<{$vo.id}>/type/<{$type.type}>"><{$vo.sn}>.<{$vo.stage}></a>
-           		<span class="badge"><{$vo.state}></span>
-            </li>
-        </volist>
-     </ul>   
-  	</div>     
-  </div>
+  
+</div>
 </div>

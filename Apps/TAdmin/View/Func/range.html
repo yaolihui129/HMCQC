@@ -1,7 +1,8 @@
 <layout name="layout" />
+<div class="container">
 <div class="row">
   <div class="col-md-9">
-  		<div class="panel panel-default">
+  		<div class="panel panel-info">
   <div class="panel-heading">
     <h3 class="panel-title"><{$arr.id|getPro=###}>
     	<div class="btn-group pull-right">
@@ -87,18 +88,17 @@
             <switch name="pro.id">
 				<case value="$arr.id"> <li class="list-group-item list-group-item-warning"></case>					   					    
 				<default /><li class="list-group-item ">
-			</switch> 
-            
-            <a href="__URL__/range/proid/<{$pro.id}>">
-            	<{$pro.end}>:<{$pro.name}><br>
-            	<{$pro.code}>:<{$pro.qd||getRealname=###}>
-            	<span class="badge"><{$pro.status|getProst=###}></span>
-            </a>
-            	<span class="badge"><{$pro.id}></span></li>
+			</switch>            
+	            <a href="__URL__/range/proid/<{$pro.id}>">
+	            	<span class="badge"><{$pro.status|getProst=###}></span><{$pro.name}>
+	            	<span class="badge"><{$pro.id}></span>   
+	            </a>           	
+            </li>
         </volist>
       </ul>	  
 	</div>
   	 
   </div>
   
-</div>  
+</div> 
+</div> 

@@ -34,9 +34,10 @@
 			  
 			  <span class="label label-default"><{$vo.branch|getBranchName=###}></span>
               <span class="label label-info"><{$vo.parent|getModuleName=###}></span>
-              <span class="label label-info"><{$vo.name}></span><b><{$vo.func}></b>;              
-			  <{$vo.id}>.<b>意图 :</b><{$vo.sn}>.<{$vo.main}>,<b>预期:</b><{$vo.expected}>
-			  <span class="badge"><{$vo.state}></span>
+              <span class="label label-info"><{$vo.name}></span><b><{$vo.func}></b><br><br>             
+			  <div class="well well-sm"><{$vo.id}>.<{$vo.main}><span class="badge"><{$vo.state}></span><br>
+			  <b>预期:</b><{$vo.expected}>
+			  </div>
 			  </li>
 		 </volist> 
 		</ul>			

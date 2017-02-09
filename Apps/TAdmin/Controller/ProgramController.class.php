@@ -25,21 +25,6 @@ class ProgramController extends CommonController {
     
    
 
-    public function mod(){
-        /* 接收参数*/
-        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-        $testgp=!empty($_GET['testgp']) ? $_GET['testgp'] :$_SESSION['testgp'];
-       /* 实例化模型*/
-        $m=M('project');
-        $data= $m->where(array("testgp"=>"$testgp"))
-        ->order("end desc")
-        ->select();
-        $this->assign("data",$data);
-
-        $arr=$m->find($id);
-        $this->assign('p',$arr);               
-        $this->display();
-    }
 
 
    public function search(){
@@ -52,7 +37,9 @@ class ProgramController extends CommonController {
        $this->assign('data',$data);  
        /* 实例化模型*/
        $m=M('project');        
-       $map['name|code']=array('like','%'.$search.'%');       
+       $map['name|code']=array('like','%'.$search.'%'); 
+       $map['acl']='private';
+       $map['deleted']='0';
        $arr=$m->where($map)->order("end desc")->select();
        $this->assign('arr',$arr);
    

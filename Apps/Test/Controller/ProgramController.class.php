@@ -20,6 +20,7 @@ class ProgramController extends Controller {
         $where['deleted']= '0';
         $arr=$m->where($where)->order("end desc")->limit(12)
         ->field("id,name,code,begin,end,testgp,status,pri,acl,deleted,desc,po,pm,qd,rd,order,deleted")
+        ->order("end desc")
         ->select();
         $this->assign('arr',$arr);
    

@@ -1,5 +1,5 @@
 <layout name="layout" />
-<div class="container-fluid">
+<div class="container">
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid ">
     <div class="navbar-header">
@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">     
       <form action="__URL__/search " method="post" class="navbar-form navbar-left" role="search">
         <div class="form-group input-group ">
-          <input  type="text" class="form-control" name="search" value="<{$w.search}>" placeholder="项目、负责人">
+          <input  type="text" class="form-control" name="search" value="<{$w.search}>" placeholder="项目、项目代码">
           <input  type="hidden"  name="testgp" value="<{$w.testgp}>" >
           <span class="input-group-btn">
          	 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
@@ -32,23 +32,24 @@
           </ul>
         </li>                    
       </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+    </div>
+  </div>
 </nav>     
 </div>
                   
-<div class="container-fluid">   
+<div class="container">   
   <div class="starter-template">          
      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"><br>
          <volist name='arr' id='pro' empty="没有数据">
          <div class="panel panel-default">
 			<div class="panel-heading" role="tab" id="heading<{$pro.id}>">
 			<h4 class="panel-title">
+				<span class="badge"><{$pro.status|getProst=###}></span>
 				<a data-toggle="collapse" data-parent="#accordion" href="#<{$pro.id}>" aria-expanded="true" aria-controls="<{$pro.id}>">
-				<{$pro.code}>.<{$pro.qd|getRealname=###}>:<{$pro.name}></a><span class="badge"><{$pro.status|getProst=###}></span>
+				<{$pro.qd|getRealname=###}>:<{$pro.name}></a>
 				<div class="btn-group pull-right"  >
-					<a type="button" class="btn btn-warning btn-sm" href="__APP__/TAdmin/Func/range/proid/<{$pro.id}>">范围:<{$pro.id}> </a>
-					<button type="button" class="btn btn-warning btn-sm dropdown-toggle" data-toggle="dropdown">
+					<a type="button" class="btn btn-warning btn-xs" href="__APP__/TAdmin/Func/range/proid/<{$pro.id}>">范围:<{$pro.id}> </a>
+					<button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown">
 					<span class="caret"></span>
 					<span class="sr-only">Toggle Dropdown</span>
 					</button>
@@ -59,9 +60,7 @@
 					   <li><a  href="__APP__/TAdmin/Scene/index/proid/<{$pro.id}>">场景 <span class="badge"><{$pro.id}><span></a></li>
 					   <li><a  href="__APP__/TAdmin/Func/func/proid/<{$pro.id}>">功能点&nbsp;</a></li>					                				                
 					   <li><a  href="__APP__/TAdmin/Case/procase/proid/<{$pro.id}>">用例<span class="badge"><{$pro.id}></span></a></li>				                
-					   <li><a  href="__APP__/TAdmin/Element/library/proid/<{$pro.id}>">控件库</a></li>
-					   <li class="divider"></li>
-					   <li><a href="__URL__/mod/id/<{$pro.id}>">详情</a></li>					   
+					   <li><a  href="__APP__/TAdmin/Element/library/proid/<{$pro.id}>">控件库</a></li>					   					   
 					</ul>					           
 				</div>	     	
 			</h4>

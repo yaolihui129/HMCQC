@@ -6,8 +6,10 @@
 	            <ul class="list-group">
 		  			 <volist name='data' id='vo' empty="没有数据">
 		  			 <li class="list-group-item" >
-		            	<a href="__URL__/mod/id/<{$vo.id}>/p/<{$p}>"><{$vo.sn}>.<{$vo.main}>【<{$vo.level}>】
-		            	<span class="badge pull-right"><{$vo.state}></span>
+		            	<a href="__URL__/mod/id/<{$vo.id}>/p/<{$p}>"><{$vo.sn}>
+		            	<span class="badge"><{$vo.state}></span>
+		            	<b>意图：</b><{$vo.main}>【<{$vo.level}>】
+		            	
 		            	</a>
 					</li>
 		        	</volist>
@@ -18,23 +20,16 @@
  <h3>用例-编辑</h3>	
   	<div class="panel-body">
   		<form action="__APP__/TAdmin/Case/update" method="post" class="form-horizontal" role="form" >
-  		<input type="hidden" name="id" value="<{$case.id}>" />  		     	  
-  		<div class="form-group">
-  		     <div class="col-sm-2"></div>
-  		     <div class="col-sm-10"><{$case.moder}> 更新于:<{$case.updatetime}></div>
-  		</div>
-		<div class="form-group">					   
-			<label for="short" class="col-sm-2 control-label">顺序:</label>
-			<div class="col-sm-10"><input type="text" class="form-control" name="sn" value="<{$case.sn}>" placeholder="顺序"></div>
-		</div>
-		<div class="form-group">
-			<label for="product" class="col-sm-2 control-label">意图:</label>
-			<div class="col-sm-10"><input type="text" class="form-control" name="main" value="<{$case.main}>" placeholder="意图"></div>
-		</div>
+  		<input type="hidden" name="id" value="<{$case.id}>" />  		     	  		
 		<div class="form-group">					   
 			<label for="short" class="col-sm-2 control-label">级别:</label>
 			<div class="col-sm-10"><input type="text" class="form-control" name="level" value="<{$case.level}>" placeholder="级别"></div>
 		</div>
+		<div class="form-group">
+			<label for="product" class="col-sm-2 control-label">*意图:</label>
+			<div class="col-sm-10"><input type="text" class="form-control" name="main" value="<{$case.main}>" placeholder="意图"></div>
+		</div>
+		
 		<div class="form-group">
 			<label for="product" class="col-sm-2 control-label">预期:</label>
 			<div class="col-sm-10"><input type="text" class="form-control" name="expected" value="<{$case.expected}>" placeholder="预期"></div>
@@ -64,13 +59,13 @@
 		  <div class="panel-heading">需求规则</div>
 		  <ul class="list-group">	   		
 	         <volist name='rules' id='rule' empty="无需求描述">
-	            <li class="list-group-item"><{$rule.sn}>.              
+	            <li class="list-group-item"><span class="label label-default"><{$rule.source}><{$rule.updatetime}> </span><br><{$rule.sn}>.              
 	                <switch name="rule.state">
 			          <case value="待确认"><b> <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)</b></case>
 			          <case value="作废"><s> <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)</s></case>
 			          <default /> <{$rule.id}>:【<{$rule.state}>】<{$rule.rules}>(<{$rule.fproid|getProNo=###}>)
 			      	</switch>	                
-	                <span class="badge"><{$rule.source}><{$rule.updatetime}> 		         	                	               	         	                	                
+	                		         	                	               	         	                	                
 	            </li>
 	        </volist>
 	  	</ul>		  		  

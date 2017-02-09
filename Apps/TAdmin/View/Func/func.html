@@ -1,7 +1,8 @@
 <layout name="layout" />
+<div class="container">
 <div class="row"> 
   <div class="col-md-9">
-  		<div class="panel panel-default">
+  		<div class="panel panel-info">
 		  <div class="panel-heading">
 		    <h3 class="panel-title"><{$arr.id|getPro=###}>
 		    	<div class="btn-group pull-right"><a href="__APP__/TAdmin/Program"  class="btn btn-warning btn-xs">返回</a></div>
@@ -65,7 +66,7 @@
   
   </div>
   <div class="col-md-3 hidden-xs hidden-sm">
-  	<div class="panel panel-default">
+  	<div class="panel panel-info">
 	  <div class="panel-heading">
 	    <h3 class="panel-title"><{$_SESSION['testgp']}>测试项目</h3>
 	  </div>
@@ -76,9 +77,7 @@
 				<default /><li class="list-group-item ">
 			</switch>   
             	<a href="__URL__/func/proid/<{$pro.id}>">
-	            	<{$pro.end}>:<{$pro.name}><br>
-            	<{$pro.code}>:<{$pro.qd|getRealname=###}>
-            	<span class="badge"><{$pro.status|getProst=###}></span>
+	            	<span class="badge"><{$pro.status|getProst=###}></span><{$pro.name}>
             	</a>
             </li>
         </volist>
@@ -87,4 +86,5 @@
   	 
   </div>
   
-</div>  
+</div> 
+</div> 

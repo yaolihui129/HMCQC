@@ -17,10 +17,6 @@ public function index(){
     	 $cases=$m->where($where)->order('sn,id')->select();
 	     $this->assign('cases',$cases);
 	     
-	     $m=D('tp_rules');
-	     $rules=$m->where($where)->order('sn,id')->select();
-	     $this->assign('rules',$rules);
-	     
 	     /* 添加*/
 	     $count=$m->where($where)->count()+1;
 	     $this->assign("c",$count);

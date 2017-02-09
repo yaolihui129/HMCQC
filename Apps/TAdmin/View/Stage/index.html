@@ -1,15 +1,16 @@
 <layout name="layout" />
+<div class="container">
 <div class="row">  
   <div class="col-md-9">
   		<div class="panel panel-info">
-  <div class="panel-heading">
-    <h3 class="panel-title"><{$arr.id|getPro=###}>
-    	<div class="btn-group pull-right">
-    		<a data-toggle="modal" href="#tianjstage" class=" btn btn-info btn-xs" >添加</a>
-    		<a href="__APP__/TAdmin/Program"  class="btn btn-warning btn-xs">返回</a>
-    	</div>    	    	
-    </h3>
-  </div>
+		  <div class="panel-heading">
+		    <h3 class="panel-title"><{$arr.id|getPro=###}>
+		    	<div class="btn-group pull-right">
+		    		<a data-toggle="modal" href="#tianjstage" class=" btn btn-info btn-xs" >添加</a>
+		    		<a href="__APP__/TAdmin/Program"  class="btn btn-warning btn-xs">返回</a>
+		    	</div>    	    	
+		    </h3>
+		  </div>
   <div class="panel-body table-responsive">
    	<b> 产品：</b><{$arr.po|getRealname=###}><b> 项目：</b><{$arr.pm|getRealname=###}><b> 研发：</b><{$arr.rd|getRealname=###}><b> 测试：</b><{$arr.qd|getRealname=###}><br>
 	<div class="well well-sm"><{$arr.desc}></div>	  
@@ -69,12 +70,12 @@
 				<case value="$arr.id"> <li class="list-group-item list-group-item-warning"></case>					   					    
 				<default /><li class="list-group-item ">
 		 </switch> 
-            <a href="__URL__/index/proid/<{$pro.id}>">
-            	<{$pro.end}>:<{$pro.name}><br>
-            	<{$pro.code}>:<{$pro.qd|getRealname=###}>
+            <a href="__URL__/index/proid/<{$pro.id}>">           	
             	<span class="badge"><{$pro.status|getProst=###}></span>
+            	<{$pro.name}>
+            	<span class="badge"><{$pro.id|countStage=###}></span></li>
             </a>
-            <span class="badge"><{$pro.id|countStage=###}></span></li>
+            
         </volist>
       </ul>	  
 	</div>
@@ -82,7 +83,7 @@
   </div>
   
 </div> 
-
+</div>
 
 <!-- 添加-模态框 -->
 <div class="modal fade " id="tianjstage" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -106,9 +107,8 @@
 					<div class="col-sm-8">
 					  <select name="stage" class="form-control">
                          <option value="编写测试计划">编写测试计划</option>
-                         <option value="编写测试用例">编写测试用例</option>
-                         <option value="研发冒烟测试">研发冒烟测试</option>
-                         <option value="产品冒烟测试">产品冒烟测试</option>
+                         <option value="编写测试用例">编写测试用例</option>                         
+                         <option value="测试冒烟测试">测试冒烟测试</option>
                          <option value="第一轮测试">第一轮测试</option>
                          <option value="第二轮测试">第二轮测试</option>
                          <option value="第三轮测试">第三轮测试</option>

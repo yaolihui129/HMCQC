@@ -1,7 +1,8 @@
 <layout name="layout" />
+<div class="container">
 <div class="row"> 
   <div class="col-md-9">
-  	<div class="panel panel-default">
+  	<div class="panel panel-info">
 	  <div class="panel-heading">
 	    <h3 class="panel-title"><{$arr.id|getPro=###}>
 	    	<div class="btn-group pull-right">
@@ -54,7 +55,7 @@
   
   </div>
   <div class="col-md-3 hidden-xs hidden-sm">
-  	<div class="panel panel-default">
+  	<div class="panel panel-info">
 	  <div class="panel-heading"><h3 class="panel-title"><{$_SESSION['testgp']}>组测试项目</h3></div>
 	  <ul class="list-group">
 	    <volist name='pros' id='pro' empty="没有数据"> 			
@@ -63,11 +64,10 @@
 				<default /><li class="list-group-item ">
 		 </switch> 
             <a href="__URL__/index/proid/<{$pro.id}>">
-            	<{$pro.end}>:<{$pro.name}><br>
-            	<{$pro.code}>:<{$pro.qd|getRealname=###}>
-            	<span class="badge"><{$pro.status|getProst=###}></span>
+				<span class="badge"><{$pro.status|getProst=###}></span>
+            	<{$pro.name}><span class="badge"><{$pro.id}></span>
             </a>
-            <span class="badge"><{$pro.id}></span></li>
+            </li>
         </volist>
       </ul>	  
 	</div>
@@ -75,7 +75,7 @@
   </div>
   
 </div> 
-
+</div>
 
 
 <!-- 添加-模态框 -->

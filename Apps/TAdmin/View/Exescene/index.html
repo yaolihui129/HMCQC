@@ -1,11 +1,11 @@
 <layout name="layout" />
+<div class="container">
 <div class="row"> 
   <div class="col-md-9">
-  	<div class="panel panel-default">
+  	<div class="panel panel-info">
 	  <div class="panel-heading">
 	  	<h3 class="panel-title">执行场景<{$stagetesterid}>
-	  		<a href="__APP__/TAdmin/Program" type="button" class="btn btn-warning btn-xs pull-right">
-	  		<span class="glyphicon glyphicon-arrow-left"> 返回</span></a>
+	  		<a href="__APP__/TAdmin/Program" class="btn btn-warning btn-xs pull-right">返回</a>
 	  	</h3>
 	  </div>
 	  <div class="panel-body table-responsive">
@@ -13,8 +13,13 @@
 	  			<volist name='exe' id='ex' empty="没有数据">
   					<li class="list-group-item">
   					<span>
-  						<{$ex.sn}>.<{$ex.swho}>【<{$ex.swhen}>】<{$ex.scene}><span class="badge"><{$ex.results}></span>
-  						<a href="__APP__/TAdmin/Exefunc/index/id/<{$ex.id}>"type="button" class="btn btn-info btn-xs pull-right">执行
+  						<span class="badge"><{$ex.results}></span>
+  						<switch name="ex.sceneid">
+			          		<case value="0"><a href="__APP__/TAdmin/Exefunc/index/id/<{$ex.id}>"><{$ex.pathid|getSPath=###}></a></case>			          
+			         		 <default /><{$ex.swho}>【<{$ex.swhen}>】<{$ex.scene}>
+			      		</switch>
+  						
+  						<a href="__APP__/TAdmin/Exefunc/index/id/<{$ex.id}>" type="button" class="btn btn-info btn-xs pull-right">执行
   						<span class="badge"><{$ex.id|countExeFunc=###}></span></a>  						
   					</span>
   					</li>
@@ -24,7 +29,7 @@
   	</div>
   </div>
   <div class="col-md-3 hidden-xs">
-  	<div class="panel panel-default">
+  	<div class="panel panel-info">
 	  <div class="panel-heading">
 	    <h3 class="panel-title">里程碑</h3>
 	  </div>
@@ -36,8 +41,8 @@
 				<li class="list-group-item ">
 		 </switch> 
 		            <a href="__URL__/index/stagetesterid/<{$vo.id}>/type/<{$type}>">
-		             <{$vo.code}>:<{$vo.id}><span class="badge pull-right"><{$vo.id|countExescene=###}></span><br>
-		             <{$vo.stage}></a></span>
+		             <{$vo.id}>:<span class="badge pull-right"><{$vo.id|countExescene=###}></span>
+		             <{$vo.stage}>(<{$vo.code}>)</a></span>
              	</li>
         </volist>
       </ol>	  
@@ -46,4 +51,5 @@
   </div>
   
 </div> 
+</div>
             

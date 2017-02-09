@@ -19,9 +19,13 @@ class ExesceneController extends CommonController{
 	    $exe=$m->where($where)->order("sn")->select();
 	    $this->assign('exe',$exe);
 	    $this->assign('stagetesterid',$stagetesterid);
-	     
+	    if($exe) {
+	        $this->display();
+	    }else {
+	        $this->error("没有任务");
+	    }
 	    
-	    $this->display();
+	    
     }
 
     public function order(){

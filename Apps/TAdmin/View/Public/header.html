@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>测试管理平台</title>
-	<!--<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">-->
-	<import type="css" file="css.bootstrap"/>
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 	<import type="css" file="css.admin" />	
 	    <!--[if lt IE 9]>
 	      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -33,11 +32,17 @@
                <span class="glyphicon glyphicon-book">任务</span>
                <span class="caret"></span></a>
 		       <ul class="dropdown-menu" role="menu">                
-		           <li><a href="__APP__/TAdmin/Exescene/index/type/C"> 用例<span class="badge"></span></a></li>
+		           <li><a href="__APP__/TAdmin/Exescene/index/type/C"> 用例
+		           <span class="badge"><{$_SESSION.realname|countCExescene=###}></span></a>
+		           </li>
 		           <li class="divider"></li>
-		           <li><a href="__APP__/TAdmin/Exescene/index/type/M">手工<span class="badge"></span></a></li>
+		           <li><a href="__APP__/TAdmin/Exescene/index/type/M">手工
+		           <span class="badge"><{$_SESSION.realname|countMExescene=###}></span></a>
+		           </li>
 		           <!-- <li class="divider"></li>
-		           <li><a href="__APP__/TAdmin/Exescene/test/type/A">自动<span class="badge"></span></a></li> -->		                 
+		           <li><a href="__APP__/TAdmin/Exescene/test/type/A">自动
+		           <span class="badge"><{$_SESSION.realname}></span></a>
+		           </li> -->		                 
 		       </ul>
            </li>          
             <li class="dropdown">
