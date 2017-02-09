@@ -6,7 +6,7 @@ class ServicelistController extends Controller {
 
         if(!($_SESSION['init'])){
                 $m=D('product');
-                $data=$m->find(1);
+                $data=$m->find(12);
                 $_SESSION['web']=$data['web'];
                 $_SESSION['adress']=$data['adress'];
                 $_SESSION['desc']=$data['desc'];
@@ -22,20 +22,21 @@ class ServicelistController extends Controller {
                 $_SESSION['init']=1;                              
             }
             
-            $where['prodid']=1;            
-            $m=D('tp_cate');
+            $where['prodid']=12;            
+            $m=D('dm_cate');
             $arr=$m->where($where)->order('sn')->select();                        
             $this->assign('arr',$arr);
-//             dump($arr);
-            $m=D('xl_prodservice');
+            
+            $m=D('dm_prodservice');
+            $map['state']='发布';
             if($_GET['cate']){
                 $map['cate']=$_GET['cate'];
-                //$map['state']='发布';
+                
                 $data=$m->where($map)
                 ->field("id,mark,name,state,money,smoney,num,istj,cate,path,img,utime")
                 ->order('utime desc')->select();
             }else {
-                $data=$m->field("id,mark,name,state,money,smoney,num,istj,cate,path,img,utime")
+                $data=$m->where($map)->field("id,mark,name,state,money,smoney,num,istj,cate,path,img,utime")
                 ->order('utime desc')->limit(12)->select();
             }
                    

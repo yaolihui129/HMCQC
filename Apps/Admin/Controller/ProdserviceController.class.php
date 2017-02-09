@@ -3,7 +3,7 @@ namespace Admin\Controller;
 class ProdserviceController extends CommonController {
     public function index(){
         /*实例化模型*/        
-        $m=D('tp_cate');
+        $m=D($_SESSION['db'].'cate');
         $where['prodid']=$_SESSION['prodid'];
         $where['state']='正常';
         $arr=$m->where($where)->order('sn')->select();
@@ -23,7 +23,7 @@ class ProdserviceController extends CommonController {
     
     public function add(){
         /*实例化模型*/
-        $m=D('tp_cate');
+        $m=D($_SESSION['db'].'cate');
         $arr=$m->find($_GET['cate']);
         if ($arr){
             $where['pid']=$arr['pid'];             

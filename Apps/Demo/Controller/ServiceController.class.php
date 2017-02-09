@@ -6,7 +6,7 @@ class ServiceController extends Controller {
 
         if(!($_SESSION['init'])){
            $m=D('product');
-           $data=$m->find(1);
+           $data=$m->find(12);
            $_SESSION['web']=$data['web'];
            $_SESSION['adress']=$data['adress'];
            $_SESSION['desc']=$data['desc'];
@@ -22,10 +22,9 @@ class ServiceController extends Controller {
            $_SESSION['init']=1;                               
         }
         
-        $m=D('xl_prodservice');
+        $m=D('dm_prodservice');
         $arr=$m->find($_GET['id']);
         $this->assign('arr',$arr);
-//         dump($arr);
         
         
         $this->display();

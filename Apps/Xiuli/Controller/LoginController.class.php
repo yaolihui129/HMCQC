@@ -16,10 +16,10 @@ class LoginController extends Controller {
             session('[start]');
             $_SESSION=$customer;
             $_SESSION['isCLogin']=2;
-            $this->redirect('/Xiuli/Index/index');
+            $this->redirect('/Xiuli/Index');
         }else{
 
-            $this->error('用户或密码错误，请重新登陆！', U('Xiuli/Index/index'));
+            $this->error('用户或密码错误，请重新登陆！', U('Xiuli/Index'));
         }
 
     }
@@ -30,11 +30,10 @@ class LoginController extends Controller {
 
         if (isset($_COOKIE[session_name()])) {
             setcookie(session_name(),'',time()-3600,'/');
-        }
-        // 销毁sesstion
-        session_destroy();
+        }        
+        session_destroy();// 销毁sesstion
 
-        $this->success("再见 {$realname}, 退出成功!", U('Xiuli/Index/index'));
+        $this->success("再见 {$username}, 退出成功!", U('Xiuli/Index'));
 
     }
 }

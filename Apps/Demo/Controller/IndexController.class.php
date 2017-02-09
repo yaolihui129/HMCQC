@@ -5,7 +5,7 @@ class IndexController extends Controller {
     public function index(){
            
         $m=D('product');
-        $data=$m->find(1);
+        $data=$m->find(12);
         $_SESSION['web']=$data['web'];
         $_SESSION['adress']=$data['adress'];
         $_SESSION['desc']=$data['desc'];
@@ -22,12 +22,13 @@ class IndexController extends Controller {
         $_SESSION['os']=GetOs();           
                 
         $m=D('tp_ad');
-        $where['prodid']=1;
+        $where['prodid']=12;
         $pic=$m->where($where)->order('utime desc')->select();
         $this->assign('pic',$pic);
         
         $m=D('xl_prodservice');
         $where['istj']=1;
+        $where['state']='发布';
         $data=$m->where($where)
                 ->field("id,mark,name,state,money,smoney,num,istj,cate,path,img,utime")
                 ->order('utime desc')

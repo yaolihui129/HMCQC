@@ -22,19 +22,20 @@ class ServicelistController extends Controller {
             }
             
             $where['prodid']=2;            
-            $m=D('tp_cate');
+            $m=D('tc_cate');
             $arr=$m->where($where)->order('sn')->select();                        
             $this->assign('arr',$arr);
-//             dump($arr);
+
             $m=D('tc_prodservice');
+            $map['state']='发布';
             if($_GET['cate']){
                 $map['cate']=$_GET['cate'];
-                //$map['state']='发布';
+                
                 $data=$m->where($map)
                 ->field("id,mark,name,state,money,smoney,num,istj,cate,path,img,utime")
                 ->order('utime desc')->select();
             }else {
-                $data=$m->field("id,mark,name,state,money,smoney,num,istj,cate,path,img,utime")
+                $data=$m->where($map)->field("id,mark,name,state,money,smoney,num,istj,cate,path,img,utime")
                 ->order('utime desc')->limit(12)->select();
             }
                    

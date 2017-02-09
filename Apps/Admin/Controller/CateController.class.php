@@ -6,7 +6,7 @@ class CateController extends CommonController {
         
         $where['prodid']=$_SESSION['prodid'];
         $where['pid']=!empty($_GET['pid']) ? $_GET['pid'] : 0;
-        $m=D('tp_cate');
+        $m=D($_SESSION['db'].'cate');
         $data=$m->where($where)->order('sn')->select();
         $this->assign('data',$data);
         
@@ -20,7 +20,7 @@ class CateController extends CommonController {
         /*接收参数*/
         $pid=!empty($_GET['pid']) ? $_GET['pid'] : 0;      
         /*实例化模型*/
-        $m=D('tp_cate');
+        $m=D($_SESSION['db'].'cate');
         $where['prodid']=$_SESSION['prodid'];        
         $data=$m->where($where)->order('sn')->select();
         $this->assign('data',$data);
@@ -36,7 +36,7 @@ class CateController extends CommonController {
     
     public function insert(){
     
-        $m=D('tp_cate');
+        $m=D($_SESSION['db'].'cate');
          
         $_POST['moder']=$_SESSION['realname'];
         $_POST['prodid']=$_SESSION['prodid'];
@@ -54,7 +54,7 @@ class CateController extends CommonController {
     
     public function order(){
         /* 实例化模型*/
-        $db = D('tp_cate');
+        $db = D($_SESSION['db'].'cate');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
             $num += $db->save(array("id"=>$id, "sn"=>$sn));
@@ -68,7 +68,7 @@ class CateController extends CommonController {
     }
     
     public function mod(){
-        $m=D('tp_cate');
+        $m=D($_SESSION['db'].'cate');
         $arr=$m->order('sn')->find($_GET[id]);
         $this->assign('arr',$arr);
         
@@ -82,7 +82,7 @@ class CateController extends CommonController {
     
     public function update(){
         /* 实例化模型*/
-        $db=D('tp_cate');
+        $db=D($_SESSION['db'].'cate');
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
@@ -103,7 +103,7 @@ class CateController extends CommonController {
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
         /* 实例化模型*/
-        $m=D('tp_cate');
+        $m=D($_SESSION['db'].'cate');
         $count =$m->delete($id);
         if ($count>0) {
             $this->success('删除成功');

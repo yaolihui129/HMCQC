@@ -15,10 +15,10 @@ class LoginController extends Controller {
             session('[start]');
             $_SESSION=$customer;
             $_SESSION['isCLogin']=2;
-            $this->redirect('/Tuocai/Index/index');
+            $this->redirect('/Mtsh/Index/index');
         }else{
 
-            $this->error('用户或密码错误，请重新登陆！', U('Tuocai/Index/index'));
+            $this->error('用户或密码错误，请重新登陆！', U('Mtsh/Index/index'));
         }
 
     }

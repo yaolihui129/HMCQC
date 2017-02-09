@@ -25,7 +25,6 @@ class ServiceController extends Controller {
         $m=D('mt_prodservice');
         $arr=$m->find($_GET['id']);
         $this->assign('arr',$arr);
-//         dump($arr);
         
         
         $this->display();

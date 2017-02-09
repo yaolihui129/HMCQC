@@ -24,13 +24,10 @@ class ServiceController extends Controller {
         
         $m=D('as_prodservice');
         $arr=$m->find($_GET['id']);
-        $this->assign('arr',$arr);
-//         dump($arr);
-        
+        $this->assign('arr',$arr);       
         
         $this->display();
     }
-    
-    
+       
     
 }
