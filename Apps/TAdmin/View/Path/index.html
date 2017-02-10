@@ -2,7 +2,7 @@
 <div class="container">
 <div class="row"> 
   <div class="col-md-9">
-  	<div class="panel panel-default">
+  	<div class="panel panel-info">
 	  <div class="panel-heading">
 	  	<h3 class="panel-title"><{$arr.name}>
 	  		<div class="btn-group pull-right">	  		
@@ -12,15 +12,11 @@
 	  </div>
 	  <div class="panel-body table-responsive">
 		<table class="table table-striped table-bordered table-hover table-condensed ">
-	          <tr >	          	
-	            <th width=3% align="center" bgcolor="#ccc">顺序</th>
-	            <th width=80% align="left"  bgcolor="#ccc">路径</th>  
-	         </tr>
 	         <form action="__URL__/order" method="post" >
 	         <volist name='pathes' id='st' empty="没有数据">
 	            <tr> 	            	
-	                <td align="center" ><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/></td>
-	                <td ><{$st.id}><{$st.branch|getBranchName=###}>-<{$st.parent|getModuleName=###}>-<{$st.name}>【<{$st.state}>】
+	                <td width=3% align="center" ><input type="text" name="sn[<{$st.id}>]" value="<{$st.sn}>"  class="input40"/></td>
+	                <td width=80%><{$st.id|getSPath=###}>
 	                    <div class="btn-group pull-right">
 			                <a href="__APP__/TAdmin/Func/index/pathid/<{$st.id}>" type="button" class="btn btn-info btn-xs">功能点<{$st.id|countFunc=###}></a>
 			                <button type="button" class="btn btn-info btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -43,7 +39,7 @@
   
   </div>
   <div class="col-md-3 hidden-xs">
-  	<div class="panel panel-default">
+  	<div class="panel panel-info">
 	  <div class="panel-heading"><h3 class="panel-title">测试系统</h3></div>
 	  <ul class="list-group">
 	    <volist name='data' id='vo' empty="没有数据"> 			

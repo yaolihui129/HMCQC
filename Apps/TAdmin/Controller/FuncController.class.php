@@ -255,8 +255,6 @@ class FuncController extends CommonController{
     
     }
 
-
-
     public function del(){
         /* 接收参数*/
         $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
@@ -267,17 +265,17 @@ class FuncController extends CommonController{
         if ($arr){
             $this->error('该功能点下有用例，不能删除');
         }else {
-            $m=D('rules');
+            $m=D('tp_rules');
             $arr=$m->where($where)->select();
             if ($arr){
                 $this->error('该功能点下有规则，不能删除');
             }else {
-                $m=D('element');
+                $m=D('tp_element');
                 $arr=$m->where($where)->select();
                 if ($arr){
                     $this->error('该功能点下有控件，不能删除');
                 }else {
-                    $m=M('func');                   
+                    $m=M('tp_func');                   
                     $count =$m->delete($id);
                     if ($count>0) {
                         $this->success('删除成功');

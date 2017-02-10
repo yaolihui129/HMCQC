@@ -309,11 +309,11 @@ function getPlan($dateid){
     }
     
     /**
-     * 根据proid获取系统数
+     * 根据project获取系统数
      */
-    function countProsys($proid){
+    function countProsys($project){
         $m=M("tp_prosys");
-        $where=array("proid"=>$proid);
+        $where=array("project"=>$project);
         $count=$m->where($where)->count();
         return $count;
     }
@@ -399,8 +399,10 @@ function getPlan($dateid){
             ->where($where)
             ->select();
     
-            $str= '<span class="label label-default">'.getBranchName($data[0]['branch'])."</span>"
-                    .getModuleName($data[0]['parent'])."-".$data[0]['name']."(".$data[0]['id'].")";
+            $str= '<span class="label label-default">'.getBranchName($data[0]['branch'])
+                    .'</span>&nbsp;<span class="label label-info">'
+                    .getModuleName($data[0]['parent'])."</span><b>"
+                    .$data[0]['name']."(".$data[0]['id'].")</b>";
             return $str;
         }else {
             return ;
@@ -679,7 +681,7 @@ function getPlan($dateid){
   // 根据id获取分类名
   function getCatname($cateid){
       if ($cateid){
-          $m=M('tp_cate');
+          $m=M($_SESSION['db'].'cate');
           $data=$m->find($cateid);
           $str=getCatname($data['pid'])."-".$data['catname'];
           return $str;

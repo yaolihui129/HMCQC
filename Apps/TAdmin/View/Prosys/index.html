@@ -31,7 +31,7 @@
 	</ul>
 	<div class="row">
 	  <div class="col-md-6">
-	  		<div class="panel panel-default">
+	  		<div class="panel panel-success">
 			  <div class="panel-heading">关联系统</div>
 			      <ul class="list-group">
 			        <volist name='data' id='st' empty="没有数据">
@@ -61,12 +61,13 @@
 			</div>
 	  </div>
 	  <div class="col-md-6">
-	  		<div class="panel panel-default">
+	  		<div class="panel panel-danger">
 			  <div class="panel-heading">备选系统</div>
 			      <ul class="list-group">
 			        <volist name='syses' id='st' empty="没有数据">
 			            <li class="list-group-item"><{$st.sysno}>:<{$st.name}>
-			              <a href="__URL__/insert/project/<{$arr.id}>/branch/<{$st.id}>" type="button" class="btn btn-danger btn-xs pull-right">
+			              <a href="__URL__/insert/project/<{$arr.id}>/branch/<{$st.id}>"  
+			              class="btn btn-danger btn-xs pull-right">
 			                <span class="glyphicon glyphicon-link"> 关联 </span></a>
 			            </li>
 			        </volist> 

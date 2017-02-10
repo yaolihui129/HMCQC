@@ -15,7 +15,7 @@ function getProd($id){
 //根据pid获取分类数
 function countCate($pid){
     if($pid){
-        $m=M('tp_cate');
+        $m=M($_SESSION['db'].'cate');
         $where['pid']=$pid;
         $data=$m->where($where)->count();
         return $data;      

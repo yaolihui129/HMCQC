@@ -1,5 +1,5 @@
 <?php
-namespace mtsh\Controller;
+namespace Runzhu\Controller;
 use Think\Controller;
 class IndexController extends Controller {
     public function index(){               

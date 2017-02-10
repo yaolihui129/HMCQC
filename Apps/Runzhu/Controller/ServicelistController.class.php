@@ -1,5 +1,5 @@
 <?php
-namespace Mtsh\Controller;
+namespace Runzhu\Controller;
 use Think\Controller;
 class ServicelistController extends Controller {
     public function index(){

@@ -63,7 +63,10 @@
   </div>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm">
-  	<div class="panel panel-default"><div class="panel-heading"><h3 class="panel-title"><{$_SESSION['testgp']}>组测试项目</h3></div>
+  	<div class="panel panel-info">
+	  	<div class="panel-heading">
+	  		<h3 class="panel-title"><{$_SESSION['testgp']}>组测试项目</h3>
+	  	</div>
 	  <ul class="list-group">
 	    <volist name='pros' id='pro' empty="没有数据"> 			
            <switch name="pro.id">
@@ -71,8 +74,7 @@
 				<default /><li class="list-group-item ">
 		 </switch> 
             <a href="__URL__/index/proid/<{$pro.id}>">           	
-            	<span class="badge"><{$pro.status|getProst=###}></span>
-            	<{$pro.name}>
+            	<span class="badge"><{$pro.status|getProst=###}></span><{$pro.name}>
             	<span class="badge"><{$pro.id|countStage=###}></span></li>
             </a>
             

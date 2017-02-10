@@ -4,7 +4,7 @@
   <div class="col-md-5 hidden-xs">
   	<div class="panel panel-info">
 	  <div class="panel-heading">
-	    <h3 class="panel-title">路径</h3>
+	    <h3 class="panel-title">模块</h3>
 	  </div>
 	  <ul class="list-group">
 	    <volist name='data' id='vo' empty="没有数据"> 			
@@ -13,7 +13,8 @@
 				<default /><li class="list-group-item ">
 		 </switch> 
             <a href="__URL__/index/pathid/<{$vo.id}>">
-            	<{$vo.sn}>.<{$vo.id|getSPath=###}>【<{$vo.state}>】</a><span class="badge"><{$vo.id|countFunc=###}></span></li>
+            	<{$vo.sn}>.<{$vo.id|getSPath=###}>【<{$vo.state}>】</a>
+            	<span class="badge"><{$vo.id|countFunc=###}></span></li>
         </volist>
       </ul>	  
 	</div>

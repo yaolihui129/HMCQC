@@ -1,7 +1,8 @@
 <layout name="layout" />
+<div class="container">
 <div class="row"> 
   <div class="col-md-9">
-  		<div class="panel panel-default">
+  		<div class="panel panel-info">
 		  <div class="panel-heading">
 		    <h3 class="panel-title">
 		    	<{$arr.id|getPro=###}>
@@ -36,7 +37,7 @@
                 <th width=10% align="left" bgcolor="#ccc">路径</th>
                 <th width=7% align="left" bgcolor="#ccc">功能</th>
                 <th width=7% align="left"  bgcolor="#ccc">意图 </th>               
-                <th width=3% align="center" bgcolor="#ccc">状态</th>
+                <th width=5% align="center" bgcolor="#ccc">状态</th>
                 <th width=10% align="left"  bgcolor="#ccc">预期</th>				
                 <th width=5% align="center" bgcolor="#ccc">操作 </th>         	
          </tr>
@@ -61,7 +62,7 @@
   
   </div>
   <div class="col-md-3 hidden-xs hidden-sm">
-  	<div class="panel panel-default">
+  	<div class="panel panel-info">
 	  <div class="panel-heading"><h3 class="panel-title"><{$_SESSION['testgp']}>组测试项目</h3></div>
 	  <ul class="list-group">
 	    <volist name='pros' id='pro' empty="没有数据">
@@ -70,9 +71,7 @@
 				<default /><li class="list-group-item ">
 			</switch>    			
             <a href="__URL__/library/proid/<{$pro.id}>">
-            	<{$pro.end}>:<{$pro.name}><br>
-            	<{$pro.code}>:<{$pro.qd|getRealname=###}>
-            	<span class="badge"><{$pro.status|getProst=###}></span>
+            	<span class="badge"><{$pro.status|getProst=###}></span><{$pro.name}>            	          	
             </a>
             	<span class="badge"><{$pro.id|countCase=###}></span>
             </li>
@@ -81,4 +80,5 @@
 	</div>  	 
   </div>
   
+</div>
 </div> 
