@@ -24,6 +24,19 @@ function countCate($pid){
     }
     
 }
+
+function getCatname($cateid){
+    if ($cateid){
+        $m=M($_SESSION['db'].'cate');
+        $data=$m->find($cateid);
+        $str=getCatname($data['pid'])."-".$data['catname'];
+        return $str;
+    }else {
+        return "|-";
+    }
+}
+
+//显示是否在首页展示信息
 function getIstj($istj){
     if ($istj==1){
         return "首页";
@@ -31,6 +44,18 @@ function getIstj($istj){
         return "非首页";
     }
 }
+
+
+// 显示是否该尕布
+function getXState($state){
+    if ($state=='发布'){
+        return "下线";
+    }else{
+        return "发布";
+    }
+    
+}
+
 
 //根据id获取产品数数
 function countProdService($cate){

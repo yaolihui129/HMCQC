@@ -58,7 +58,7 @@
 						<{$st.money}>元（市场价：<s><em>￥<{$st.smoney}>元</em></s>）<br>路径：
 						<{$st.path}><br>库存：<{$st.num}>
 						<a href="__URL__/fabu/id/<{$st.id}>/state/<{$st.state}>" >
-							<span class="label label-primary"><{$st.state}></span>
+							<span class="label label-primary"><{$st.state|getXState=###}></span>
 						</a>
 						<a href="__URL__/istj/id/<{$st.id}>/istj/<{$st.istj}>" >
 							<span class="label label-warning"><{$st.istj|getIstj=###}></span>

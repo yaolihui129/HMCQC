@@ -43,15 +43,8 @@
             <li><a href="__APP__/Anshun/Usecar/index"><span class="glyphicon glyphicon-book"> 用车常识</span></a></li>                                
             <li><a href="__APP__/Anshun/About/about"><span class="glyphicon glyphicon-phone-alt"> 关于我们</span> </a></li>            
             <empty name="_SESSION['isCLogin']">
-            <li class="divider"></li>
-              <li><form  action="__APP__/Anshun/Login/login" method="post" class="navbar-form " role="form">
-				  <div class="form-group">
-				  	<input type="tel" name="phone" size="13" class="form-control input-sm" placeholder="手机号">
-				    <input type="password" name="password" size="10" class="form-control input-sm" placeholder="密码">
-				   
-				  </div>
-				  <button type="submit" class="btn btn-inverse btn-sm"><span class="glyphicon glyphicon-log-in"></span></button>
-				</form></li>             
+            
+              <li><a data-toggle="modal" href="#Login" class="pull-right" >登录</a></li>             
           <else />
           <li class="divider"></li>
               <li class="dropdown">

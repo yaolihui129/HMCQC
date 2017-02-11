@@ -92,7 +92,7 @@ class ProdserviceController extends CommonController {
         $this->assign('arr',$arr);
         $this->assign("cate",$arr['cate']);
         $this->assign("desc",PublicController::editor("content",$arr['content']));
-        $m=D('tp_cate');
+        $m=D($_SESSION['db'].'cate');
         $arr=$m->find($arr['cate']);
         
       
@@ -179,7 +179,7 @@ class ProdserviceController extends CommonController {
         $this->assign('arr',$arr);
         $this->assign("cate",$arr['cate']);
         
-        $m=D('tp_cate');
+        $m=D($_SESSION['db'].'cate');
         $arr=$m->find($arr['cate']);        
          
         $m=D($_SESSION['db'].'prodservice');

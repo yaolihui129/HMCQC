@@ -2,19 +2,17 @@
 namespace Demo\Controller;
 use Think\Controller;
 class LoginController extends Controller {
-    public function index(){
-        layout(false); // 临时关闭当前模板的布局功能
-        $this->display();
-    }
 
     public function login(){
-        $customer = D('dm_customer')
-        ->where(array('phone'=>$_POST['phone'],'password'=>md5($_POST['password'])))
-        ->field('id,phone,realname,path,isteacher',false)
-        ->find();
-        if ($customer){
+         $m= D('tp_customer');
+         $where['phone']=$_POST['phone'];
+         $where['password']=md5($_POST['password']);
+         $data=$m->where($where)->field('id,phone,realname')->find();
+        dump($data);
+        
+        if ($data){
             session('[start]');
-            $_SESSION=$customer;
+            $_SESSION=$data;
             $_SESSION['isCLogin']=2;
             $this->redirect('/Demo/Index');
         }else{
@@ -30,9 +28,8 @@ class LoginController extends Controller {
 
         if (isset($_COOKIE[session_name()])) {
             setcookie(session_name(),'',time()-3600,'/');
-        }
-        // 销毁sesstion
-        session_destroy();
+        }        
+        session_destroy();// 销毁sesstion
 
         $this->success("再见 {$username}, 退出成功!", U('Demo/Index'));
 

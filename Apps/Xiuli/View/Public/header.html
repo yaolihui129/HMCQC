@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><{$_SESSION['web']}></title>
+    <title><{$_SESSION['Xiuli']['web']}></title>
     <meta name="keywords" content="<{$_SESSION['keywords']}>" />
 	<meta name="description" content="" />
     <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="__APP__/Xiuli"><{$_SESSION['web']}></a>
+          <a class="navbar-brand" href="__APP__/Xiuli"><{$_SESSION['Xiuli']['web']}></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse ">
         
@@ -34,17 +34,17 @@
             <li><a href="__APP__/Xiuli/About/Hr"><span class="glyphicon glyphicon-user"> 诚聘人才</span></a></li>				
             <li><a href="__APP__/Xiuli/About/about"><span class="glyphicon glyphicon-phone-alt"></span> 关于我们</a></li>           
             <empty name="_SESSION['isCLogin']">
-           		<li><a href="#" class="pull-right">登录</a></li>	
+           		<li><a data-toggle="modal" href="#Login" class="pull-right" >登录</a></li>	
           	<else />
           		<li class="divider"></li>
               		<li class="dropdown">
                  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                 	<span class="glyphicon glyphicon-user"></span> 欢迎你-<{$_SESSION['realname']}> <span class="caret"></span></a>
+                 	<span class="glyphicon glyphicon-user"></span> <{$_SESSION['realname']}> <span class="caret"></span></a>
                  	<ul class="dropdown-menu" role="menu">                    
-                    	<li><a href="__APP__/Home/Course/mycourse">我的订单</a></li>
-                    	<li><a href="__APP__/Home/Customer/setpass">修改密码</a></li>
+                    	<li><a href="__APP__/Xiuli/Order">我的订单</a></li>
+                    	<li><a href="__APP__/Xiuli/Customer/setpass">修改密码</a></li>
                 		<li class="divider"></li>
-                		<li><a href="__APP__/Home/Login/logout">退出</a></li>
+                		<li><a href="__APP__/Xiuli/Login/logout">退出</a></li>
                 	</ul>
              	 </li>
           	</empty>

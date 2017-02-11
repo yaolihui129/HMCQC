@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost
-Source Server Version : 50532
-Source Host           : localhost:3306
-Source Database       : zentao
+Source Server         : Xiuli
+Source Server Version : 50535
+Source Host           : 2lbrknae.2248.dnstoo.com:5503
+Source Database       : xiuli
 
 Target Server Type    : MYSQL
-Target Server Version : 50532
+Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2017-02-10 18:20:53
+Date: 2017-02-11 23:15:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -769,7 +769,7 @@ CREATE TABLE `zt_dict` (
   `type` varchar(10) DEFAULT NULL,
   `state` varchar(5) DEFAULT '正常',
   `moder` varchar(10) DEFAULT '腰立辉',
-  `updateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=98 DEFAULT CHARSET=utf8;
 
@@ -780,51 +780,88 @@ INSERT INTO `zt_dict` VALUES ('1', '1', '正常', 'state', '正常', '腰立辉'
 INSERT INTO `zt_dict` VALUES ('2', '2', '待确认', 'state', '正常', '腰立辉', '2016-09-17 16:09:23');
 INSERT INTO `zt_dict` VALUES ('3', '3', '已搁置', 'state', '正常', '腰立辉', '2016-09-17 16:09:23');
 INSERT INTO `zt_dict` VALUES ('4', '4', '作废', 'state', '正常', '腰立辉', '2016-09-17 16:09:23');
-INSERT INTO `zt_dict` VALUES ('5', '1', '未开始', 'prost', '正常', '腰立辉', '2016-09-17 16:09:23');
-INSERT INTO `zt_dict` VALUES ('6', '2', '进行中', 'prost', '正常', '腰立辉', '2016-09-17 16:09:23');
-INSERT INTO `zt_dict` VALUES ('7', '3', '已完成', 'prost', '正常', '腰立辉', '2016-11-11 16:49:34');
-INSERT INTO `zt_dict` VALUES ('8', '8', '仿真验证通过', 'prost', '作废', '腰立辉', '2016-11-11 16:50:28');
-INSERT INTO `zt_dict` VALUES ('9', '6', '已取消', 'prost', '正常', '腰立辉', '2016-11-11 16:50:20');
 INSERT INTO `zt_dict` VALUES ('48', '1', '打开', 'rstate', '正常', '腰立辉', '2016-09-17 16:09:23');
 INSERT INTO `zt_dict` VALUES ('49', '2', '关闭', 'rstate', '正常', '腰立辉', '2016-09-17 16:18:30');
 INSERT INTO `zt_dict` VALUES ('50', '1', 'A', 'risklevel', '正常', '腰立辉', '2016-09-17 16:19:42');
 INSERT INTO `zt_dict` VALUES ('51', '2', 'B', 'risklevel', '正常', '腰立辉', '2016-09-17 16:19:21');
 INSERT INTO `zt_dict` VALUES ('52', '3', 'C', 'risklevel', '正常', '腰立辉', '2016-09-17 16:19:27');
 INSERT INTO `zt_dict` VALUES ('53', '4', 'D', 'risklevel', '正常', '腰立辉', '2016-09-17 16:19:34');
-INSERT INTO `zt_dict` VALUES ('54', '1', 'M', 'sceneType', '正常', '腰立辉', '2016-09-23 21:11:13');
-INSERT INTO `zt_dict` VALUES ('55', '2', 'A', 'sceneType', '正常', '腰立辉', '2016-09-23 21:11:19');
-INSERT INTO `zt_dict` VALUES ('56', '1', '未测试', 'sceneResul', '正常', '腰立辉', '2016-09-17 16:09:23');
-INSERT INTO `zt_dict` VALUES ('57', '2', '通过', 'sceneResul', '正常', '腰立辉', '2016-10-10 16:22:33');
-INSERT INTO `zt_dict` VALUES ('58', '3', '失败', 'sceneResul', '正常', '腰立辉', '2016-10-10 16:22:39');
-INSERT INTO `zt_dict` VALUES ('59', '4', '场景错', 'sceneResul', '正常', '腰立辉', '2016-10-10 16:22:45');
 INSERT INTO `zt_dict` VALUES ('60', '1', '操作', 'typeset', '正常', '腰立辉', '2016-10-20 15:08:41');
 INSERT INTO `zt_dict` VALUES ('61', '2', '检查', 'typeset', '正常', '腰立辉', '2016-10-20 15:08:52');
 INSERT INTO `zt_dict` VALUES ('62', '1', '待维护', 'dstate', '正常', '腰立辉', '2016-10-20 16:21:49');
 INSERT INTO `zt_dict` VALUES ('63', '2', '已完成', 'dstate', '正常', '腰立辉', '2016-10-20 16:22:03');
 INSERT INTO `zt_dict` VALUES ('67', '4', '已上线', 'prost', '正常', '腰立辉', '2016-11-11 16:50:05');
-INSERT INTO `zt_dict` VALUES ('69', '3', 'C', 'sceneType', '正常', '腰立辉', '2016-11-16 17:23:14');
 INSERT INTO `zt_dict` VALUES ('68', '5', '已搁置', 'prost', '正常', '腰立辉', '2016-11-11 16:50:15');
 INSERT INTO `zt_dict` VALUES ('72', '1', 'PJD', 'testgp', '正常', '腰立辉', '2016-12-17 22:37:50');
-INSERT INTO `zt_dict` VALUES ('73', '1', '技师', 'tech', '正常', '腰立辉', '2016-12-17 17:06:48');
-INSERT INTO `zt_dict` VALUES ('74', '2', '非技师', 'tech', '正常', '腰立辉', '2016-12-17 17:07:02');
-INSERT INTO `zt_dict` VALUES ('75', '1', '用车小常识', 'usecar', '正常', '腰立辉', '2016-12-17 17:14:52');
-INSERT INTO `zt_dict` VALUES ('76', '2', '流言终结者', 'usecar', '正常', '腰立辉', '2016-12-17 17:15:16');
-INSERT INTO `zt_dict` VALUES ('77', '1', '抽奖', 'voucher', '正常', '腰立辉', '2016-12-17 17:16:07');
-INSERT INTO `zt_dict` VALUES ('78', '2', '普通', 'voucher', '正常', '腰立辉', '2016-12-17 17:16:20');
-INSERT INTO `zt_dict` VALUES ('79', '1', '老师', 'custype', '正常', '腰立辉', '2016-12-17 20:09:14');
-INSERT INTO `zt_dict` VALUES ('80', '2', '助教', 'custype', '正常', '腰立辉', '2016-12-17 20:09:26');
-INSERT INTO `zt_dict` VALUES ('81', '3', '学生', 'custype', '正常', '腰立辉', '2016-12-17 20:09:33');
-INSERT INTO `zt_dict` VALUES ('82', '1', '学前少儿', 'coursetype', '正常', '腰立辉', '2016-12-17 20:10:30');
-INSERT INTO `zt_dict` VALUES ('83', '2', '小学课程', 'coursetype', '正常', '腰立辉', '2016-12-17 20:10:47');
-INSERT INTO `zt_dict` VALUES ('84', '3', '中学课程', 'coursetype', '正常', '腰立辉', '2016-12-17 20:10:55');
-INSERT INTO `zt_dict` VALUES ('85', '4', '作业托管', 'coursetype', '正常', '腰立辉', '2016-12-17 20:11:03');
-INSERT INTO `zt_dict` VALUES ('86', '5', '兴趣拓展', 'coursetype', '正常', '腰立辉', '2016-12-17 20:11:22');
 INSERT INTO `zt_dict` VALUES ('87', '1', '08:00-10:00', 'sktime', '正常', '腰立辉', '2016-12-17 20:13:21');
 INSERT INTO `zt_dict` VALUES ('88', '2', '10:10-12:10', 'sktime', '正常', '腰立辉', '2016-12-17 20:12:22');
 INSERT INTO `zt_dict` VALUES ('89', '3', '13:30-15:30', 'sktime', '正常', '腰立辉', '2016-12-17 20:12:29');
 INSERT INTO `zt_dict` VALUES ('90', '4', '15:40-17:40', 'sktime', '正常', '腰立辉', '2016-12-17 20:12:37');
 INSERT INTO `zt_dict` VALUES ('91', '5', '18:00-20:00', 'sktime', '正常', '腰立辉', '2016-12-17 20:12:45');
 INSERT INTO `zt_dict` VALUES ('92', '2', 'Auto', 'testgp', '正常', '腰立辉', '2016-12-17 22:45:19');
+
+-- ----------------------------
+-- Table structure for `zt_dm_cate`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_dm_cate`;
+CREATE TABLE `zt_dm_cate` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类编号',
+  `sn` smallint(6) NOT NULL DEFAULT '0' COMMENT '分类排序',
+  `pid` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '父级分类编号',
+  `catname` varchar(30) NOT NULL COMMENT '分类名称',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `prodid` smallint(6) NOT NULL COMMENT '所属产品',
+  `moder` varchar(10) DEFAULT NULL COMMENT '维护者',
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_dm_cate
+-- ----------------------------
+INSERT INTO `zt_dm_cate` VALUES ('5', '1', '0', '凉菜', '正常', '12', '腰立辉', '2017-02-11 00:09:24');
+INSERT INTO `zt_dm_cate` VALUES ('6', '2', '0', '热菜', '正常', '12', '腰立辉', '2017-02-11 00:09:33');
+INSERT INTO `zt_dm_cate` VALUES ('7', '3', '0', '烧烤', '正常', '12', '腰立辉', '2017-02-11 00:09:47');
+INSERT INTO `zt_dm_cate` VALUES ('8', '4', '0', '主食', '正常', '12', '腰立辉', '2017-02-11 00:09:57');
+INSERT INTO `zt_dm_cate` VALUES ('9', '5', '0', '酒水', '正常', '12', '腰立辉', '2017-02-11 00:10:06');
+INSERT INTO `zt_dm_cate` VALUES ('10', '6', '0', '清真', '正常', '12', '腰立辉', '2017-02-11 00:10:26');
+
+-- ----------------------------
+-- Table structure for `zt_dm_prodservice`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_dm_prodservice`;
+CREATE TABLE `zt_dm_prodservice` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '商品ID',
+  `mark` varchar(20) DEFAULT NULL COMMENT '商品货号(二维码号)',
+  `name` varchar(15) DEFAULT NULL COMMENT '商品名称',
+  `content` text COMMENT '商品描述',
+  `weight` decimal(10,0) DEFAULT NULL COMMENT '商品尺寸',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `money` decimal(10,0) DEFAULT '0' COMMENT '优惠商品价格',
+  `smoney` decimal(10,0) DEFAULT '0' COMMENT '市场价格',
+  `wlmoney` decimal(10,0) DEFAULT '0' COMMENT '物流价格',
+  `num` smallint(5) DEFAULT NULL COMMENT '商品库存数',
+  `sellnum` int(10) DEFAULT NULL COMMENT '卖出数量',
+  `istj` tinyint(1) DEFAULT '0' COMMENT '特价商品',
+  `atime` timestamp NULL DEFAULT NULL COMMENT '发布时间',
+  `sn` int(2) DEFAULT NULL,
+  `cate` smallint(6) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(48) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_dm_prodservice
+-- ----------------------------
+INSERT INTO `zt_dm_prodservice` VALUES ('3', '', '拍花瓜', '', '0', '正常', '0', '0', '0', '999', null, '0', null, '1', '5', null, null, '腰立辉', '2017-02-11 00:16:10');
+INSERT INTO `zt_dm_prodservice` VALUES ('4', '', '二锅头（白瓶）', '', '0', '正常', '0', '0', '0', '999', null, '0', null, '1', '9', null, null, '腰立辉', '2017-02-11 00:31:57');
+INSERT INTO `zt_dm_prodservice` VALUES ('5', '', '米饭', '', '0', '正常', '0', '0', '0', '999', null, '0', null, '1', '8', null, null, '腰立辉', '2017-02-11 00:32:10');
+INSERT INTO `zt_dm_prodservice` VALUES ('6', '', '大饼', '', '0', '正常', '0', '0', '0', '999', null, '0', null, '2', '8', null, null, '腰立辉', '2017-02-11 00:32:32');
+INSERT INTO `zt_dm_prodservice` VALUES ('7', '', '馒头', '', '0', '正常', '0', '0', '0', '999', null, '0', null, '3', '8', null, null, '腰立辉', '2017-02-11 00:32:37');
+INSERT INTO `zt_dm_prodservice` VALUES ('8', '', '水饺', '', '0', '正常', '0', '0', '0', '999', null, '0', null, '4', '8', null, null, '腰立辉', '2017-02-11 00:32:44');
 
 -- ----------------------------
 -- Table structure for `zt_doc`
@@ -3543,13 +3580,14 @@ CREATE TABLE `zt_product` (
 -- Records of zt_product
 -- ----------------------------
 INSERT INTO `zt_product` VALUES ('1', '秀丽广告', 'Xiuli', 'platform', 'normal', '<p class=\"MsoNormal\"><b><span style=\"font-size:16pt;font-family:\'宋体\';\">广告类：大型室外广告牌、楼体亮化工程、<span>LED</span>显示屏、展板展架、条幅吊旗、锦旗授带、写真喷绘、铜牌铜字、钛金字、发光字、<span>PVC</span>字<span></span></span></b></p>\r\n<p class=\"MsoNormal\"><b><span style=\"font-size:16pt;font-family:\'宋体\';\">&nbsp;</span></b></p>\r\n<p class=\"MsoNormal\"><b><span style=\"font-size:16pt;font-family:\'宋体\';\">文印类：打字复印、彩喷彩页、快照证书、书本装订、中高档胸卡、桌牌菜单、名片、充值卡、印制单据<span></span></span></b></p>', 'zhangxl', 'jiaxn', 'yao', 'private', '', 'yao', '2017-01-08 22:23:39', '8.2.4', '5', '0', '秀丽', '13463925200', '0319-7186126', '2830690782', 'Xiuli', 'xl_', '临城-秀丽广告', '', '临城兴临街转盘北200米路西', 'www.xiuliguanggao.com', '/Setting/2017-01-24/', '588706de454f9.png', '2017-02-06 14:37:26', '冀ICP备17001594号', 'V1.0.0');
-INSERT INTO `zt_product` VALUES ('2', '拓才教育', 'Tuocai', 'platform', 'normal', '', 'liangxw', 'jiaxn', 'yao', 'private', '', 'yao', '2017-01-08 22:24:09', '8.2.4', '10', '0', '拓才', null, '0311-89849355', '285981407', 'Tuocai', 'tc_', '石家庄-拓才教育', '拓才,拓才教育,一对一,个性化,课外辅导,教育培训，石家庄课外辅导', '石家庄', 'www.tuocaijiaoyu.com', '/Setting/adress/2016-12-13/', '584fb53ddc613.jpg', '2017-01-13 10:20:29', null, 'V1.0.0');
+INSERT INTO `zt_product` VALUES ('2', '拓才教育', 'Tuocai', 'platform', 'normal', '', 'liangxw', 'jiaxn', 'yao', 'private', '', 'yao', '2017-01-08 22:24:09', '8.2.4', '10', '0', '拓才', null, '0311-89849355', '285981407', 'Tuocai', 'tc_', '石家庄-拓才教育', '拓才,拓才教育,一对一,个性化,课外辅导,教育培训，石家庄课外辅导', '石家庄', 'www.xiuliguanggao.com/index.php/Tuocai', '/Setting/adress/2016-12-13/', '584fb53ddc613.jpg', '2017-02-10 22:29:25', null, 'V1.0.0');
 INSERT INTO `zt_product` VALUES ('3', '麦田双辉', 'Mtsh', 'platform', 'normal', '轻武器额', 'yao', 'jiaxn', 'yao', 'private', '', 'yao', '2017-01-08 22:24:52', '8.2.4', '15', '0', '双辉', '18801043607', '0319-7167618', '83000892', 'Mtsh', 'mt_', '麦田双辉-服务中心', null, '临城', 'www.xiuliguanggao.com/index.php/Mtsh', '/Setting/2017-01-19/', '58805b69780c6.png', '2017-02-06 17:31:33', '', 'V1.0.0');
 INSERT INTO `zt_product` VALUES ('4', '安顺汽修', 'Anshun', 'platform', 'normal', '', 'wangxl', 'jiaxn', 'yao', 'private', '', 'yao', '2017-01-08 22:25:22', '8.2.4', '20', '0', '安顺', '13785900902', null, '1058793920', 'Anshun', 'as_', '安顺汽车服务中心', null, '临城县射兽汽修市场', 'www.xiuliguanggao.com/index.php/Anshun', '/Setting2016-12-18/', '585683f4127fd.jpg', '2017-02-10 14:09:05', null, 'V1.0.0');
-INSERT INTO `zt_product` VALUES ('5', '测试管理', 'Test', 'platform', 'normal', '自主设计的测试管理平台', 'yao', 'jiaxn', 'yao', 'private', '', 'jeff', '2017-01-08 22:29:58', '8.2.4', '25', '0', 'Test', null, null, null, null, 'test_', '测试管理平台', null, null, null, null, null, '2017-02-10 14:08:36', null, 'V1.0.0');
+INSERT INTO `zt_product` VALUES ('5', '测试管理', 'Test', 'platform', 'normal', '自主设计的测试管理平台', 'yao', 'jiaxn', 'yao', 'private', '', 'jeff', '2017-01-08 22:29:58', '8.2.4', '25', '0', 'Test', '18801043607', null, null, 'Test', 'tt_', '测试管理平台', null, '虚拟网络世界', 'www.xiuliguanggao.com/index.php/Test', null, null, '2017-02-10 22:23:58', null, 'V1.0.0');
 INSERT INTO `zt_product` VALUES ('12', '示例网站', 'Demo', 'platform', 'normal', '标准产品', 'yao', 'jiaxn', 'yao', 'private', '', 'yao', '2017-01-12 12:44:28', '8.2.4', '60', '0', 'Demo', '18801043607', '7168888', '83000892', 'Demo', 'dm_', '标准演示', '', '示例网站暂无地址', 'www.xiuliguanggao.com/index.php/Demo', null, null, '2017-02-10 14:08:18', '', 'V1.0.0');
-INSERT INTO `zt_product` VALUES ('6', '智慧信达', 'Xinda', 'platform', 'normal', '', 'liuyj', 'jiaxn', 'yao', 'private', '', 'yao', '2017-01-19 12:26:42', '8.2.4', '70', '0', '信达', null, null, null, null, 'xd_', '北京-智慧信达', null, null, null, null, null, '2017-02-10 14:07:30', null, 'V1.0.0');
-INSERT INTO `zt_product` VALUES ('7', '润竹茶业', 'Runzhu', 'platform', 'normal', '', 'suzb', 'jiaxn', 'yao', 'private', '', 'yao', '2017-02-09 21:32:13', '8.2.4', '35', '0', '润竹', '', '15732091766', '9182547', 'Runzhu', 'rz_', '唐山-润竹茶业', '', '唐山市丰润区', 'www.xiuliguanggao.com/index.php/Runzhu', '/Setting/2017-02-10/', '589d1b121a9e9.jpg', '2017-02-10 14:07:16', '', 'V1.0.0');
+INSERT INTO `zt_product` VALUES ('6', '智慧信达', 'Xinda', 'platform', 'normal', '', 'liuyj', 'jiaxn', 'yao', 'private', '', 'yao', '2017-01-19 12:26:42', '8.2.4', '70', '0', '信达', null, null, null, 'Xinda', 'xd_', '北京-智慧信达', null, '北京市昌平区', 'www.xiuliguanggao.com/index.php/Xinda', null, null, '2017-02-10 22:23:40', null, 'V1.0.0');
+INSERT INTO `zt_product` VALUES ('7', '润竹茶业', 'Runzhu', 'platform', 'normal', '', 'suzb', 'jiaxn', 'yao', 'private', '', 'yao', '2017-02-09 21:32:13', '8.2.4', '35', '0', '润竹', '15732091766', '15732091766', '9182547', 'Runzhu', 'rz_', '唐山-润竹茶业', '', '唐山市丰润区', 'www.xiuliguanggao.com/index.php/Runzhu', '/Setting/2017-02-10/', '589d1b121a9e9.jpg', '2017-02-10 22:22:03', '', 'V1.0.0');
+INSERT INTO `zt_product` VALUES ('8', '小厮科技', 'Small', 'platform', 'normal', '', 'yaolh', 'jiaxn', 'yao', 'private', '', 'yao', '2017-02-10 22:30:32', '8.2.4', '55', '0', '小厮', '18801043607', '18518708335', '83000892', 'Small', 'sl_', '北京-小厮科技', null, null, 'www.xiuliguanggao.com/index.php/Small', null, null, '2017-02-10 22:32:10', null, 'V1.0.0');
 
 -- ----------------------------
 -- Table structure for `zt_productplan`
@@ -3756,6 +3794,86 @@ CREATE TABLE `zt_rz_prodservice` (
 
 -- ----------------------------
 -- Records of zt_rz_prodservice
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `zt_sl_cate`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_sl_cate`;
+CREATE TABLE `zt_sl_cate` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类编号',
+  `sn` smallint(6) NOT NULL DEFAULT '0' COMMENT '分类排序',
+  `pid` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '父级分类编号',
+  `catname` varchar(30) NOT NULL COMMENT '分类名称',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `prodid` smallint(6) NOT NULL COMMENT '所属产品',
+  `moder` varchar(10) DEFAULT NULL COMMENT '维护者',
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_sl_cate
+-- ----------------------------
+INSERT INTO `zt_sl_cate` VALUES ('5', '1', '0', '微网站', '正常', '8', '腰立辉', '2017-02-11 00:05:41');
+INSERT INTO `zt_sl_cate` VALUES ('6', '2', '0', '公众号', '正常', '8', '腰立辉', '2017-02-11 00:05:50');
+
+-- ----------------------------
+-- Table structure for `zt_sl_customer`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_sl_customer`;
+CREATE TABLE `zt_sl_customer` (
+  `wid` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `tpid` smallint(6) NOT NULL,
+  `type` varchar(5) DEFAULT NULL,
+  `isteacher` int(1) DEFAULT '1',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `coursetype` varchar(5) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(32) DEFAULT NULL,
+  `course` varchar(10) DEFAULT NULL,
+  `remark` text,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `ctime` int(11) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`wid`),
+  UNIQUE KEY `customerid` (`tpid`) USING HASH
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_sl_customer
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `zt_sl_prodservice`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_sl_prodservice`;
+CREATE TABLE `zt_sl_prodservice` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '商品ID',
+  `mark` varchar(20) DEFAULT NULL COMMENT '商品货号(二维码号)',
+  `name` varchar(15) DEFAULT NULL COMMENT '商品名称',
+  `content` text COMMENT '商品描述',
+  `weight` decimal(10,0) DEFAULT NULL COMMENT '商品尺寸',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `money` decimal(10,0) DEFAULT '0' COMMENT '优惠商品价格',
+  `smoney` decimal(10,0) DEFAULT '0' COMMENT '市场价格',
+  `wlmoney` decimal(10,0) DEFAULT '0' COMMENT '物流价格',
+  `num` smallint(5) DEFAULT NULL COMMENT '商品库存数',
+  `sellnum` int(10) DEFAULT NULL COMMENT '卖出数量',
+  `istj` tinyint(1) DEFAULT '0' COMMENT '特价商品',
+  `atime` timestamp NULL DEFAULT NULL COMMENT '发布时间',
+  `sn` int(2) DEFAULT NULL,
+  `cate` smallint(6) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(48) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_sl_prodservice
 -- ----------------------------
 
 -- ----------------------------
@@ -4303,9 +4421,9 @@ INSERT INTO `zt_tp_ad` VALUES ('3', '第3张', '/Ad/2017-02-04/', '589584447ae4c
 INSERT INTO `zt_tp_ad` VALUES ('4', '第4张', '/Ad/2017-02-04/', '5895819138465.png', '#', '', '发布', '2', '腰立辉', '2017-02-04 15:24:01');
 INSERT INTO `zt_tp_ad` VALUES ('5', '第5张', '/Ad/2017-02-04/', '589581aa9bd89.png', '#', '', '发布', '2', '腰立辉', '2017-02-04 15:24:27');
 INSERT INTO `zt_tp_ad` VALUES ('10', '为什么要做公众号', '/Ad/2017-02-06/', '58982f2ad27cf.png', '#', 'qweq', '正常', '1', '腰立辉', '2017-02-06 16:09:29');
-INSERT INTO `zt_tp_ad` VALUES ('11', '第四张', '/Ad/2017-01-21/', '5883587d465c2.jpg', '#', '', '正常', '1', '腰立辉', '2017-02-04 14:19:21');
-INSERT INTO `zt_tp_ad` VALUES ('12', '第三张', '/Ad/2017-01-21/', '5883584c58f6b.jpg', '#', '', '正常', '1', '腰立辉', '2017-02-04 14:19:22');
-INSERT INTO `zt_tp_ad` VALUES ('13', '第二张', '/Ad/2017-01-21/', '588358580bbbf.jpg', '#', '', '正常', '1', '腰立辉', '2017-02-04 14:19:25');
+INSERT INTO `zt_tp_ad` VALUES ('11', '第四张', '/Ad/2017-02-11/', '589e8ee8d99c9.png', '#', '', '正常', '1', '腰立辉', '2017-02-11 12:11:20');
+INSERT INTO `zt_tp_ad` VALUES ('12', '第三张', '/Ad/2017-02-11/', '589e8ed34b76e.png', '#', '', '正常', '1', '腰立辉', '2017-02-11 12:10:59');
+INSERT INTO `zt_tp_ad` VALUES ('13', '第二张', '/Ad/2017-02-11/', '589e8ec09c80b.png', '#', '', '正常', '1', '腰立辉', '2017-02-11 12:10:40');
 INSERT INTO `zt_tp_ad` VALUES ('14', '服务号和订阅号的对比', '/Ad/2017-02-06/', '58982d6257e8a.png', '#', '', '正常', '1', '腰立辉', '2017-02-06 16:09:01');
 INSERT INTO `zt_tp_ad` VALUES ('15', null, '/Ad/2016-12-18/', '58565f960204b.jpg', '#', null, '发布', '4', '腰立辉', '2017-02-04 14:19:31');
 INSERT INTO `zt_tp_ad` VALUES ('16', null, '/Ad/2016-12-18/', '58565ff1220d8.jpg', '#', null, '发布', '4', '腰立辉', '2017-02-04 14:19:32');
@@ -4624,6 +4742,64 @@ INSERT INTO `zt_tp_case` VALUES ('10304', '10', '2', ' 用户名和 密码都不
 INSERT INTO `zt_tp_case` VALUES ('10305', '4', '2', ' 正常退出', '', ' 用户退出登录，跳转到登陆页面', '正常', '116', '10479', null, null, '腰立辉', '腰立辉', '2016-12-23 18:04:34', '待维护', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 -- ----------------------------
+-- Table structure for `zt_tp_cate`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_tp_cate`;
+CREATE TABLE `zt_tp_cate` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类编号',
+  `sn` smallint(6) NOT NULL DEFAULT '0' COMMENT '分类排序',
+  `pid` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '父级分类编号',
+  `catname` varchar(30) NOT NULL COMMENT '分类名称',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `prodid` smallint(6) NOT NULL COMMENT '所属产品',
+  `moder` varchar(10) DEFAULT NULL COMMENT '维护者',
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=81 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_tp_cate
+-- ----------------------------
+INSERT INTO `zt_tp_cate` VALUES ('3', '100', '0', '社保福利', '正常', '3', '腰立辉', '2017-02-04 23:13:05');
+INSERT INTO `zt_tp_cate` VALUES ('4', '1', '0', '传统业务', '已搁置', '1', '腰立辉', '2017-02-05 18:30:02');
+INSERT INTO `zt_tp_cate` VALUES ('5', '40', '0', '微网站', '已搁置', '1', '腰立辉', '2017-02-05 18:30:09');
+INSERT INTO `zt_tp_cate` VALUES ('6', '50', '0', '公众号', '已搁置', '1', '腰立辉', '2017-02-05 18:30:14');
+INSERT INTO `zt_tp_cate` VALUES ('10', '1', '0', '学前少儿', '正常', '2', '腰立辉', '2017-02-04 23:13:57');
+INSERT INTO `zt_tp_cate` VALUES ('11', '2', '0', '小学课程', '正常', '2', '腰立辉', '2017-02-04 23:14:04');
+INSERT INTO `zt_tp_cate` VALUES ('12', '3', '0', '中学课程', '正常', '2', '腰立辉', '2017-02-04 23:14:15');
+INSERT INTO `zt_tp_cate` VALUES ('13', '4', '0', '作业托管', '正常', '2', '腰立辉', '2017-02-04 23:14:26');
+INSERT INTO `zt_tp_cate` VALUES ('14', '5', '0', '兴趣拓展', '正常', '2', '腰立辉', '2017-02-04 23:15:33');
+INSERT INTO `zt_tp_cate` VALUES ('18', '10', '4', '文印', '正常', '1', '腰立辉', '2017-02-04 23:30:48');
+INSERT INTO `zt_tp_cate` VALUES ('19', '20', '4', '广告牌', '正常', '1', '腰立辉', '2017-02-04 23:30:56');
+INSERT INTO `zt_tp_cate` VALUES ('20', '60', '6', '微信公众号', '正常', '1', '腰立辉', '2017-02-04 23:31:05');
+INSERT INTO `zt_tp_cate` VALUES ('21', '70', '6', '支付宝', '正常', '1', '腰立辉', '2017-02-04 23:31:57');
+INSERT INTO `zt_tp_cate` VALUES ('29', '41', '5', '整站', '正常', '1', '腰立辉', '2017-02-04 23:32:04');
+INSERT INTO `zt_tp_cate` VALUES ('30', '42', '5', '宣传页', '正常', '1', '腰立辉', '2017-02-04 23:32:11');
+INSERT INTO `zt_tp_cate` VALUES ('31', '43', '5', '服务器', '正常', '1', '腰立辉', '2017-02-04 23:32:18');
+INSERT INTO `zt_tp_cate` VALUES ('32', '44', '5', '域名', '正常', '1', '腰立辉', '2017-02-04 23:32:25');
+INSERT INTO `zt_tp_cate` VALUES ('33', '45', '5', '第三方授权', '已搁置', '1', '腰立辉', '2017-02-05 18:30:28');
+INSERT INTO `zt_tp_cate` VALUES ('58', '4', '0', '汽车用品', '正常', '4', '腰立辉', '2017-02-04 23:32:40');
+INSERT INTO `zt_tp_cate` VALUES ('59', '1', '0', '钣金喷漆', '正常', '4', '腰立辉', '2017-02-04 23:32:47');
+INSERT INTO `zt_tp_cate` VALUES ('60', '3', '0', '汽车维修', '正常', '4', '腰立辉', '2017-02-04 23:31:31');
+INSERT INTO `zt_tp_cate` VALUES ('61', '2', '0', '汽车保养', '正常', '4', '腰立辉', '2017-02-04 23:31:50');
+INSERT INTO `zt_tp_cate` VALUES ('62', '1', '0', '人力中介', '正常', '3', '腰立辉', '2017-02-04 23:32:54');
+INSERT INTO `zt_tp_cate` VALUES ('63', '200', '0', '健康体检', '正常', '3', '腰立辉', '2017-02-04 23:33:00');
+INSERT INTO `zt_tp_cate` VALUES ('64', '300', '0', '职业培训', '正常', '3', '腰立辉', '2017-02-04 23:33:07');
+INSERT INTO `zt_tp_cate` VALUES ('68', '4', '0', '房产中介', '正常', '3', '腰立辉', '2017-02-04 23:33:36');
+INSERT INTO `zt_tp_cate` VALUES ('69', '1', '11', '一年级', '正常', '2', '腰立辉', '2017-02-04 23:30:32');
+INSERT INTO `zt_tp_cate` VALUES ('70', '2', '11', '二年级', '正常', '2', '腰立辉', '2017-02-04 23:30:19');
+INSERT INTO `zt_tp_cate` VALUES ('71', '3', '11', '三年级', '正常', '2', '腰立辉', '2017-02-04 23:30:12');
+INSERT INTO `zt_tp_cate` VALUES ('72', '4', '11', '四年级', '正常', '2', '腰立辉', '2017-02-04 23:30:05');
+INSERT INTO `zt_tp_cate` VALUES ('73', '5', '11', '五年级', '正常', '2', '腰立辉', '2017-02-04 23:29:59');
+INSERT INTO `zt_tp_cate` VALUES ('74', '6', '11', '六年级', '正常', '2', '腰立辉', '2017-02-04 23:29:50');
+INSERT INTO `zt_tp_cate` VALUES ('75', '1', '12', '七年级(初中)', '正常', '2', '腰立辉', '2017-02-04 23:29:34');
+INSERT INTO `zt_tp_cate` VALUES ('76', '2', '12', '八年级(初中)', '正常', '2', '腰立辉', '2017-02-04 23:29:43');
+INSERT INTO `zt_tp_cate` VALUES ('77', '3', '12', '九年级(初中)', '正常', '2', '腰立辉', '2017-02-04 23:21:19');
+INSERT INTO `zt_tp_cate` VALUES ('78', '4', '12', '高一', '正常', '2', '腰立辉', '2017-02-04 23:21:33');
+INSERT INTO `zt_tp_cate` VALUES ('79', '5', '12', '高二', '正常', '2', '腰立辉', '2017-02-04 23:21:39');
+INSERT INTO `zt_tp_cate` VALUES ('80', '6', '12', '高三', '正常', '2', '腰立辉', '2017-02-04 23:21:45');
+
+-- ----------------------------
 -- Table structure for `zt_tp_customer`
 -- ----------------------------
 DROP TABLE IF EXISTS `zt_tp_customer`;
@@ -4646,7 +4822,7 @@ CREATE TABLE `zt_tp_customer` (
 -- ----------------------------
 -- Records of zt_tp_customer
 -- ----------------------------
-INSERT INTO `zt_tp_customer` VALUES ('1', '18801043607', '132223198401040613', '18801043607', '腰立辉', 'yaolihui129', '83000892', null, '腰立辉', '1485337267', '2017-02-09 21:56:20');
+INSERT INTO `zt_tp_customer` VALUES ('1', '18801043607', '132223198401040613', 'c33367701511b4f6020ec61ded352059', '腰立辉', 'yaolihui129', '83000892', null, '腰立辉', '1485337267', '2017-02-11 23:13:36');
 
 -- ----------------------------
 -- Table structure for `zt_tp_element`
@@ -5642,13 +5818,14 @@ CREATE TABLE `zt_tp_hr` (
   `rtime` date DEFAULT NULL COMMENT '发布时间',
   `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zt_tp_hr
 -- ----------------------------
 INSERT INTO `zt_tp_hr` VALUES ('13', '学徒工', '2', '1', '招聘中', '吃苦耐劳', '面议', '1', '临城县兴临街转盘北100米路西；', '腰立辉', '2017-02-08', '2017-02-08 13:13:22');
 INSERT INTO `zt_tp_hr` VALUES ('12', '设计人员', '1', '2', '招聘中', '有电脑基础', '面议', '1', '临城县兴临街转盘北100米路西；', '腰立辉', '2017-02-08', '2017-02-08 13:13:17');
+INSERT INTO `zt_tp_hr` VALUES ('14', '公司CEO', null, '1', '正常', '', '面议', '8', '临城', '腰立辉', null, '2017-02-11 00:04:17');
 
 -- ----------------------------
 -- Table structure for `zt_tp_link`
@@ -6222,7 +6399,7 @@ CREATE TABLE `zt_tp_userprod` (
   `prodid` smallint(6) NOT NULL,
   `moder` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zt_tp_userprod
@@ -6245,6 +6422,7 @@ INSERT INTO `zt_tp_userprod` VALUES ('27', '14', '12', '腰立辉');
 INSERT INTO `zt_tp_userprod` VALUES ('28', '29', '4', '腰立辉');
 INSERT INTO `zt_tp_userprod` VALUES ('29', '31', '4', '腰立辉');
 INSERT INTO `zt_tp_userprod` VALUES ('30', '2', '7', '腰立辉');
+INSERT INTO `zt_tp_userprod` VALUES ('31', '2', '8', '腰立辉');
 
 -- ----------------------------
 -- Table structure for `zt_tp_voucher`
@@ -6416,6 +6594,84 @@ CREATE TABLE `zt_usertpl` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `zt_xd_cate`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_xd_cate`;
+CREATE TABLE `zt_xd_cate` (
+  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类编号',
+  `sn` smallint(6) NOT NULL DEFAULT '0' COMMENT '分类排序',
+  `pid` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '父级分类编号',
+  `catname` varchar(30) NOT NULL COMMENT '分类名称',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `prodid` smallint(6) NOT NULL COMMENT '所属产品',
+  `moder` varchar(10) DEFAULT NULL COMMENT '维护者',
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_xd_cate
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `zt_xd_customer`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_xd_customer`;
+CREATE TABLE `zt_xd_customer` (
+  `wid` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `tpid` smallint(6) NOT NULL,
+  `type` varchar(5) DEFAULT NULL,
+  `isteacher` int(1) DEFAULT '1',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `coursetype` varchar(5) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(32) DEFAULT NULL,
+  `course` varchar(10) DEFAULT NULL,
+  `remark` text,
+  `adder` varchar(10) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `ctime` int(11) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`wid`),
+  UNIQUE KEY `customerid` (`tpid`) USING HASH
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_xd_customer
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `zt_xd_prodservice`
+-- ----------------------------
+DROP TABLE IF EXISTS `zt_xd_prodservice`;
+CREATE TABLE `zt_xd_prodservice` (
+  `id` smallint(6) NOT NULL AUTO_INCREMENT COMMENT '商品ID',
+  `mark` varchar(20) DEFAULT NULL COMMENT '商品货号(二维码号)',
+  `name` varchar(15) DEFAULT NULL COMMENT '商品名称',
+  `content` text COMMENT '商品描述',
+  `weight` decimal(10,0) DEFAULT NULL COMMENT '商品尺寸',
+  `state` varchar(5) DEFAULT '正常' COMMENT '状态',
+  `money` decimal(10,0) DEFAULT '0' COMMENT '优惠商品价格',
+  `smoney` decimal(10,0) DEFAULT '0' COMMENT '市场价格',
+  `wlmoney` decimal(10,0) DEFAULT '0' COMMENT '物流价格',
+  `num` smallint(5) DEFAULT NULL COMMENT '商品库存数',
+  `sellnum` int(10) DEFAULT NULL COMMENT '卖出数量',
+  `istj` tinyint(1) DEFAULT '0' COMMENT '特价商品',
+  `atime` timestamp NULL DEFAULT NULL COMMENT '发布时间',
+  `sn` int(2) DEFAULT NULL,
+  `cate` smallint(6) DEFAULT NULL,
+  `path` varchar(200) DEFAULT NULL,
+  `img` varchar(48) DEFAULT NULL,
+  `moder` varchar(10) DEFAULT NULL,
+  `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of zt_xd_prodservice
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for `zt_xl_cate`
 -- ----------------------------
 DROP TABLE IF EXISTS `zt_xl_cate`;
@@ -6429,23 +6685,20 @@ CREATE TABLE `zt_xl_cate` (
   `moder` varchar(10) DEFAULT NULL COMMENT '维护者',
   `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zt_xl_cate
 -- ----------------------------
 INSERT INTO `zt_xl_cate` VALUES ('4', '1', '0', '传统业务', '已搁置', '1', '腰立辉', '2017-02-05 18:30:02');
-INSERT INTO `zt_xl_cate` VALUES ('5', '40', '0', '微网站', '已搁置', '1', '腰立辉', '2017-02-05 18:30:09');
-INSERT INTO `zt_xl_cate` VALUES ('6', '50', '0', '公众号', '已搁置', '1', '腰立辉', '2017-02-05 18:30:14');
+INSERT INTO `zt_xl_cate` VALUES ('5', '50', '0', '微网站', '正常', '1', '腰立辉', '2017-02-11 17:06:22');
+INSERT INTO `zt_xl_cate` VALUES ('6', '40', '0', '公众号', '正常', '1', '腰立辉', '2017-02-11 17:06:15');
 INSERT INTO `zt_xl_cate` VALUES ('18', '10', '4', '文印', '正常', '1', '腰立辉', '2017-02-04 23:30:48');
 INSERT INTO `zt_xl_cate` VALUES ('19', '20', '4', '广告牌', '正常', '1', '腰立辉', '2017-02-04 23:30:56');
-INSERT INTO `zt_xl_cate` VALUES ('20', '60', '6', '微信公众号', '正常', '1', '腰立辉', '2017-02-04 23:31:05');
-INSERT INTO `zt_xl_cate` VALUES ('21', '70', '6', '支付宝', '正常', '1', '腰立辉', '2017-02-04 23:31:57');
-INSERT INTO `zt_xl_cate` VALUES ('29', '41', '5', '整站', '正常', '1', '腰立辉', '2017-02-04 23:32:04');
-INSERT INTO `zt_xl_cate` VALUES ('30', '42', '5', '宣传页', '正常', '1', '腰立辉', '2017-02-04 23:32:11');
-INSERT INTO `zt_xl_cate` VALUES ('31', '43', '5', '服务器', '正常', '1', '腰立辉', '2017-02-04 23:32:18');
-INSERT INTO `zt_xl_cate` VALUES ('32', '44', '5', '域名', '正常', '1', '腰立辉', '2017-02-04 23:32:25');
-INSERT INTO `zt_xl_cate` VALUES ('33', '45', '5', '第三方授权', '已搁置', '1', '腰立辉', '2017-02-05 18:30:28');
+INSERT INTO `zt_xl_cate` VALUES ('31', '51', '5', '服务器', '正常', '1', '腰立辉', '2017-02-11 17:06:26');
+INSERT INTO `zt_xl_cate` VALUES ('32', '52', '5', '域名', '正常', '1', '腰立辉', '2017-02-11 17:06:29');
+INSERT INTO `zt_xl_cate` VALUES ('33', '53', '5', '第三方授权', '已搁置', '1', '腰立辉', '2017-02-11 17:56:06');
+INSERT INTO `zt_xl_cate` VALUES ('34', '30', '4', '发光字', '正常', '1', '腰立辉', '2017-02-11 12:16:55');
 
 -- ----------------------------
 -- Table structure for `zt_xl_customer`
@@ -6530,19 +6783,17 @@ CREATE TABLE `zt_xl_prodservice` (
   `moder` varchar(10) DEFAULT NULL,
   `utime` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=89 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of zt_xl_prodservice
 -- ----------------------------
-INSERT INTO `zt_xl_prodservice` VALUES ('12', '', '名片制作', '12312', '0', '发布', '50', '70', '0', '0', null, '1', null, '5', '18', '/Product/2017-02-04/', '589552cc95b58.png', '腰立辉', '2017-02-05 18:26:21');
-INSERT INTO `zt_xl_prodservice` VALUES ('14', '', '微信订阅号（个人）', '', '0', '发布', '300', '300', '0', '1', null, '0', null, '1', '20', '/Product/2017-01-24/', '5886f28168eab.png', '腰立辉', '2017-02-05 18:46:42');
-INSERT INTO `zt_xl_prodservice` VALUES ('15', '', '微信订阅号（企业）', '', '0', '发布', '300', '500', '0', '1', null, '0', null, '2', '20', '/Product/2017-01-24/', '5886f28973c57.png', '腰立辉', '2017-02-05 18:46:55');
-INSERT INTO `zt_xl_prodservice` VALUES ('16', '', '微信公众号运维', '200/月', '0', '发布', '200', '200', '0', '1', null, '0', null, '7', '20', null, null, '腰立辉', '2017-02-05 18:28:57');
-INSERT INTO `zt_xl_prodservice` VALUES ('17', '', '阿里钉钉（申请）', '', '0', '发布', '500', '500', '0', '1', null, '1', null, '1', '21', '/Product/2017-01-24/', '5886f2d4491d7.png', '腰立辉', '2017-02-05 18:29:05');
-INSERT INTO `zt_xl_prodservice` VALUES ('18', '', '支付宝生活号', '', '0', '正常', '0', '300', '0', '1', null, '0', null, '2', '21', null, null, '腰立辉', '2017-02-05 18:47:56');
-INSERT INTO `zt_xl_prodservice` VALUES ('19', '', '支付宝运维', '200/月', '0', '正常', '200', '200', '0', '1', null, '0', null, '3', '21', null, null, '腰立辉', '2017-02-04 12:49:11');
-INSERT INTO `zt_xl_prodservice` VALUES ('20', '', '标准企业站', '为秀丽广告网站下的子网站，无需域名和服务器，也无需备案；数据寄存在秀丽广告网站的官方数据库，没有自主的发布权限（以防发布违规内容，网站被屏蔽），', '0', '发布', '1666', '1888', '0', '1', null, '1', null, '1', '29', '/Product/2017-01-24/', '5886f207cad40.png', '腰立辉', '2017-02-05 18:27:45');
+INSERT INTO `zt_xl_prodservice` VALUES ('12', '', '名片制作', '12312', '0', '发布', '50', '70', '0', '0', null, '0', null, '5', '18', '/Product/2017-02-04/', '589552cc95b58.png', '腰立辉', '2017-02-11 12:50:12');
+INSERT INTO `zt_xl_prodservice` VALUES ('15', '', '微信订阅号', '', '0', '发布', '300', '500', '0', '1', null, '0', null, '2', '6', '/Product/2017-01-24/', '5886f28973c57.png', '腰立辉', '2017-02-11 16:56:50');
+INSERT INTO `zt_xl_prodservice` VALUES ('16', '', '公众号运维', '200/月', '0', '正常', '200', '200', '0', '1', null, '0', null, '7', '6', null, null, '腰立辉', '2017-02-11 18:02:59');
+INSERT INTO `zt_xl_prodservice` VALUES ('17', '', '阿里钉钉', '', '0', '发布', '500', '500', '0', '1', null, '1', null, '1', '6', '/Product/2017-01-24/', '5886f2d4491d7.png', '腰立辉', '2017-02-11 16:56:59');
+INSERT INTO `zt_xl_prodservice` VALUES ('18', '', '支付宝生活号', '', '0', '正常', '0', '300', '0', '1', null, '0', null, '2', '6', null, null, '腰立辉', '2017-02-11 16:57:01');
+INSERT INTO `zt_xl_prodservice` VALUES ('20', '', '标准企业站', '为秀丽广告网站下的子网站，无需域名和服务器，也无需备案；数据寄存在秀丽广告网站的官方数据库，没有自主的发布权限（以防发布违规内容，网站被屏蔽），', '0', '发布', '1666', '1888', '0', '1', null, '0', null, '5', '5', '/Product/2017-01-24/', '5886f207cad40.png', '腰立辉', '2017-02-11 22:58:02');
 INSERT INTO `zt_xl_prodservice` VALUES ('21', '', '服务器租赁（国内）', '网络宅基地，它的配置直接影响网站的性能，域名必须备案，才可以使用，以后可以增值与QQ，微信，支付宝做深度的页面及数据连接', '0', '发布', '799', '799', '0', '1', null, '1', null, '1', '31', '/Product/2017-01-24/', '5886f2573414c.png', '腰立辉', '2017-02-05 18:27:57');
 INSERT INTO `zt_xl_prodservice` VALUES ('22', '', '服务器租赁（香港）', '无需备案，付费及开通，但是不可以做增值营销服务', '0', '发布', '1200', '1200', '0', '1', null, '0', null, '1', '31', '/Product/2017-02-04/', '58955b2d65127.png', '腰立辉', '2017-02-05 18:27:59');
 INSERT INTO `zt_xl_prodservice` VALUES ('23', '', '服务器租赁（国外）', '无需备案，付费及开通，但是不可以做增值营销服务', '0', '正常', '1200', '1200', '0', '1', null, '0', null, '1', '31', '/Product/2017-02-04/', '58955b4c24faf.png', '腰立辉', '2017-02-04 12:40:46');
@@ -6553,17 +6804,16 @@ INSERT INTO `zt_xl_prodservice` VALUES ('27', '', '.top域名', '网络门牌号
 INSERT INTO `zt_xl_prodservice` VALUES ('28', '', 'QQ用户登录', '', '0', '正常', '0', '500', '0', '1', null, '0', null, '2', '33', null, null, '腰立辉', '2017-02-04 12:48:53');
 INSERT INTO `zt_xl_prodservice` VALUES ('29', '', '微信用户登录', '1.网站必须备案\r\n2.微信号必须为企业注册且通过实名认证', '0', '正常', '0', '500', '0', '1', null, '0', null, '1', '33', null, null, '腰立辉', '2017-01-25 13:38:55');
 INSERT INTO `zt_xl_prodservice` VALUES ('30', '', '微博账号登录', '', '0', '正常', '0', '700', '0', '1', null, '0', null, '3', '33', null, null, '腰立辉', '2017-02-04 12:48:53');
-INSERT INTO `zt_xl_prodservice` VALUES ('31', '', '纯文字网页（单页）', '', '0', '正常', '0', '70', '0', '1', null, '0', null, '1', '30', null, null, '腰立辉', '2017-01-25 13:38:58');
-INSERT INTO `zt_xl_prodservice` VALUES ('32', '', '单图文网页（单页）', '', '0', '发布', '0', '100', '0', '1', null, '1', null, '1', '30', '/Product/2017-01-24/', '5886f4d18a937.png', '腰立辉', '2017-02-05 18:49:57');
-INSERT INTO `zt_xl_prodservice` VALUES ('33', '', '寻人启事', '交100押金，下线后退还', '0', '正常', '0', '0', '0', '1', null, '0', null, '1', '30', null, null, '腰立辉', '2017-01-25 13:39:00');
-INSERT INTO `zt_xl_prodservice` VALUES ('34', '', '多图文定制网页', '300起', '0', '发布', '0', '300', '0', '1', null, '0', null, '1', '30', '/Product/2017-01-24/', '5886f21a71fa2.png', '腰立辉', '2017-02-05 18:50:00');
-INSERT INTO `zt_xl_prodservice` VALUES ('35', '', '抽奖活动', '', '0', '正常', '0', '888', '0', '1', null, '0', null, '1', '30', null, null, '腰立辉', '2017-01-25 13:39:01');
-INSERT INTO `zt_xl_prodservice` VALUES ('36', '', '微信服务号', '', '0', '发布', '500', '500', '0', '1', null, '1', null, '3', '20', '/Product/2017-01-24/', '5886f2938444f.png', '腰立辉', '2017-02-05 18:47:05');
-INSERT INTO `zt_xl_prodservice` VALUES ('37', '', '微信企业号', '', '0', '发布', '500', '500', '0', '1', null, '0', null, '4', '20', '/Product/2017-01-24/', '5886f2a7199be.png', '腰立辉', '2017-02-05 18:47:16');
-INSERT INTO `zt_xl_prodservice` VALUES ('38', '', '微信小程序（查询类）', '', '0', '正常', '0', '500', '0', '1', null, '0', null, '5', '20', null, null, '腰立辉', '2017-02-04 12:48:06');
-INSERT INTO `zt_xl_prodservice` VALUES ('39', '', 'QQ电商平台（申请）', '', '0', '正常', '500', '500', '0', '1', null, '0', null, '6', '20', null, null, '腰立辉', '2017-02-04 12:48:06');
+INSERT INTO `zt_xl_prodservice` VALUES ('76', '', '三维扣板+吸塑', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '3', '34', '/Product/2017-02-11/', '589edd4550800.png', '腰立辉', '2017-02-11 17:46:02');
+INSERT INTO `zt_xl_prodservice` VALUES ('32', '', '单图文网页', '', '0', '发布', '0', '100', '0', '1', null, '1', null, '4', '5', '/Product/2017-02-11/', '589f261781f15.png', '腰立辉', '2017-02-11 22:56:23');
+INSERT INTO `zt_xl_prodservice` VALUES ('75', '', '发光字+铝塑板', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '2', '34', '/Product/2017-02-11/', '589edd3af1fa1.png', '腰立辉', '2017-02-11 22:38:09');
+INSERT INTO `zt_xl_prodservice` VALUES ('35', '', '抽奖活动', '', '0', '发布', '0', '888', '0', '1', null, '0', null, '1', '5', '/Product/2017-02-11/', '589f250ff2898.png', '腰立辉', '2017-02-11 22:52:40');
+INSERT INTO `zt_xl_prodservice` VALUES ('36', '', '微信服务号', '', '0', '发布', '500', '500', '0', '1', null, '1', null, '3', '6', '/Product/2017-01-24/', '5886f2938444f.png', '腰立辉', '2017-02-11 16:56:53');
+INSERT INTO `zt_xl_prodservice` VALUES ('37', '', '微信企业号', '', '0', '发布', '500', '500', '0', '1', null, '0', null, '4', '6', '/Product/2017-01-24/', '5886f2a7199be.png', '腰立辉', '2017-02-11 16:56:55');
+INSERT INTO `zt_xl_prodservice` VALUES ('38', '', '微信小程序（查询类）', '', '0', '正常', '0', '500', '0', '1', null, '0', null, '5', '6', null, null, '腰立辉', '2017-02-11 16:56:56');
+INSERT INTO `zt_xl_prodservice` VALUES ('39', '', 'QQ电商平台', '', '0', '正常', '500', '500', '0', '1', null, '0', null, '6', '6', null, null, '腰立辉', '2017-02-11 16:56:58');
 INSERT INTO `zt_xl_prodservice` VALUES ('45', '', '服务器运维(1年)', '', '0', '发布', '600', '600', '0', '1', null, '0', null, '1', '31', '/Product/2017-02-04/', '58955b77ef6dc.png', '腰立辉', '2017-02-05 18:28:07');
-INSERT INTO `zt_xl_prodservice` VALUES ('46', '', '数据库备份(1次)', '', '0', '正常', '50', '50', '0', '1', null, '0', null, '1', '31', '/Product/2017-02-04/', '58955ba203bec.png', '腰立辉', '2017-02-04 12:42:10');
+INSERT INTO `zt_xl_prodservice` VALUES ('46', '', '数据库备份(1次)', '', '0', '发布', '50', '50', '0', '1', null, '0', null, '1', '31', '/Product/2017-02-04/', '58955ba203bec.png', '腰立辉', '2017-02-11 22:57:17');
 INSERT INTO `zt_xl_prodservice` VALUES ('47', '', '数据库备份(每月)', '', '0', '正常', '100', '120', '0', '1', null, '0', null, '1', '31', '/Product/2017-02-04/', '58955bcb26d82.png', '腰立辉', '2017-02-04 12:42:51');
 INSERT INTO `zt_xl_prodservice` VALUES ('48', '', '数据库备份(每年)', '', '0', '正常', '500', '600', '0', '1', null, '0', null, '1', '31', '/Product/2017-02-04/', '58955be1b099a.png', '腰立辉', '2017-02-04 12:43:16');
 INSERT INTO `zt_xl_prodservice` VALUES ('49', '', '大型户外广告牌', '适用于：大型户外广告宣传、设置在道路两侧显要位置，吸引人们眼球，起到良好的宣传效果。\r\n特点：适用性广、使用期长\r\n', '0', '发布', '0', '0', '0', '1', null, '1', null, '1', '19', '/Product/2017-01-24/', '5886f672d0db3.png', '腰立辉', '2017-02-06 14:39:53');
@@ -6571,9 +6821,9 @@ INSERT INTO `zt_xl_prodservice` VALUES ('50', '', '喷绘', '适用于：户外�
 INSERT INTO `zt_xl_prodservice` VALUES ('52', '', '条幅会标', '适用于：开业、庆典、会议、活动等 特点：悬挂显眼位置，引起人们关注，以达到良好宣传效果', '0', '发布', '0', '0', '0', '999', null, '0', null, '5', '19', '/Product/2017-02-04/', '58953fecbdc18.png', '腰立辉', '2017-02-06 14:52:23');
 INSERT INTO `zt_xl_prodservice` VALUES ('53', '', '钛金牌', '适用于：单位机关、门口店名、公司名称、各项荣誉等； 特点是：持久耐用、不变色', '0', '发布', '0', '0', '0', '999', null, '0', null, '6', '19', '/Product/2017-02-04/', '5895432118256.png', '腰立辉', '2017-02-06 14:55:18');
 INSERT INTO `zt_xl_prodservice` VALUES ('54', '', 'LED显示屏', '适用于：宾馆、公司、会议室、饭店、学校、门市、小区等地 特点是：使用寿命长，可随时更换内容。 分类：室内、室外、半室外；或单基色、双基色、三基色；', '0', '发布', '0', '0', '0', '999', null, '0', null, '8', '19', '/Product/2017-02-04/', '58954486bc30e.png', '腰立辉', '2017-02-06 14:55:58');
-INSERT INTO `zt_xl_prodservice` VALUES ('55', '', '发光字', '适用于：宾馆、饭店、展厅、学校、商场、商铺门头等 分类：LED发光字、吸塑发光字、不锈钢包边发光字、树脂发光字、迷你发光字、黑白板发光字 特点：亮化效果', '0', '发布', '0', '0', '0', '0', null, '0', null, '9', '19', '/Product/2017-02-04/', '5895449c1a8fc.png', '腰立辉', '2017-02-06 14:50:47');
-INSERT INTO `zt_xl_prodservice` VALUES ('56', '', '楼体亮化', '', '0', '发布', '0', '0', '0', '1', null, '0', null, '10', '19', '/Product/2017-02-04/', '589544aa4c48c.png', '腰立辉', '2017-02-05 18:27:35');
-INSERT INTO `zt_xl_prodservice` VALUES ('60', '', '打印', '', '0', '发布', '0', '0', '0', '999', null, '1', null, '1', '18', '/Product/2017-02-04/', '58954be569ec5.png', '腰立辉', '2017-02-06 23:53:28');
+INSERT INTO `zt_xl_prodservice` VALUES ('55', '', '发光字+不锈钢包边', '适用于：宾馆、饭店、展厅、学校、商场、商铺门头等 分类：LED发光字、吸塑发光字、不锈钢包边发光字、树脂发光字、迷你发光字、黑白板发光字 特点：亮化效果', '0', '发布', '0', '0', '0', '999', null, '1', null, '1', '34', '/Product/2017-02-11/', '589edcda39853.png', '腰立辉', '2017-02-11 22:37:51');
+INSERT INTO `zt_xl_prodservice` VALUES ('56', '', '楼体亮化', '', '0', '发布', '0', '0', '0', '1', null, '1', null, '10', '19', '/Product/2017-02-04/', '589544aa4c48c.png', '腰立辉', '2017-02-11 23:09:08');
+INSERT INTO `zt_xl_prodservice` VALUES ('60', '', '打印', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '1', '18', '/Product/2017-02-04/', '58954be569ec5.png', '腰立辉', '2017-02-11 12:50:07');
 INSERT INTO `zt_xl_prodservice` VALUES ('59', '', '钛金字', '适用于：单位机关、宾馆、饭店、门市、学校、小区门头装饰； 特点：多年不变色、抗老化性能好、光彩夺目，给人闪闪发光感觉。', '0', '发布', '0', '0', '0', '1', null, '0', null, '7', '19', '/Product/2017-02-04/', '5895432d19e3c.png', '腰立辉', '2017-02-06 14:55:09');
 INSERT INTO `zt_xl_prodservice` VALUES ('61', '', '复印', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '2', '18', '/Product/2017-02-04/', '58954bf69b009.png', '腰立辉', '2017-02-05 18:26:08');
 INSERT INTO `zt_xl_prodservice` VALUES ('62', '', '彩印', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '3', '18', '/Product/2017-02-04/', '58954c0711d4a.png', '腰立辉', '2017-02-05 18:26:13');
@@ -6584,8 +6834,20 @@ INSERT INTO `zt_xl_prodservice` VALUES ('69', '', '桌牌', '', '0', '发布', '
 INSERT INTO `zt_xl_prodservice` VALUES ('70', '', 'PVC卡', '门牌、科室牌、警示牌、铝塑板牌、PVC牌等', '0', '发布', '0', '0', '0', '999', null, '0', null, '9', '18', '/Product/2017-02-04/', '589551d126349.png', '腰立辉', '2017-02-06 14:56:30');
 INSERT INTO `zt_xl_prodservice` VALUES ('71', '', '书本装订', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '10', '18', '/Product/2017-02-04/', '589551ea225ad.png', '腰立辉', '2017-02-05 18:26:45');
 INSERT INTO `zt_xl_prodservice` VALUES ('72', '', '快照', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '4', '18', '/Product/2017-02-04/', '58954c14e53be.png', '腰立辉', '2017-02-05 18:26:15');
-INSERT INTO `zt_xl_prodservice` VALUES ('73', '', '微网站', '', '0', '正常', '0', '0', '0', '999', null, '0', null, '2', '29', null, null, '腰立辉', '2017-02-04 12:45:08');
-INSERT INTO `zt_xl_prodservice` VALUES ('74', '', '网站业务后台维护', '', '0', '正常', '0', '0', '0', '999', null, '0', null, '3', '29', null, null, '腰立辉', '2017-02-04 12:45:32');
+INSERT INTO `zt_xl_prodservice` VALUES ('73', '', '微网站', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '2', '5', '/Product/2017-02-11/', '589f23c074742.png', '腰立辉', '2017-02-11 22:46:24');
+INSERT INTO `zt_xl_prodservice` VALUES ('74', '', '网站业务后台维护', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '3', '5', '/Product/2017-02-11/', '589f244514ce6.png', '腰立辉', '2017-02-11 22:48:37');
+INSERT INTO `zt_xl_prodservice` VALUES ('77', '', '亚克力标牌', '', '0', '正常', '0', '0', '0', '999', null, '0', null, '11', '18', '/Product/2017-02-11/', '589f1eaa5eb19.png', '腰立辉', '2017-02-11 22:24:42');
+INSERT INTO `zt_xl_prodservice` VALUES ('78', '', '异形展板', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '9', '19', '/Product/2017-02-11/', '589f1ef415350.png', '腰立辉', '2017-02-11 22:26:06');
+INSERT INTO `zt_xl_prodservice` VALUES ('79', '', '展架展板', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '10', '19', '/Product/2017-02-11/', '589f1f30ab615.png', '腰立辉', '2017-02-11 22:27:08');
+INSERT INTO `zt_xl_prodservice` VALUES ('80', '', '亚克力字', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '11', '19', '/Product/2017-02-11/', '589f1fed368f6.png', '腰立辉', '2017-02-11 22:33:31');
+INSERT INTO `zt_xl_prodservice` VALUES ('81', '', '亚克力+PVC', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '12', '19', '/Product/2017-02-11/', '589f1fffadc73.png', '腰立辉', '2017-02-11 22:33:38');
+INSERT INTO `zt_xl_prodservice` VALUES ('82', '', 'PVC字', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '13', '19', '/Product/2017-02-11/', '589f20100df3e.png', '腰立辉', '2017-02-11 22:33:48');
+INSERT INTO `zt_xl_prodservice` VALUES ('83', '', '塑钢板PVC', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '14', '19', '/Product/2017-02-11/', '589f2026d7e40.png', '腰立辉', '2017-02-11 22:33:22');
+INSERT INTO `zt_xl_prodservice` VALUES ('84', '', '扣条+PVC', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '15', '19', '/Product/2017-02-11/', '589f20796cd6a.png', '腰立辉', '2017-02-11 22:33:06');
+INSERT INTO `zt_xl_prodservice` VALUES ('85', '', '三维扣板+PVC', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '16', '19', '/Product/2017-02-11/', '589f208816319.png', '腰立辉', '2017-02-11 22:32:56');
+INSERT INTO `zt_xl_prodservice` VALUES ('86', '', '亚克力吸塑', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '4', '34', '/Product/2017-02-11/', '589f224478ba7.png', '腰立辉', '2017-02-11 22:40:04');
+INSERT INTO `zt_xl_prodservice` VALUES ('87', '', '锦旗', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '12', '18', '/Product/2017-02-11/', '589f288aac197.png', '腰立辉', '2017-02-11 23:07:44');
+INSERT INTO `zt_xl_prodservice` VALUES ('88', '', '绶带', '', '0', '发布', '0', '0', '0', '999', null, '0', null, '13', '18', '/Product/2017-02-11/', '589f289c4a77f.png', '腰立辉', '2017-02-11 23:07:31');
 
 -- ----------------------------
 -- Table structure for `zt_xl_tickets`
@@ -6678,9 +6940,3 @@ CREATE TABLE `zt_xl_voucher` (
 -- Records of zt_xl_voucher
 -- ----------------------------
 INSERT INTO `zt_xl_voucher` VALUES ('19', '抽奖活动', '<p>\r\n	抽奖</p>\r\n', '抽奖', '2016-11-01', '2016-11-13', '发布', '40', '1', '2', '5', '10', '15', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:18:28');
-
--- ----------------------------
--- View structure for `finish`
--- ----------------------------
-DROP VIEW IF EXISTS `finish`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `finish` AS select `zt_task`.`finishedBy` AS `finishedby`,sum(`zt_task`.`estimate`) AS `estimate`,sum(`zt_task`.`consumed`) AS `consumed`,sum(`zt_task`.`left`) AS `left1` from `zt_task` where ((`zt_task`.`assignedTo` = 'closed') and (`zt_task`.`deleted` = '0')) group by `zt_task`.`finishedBy` ;

@@ -7,9 +7,7 @@
     <title><{$_SESSION['web']}></title>
     <meta name="keywords" content="<{$_SESSION['keywords']}>" />
 	<meta name="description" content="<{$_SESSION['desc']}>" />
-
-    <!--<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">-->
-    <import type="css" file="css.bootstrap"/>
+	<link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
     <import type="css" file="css.home" />
     <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -40,12 +38,12 @@
             	</a>
             </li>            
             <empty name="_SESSION['isCLogin']">           
-              <li><a href="#" class="btn  btn-sm">登录</a></li>				            
+              <li><a data-toggle="modal" href="#Login" class="pull-right" >登录</a></li>				            
           	<else />
           		<li class="divider"></li>
               	<li class="dropdown">
                  	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	                 	<span class="glyphicon glyphicon-user">欢迎你-<{$_SESSION['realname']}></span> 
+	                 	<span class="glyphicon glyphicon-user"><{$_SESSION['realname']}></span> 
 	                    <span class="caret"></span>
 	                 </a>
 	                 <ul class="dropdown-menu" role="menu">                    
