@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : mysql:3306
-Source Server Version : 50532
-Source Host           : localhost:3307
-Source Database       : zentao
+Source Server         : Xiuli
+Source Server Version : 50535
+Source Host           : 2lbrknae.2248.dnstoo.com:5503
+Source Database       : xiuli
 
 Target Server Type    : MYSQL
-Target Server Version : 50532
+Target Server Version : 50535
 File Encoding         : 65001
 
-Date: 2017-02-12 22:23:22
+Date: 2017-02-12 22:05:38
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -8103,9 +8103,3 @@ CREATE TABLE `zt_xl_voucher` (
 -- Records of zt_xl_voucher
 -- ----------------------------
 INSERT INTO `zt_xl_voucher` VALUES ('19', '抽奖活动', '<p>\r\n	抽奖</p>\r\n', '抽奖', '2016-11-01', '2016-11-13', '发布', '40', '1', '2', '5', '10', '15', '腰立辉', '2016-11-01 17:11:53', '2016-11-01 17:18:28');
-
--- ----------------------------
--- View structure for `finish`
--- ----------------------------
-DROP VIEW IF EXISTS `finish`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `finish` AS select `zt_task`.`finishedBy` AS `finishedby`,sum(`zt_task`.`estimate`) AS `estimate`,sum(`zt_task`.`consumed`) AS `consumed`,sum(`zt_task`.`left`) AS `left1` from `zt_task` where ((`zt_task`.`assignedTo` = 'closed') and (`zt_task`.`deleted` = '0')) group by `zt_task`.`finishedBy` ;
