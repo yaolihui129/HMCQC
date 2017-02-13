@@ -51,7 +51,6 @@ class HrController extends CommonController {
 
         $data=$m->find($id);
         $this->assign('data',$data);
-        $this->assign("state",PublicController::stateSelect($data['state'],'state','state'));
         $this->assign("desc",PublicController::editor("desc",$data['desc']));
         $this->display();
     }

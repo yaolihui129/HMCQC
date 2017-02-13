@@ -6,7 +6,7 @@ class CreditController extends CommonController {
         if ($_POST['search']){
             /* 接收参数*/
             $search=$_POST['search'];
-            $map['realname|phone|pincodes']=array('like','%'.$search.'%');
+            $map['realname|phone|pincodes']=$search;
             /* 实例化模型*/
             $m=M('tp_customer');
             $arr=$m->where($map)->order("utime desc")->select();
@@ -16,7 +16,7 @@ class CreditController extends CommonController {
         }
         if($_GET['search']){
             $search=$_GET['search'];
-            $map['realname|phone|pincodes']=array('like','%'.$search.'%');
+            $map['realname|phone|pincodes']=$search;
             /* 实例化模型*/
             $m=M('tp_customer');
             $arr=$m->where($map)->order("utime desc")->select();

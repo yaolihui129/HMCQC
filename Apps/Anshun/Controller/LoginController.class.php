@@ -8,12 +8,13 @@ class LoginController extends Controller {
          $where['phone']=$_POST['phone'];
          $where['password']=md5($_POST['password']);
          $data=$m->where($where)->field('id,phone,realname')->find();
-        dump($data);
+
         
         if ($data){
-            session('[start]');
-            $_SESSION=$data;
-            $_SESSION['isCLogin']=2;
+            $_SESSION['Anshun']['userid']=$data['id'];
+            $_SESSION['Anshun']['uphone']=$data['phone'];
+            $_SESSION['realname']=$data['realname'];
+            $_SESSION['isCLogin']=4;
             $this->redirect('/Anshun/Index');
         }else{
 

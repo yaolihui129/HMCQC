@@ -101,20 +101,20 @@ class ProdserviceController extends CommonController {
         $where['prodid']=$_SESSION['prodid'];
         $data=$m->where($where)->order('sn')->select();
         $this->assign('data',$data);
-        
-        
-               
+            
         $this->display();
     }
     
     
     public function update(){
         /* 实例化模型*/
-        $db=D($_SESSION['db'].'prodservice');
+        $db=M($_SESSION['db'].'prodservice');
+//         dump($_POST);
         $_POST['moder']=$_SESSION['realname'];
         if ($db->save($_POST)){
             $this->success("修改成功！");
         }else{
+            dump($_POST);
             $this->error("修改失败！");
         }
     }

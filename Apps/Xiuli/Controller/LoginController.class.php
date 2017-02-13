@@ -10,10 +10,11 @@ class LoginController extends Controller {
          $data=$m->where($where)->field('id,phone,realname')->find();
         dump($data);
         
-        if ($data){
-            session('[start]');
-            $_SESSION=$data;
-            $_SESSION['isCLogin']=2;
+        if ($data){            
+            $_SESSION['Xiuli']['userid']=$data['id'];
+            $_SESSION['Xiuli']['uphone']=$data['phone'];
+            $_SESSION['realname']=$data['realname'];
+            $_SESSION['isCLogin']='Xiuli';
             $this->redirect('/Xiuli/Index');
         }else{
 

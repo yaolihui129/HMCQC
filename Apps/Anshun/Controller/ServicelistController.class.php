@@ -4,23 +4,13 @@ use Think\Controller;
 class ServicelistController extends Controller {
     public function index(){
 
-        if(!($_SESSION['init'])){
-                $m=D('product');
-                $data=$m->find(4);
-                $_SESSION['web']=$data['web'];
-                $_SESSION['adress']=$data['adress'];
-                $_SESSION['desc']=$data['desc'];
-                $_SESSION['phone']=$data['phone'];
-                $_SESSION['tel']=$data['tel'];
-                $_SESSION['qq']=$data['qq'];
-                $_SESSION['weburl']=$data['url'];
-                $_SESSION['record']=$data['record'];
-                $_SESSION['ip']=get_client_ip();
-                $_SESSION['browser']=GetBrowser();
-                $_SESSION['os']=GetOs();
-                $_SESSION['img']=$data['path'].$data['img'];
-                $_SESSION['init']=3;                              
-            }
+         $m=D('product');
+       $data=$m->field('web,adress,desc,phone,tel,qq,url,record,path,img')->find(4);
+       $_SESSION['Anshun']=$data;
+       $_SESSION['Anshun']['img']=$data['path'].$data['img'];
+       $_SESSION['ip']=get_client_ip();
+       $_SESSION['browser']=GetBrowser();
+       $_SESSION['os']=GetOs();
             
             $where['prodid']=4;            
             $m=D('as_cate');
