@@ -51,10 +51,12 @@
 					<span class="badge"><{$pro.id|countRisk=###}></span></a>					
 					<a href="__APP__/TAdmin/Prosys/index/proid/<{$pro.id}>" class="btn btn-warning btn-xs">涉及系统
 					<span class="badge"><{$pro.id|countProsys=###}></span> </a>
-					<a href="__APP__/TAdmin/Func/range/proid/<{$pro.id}>" class="btn btn-warning btn-xs">范围:<{$pro.id}> </a>
+					<a href="__APP__/TAdmin/Func/range/proid/<{$pro.id}>" class="btn btn-warning btn-xs">范围
+					<span class="badge"><{$pro.id|countRange=###}></span> </a>
 					<a href="__APP__/TAdmin/Scene/index/proid/<{$pro.id}>" class="btn btn-warning btn-xs">场景 
 					<span class="badge"><{$pro.id|countScene=###}><span> </a>
-					<a href="__APP__/TAdmin/Func/func/proid/<{$pro.id}>" class="btn btn-warning btn-xs">功能点&nbsp; </a>
+					<a href="__APP__/TAdmin/Func/func/proid/<{$pro.id}>" class="btn btn-warning btn-xs">功能点
+					<span class="badge"><{$arr.id|countProFunc=###}></span></a>
 					<a href="__APP__/TAdmin/Case/procase/proid/<{$pro.id}>" class="btn btn-warning btn-xs">用例
 					<span class="badge"><{$pro.id|countCase=###}></span> </a>
 					<a href="__APP__/TAdmin/Element/library/proid/<{$pro.id}>" class="btn btn-warning btn-xs">控件库 </a>										           

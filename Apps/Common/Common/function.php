@@ -639,13 +639,30 @@ function getPlan($dateid){
     }
     
     
-  //获取范围数
+  //获取项目测试范围功能点
   function countRange($proid){
-      $m=M("tp_func");
-      $where=array("fproid"=>$proid);
-      $count=$m->where($where)->count();
+      $s = D('branch');
+      $where=array('zt_tp_func.fproid'=>$proid,'zt_tp_func.state'=>'正常','zt_module.state'=>'正常');
+      $count=$s->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
+      ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
+      ->where($where)     
+      ->count();
       return $count;          
   }
+  //获取项目功能点数
+  function countProFunc($proid){
+      $s = D("tp_prosys");
+      $map['zt_tp_prosys.project']=$proid;
+      $map['zt_module.state']='正常';
+      $map['zt_tp_func.state']='正常';
+      $count=$s->where($map)
+      ->join('zt_branch ON zt_tp_prosys.branch =zt_branch.id')
+      ->join('zt_module ON zt_branch.id = zt_module.branch')
+      ->join('zt_tp_func ON zt_module.id = zt_tp_func.pathid')
+      ->count();
+      return $count;          
+  }
+  
   
   /**
    * 根据proid获取场景数

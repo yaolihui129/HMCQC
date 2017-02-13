@@ -4,7 +4,10 @@
 		<div class="panel panel-info">
 			<div class="panel-heading">
 			    <h3 class="panel-title"><{$arr.id|getPro=###}>
-			    <a href="__APP__/Test" class="btn btn-warning btn-xs pull-right">返回</a></h3>
+				    <div class="btn-group pull-right">
+				    <a href="__APP__/Test" class="btn btn-warning btn-xs">返回</a>
+				    </div>
+			    </h3>
 			</div>
 			<div class="panel-body">
 				<b> 产品：</b><{$arr.po|getRealname=###}>
@@ -17,9 +20,10 @@
 					  <span class="badge"><{$arr.id|countStage=###}></span></a></li>
 					  <li role="presentation"><a href="__APP__/Test/Risk/index/proid/<{$arr.id}>">风险
 					  <span class="badge"><{$arr.id|countRisk=###}></span></a></li>
-					  <li role="presentation"><a href="__APP__/Test/Func/func/proid/<{$arr.id}>">功能点</a></li>
+					  <li role="presentation"><a href="__APP__/Test/Func/func/proid/<{$arr.id}>">功能点
+					  <span class="badge"><{$arr.id|countProFunc=###}></span></a></li>
 					  <li role="presentation" class="active"><a href="__APP__/Test/Func/range/proid/<{$arr.id}>">范围
-					  <span class="badge"><{$arr.id}></span></a></li>
+					  <span class="badge"><{$arr.id|countRange=###}></span></a></li>
 					  <li role="presentation"><a href="__APP__/Test/Scene/index/proid/<{$arr.id}>">场景
 					  <span class="badge"><{$arr.id|countScene=###}></span></a></li>
 					  <li role="presentation"><a href="__APP__/Test/Case/procase/proid/<{$arr.id}>">用例
@@ -44,7 +48,7 @@
 			                	  <span class="label label-info"><{$st.parent|getModuleName=###}></span>
 			                	  <span class="label label-info"><{$st.name}></span>
 			                	  <b><{$st.func}></b>
-			                	  <span class="label label-default"><{$st.state}></span>
+			                	  <!-- <span class="label label-default"><{$st.state}></span> -->
 				                  <span class="badge">历史:<{$st.id|countFResult=###}>/<{$st.id|countFQResult=###}></span>
 				              	</a>
 				              	

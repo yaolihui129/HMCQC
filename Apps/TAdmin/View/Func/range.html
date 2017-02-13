@@ -24,9 +24,10 @@
 		  <span class="badge"><{$arr.id|countRisk=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Prosys/index/proid/<{$arr.id}>">涉及系统
 		  <span class="badge"><{$arr.id|countProsys=###}></span> </a></li>
-		  <li role="presentation"><a href="__APP__/TAdmin/Func/func/proid/<{$arr.id}>">功能点</a></li>
+		  <li role="presentation"><a href="__APP__/TAdmin/Func/func/proid/<{$arr.id}>">功能点
+		  <span class="badge"><{$arr.id|countProFunc=###}></span></a></li>
 		  <li role="presentation" class="active"><a href="__APP__/TAdmin/Func/range/proid/<{$arr.id}>">范围
-		  <span class="badge"><{$arr.id}></span></a></li>
+		  <span class="badge"><{$arr.id|countRange=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Scene/index/proid/<{$arr.id}>/copy/<{$arr.id}>">场景
 		  <span class="badge"><{$arr.id|countScene=###}></span></a></li>
 		  <li role="presentation"><a href="__APP__/TAdmin/Case/library/proid/<{$arr.id}>">用例
@@ -47,7 +48,7 @@
 		                  <span class="label label-default"><{$st.branch|getBranchName=###}></span>
 		                  <span class="label label-info"><{$st.parent|getModuleName=###}></span>
 		                  <span class="label label-info"><{$st.name}></span><b><{$st.func}></b>
-		                  <span class="label label-default"><{$st.state}></span>
+		                  <!-- <span class="label label-default"><{$st.state}></span> -->
 		                  <span class="badge">历史:<{$st.id|countFResult=###}>/<{$st.id|countFQResult=###}></span>
 		              </a>
 		              <div class="btn-group pull-right">
@@ -89,9 +90,9 @@
 				<default /><li class="list-group-item ">
 			</switch>            
 	            <a href="__URL__/range/proid/<{$pro.id}>">
-	            	<span class="badge"><{$pro.status|getProst=###}></span><{$pro.name}>
-	            	<span class="badge"><{$pro.id}></span>   
-	            </a>           	
+	            	<span class="badge"><{$pro.status|getProst=###}></span><{$pro.name}>	            	
+	            </a> 
+	            <span class="badge"><{$pro.id|countRange=###}></span>             	
             </li>
         </volist>
       </ul>	  

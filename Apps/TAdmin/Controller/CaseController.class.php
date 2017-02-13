@@ -58,7 +58,7 @@ public function index(){
         $this->assign("case",$case);
         
         $where['funcid']=$case['funcid'];
-        $data=$m->where($where)->select();
+        $data=$m->where($where)->order('sn,id')->select();
         $this->assign('data',$data); 
         
         $m=D('tp_rules');
@@ -97,12 +97,13 @@ public function index(){
         $db = D('tp_case');
         $num = 0;
         foreach($_POST['sn'] as $id => $sn) {
-            $num += $db->save(array("id"=>$id, "sn"=>$sn));
+           $num += $db->save(array("id"=>$id, "sn"=>$sn));
         }
         if($num) {
-            $this->success("重新排序成功!");
+            $this->success("排序成功!");
+            
         }else{
-            $this->error("重新排序失败...");
+            $this->error("排序失败...");
         }
     }
    

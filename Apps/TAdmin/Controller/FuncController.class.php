@@ -137,7 +137,6 @@ class FuncController extends CommonController{
         
         $arr=$m->find($proid);
         $this->assign("arr",$arr);
-
         /* 实例化模型*/
         $s = D('branch');
         $where=array('zt_tp_func.fproid'=>$proid,'zt_tp_func.state'=>'正常','zt_module.state'=>'正常');
@@ -146,13 +145,9 @@ class FuncController extends CommonController{
         ->where($where)
         ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id")
         ->select();
-
-        $this->assign("data",$data);
-// dump($data);
-       
+        $this->assign("data",$data);      
 
         $this->display();
-
     }
 
     public function library(){

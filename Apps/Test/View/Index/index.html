@@ -11,21 +11,23 @@
 					<a data-toggle="collapse" data-parent="#accordion" href="#<{$pro.id}>" aria-expanded="true" aria-controls="<{$pro.id}>">
 					<{$pro.code}>:<{$pro.name}>(<{$pro.end}>上线)<span class="badge"><{$pro.status|getProst=###}></span></a>						
 					<div class="btn-group pull-right">
-					    <a href="__APP__/Test/Func/range/proid/<{$pro.id}>" type="button" class="btn btn-warning btn-xs ">范围 <{$pro.id}> </a>
+					    <a href="__APP__/Test/Func/range/proid/<{$pro.id}>"  class="btn btn-warning btn-xs ">范围 
+					    <span class="badge"><{$pro.id|countRange=###}></span> </a>
 					    <button type="button" class="btn btn-warning btn-xs dropdown-toggle" data-toggle="dropdown">
 					       <span class="caret"></span>
 					       <span class="sr-only">Toggle Dropdown</span>
 					    </button>
 					    <ul class="dropdown-menu" role="menu">
 					       <li><a href="__APP__/Test/Risk/index/proid/<{$pro.id}>">风险 
-					       <span class="badge"><{$pro.id}></span> </a></li>
+					       <span class="badge"><{$pro.id|countRisk=###}></span> </a></li>
 					       <li><a href="__APP__/Test/Stage/index/proid/<{$pro.id}> ">里程碑 
-					       <span class="badge "><{$pro.id}></span> </a></li>
+					       <span class="badge "><{$pro.id|countStage=###}></span> </a></li>
 					       <li><a href="__APP__/Test/Scene/index/proid/<{$pro.id}>">场景 
-					       <span class="badge "><{$pro.id}><span></a></li>
-					       <li><a href="__APP__/Test/Func/func/proid/<{$pro.id}>">功能点&nbsp;</a></li>					                				                
+					       <span class="badge "><{$pro.id|countScene=###}><span></a></li>
+					       <li><a href="__APP__/Test/Func/func/proid/<{$pro.id}>">功能点
+						   <span class="badge"><{$arr.id|countProFunc=###}></span></a></li>					                				                
 					       <li><a href="__APP__/Test/Case/procase/proid/<{$pro.id}>">用例
-					       <span class="badge "><{$pro.id}></span></a></li>				                					                
+					       <span class="badge "><{$pro.id|countCase=###}></span></a></li>				                					                
 					    </ul>
 					  </div>					      
 				 </h4>

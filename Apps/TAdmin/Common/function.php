@@ -17,10 +17,10 @@ function proselect($value=1,$name=code) {
 }
 
 /**
- * 根据id获取列队信息
+ * 根据stagetesterid获取列队信息
  */
 function getSTester($stagetesterid){
-    if ($id){
+    if ($stagetesterid){
         $m=M('tp_stagetester');
         $data=$m->find($stagetesterid);
         $str=$data['stage']."【".$data['state']."】";
@@ -35,8 +35,7 @@ function getSTester($stagetesterid){
  * 根据pathid获取功能列表
  */
 function getFunces($pathid){
-    $where['pathid']=$pathid;
-    
+    $where['pathid']=$pathid;    
         $m=M('tp_func');
         $arr=$m->where($where)->select();
         foreach ($arr as $ar){
