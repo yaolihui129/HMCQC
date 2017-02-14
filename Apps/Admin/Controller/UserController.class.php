@@ -18,7 +18,7 @@ class UserController extends CommonController {
         $where['prodid']=$_SESSION['prodid'];
         $arr=$m->where($where)->select();
         $this->assign('data',$arr);
-        $this->assign("state", PublicController::stateSelect($user['state'],"state","adminst"));
+        $this->assign("state", formselect($user['state'],"adminst","state"));
 
         $this->display();
     }
@@ -54,7 +54,7 @@ class UserController extends CommonController {
 
         $user=$m->find($id);
         $this->assign('user',$user);
-        $this->assign("state", PublicController::stateSelect($user['state'],"state","adminst"));
+        $this->assign("state", formselect($user['state'],"adminst","state"));
 
         $this->display();
     }

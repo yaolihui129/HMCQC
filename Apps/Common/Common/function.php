@@ -352,6 +352,7 @@ function getPlan($dateid){
         $where['zt_tp_stagetester.type']='M';
         $where['zt_project.status']='doing';
         $where['zt_tp_stage.state']='进行中';
+        $where['zt_tp_exescene.results']='未测试';
         $m=M("project");
         $count=$m->join('zt_tp_stage ON zt_tp_stage.proid =zt_project.id')
         ->join('zt_tp_stagetester ON zt_tp_stage.id =zt_tp_stagetester.stageid')
@@ -523,6 +524,7 @@ function getPlan($dateid){
         $where['zt_tp_stagetester.type']='C';
         $where['zt_project.status']='doing';
         $where['zt_tp_stage.state']='进行中';
+        $where['zt_tp_exescene.results']='未测试';
         $m=M("project");
         $count=$m->join('zt_tp_stage ON zt_tp_stage.proid =zt_project.id')
         ->join('zt_tp_stagetester ON zt_tp_stage.id =zt_tp_stagetester.stageid')

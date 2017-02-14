@@ -13,23 +13,13 @@ return array(
     'DB_TYPE'=>'mysql',
 //     'DB_HOST'=>'192.168.21.10',
     'DB_HOST'=>'127.0.0.1',
-    'DB_NAME'=>'zentao',
+    'DB_NAME'=>'xiuli',
     'DB_USER'=>'root',
     'DB_PWD'=>'root',
     'DB_PORT'=>'3306',
     
     'DB_PREFIX'=>'zt_',
     'DB_CHARSET'=> 'utf8', // 字符集
-
-//     'DB_DEPLOY_TYPE'        =>  0, // 数据库部署方式:0 集中式(单一服务器),1 分布式(主从服务器)
-//     'DB_RW_SEPARATE'        =>  false,       // 数据库读写是否分离 主从式有效
-//     'DB_MASTER_NUM'         =>  1, // 读写分离后 主服务器数量
-//     'DB_SLAVE_NO'           =>  '', // 指定从服务器序号
-//     'DB_SQL_BUILD_CACHE'    =>  false, // 数据库查询的SQL创建缓存
-//     'DB_SQL_BUILD_QUEUE'    =>  'file',   // SQL缓存队列的缓存方式 支持 file xcache和apc
-//     'DB_SQL_BUILD_LENGTH'   =>  20, // SQL缓存的队列长度
-//     'DB_SQL_LOG'            =>  false, // SQL执行日志记录
-//     'DB_BIND_PARAM'         =>  false, // 数据库写入数据自动参数绑定
 
     //错误设置
     'ERROR_MESSAGE'         =>  '页面错误！请稍后再试～',//错误显示信息,非调试模式有效
