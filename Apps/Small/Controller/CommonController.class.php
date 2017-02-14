@@ -1,5 +1,5 @@
 <?php
-namespace Xiuli\Controller;
+namespace Small\Controller;
 use Think\Controller;
 class CommonController extends Controller{
     Public function _initialize(){

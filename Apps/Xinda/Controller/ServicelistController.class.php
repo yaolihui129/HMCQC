@@ -2,31 +2,22 @@
 namespace Xinda\Controller;
 use Think\Controller;
 class ServicelistController extends Controller {
-    public function index(){
-        if(!($_SESSION['init'])){
-                $m=D('product');
-                $data=$m->find(6);
-                $_SESSION['web']=$data['web'];
-                $_SESSION['adress']=$data['adress'];
-                $_SESSION['desc']=$data['desc'];
-                $_SESSION['phone']=$data['phone'];
-                $_SESSION['tel']=$data['tel'];
-                $_SESSION['qq']=$data['qq'];
-                $_SESSION['weburl']=$data['url'];
-                $_SESSION['record']=$data['record'];
-                $_SESSION['ip']=get_client_ip();
-                $_SESSION['browser']=GetBrowser();
-                $_SESSION['os']=GetOs();
-                $_SESSION['img']=$data['path'].$data['img'];
-                $_SESSION['init']=1;                              
-            }
+        public function index(){
+            
+            $m=D('product');
+            $data=$m->field('web,adress,desc,phone,tel,qq,url,record,path,img')->find(6);
+            $_SESSION['Xinda']=$data;
+            $_SESSION['Xinda']['img']=$data['path'].$data['img'];
+            $_SESSION['ip']=get_client_ip();
+            $_SESSION['browser']=GetBrowser();
+            $_SESSION['os']=GetOs();
             
             $where['prodid']=6;            
             $m=D('xd_cate');
             $map['state']='发布';
             $arr=$m->where($where)->order('sn')->select();                        
             $this->assign('arr',$arr);
-//             
+         
             $m=D('tc_prodservice');
             if($_GET['cate']){
                 $map['cate']=$_GET['cate'];

@@ -17,7 +17,7 @@ class LoginController extends Controller {
             $this->redirect('/Small/Index');
         }else{
 
-            $this->error('用户或密码错误，请重新登陆！', U('Small/Index'));
+            $this->error('用户或密码错误，请重新登陆！');
         }
 
     }
@@ -31,7 +31,7 @@ class LoginController extends Controller {
         }        
         session_destroy();// 销毁sesstion
 
-        $this->success("再见 {$username}, 退出成功!", U('Xiuli/Index'));
+        $this->success("再见 {$username}, 退出成功!");
 
     }
 }

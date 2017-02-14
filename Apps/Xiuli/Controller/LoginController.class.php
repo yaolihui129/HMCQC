@@ -8,7 +8,6 @@ class LoginController extends Controller {
          $where['phone']=$_POST['phone'];
          $where['password']=md5($_POST['password']);
          $data=$m->where($where)->field('id,phone,realname')->find();
-        dump($data);
         
         if ($data){            
             $_SESSION['Xiuli']['userid']=$data['id'];
@@ -18,7 +17,7 @@ class LoginController extends Controller {
             $this->redirect('/Xiuli/Index');
         }else{
 
-            $this->error('用户或密码错误，请重新登陆！', U('Xiuli/Index'));
+            $this->error('用户或密码错误，请重新登陆！');
         }
 
     }
@@ -32,7 +31,7 @@ class LoginController extends Controller {
         }        
         session_destroy();// 销毁sesstion
 
-        $this->success("再见 {$username}, 退出成功!", U('Xiuli/Index'));
+        $this->success("再见 {$username}, 退出成功!");
 
     }
 }

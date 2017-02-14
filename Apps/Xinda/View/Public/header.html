@@ -4,17 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><{$_SESSION['web']}></title>
+    <title><{$_SESSION['Xinda']['web']}></title>
     <meta name="keywords" content="<{$_SESSION['keywords']}>" />
-
+	
     <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <import type="css" file="Css.home" />    
+    <import type="css" file="css.home" />
     <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
   <body>
+
      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
@@ -24,50 +25,32 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="__APP__/Tuocai"><span class="ico">
-              <img alt="Brand" src="__IMAGES__/ico.jpg"  style="margin-top:-15px;height:70px;"></a>
+          <a class="navbar-brand" href="__APP__/Xiuli"><{$_SESSION['Xinda']['web']}></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse ">
-          <ul class="nav navbar-nav pull-right">           
-            <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="#">
-               		<span class="glyphicon glyphicon-book"> 课程导航</span><span class="caret"></span>
-               </a>
-               <ul class="dropdown-menu" role="menu">
-                 <li ><a href="__APP__/Tuocai/Servicelist/index/cate/10">学前少儿</a></li>
-                 <li class="divider"></li>
-                 <li><a href="__APP__/Tuocai/Servicelist/index/cate/11">小学课程</a></li>
-                 <li class="divider"></li>
-                 <li><a href="__APP__/Tuocai/Servicelist/index/cate/12">中学课程</a></li>
-                 <li class="divider"></li>
-                 <li><a href="__APP__/Tuocai/Servicelist/index/cate/13">作业托管</a></li>
-                 <li class="divider"></li>
-                 <li><a href="__APP__/Tuocai/Servicelist/index/cate/14">兴趣拓展</a></li>
-               </ul>
-            </li>
-            <li><a href="__APP__/Tuocai/Customer/index/isteacher/1">
-            	<span class="glyphicon glyphicon-user"> 师资力量</span> </a>
-            </li>
-            <li><a href="__APP__/Tuocai/About/index">
-            	<span class="glyphicon glyphicon-phone-alt"> 关于我们</span></a>
-            </li>
-            
+        
+          <ul class="nav navbar-nav pull-right">                       
+            <li><a href="__APP__/Xinda/Servicelist"><span class="glyphicon glyphicon-th-list"> 主营业务</span></a></li>
+            <li><a href="__APP__/Xinda/About/Hr"><span class="glyphicon glyphicon-user"> 诚聘人才</span></a></li>				
+            <li><a href="__APP__/Xinda/About/about"><span class="glyphicon glyphicon-phone-alt"></span> 关于我们</a></li>           
             <empty name="_SESSION['isCLogin']">
-            	<li><a data-toggle="modal" href="#Login" class="pull-right" >登录</a></li>            
-          <else />
-          <li class="divider"></li>
-              <li class="dropdown">
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <{$_SESSION['realname']}> <span class="caret"></span></a>
-                 <ul class="dropdown-menu" role="menu">                    
-                    <li><a href="__APP__/Tuocai/Course/mycourse">我的课程</a></li>
-                    <li><a href="__APP__/Tuocai/Customer/setpass">修改密码</a></li>
-                	<li class="divider"></li>
-                	<li><a href="__APP__/Tuocai/Login/logout">退出</a></li>
-                </ul>
-              </li>
-          </empty>
-          </ul>                   
+           		<li><a data-toggle="modal" href="#Login" class="pull-right" >登录</a></li>	
+          	<else />
+          		<li class="divider"></li>
+              		<li class="dropdown">
+                 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                 	<span class="glyphicon glyphicon-user"></span> <{$_SESSION['realname']}> <span class="caret"></span></a>
+                 	<ul class="dropdown-menu" role="menu">                    
+                    	<li><a href="__APP__/Xinda/Order">我的订单</a></li>
+                    	<li><a href="__APP__/Xinda/Customer/setpass">修改密码</a></li>
+                		<li class="divider"></li>
+                		<li><a href="__APP__/Xinda/Login/logout">退出</a></li>
+                	</ul>
+             	 </li>
+          	</empty>
+          </ul>                  
         </div>
       </div>
-    </nav>		
+    </nav>
+		
     <div class="container">
