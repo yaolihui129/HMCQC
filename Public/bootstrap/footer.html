@@ -1,33 +1,23 @@
 
-<div class="footer">
-   <footer class="footer-area">
-		  <div class="container text-center">
-		    <p class="links">Copyright <span class="num">&copy;</span> 2016-2017
-		      |
-		      <a target="_blank" href="http://www.xiuliguanggao.com"><b>临城-秀丽广告</b></a> 版权所有
-		      |
-		      	备案号：<{$_SESSION['Xinda']['record']}>
-		      |
-		      <{$_SESSION['ip']}>;<{$_SESSION['os']}>-<{$_SESSION['browser']}>
-		      |
-		      	咨询热线：<{$_SESSION['Xinda']['phone']}>
-		    </p>				    
-		  </div>
-   </footer>
-</div>
+     	<div class="foot navbar-bottom list-inline text-center">
+         	Copyright <span class="num">&copy;</span> 2016-2017
+     		<a target="_blank" href="http://www.xiuliguanggao.com"><b>临城-秀丽广告</b></a> 版权所有<br>
+     		<span>备案号：<{$_SESSION['Xinda']['record']}>;<br>IP:<{$_SESSION['ip']}>;浏览器：<{$_SESSION['os']}>-<{$_SESSION['browser']}></span>
+     		<p>咨询热线：<{$_SESSION['Xinda']['phone']}>
+     			<span class="hidden-xs hidden-sm">
+     			<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=<{$_SESSION['Xinda']['qq']}>&amp;site=qq&amp;menu=yes" target="_blank">
+					<img border="0" title="在线客服" alt="在线客服" style="margin-top:0px;" src="http://wpa.qq.com/pa?p=2:<{$_SESSION['Xinda']['qq']}>:41">
+				</a>
+				</span>　
+			</p>
+     	
+    	</div>
+     </div>
 
-    <script src="https://cdn.mailblast.io/assets/application-150af8c82f2d6c765a6ba12a615d5922da85c8f7566873019b4c2671acec49e7.js"></script>
-    <script type="text/javascript">
-	    $(document).scroll(function() {
-	      if ($(document).scrollTop() >= 1) {
-	        $('.header-area').addClass('navbar-fixed-top');
-	      } else {
-	        $('.header-area').removeClass('navbar-fixed-top');
-	      }
-	    });
- 	</script>
-  
-  
+	
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>    
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    
 <!-- 添加-模态框 -->
 <div class="modal fade " id="Login" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -57,9 +47,8 @@
 		     <button type="submit" class="btn btn-primary">登录</button></form>
 		</div>
     </div>
-  </div>
-</div>
-  </body>
+    
+ </body>
 </html>
 
 
