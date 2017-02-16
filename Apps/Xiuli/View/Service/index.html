@@ -20,8 +20,7 @@
 								<!--<h4>运费：￥<{$arr.wlmoney}></h4>-->
 								
 				</switch>
-				<h5>制作周期：<{$arr.weight}></h5>				
-				<a href="#" class="btn btn-info btn-xs">咨询预约：<{$_SESSION['Xiuli']['tel']}></a>
+				<h5>制作周期：<{$arr.weight}></h5>咨询预约:<a href="tel:<{$_SESSION['Xiuli']['tel']}>" ><{$_SESSION['Xiuli']['tel']}></a>
 				<span class="hidden-xs hidden-sm">
 					<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=<{$_SESSION['Xiuli']['qq']}>&amp;site=qq&amp;menu=yes" class="btn-xs" target="_blank">
 						<img border="0" title="在线客服" alt="在线客服" style="margin-top:0px;" src="http://wpa.qq.com/pa?p=2:<{$_SESSION['Xiuli']['qq']}>:41">
