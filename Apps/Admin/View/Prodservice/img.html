@@ -6,15 +6,12 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 					<div class="row">
-						<div class="col-md-4">
+						<div class="col-md-5">
 							<form action="__URL__/pic" method="post" enctype='multipart/form-data'  role="form">
 				         	<input type="hidden" name="id" value="<{$arr.id}>" />	         
-							<img alt="图片" src="__UPLOAD__/<{$_SESSION['qz']}><{$arr.path}><{$arr.img}>" height="300" class="pull-left">
-						</div>
-						<div class="col-md-3">
-							&nbsp;
-						</div>
-						<div class="col-md-5">
+							<img alt="图片" src="__UPLOAD__/<{$_SESSION['qz']}><{$arr.path}><{$arr.img}>" width="100%" >
+						</div>						
+						<div class="col-md-7">
 							<label for="exampleupdateTime">货号：</label>
 				            <{$arr.mark}> <br>分类： 
 				            <{$arr.cate|getCatname=###}><br>路径：

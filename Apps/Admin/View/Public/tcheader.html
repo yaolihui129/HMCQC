@@ -33,18 +33,18 @@
             <li><a href="__APP__/Admin/Order"><span class="glyphicon glyphicon-user"></span> 老师课程</a></li>            
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> 排课</a></li>                                                        
           </ul>
-          <ul class="nav navbar-nav navbar-right">             
-             <li class="dropdown">
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="glyphicon glyphicon-user"> <{$_SESSION.realname}></span>                   
-                  <span class="caret"></span></a>
-                 <ul class="dropdown-menu" role="menu">                   
-                    <li><a href="__APP__/Admin/User/setpass">修改密码</a></li>             
-                    <li class="divider"></li>
-                    <li><a href="__APP__/Admin/Login/logout" onclick="return confirm('你确定要退出系统吗？')" >退出</a></li>
-                </ul>
-          </li>
-          </ul>
+           <ul class="nav navbar-nav navbar-right">
+			 <li>
+				 <a href="__APP__/Admin/User/setpass">
+				 	<span class="glyphicon glyphicon-user"> <{$_SESSION.realname}></span>
+				 </a>
+			 </li>			 
+			 <li>
+				 <a href="__APP__/Admin/Login/logout" onclick="return confirm('你确定要退出系统吗？')" >
+				 	<span class="glyphicon glyphicon-log-out"> 退出</span>
+				 </a>		 
+			 </li>
+		  </ul>
         </div>
       </div>
     </nav>

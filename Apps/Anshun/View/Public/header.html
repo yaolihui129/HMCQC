@@ -1,57 +1,70 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><{$_SESSION['Anshun']['web']}></title>
-    <meta name="keywords" content="<{$_SESSION['Anshun']['keywords']}>" />
-    <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <import type="css" file="css.home" />
-    <!--[if lt IE 9]>
-      <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
+	<head>        
+        <meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><{$_SESSION['Anshun']['web']}></title>
+        <meta name="keywords" content="#">
+        <meta name="description" content="#">
+        
+        <import type="css" file="css.as_home" />
+        
+        <script>window.zhuge = window.zhuge || [];
+            window.zhuge.methods = "_init debug identify track trackLink trackForm page".split(" ");
+            window.zhuge.factory = function(b) {
+                    return function() {
+                        var a = Array.prototype.slice.call(arguments);
+                        a.unshift(b);
+                        window.zhuge.push(a);
+                        return window.zhuge;
+                    }
+            };
+            for (var i = 0; i < window.zhuge.methods.length; i++) {
+                var key = window.zhuge.methods[i];
+                window.zhuge[key] = window.zhuge.factory(key);
+            }
+            window.zhuge.load = function(b, x) {
+                if (!document.getElementById("zhuge-js")) {
+                    var a = document.createElement("script");
+                    var verDate = new Date();
+                    var verStr = verDate.getFullYear().toString()
+                        + verDate.getMonth().toString() + verDate.getDate().toString();
 
-     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="__APP__/Anshun/Index"><{$_SESSION['Anshun']['web']}></a>         
-        </div>
-        <div id="navbar" class="collapse navbar-collapse ">
-          <ul class="nav navbar-nav pull-right">
-            <li><a href="__APP__/Anshun/Servicelist/index/cate/1"><span class="glyphicon glyphicon-wrench"> 钣金喷漆</span> </a></li>
-            <li><a href="__APP__/Anshun/Servicelist/index/cate/3"><span class="glyphicon glyphicon-cog"> 维修保养</span> </a></li>
-            <li><a href="__APP__/Anshun/Servicelist/index/cate/4"><span class="glyphicon glyphicon-list"> 汽车用品</span> </a></li>               
-            <li><a href="__APP__/Anshun/Usecar"><span class="glyphicon glyphicon-cog"> 用车常识</span></a></li>                                
-            <li><a href="__APP__/Anshun/About/about"><span class="glyphicon glyphicon-earphone"> 关于我们</span> </a></li>            
-            <empty name="_SESSION['isCLogin']">            
-              <li><a data-toggle="modal" href="#Login" class="pull-right" >登录</a></li>             
-          	<else />
-          		<li class="divider"></li>
-              		<li class="dropdown">
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                 <span class="glyphicon glyphicon-user"> <{$_SESSION['realname']}> </span>
-                 <span class="caret"></span>
-                 </a>
-                 <ul class="dropdown-menu" role="menu">                    
-                    <li><a href="__APP__/Anshun/Course/mycourse">我的优惠券</a></li>
-                    <li><a href="__APP__/Anshun/Customer/setpass">修改密码</a></li>
-                	<li class="divider"></li>
-                	<li><a href="__APP__/Anshun/Login/logout">退出</a></li>
-                </ul>
-              </li>
-          </empty>
-          </ul>                    
-        </div>
-      </div>
-    </nav>		
-    <div class="container">				
+                    a.type = "text/javascript";
+                    a.id = "zhuge-js";
+                    a.async = !0;
+                    a.src = (location.protocol == 'http:' ? "http://sdk.zhugeio.com/zhuge-lastest.min.js?v=" : 'https://zgsdk.zhugeio.com/zhuge-lastest.min.js?v=') + verStr;
+                    var c = document.getElementsByTagName("script")[0];
+                    c.parentNode.insertBefore(a, c);
+                    window.zhuge._init(b, x)
+                }
+            };
+            window.zhuge.load('bd49c635d15a47d8a9fc7397bb5e27f1');
+        </script>
+    </head>
+
+ 	<body>
+        <header class="navbar navbar-inverse navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target=".sc-navbar-collapse" class="navbar-toggle collapsed">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="__APP__/Anshun/Index" class="navbar-brand">临城安顺汽车维修服务中心</a>
+                </div>
+                <div class="navbar-collapse collapse sc-navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="__APP__/Anshun">首页</a></li>
+                        <li><a href="__APP__/Anshun/Servicelist/index/cate/1">主营业务</a></li>
+                        <li><a href="__APP__/Anshun/Servicelist/index/cate/5">汽车用品</a></li>
+                        <li><a href="__APP__/Anshun/About/hr">诚聘人才</a></li>
+                        <li><a href="__APP__/Anshun/About/about">关于我们</a></li>                                               
+                        <li><a href="#" class="sc-action-btn sc-login-btn">登录</a></li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </header>
