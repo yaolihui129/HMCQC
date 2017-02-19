@@ -11,8 +11,12 @@ class HrController extends CommonController {
     }
 
     public  function add(){
-
         $m=M('tp_hr');
+        $where['prodid']=$_SESSION['prodid'];
+        $date=$m->where($where)->select();
+        $this->assign('date',$date);
+
+        
         $where['prodid']=$_SESSION['prodid'];
         $arr=$m->where($where)->select();
         $this->assign('data',$arr);

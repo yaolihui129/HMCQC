@@ -19,8 +19,10 @@ class LoginController extends Controller {
             $_SESSION['testgp']=$user['usergp'];
             $where['userid']=$user['id'];
             $arr = D('tp_userprod')->where($where)->select();
+            
             //判断跳转到那个后台
             $this->redirect('TAdmin/Program/index');
+//             $this->success("登陆成功!");
         }else{
             // p($user);
             $this->error('用户或密码错误，请重新登陆！', "index");

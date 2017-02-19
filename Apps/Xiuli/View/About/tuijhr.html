@@ -1,3 +1,4 @@
+
 <layout name="layout" />
 <span class="hidden-sm hidden-md hidden-lg"><img src="__IMAGES__/hr.png" alt="__IMAGES__/hr.png" width="100%"></span>
 <div class="panel panel-primary">
@@ -20,11 +21,12 @@
 				   <span class="hidden-sm hidden-md hidden-lg">
 				   		<a href="tel:<{$_SESSION['Xiuli']['tel']}>" class="btn btn-primary">电话咨询</a>
 				   </span>
-				   <a href="__URL__/baom/id/<{$vo.id}>" class="btn btn-primary">现在报名</a>				   		    
+				   <a href="__URL__/baom/id/<{$vo.id}>" class="btn btn-primary">现在报名</a>
+				   <span class="hidden-xs"><a href="__URL__/tuij/id/<{$vo.id}>" class="btn btn-primary">推荐人选</a></span>		    
 				</div>
 			</div>
 		</div> 
         </volist>
         
      </div>             	
-</div>          	
+</div> 
