@@ -34,19 +34,14 @@
             <li><a href="__APP__/Xiuli/About/Hr"><span class="glyphicon glyphicon-user"> 诚聘人才</span></a></li>				
             <li><a href="__APP__/Xiuli/About/about"><span class="glyphicon glyphicon-phone-alt"></span> 关于我们</a></li>           
             <empty name="_SESSION['isCLogin']">
-           		<li><a data-toggle="modal" href="#Login" class="pull-right" >登录</a></li>	
+           		<li><a data-toggle="modal" href="#Login" class="pull-right" >登录</a></li>
+           		<li><a  href="__APP__/Xiuli/Customer" class="pull-right" >注册</a></li>	
           	<else />
-          		<li class="divider"></li>
-              		<li class="dropdown">
-                 	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                 	<span class="glyphicon glyphicon-user"></span> <{$_SESSION['realname']}> <span class="caret"></span></a>
-                 	<ul class="dropdown-menu" role="menu">                    
-                    	<li><a href="__APP__/Xiuli/Order">我的订单</a></li>
-                    	<li><a href="__APP__/Xiuli/Customer/setpass">修改密码</a></li>
-                		<li class="divider"></li>
-                		<li><a href="__APP__/Xiuli/Login/logout">退出</a></li>
-                	</ul>
-             	 </li>
+          		<li>
+	          		<a href="__APP__/Xiuli/Customer/personal">
+	          			<span class="glyphicon glyphicon-user"> <{$_SESSION['realname']}></span>
+	          		</a>
+          		</li>         		         		        		             		
           	</empty>
           </ul>                  
         </div>

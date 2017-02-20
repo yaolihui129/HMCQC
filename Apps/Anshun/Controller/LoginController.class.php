@@ -11,11 +11,11 @@ class LoginController extends Controller {
 
         
         if ($data){
-            $_SESSION['Anshun']['userid']=$data['id'];
-            $_SESSION['Anshun']['uphone']=$data['phone'];
+            $_SESSION['userid']=$data['id'];
+            $_SESSION['uphone']=$data['phone'];
             $_SESSION['realname']=$data['realname'];
-            $_SESSION['isCLogin']=4;
-            $this->redirect('/Anshun/Index');
+            $_SESSION['isCLogin']="Anshun";
+            $this->success("登陆成功!");
         }else{
 
             $this->error('用户或密码错误，请重新登陆！', U('Anshun/Index'));

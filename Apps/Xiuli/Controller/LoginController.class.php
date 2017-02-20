@@ -32,7 +32,7 @@ class LoginController extends Controller {
         }        
         session_destroy();// 销毁sesstion
 
-        $this->success("再见 {$username}, 退出成功!");
+        $this->success("再见 {$username}, 退出成功!",U('/Xiuli/Index'));
 
     }
 }
