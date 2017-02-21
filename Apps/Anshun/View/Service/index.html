@@ -1,4 +1,5 @@
 <layout name="layout" />	
+<div class="container">
 <div class="row">
 	<div class="panel panel-info">
 		<div class="panel-heading">
@@ -14,10 +15,13 @@
 			<div class="col-md-7 ">
 				<h5>编号：<{$arr.mark}></h5>
 				<h4>名称：<{$arr.name}></h4>
-				<h4>价格：<b>￥<{$arr.money}></b>(市场价：<s><em>￥<{$arr.smoney}></em></s>)</h4>
-				<!--<h4>运费：￥<{$arr.wlmoney}></h4>-->
-				<h5>规格：<{$arr.weight}></h5>
-				<a href="tel:<{$_SESSION['Anshun']['phone']}>" class="btn btn-info btn-xs">咨询预约</a>
+				<switch name="arr.money">
+				    <case value="0"><br></case>				    
+				    <default /><h4>价格：<b>￥<{$arr.money}></b>(市场价：<s><em>￥<{$arr.smoney}></em></s>)</h4>
+								<!--<h4>运费：￥<{$arr.wlmoney}></h4>-->
+								
+				</switch>
+				<a href="tel:<{$_SESSION['Anshun']['phone']}>" class="btn btn-info btn-xs">电话：<{$_SESSION['Anshun']['phone']}></a><br>
 				<span class="hidden-xs hidden-sm">
 					<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=<{$_SESSION['Anshun']['qq']}>&amp;site=qq&amp;menu=yes" class="btn-xs" target="_blank">
 						<img border="0" title="在线客服" alt="在线客服" style="margin-top:0px;" src="http://wpa.qq.com/pa?p=2:<{$_SESSION['Anshun']['qq']}>:41">
@@ -31,5 +35,5 @@
 		<div class="panel-body"><p><{$arr.content}></p></div>						
 	</div>
 </div>
-
+</div>
 	

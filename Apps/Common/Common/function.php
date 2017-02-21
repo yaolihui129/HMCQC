@@ -105,6 +105,44 @@ function GetOs(){
     }else{return "获取访客操作系统信息失败！";}
 }
 
+// 执行CURL操作
+function httpGet($url){
+    //1.获取初始化URL
+    $ch=curl_init();
+    //2.设置curl的参数
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, 500);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    //3.采集
+    $res = curl_exec($ch);
+    //4.关闭
+    curl_close($ch);
+    if(curl_errno($ch)){
+        $res=curl_errno($ch);
+    }
+    return $res;
+}
+
+//更新AccessToken
+function setWxAccessToken(){
+    $m=D('wx_wechat');
+    $arr=$m->find($_GET[id]);
+    $this->assign('arr',$arr);
+    $appid=$arr['appid'];
+    $appsecret=$arr['appsecret'];
+    $url='https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$appid.'&secret='.$appsecret;
+    if(time()>=$arr['otiem']){
+        $arr = json_decode(httpGet($url), true);
+        $data['id']=$_GET[id];
+        $data['access_token']=$arr['access_token'];
+        $data['expires_in']=$arr['expires_in'];
+        $data['otime']=time()+7000;
+        //更新AccessToken
+        $m->save($data);
+    }
+}
 
 
 //根据日期获取星期
