@@ -1,9 +1,8 @@
 <layout name="layout" />
 <div class="container">
-<div class="row">
-	
+<div class="row">	
 	<div class="col-md-9 ">
-		<div class="panel panel-info">
+		<div class="panel panel-primary">
 			<div class="panel-heading"><h3 class="panel-title"><{$cate|getCatname=###}></h3></div>
 			<div class="panel-body">
 			<volist name='data' id='ar' empty="没有数据">
@@ -20,7 +19,7 @@
 		</div>
 	</div>
 	<div class="col-md-3 ">
-		<div class="panel panel-info">
+		<div class="panel panel-primary">
 			<div class="panel-heading"><h3 class="panel-title">分类</h3></div>
 			<ul class="list-group">
 			 		<volist name='arr' id='st' empty="暂无分类">            
@@ -32,7 +31,6 @@
 					</volist>    
 				</ul>
 		</div>
-	</div>
-	
+	</div>	
 </div>
 </div>
