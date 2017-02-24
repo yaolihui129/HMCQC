@@ -179,29 +179,32 @@ function getTeacher($id){
  * 根据funcid获取测试数据
  */
 function getTest($funcid){
-    $where['zt_tp_exefunc.funcid']=$funcid;
-    $where['zt_tp_stage.proid']=$_SESSION['proid'];
-    $m=M('tp_stage');
-    $arr=$m ->where($where)
-    ->join('zt_tp_stagetester ON tp_stage.id =zt_tp_stagetester.stageid')
-    ->join('zt_tp_exescene ON zt_tp_stagetester.id=zt_tp_exescene.stagetesterid')
-    ->join('zt_tp_exefunc ON tp_exescene.id=zt_tp_exefunc.exesceneid')
-    ->order('zt_tp_exefunc.updateTime desc')
-    ->select();
-
+    $m=D('tp_exefunc');
+    $where['funcid']=$funcid;
+    $arr=$m->where($where)->order('updateTime desc')->limit(15)->select();
+//     dump($arr);
+    $str.='<ul class="list-group">';
     foreach ($arr as $ar){
-        $str.='<li class="list-group-item"><b>'
-            . $ar['tester']."</b>-".$ar['stage']."<span class='badge'>".$ar['updatetime']."</span><br>"
-            .$ar['swho'].$ar['swhen'].$ar['scene']."<br>"
-            .$ar['sn'].".".$ar['func']."，<b>意图：</b>".$ar['casemain']."，<b>预期：</b>".$ar['caseexpected']
-            .'<span class="badge">'.$ar['result'].'</span><br><b>失败记录：</b>'
-            .$ar['remark'].';<b>禅道BUG：</b>'.$ar['bugid'].'</li>';
-    };
-    if($arr){
-        return $str;
-    }else{
-        return '无测试记录';
+      $str.='<li class="list-group-item"><span class=badge>'
+            .$ar['result'].'</span>'
+            .getExescene($ar['exesceneid']).';'
+            .getFunc($ar['funcid']);
+      $str.='('.$ar['funcremarks'].')'.'备注：'.$ar['remark'].'<br>
+         <b>意图：</b>'.$ar['casemain'];
+      if($ar['caseexpected']){
+        $str.=";<b>预期：</b>".$ar['caseexpected'];
+      }
+      if($ar['bugid']){
+        $str.="&nbsp;BUGid:".$ar['bugid'];
+      }
+   
+      $str.='<span class="badge">'.$ar['updatetime'].'</span>'
+            .'</li>';
     }
+    
+    $str.='</ul>';
+
+    return $str;
 }
 
 /**
@@ -229,6 +232,29 @@ function getFResult($funcid){
         return ;
     }
 }
+
+//更具funcid获取项目用例
+function getPFCase($funcid){
+    $m=D('tp_case');
+    $where['funcid']=$funcid;
+    $where['fproid']=$_SESSION['proid'];
+    $arr=$m->where($where)->order('sn,id')->select();
+
+    $str.='<ul class="list-group">';
+    foreach ($arr as $ar){
+         $str.='<li class="list-group-item">'
+             .$ar['id'].".<b>意图：</b>".$ar['main'].";<b>预期：</b>".$ar['expected']
+             .'<span class="badge">'.$ar['adder'].':'.$ar['updatetime'].'</span>'
+             .'</li>';
+     }
+     $str.='</ul>';
+            
+            
+    return $str;
+    
+}
+
+
 
 //根据dateid 获取排课信息
 function getPlan($dateid){
@@ -300,6 +326,8 @@ function getPlan($dateid){
             return ;
         }
     } 
+    
+    
     
     // 根据id获取项目信息
     function getProname($projectid){
@@ -427,6 +455,30 @@ function getPlan($dateid){
         }
     }
     
+    
+    //获取执行人信息
+    function getStagetester($stagetesterid){
+        $m=M("tp_stagetester");
+        $arr=$m->find($stagetesterid);
+        $str.=getStage($arr['stageid'])
+            .'<span class="label label-info">'.$arr['tester'].'</span>';
+        return $str;
+    }
+    
+    
+    //获取执行场景信息
+    function getExescene($exesceneid){
+        $m=M("tp_exescene");
+        
+        $arr=$m->find($exesceneid);
+        $str.=getStagetester($arr['stagetesterid']).'<br>';
+        if($arr['pathid']){
+           $str.= getSPath($arr['pathid']);           
+        }else {
+           $str.= '场景'.$arr['sceneid'];
+        }
+        return $str;
+    }
     /**
      * 根据路径id获取功能信息
      */
@@ -587,6 +639,16 @@ function getPlan($dateid){
     function countFCase($funcid){
         $m=M("tp_case");
         $where=array("funcid"=>$funcid);
+        $count=$m->where($where)->count();
+        return $count;
+    }
+    
+    /**
+     * 根据功能获取用例数
+     */
+    function countFPCase($funcid){
+        $m=M("tp_case");
+        $where=array("funcid"=>$funcid,"fproid"=>$_SESSION['proid']);
         $count=$m->where($where)->count();
         return $count;
     }

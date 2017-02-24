@@ -133,7 +133,8 @@ class PathController extends CommonController {
         $arr['type']=$stt['type'];
         $arr['swho']='【功能】';
         $arr['swhen']='默认';
-//         $arr['scene']=getSPath($data['id']);
+        $arr['rproid']=$_SESSION['proid'];
+        $arr['scene']=getModuleName($data['id']);
         $arr['flow']='“'.$arr['scene'].'“下所有功能点';
         $arr['results']='未测试';
         $arr['moder']=$_SESSION['realname'];

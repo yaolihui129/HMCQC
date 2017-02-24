@@ -10,22 +10,16 @@ class CaseController extends Controller {
          $arr=$m->find($funcid);
          $this->assign('arr',$arr);
          $where['pathid']=$arr['pathid'];
-         $data=$m->where($where)
-         ->order('sn,id')
-         ->select();
+         $data=$m->where($where)->order('sn,id')->select();
          $this->assign('data',$data);
          
     	 $m=D('tp_case');
     	 $map['funcid']=$funcid;
-    	 $cases=$m->where($map)
-    	 ->order('sn,id')
-    	 ->select();
+    	 $cases=$m->where($map)->order('sn,id')->select();
 	     $this->assign('cases',$cases);        
 
         $this->display();
     }
-
-
 
     public function procase(){
         /* 接收参数*/
@@ -35,31 +29,16 @@ class CaseController extends Controller {
         $arr=$m->field("id,name,code,begin,end,testgp,status,pri,deleted,desc,po,pm,qd,rd,order")->find($proid);
         $this->assign('arr',$arr);
         
-        $m=M('branch');
-        $where=array("zt_tp_case.fproid"=>$proid);
+        $m=D('branch');
+        $where=array("zt_tp_func.fproid"=>$proid,"zt_module.state"=>'正常',"zt_tp_func.state"=>'正常');
         $data=$m->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
-        ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')
-        ->join(' inner JOIN zt_tp_case ON zt_tp_func.id = zt_tp_case.funcid')
-        ->where($where)
-//         ->order("zt_branch.sysno,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id,zt_tp_case.sn,zt_tp_case.id")
-        ->select();
+        ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')        
+        ->where($where)->order('zt_module.branch,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id')->select();
         $this->assign('data',$data);        
 
         $this->display();
 
     }
 
-
-
-    public function update(){
-        /* 实例化模型*/
-        $db=D('tp_case');
-        if ($db->save($_POST)){
-            $this->success("修改成功！");
-        }else{
-            $this->error("修改失败！");
-        }
-
-
-    }
+ 
 }
