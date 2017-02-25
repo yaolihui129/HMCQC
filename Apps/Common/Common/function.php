@@ -125,11 +125,11 @@ function httpGet($url){
     return $res;
 }
 
-//更新AccessToken
+//更新微信AccessToken
 function setWxAccessToken(){
     $m=D('wx_wechat');
     $arr=$m->find($_GET[id]);
-    $this->assign('arr',$arr);
+
     $appid=$arr['appid'];
     $appsecret=$arr['appsecret'];
     $url='https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.$appid.'&secret='.$appsecret;

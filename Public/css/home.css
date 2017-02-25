@@ -5,7 +5,7 @@ body{
 	padding-bottom:50px;
 	background-color:#eee; 
 }
-
+#qqLoginBtn{background:url(../Public/images/Connect_logo_7.png)}
 /*字体*/
 .font12{font-size:12px;}
 .font13{font-size:13px;}

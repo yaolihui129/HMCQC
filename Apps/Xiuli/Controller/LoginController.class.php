@@ -3,6 +3,22 @@ namespace Xiuli\Controller;
 use Think\Controller;
 class LoginController extends Controller {
 
+    public function qq_login(){
+
+        $qqobj=new \Org\Util\Qqconnect();              
+        $qqobj->getAuthCode(); 
+
+    }
+    
+   
+    public function qq_callback(){
+        $qqobj=new \Org\Util\Qqconnect();       
+        $result=$qqobj->getUsrInfo(); 
+        dump($qqobj);
+    }
+    
+    
+
     public function login(){
          $m= D('tp_customer');
          $where['phone']=$_POST['phone'];

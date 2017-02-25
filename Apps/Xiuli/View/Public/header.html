@@ -8,7 +8,7 @@
     <meta name="keywords" content="<{$_SESSION['keywords']}>" />
 	<meta name="description" content="" />
     <link href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <import type="css" file="css.home" />
+    <import type="css" file="css.home" />       
     <!--[if lt IE 9]>
       <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
@@ -36,7 +36,8 @@
             <li><a href="__APP__/Xiuli/About"><span class="glyphicon glyphicon-phone-alt"></span> 关于我们</a></li>           
             <empty name="_SESSION['isCLogin']">
            		<li><a data-toggle="modal" href="#Login" class="pull-right" >登录</a></li>
-           		<li><a  href="__APP__/Xiuli/Customer" class="pull-right" >注册</a></li>	
+           		<li><a href="__APP__/Xiuli/Login/qq_login"  ><img alt="" src="__IMG__/Connect_logo_7.png"></a></li>
+           		<li><a href="__APP__/Xiuli/Customer" class="pull-right" >注册</a></li>	
           	<else />
           		<li>
 	          		<a href="__APP__/Xiuli/Customer/personal">

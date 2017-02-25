@@ -27,138 +27,29 @@ body{
 .function-list,
 .line-section,
 .map-section{border-bottom:1px solid #ddd}
-.sc-nav .nav li.active a{color:#1e78e8}
-.navbar-brand{width:200px;text-indent:-9999px;background:url(/img/home/logo-.png) center center no-repeat;margin-top:-6px}
-.bless{background-color:#000;padding-bottom:200px}
+
+
 .carousel-indicators{text-align:right}
-.card,
-.praise-list .praise,
-.text-center{text-align:center}
-.carousel-inner .smsonline .apply-sms{position:absolute;top:50%;left:13%}
-.carousel-inner .smsonline .sms-doc{position:absolute;top:50%;left:23%}
-.carousel-inner .developer{background:#41c073}
-.carousel-inner .notice{background:#075ac2}
-.carousel-inner .slogan{background:#1e78e8}
+.card,.praise-list .praise,.text-center{text-align:center}
+
 .line-section,.map-section{padding-top:80px;padding-bottom:80px}
 .advantage-list{padding:130px 0 110px}
 .advantage-list .advantage-bg{display:inline-block;width:156px;height:156px;background-size:contain;background-repeat:no-repeat;background-position:0 0;-webkit-transition:background .3s ease-in-out;transition:background .3s ease-in-out}
-.advantage-list .advantage-bg-1{background-image:url(/img/home/index/atbg-1.png)}
-.advantage-list .advantage-bg-1:hover{background-image:url(/img/home/index/atbg-2.png)}
-.advantage-list .advantage-bg-2{background-image:url(/img/home/index/atbg-3.png)}
-.advantage-list .advantage-bg-2:hover{background-image:url(/img/home/index/atbg-4.png)}
-.advantage-list .advantage-bg-3{background-image:url(/img/home/index/atbg-5.png)}
-.advantage-list .advantage-bg-3:hover{background-image:url(/img/home/index/atbg-6.png)}
+
 .advantage-list .advantage-title{font-size:36px;color:#1e78e8}
 .advantage-list .advantage-text{font-size:16px;margin-bottom:20px}
 .function-list{padding:70px 0}.function-list .function{padding:30px}
 .function-list .function .function-intro{padding-right:50px}
 .function-list .function .function-title{font-size:30px;color:#333;margin-bottom:20px}
 .function-list .function .function-title span{vertical-align:middle}
-.function-list .function .function-title .function-icon-1{background-position:0 0}
-.function-list .function .function-title .function-icon-2{background-position:-52px 0}
-.function-list .function .function-title .function-icon-3{background-position:-104px 0}
-.function-list .function .function-title .function-icon-4{background-position:-156px 0}
+
 .function-list .function .function-title .function-text{font-size:16px;margin-bottom:20px}
 .function-list .function .btn{margin-top:30px}
 .function-list .function .function-bg{display:none}
 .function-list .function .function-bg.animated{display:block}
-.praise-list{padding:80px 0 40px}
+.footer-banner{padding:120px 0;background:#202020}
 
-
-.star-card-list{list-style:none;margin:10px 0 0;padding:0}
-.star-card-list li{margin-top:10px;margin-bottom:20px;width:33.33333333%;height:270px}
-.card{display:block;color:#666}
-.card img{width:160px;height:60px}
-.card p{text-align:left}
-.card:hover{text-decoration:none;color:#666}
-.before-title,.main-title{color:#000;font-size:26px;text-align:center}
-.main-title{padding:12px 6px}
-.before-title{padding:12px 0;margin-left:26px}
-.mini-container{width:60%;margin:0 auto}
-.med-container{width:70%;margin:0 auto}
-.left-fixed{margin-left:26px}
-.right-fixed{margin-left:-10px}
-.banner{width:100%}
-.index-banner{height:600px;background:url(/img/home/index/banner.png) center center no-repeat #1e78e8;background-size:contain}
-.email-feature-banner{height:345px;background:url(/img/home/feature/email-banner.png) center center no-repeat #1e78e8;background-size:contain}
-.sms-feature-banner{height:345px;background:url(/img/home/feature/sms-banner.png) center center no-repeat #effaff;background-size:contain}
-.aboutus-banner,.email-feature .email-feature-bg{background-size:contain;background-repeat:no-repeat;background-position:center}
-.aboutus-banner{height:345px;background-image:url(/img/home/aboutus/aboutus-banner.png);background-color:#1e78e8}
-.email-feature{padding:50px 0;border-bottom:1px solid #ccc}
-.email-feature .email-feature-bg{margin:0 auto 40px;width:682px;height:360px}
-.email-feature .email-feature-bg-1{background-image:url(/img/home/feature/1.png)}
-.email-feature .email-feature-bg-2{background-image:url(/img/home/feature/2.png)}
-.email-feature .email-feature-bg-3{background-image:url(/img/home/feature/3.png)}
-.email-feature .email-feature-bg-4{background-image:url(/img/home/feature/4.png)}
-.email-feature .email-feature-text{padding-left:25px;padding-right:25px}
-.email-feature .email-feature-text-title{margin-bottom:20px;font-size:20px}
-.sms-feature-list{padding:50px 0}
-.sms-feature-list .col-md-4{padding-right:0}
-.sms-feature-list .sms-feature{position:relative;border:1px solid #ddd;padding:25px;margin-bottom:20px;-webkit-transition:all .1s ease-in-out;transition:all .1s ease-in-out}
-.sms-feature-list .sms-feature .feature-desc{margin-right:68px}
-.sms-feature-list .sms-feature .feature-title{margin-top:0}
-.sms-feature-list .sms-feature .feature-icon{position:absolute;right:15px;top:50px}
-.sms-feature-list .sms-feature.sms-feature-1 .feature-icon{width:57px;height:62px;background-image:url(/img/home/feature/sms-send.png)}
-.sms-feature-list .sms-feature.sms-feature-2 .feature-icon{width:54px;height:59px;background-image:url(/img/home/feature/sms-use.png)}
-.sms-feature-list .sms-feature.sms-feature-3 .feature-icon{width:68px;height:45px;background-image:url(/img/home/feature/sms-data.png)}
-.sms-feature-list .sms-feature:hover{background:#2ca481;color:#fff}
-.sms-feature-list .sms-feature:hover.sms-feature-1 .feature-icon{background-image:url(/img/home/feature/sms-send-hover.png)}.
-.sms-feature-list .sms-feature:hover.sms-feature-2 .feature-icon{background-image:url(/img/home/feature/sms-use-hover.png)}
-.sms-feature-list .sms-feature:hover.sms-feature-3 .feature-icon{background-image:url(/img/home/feature/sms-data-hover.png)}
-.sms-test{padding:40px 0}
-.sms-test .test-wrapper{width:600px}
-.sms-test .test-block{text-align:center;border:1px solid #ddd;padding:40px 70px;-webkit-transition:all .1s ease-in-out;transition:all .1s ease-in-out}
-.sms-test .test-block .block-title{font-size:30px;margin-bottom:30px}
-.sms-test .test-block .block-title .block-icon{display:inline-block;vertical-align:middle;margin-right:10px}
-.sms-test .test-block .phone-input{height:36px;margin-bottom:40px;border-color:#2ca481}
-.price-block .price-block-title,.price-calculator .price-calculator-body,.price-calculator .price-calculator-header,.price-table,.price-table .price-table-header,.sms-test .test-block .send-btn,.sms-test .test-block .send-tip{margin-bottom:20px}
-.sms-test .test-block .send-btn{font-size:18px;padding:10px 12px;background:#2ca481;color:#fff}
-.sms-test .test-block .btn-icon{height:25px;margin-right:10px}
-.sms-test .test-block:hover{border-color:#2ca481}
-.sms-test .test-block:hover .block-title{color:#2ca481}
-.sms-test .test-block .price-btn{padding:8px 50px;border:2px solid #2ca481;color:#2ca481}
-.sms-test .test-block .price-btn:hover{background:#2ca481;color:#fff}
-.gt_holder{display:inline-block}
-
-    .modal .red{color:red}#myModal{margin-top:15rem}
-    .modal .center{text-align:center}
-    .modal-header h4{font-weight:700}
-    .modal-header span{font-size:26px}
-    .modal-header span:focus,.modal-header span:visited{outline:0}
-    #sendModal{top:50%;left:50%;margin-top:-15rem;margin-left:-5rem}
-    #sendSuccessA{border-radius:10px;overflow:hidden}
-    #sendModal img{opacity:.6}
-    .footer-banner{padding:120px 0;background:#202020}
-    .footer-banner .contact-us,.footer-banner .join-us{padding:20px;text-align:center}
-    .footer-banner .icon-contact{display:inline-block;width:40px;height:40px;margin-right:20px;vertical-align:middle}
-    .footer-banner .icon-contact-phone{background-image:url(/img/home/index/icon-contact-phone.png)}
-    .footer-banner .icon-contact-qq{background-image:url(/img/home/index/icon-contact-qq.png)}
-    .footer-banner .contact-text{color:#fff}
-    .footer-banner .join-text{line-height:1.2;margin-left:20px;color:#eee;display:inline-block;vertical-align:middle}
-    .footer-bar{background:#1b1b1b;color:#fff;padding:15px}
-    .footer-bar .footer-links li{list-style:none;display:inline-block;padding:0 20px;margin:0}
-    .footer-bar .footer-links li a{color:#fff}
-    .col-lg-15,.col-md-15,.col-sm-15,.col-xs-15{position:relative;min-height:1px;padding-right:15px;padding-left:15px}
-    .col-xs-15{width:20%;float:left}
-    @media all and (min-width:992px){.col-md-15{width:20%;float:left}}
-    @media all and (min-width:1200px){.col-lg-15{width:20%;float:left}}
-    @media all and (min-width:768px){.col-sm-15{width:20%;float:left}}
-    @media all and (max-width:992px){.user-logo .container .logo-list{position:static;width:100%}
-    .user-logo .container .logo-list li{display:block;width:100%}
-    .price-table .price-list{background:#3a84d7;background-image:-webkit-linear-gradient(left,#6cadf6,#085bb8);background-image:linear-gradient(to right,#6cadf6,#085bb8)}
-    .price-table .price-list .price .price-step{background:0 0!important}
-    .price-table .price-list .price .price-step,.price-table .price-list .price .price-text{width:50%;display:inline-block}
-    .price-table.price-table-sms .price-list{background:#34bc93;background-image:-webkit-linear-gradient(left,#5ed8b5,#22916c);background-image:linear-gradient(to right,#5ed8b5,#22916c)}
-    .price-table.price-table-voice .price-list{background:#34bc93;background-image:-webkit-linear-gradient(left,#f9b673,#ed8827);background-image:linear-gradient(to right,#f9b673,#ed8827)}}
-    @media all and (max-width:768px){.function-intro{padding-right:0}
-    .footer-banner{padding:30px 0}
-    .join-text{margin-top:20px}
-    .navbar-brand{margin-top:0;margin-left:10px}
-    .sc-nav{padding-top:0}
-    .sc-nav .nav li a{border-top:1px solid #ddd}
-    .aboutus-banner{height:200px;background-image:url(/img/home/aboutus/aboutus-banner-small.png)}
-    .feature-banner{height:200px;background-image:url(/img/home/feature/banner-small.png)}
-    .advantage-list,.function-list{padding:30px 0}
-    .advantage-list .advantage-bg{width:120px;height:120px}
-    .carousel-inner .item a img,.carousel-inner .item img{height:200px}
-    .aboutus-tab.active:after{background:0 0!important}}
+.footer-bar{background:#1b1b1b;color:#fff;padding:15px}
+.footer-bar .footer-links li{list-style:none;display:inline-block;padding:0 20px;margin:0}
+.footer-bar .footer-links li a{color:#fff}
+    

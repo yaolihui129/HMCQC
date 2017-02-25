@@ -5,6 +5,7 @@ return array(
         '__CSS__'=>__ROOT__.'/Public/css',
         '__JS__'=>__ROOT__.'/Public/js/',
         '__IMAGES__'=>__ROOT__.'/Public/images/Test/',
+        '__IMG__'=>__ROOT__.'/Public/images',
         '__UPLOAD__'=>__ROOT__.'/Upload/'
     ),
 

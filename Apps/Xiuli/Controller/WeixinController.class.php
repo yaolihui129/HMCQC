@@ -182,12 +182,12 @@ class WeixinController extends Controller {
                     break;
             }
             $template = "<xml>
-<ToUserName><![CDATA[%s]]></ToUserName>
-<FromUserName><![CDATA[%s]]></FromUserName>
-<CreateTime>%s</CreateTime>
-<MsgType><![CDATA[%s]]></MsgType>
-<Content><![CDATA[%s]]></Content>
-</xml>";
+                            <ToUserName><![CDATA[%s]]></ToUserName>
+                            <FromUserName><![CDATA[%s]]></FromUserName>
+                            <CreateTime>%s</CreateTime>
+                            <MsgType><![CDATA[%s]]></MsgType>
+                            <Content><![CDATA[%s]]></Content>
+                        </xml>";
             //注意模板中的中括号 不能少 也不能多
             $fromUser = $postObj->ToUserName;
             $toUser   = $postObj->FromUserName;
