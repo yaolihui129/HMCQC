@@ -2,8 +2,8 @@
 namespace Xiuli\Controller;
 use Think\Controller;
 class IndexController extends Controller {
-    public function index(){
-           
+    public function index(){ 
+//         dump($_SESSION);
         $m=D('product');
         $data=$m->field('web,adress,desc,phone,tel,qq,url,record,path,img')->find(1);
         $_SESSION['Xiuli']=$data;

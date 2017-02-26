@@ -568,16 +568,22 @@ function getPlan($dateid){
            
     //获取平台名称
     function getBranchName($branchid){
-        if ($branchid){
+       
             $m=M('branch');
             $data=$m->find($branchid);
             $str=$data['name'];
-            return $str;
-        }else {
-            return ;
-        }
+            return $str;    
+    }
+    //获取职位信息
+    function getHrtitle($hrid){
+        $m=M('tp_hr');
+        $data=$m->find($hrid);
+        $str=$data['title']."(".$data['id'].")";
+        return $str;
         
     }
+    
+    
     //获取项目状态
     function getProst($value){
         if($value=='doing'){

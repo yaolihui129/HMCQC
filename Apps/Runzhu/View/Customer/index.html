@@ -1,28 +1,19 @@
 <layout name="layout" />
-  <ol class="breadcrumb">
-    <span>所在位置：</span>
-        <li><a href="__APP__/Home/Index/index"><span class="glyphicon glyphicon-home"></span> 首页</a></li>
-        <li class="active">师资力量</li>  
-  </ol>
-  <h1 >师资力量</h1>
-        <div class="panel panel-default">
-            <volist name='data' id='ar' empty="没有数据">
-		          <div class="media">
-						<a class="media-left" href="#">
-						    <img src="__UPLOAD__<{$ar.path}><{$ar.img}>" alt="<{$ar.img}>" class="img-thumbnail" height="100px">
-						</a>
-						<div class="media-body">
-						    <h4 class="media-heading"><{$ar.realname}>【<{$ar.course}>】<{$ar.coursetype}></h4>
-						    <{$ar.remark}>
+<img src="__IMAGES__/zhuce.jpg" alt="__IMAGES__/zhuce.jpg" width="100%">
+<div class="panel panel-primary">     
+     <div class="panel-body" style="height:200px;">     	
+     	 <div class="container">
+     	 	<div class="col-md-6">					
+				<form action="__URL__/checked" method="post" class="form-horizontal" role="form" >		  		     	   		     	  		  		     	   							  					
+					<br>
+					<div class="form-group">						
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="phone" value="" placeholder="您的手机号">
 						</div>
-					</div>
-             </volist>
-        </div>
-                     
-    
-
-
-
-
-
-              
+						<div class="col-sm-2"><button type="submit" class="btn btn-primary">检测</button></div>
+					</div>																				
+				</form>				 
+			</div>     	 
+     	 </div>        
+     </div>             	
+</div>          	

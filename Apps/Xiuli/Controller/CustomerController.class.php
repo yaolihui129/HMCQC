@@ -106,16 +106,41 @@ class CustomerController extends Controller {
         }
     }
     
-    public function personal(){
-        /* 接收参数*/
-        $id =  $_SESSION['userid'];
+    public function mod(){
+        $id=$_GET['id'];
         /* 实例化模型*/
         $m=M('tp_customer');
         $arr=$m->find($id);
         $this->assign('arr',$arr);
-//     dump($arr);
+        
         $this->display();
-    }  
+    }
     
+    public function update(){
+        /* 实例化模型*/
+        $db=D('tp_customer');
+        $_POST['moder']=$_SESSION['realname'];
+        if ($db->save($_POST)){
+            $this->success("修改成功！");
+        }else{
+            $this->error("修改失败！");
+        }
+    }
+    
+    public function personal(){
+        /* 接收参数*/
+        if($_SESSION['openid']){
+            $where['openid']=$_SESSION['openid'];
+        }else {
+            $where['id'] =  $_SESSION['userid'];
+        }        
+        /* 实例化模型*/
+        $m=M('tp_customer');
+        $arr=$m->where($where)->select();
+        $this->assign('arr',$arr);
+
+        $this->display();
+        
+    }     
     
 }

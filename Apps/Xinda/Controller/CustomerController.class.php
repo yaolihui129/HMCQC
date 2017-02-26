@@ -59,8 +59,6 @@ class CustomerController extends Controller {
         }else{
             $this->error('原密码错误');
         }
-
-
  }
 
 

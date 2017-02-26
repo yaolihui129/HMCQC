@@ -39,7 +39,6 @@ class Qqconnect {
         $param['redirect_uri']=$this->callBackUrl;
         //-------生成唯一随机串防CSRF攻击
         $state = md5(uniqid(rand(), TRUE)); 
-        dump($state);
         $_SESSION['state']=$state;
         $param['state']=$state;
         $param['scope']="get_user_info";
@@ -60,10 +59,10 @@ class Qqconnect {
         return $this->getUrl($url);
     }
     //获取openid
-    private function getOpenID(){
+    public function getOpenID(){
         $rzt=$this->getAccessToken();
         parse_str($rzt,$data);
-        $this->accessToken=$data['access_token'];
+        $this->accessToken=$data['access_token'];        
         $url="https://graph.qq.com/oauth2.0/me";
         $param['access_token']=$this->accessToken;
         $param =http_build_query($param,'','&');
@@ -85,9 +84,10 @@ class Qqconnect {
     public function getUsrInfo(){
         if($_GET['state'] != $_SESSION['state']){
             exit("错误代码：300001");
-        }
+        }       
         $this->code=$_GET['code'];
         $openid=$this->getOpenID();
+        $_SESSION['openid']=$openid;
         if(empty($openid)){
             return false;
         }
@@ -103,13 +103,19 @@ class Qqconnect {
     //CURL GET
     private function getUrl($url){
         $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
-        if (!empty($options)){
-            curl_setopt_array($ch, $options);
-        }
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 500);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
+        curl_setopt($ch, CURLOPT_URL, $url);
+//         if (!empty($options)){
+//             curl_setopt_array($ch, $options);
+//         }
         $data = curl_exec($ch);
         curl_close($ch);
+        if(curl_errno($ch)){
+            $data=curl_errno($ch);
+        }
         return $data;
     }
     

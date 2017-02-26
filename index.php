@@ -10,8 +10,8 @@ define('APP_PATH','./Apps/');
 // 定义运行时目录
 define('RUNTIME_PATH','./Runtime/');
 
-// 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false
-define('APP_DEBUG',True);
+// 开启调试模式 建议开发阶段开启 部署阶段注释或者设为false,true
+define('APP_DEBUG',false);
 
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';

@@ -7,7 +7,7 @@ class AboutController extends Controller {
          $data=$m->field('web,adress,desc,phone,tel,qq,url,record,path,img')->find(6);
          $_SESSION['Xinda']=$data;         
          $_SESSION['Xinda']['img']=$data['path'].$data['img'];
-        // $_SESSION['Xinda']['web']=$data['web'];
+         $_SESSION['Xinda']['web']=$data['web'];
          $_SESSION['ip']=get_client_ip();
          $_SESSION['browser']=GetBrowser();
          $_SESSION['os']=GetOs();

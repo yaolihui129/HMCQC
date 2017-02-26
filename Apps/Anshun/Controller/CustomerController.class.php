@@ -1,46 +1,27 @@
 <?php
-namespace Tuocai\Controller;
+namespace Anshun\Controller;
 use Think\Controller;
 class CustomerController extends Controller {
-
-	public function index(){
-	   $m=D('product');
-        $data=$m->field('web,adress,desc,phone,tel,qq,url,record,path,img')->find(2);
-        $_SESSION['Tuocai']=$data;
-        $_SESSION['Tuocai']['img']=$data['path'].$data['img'];
+    
+    public function index(){
+        
+        $m=D('product');
+        $data=$m->field('web,adress,desc,phone,tel,qq,url,record,path,img')->find(4);
+        $_SESSION['Anshun']=$data;
+        $_SESSION['Anshun']['img']=$data['path'].$data['img'];
         $_SESSION['ip']=get_client_ip();
         $_SESSION['browser']=GetBrowser();
-        $_SESSION['os']=GetOs();
-
-        $where['isteacher'] = !empty($_GET['isteacher']) ? $_GET['isteacher'] : 1;
-        $where['state']="发布";
-		$m=M('tc_customer');
-        $data=$m->where($where)->order('utime desc')->select();
-        $this->assign('data',$data);
-        $this->assign('w',$where);       
-	    $this->display();
-    }
-
-   
- public function setpass(){
-        /* 接收参数*/
-        $id =  $_SESSION['id'];
-        /* 实例化模型*/
-        $m=M('tc_customer');        
-        $user=$m->find($id);
-        $this->assign('user',$user);
-
+        $_SESSION['os']=GetOs();       
+        
         $this->display();
     }
     
-    
-    
-    public function checked(){
+    public function checked(){        
         if($_POST['phone']){
             $m=D('tp_customer');
             $where['phone']=$_POST['phone'];
             $data=$m->where($where)->select();
-            if($data){
+            if($data){            
                 $this->error("这个号码已经注册，无需重复注册");
             }else{
                 $this->redirect('/Xiuli/Customer/register/phone/'.$_POST['phone']);
@@ -48,20 +29,20 @@ class CustomerController extends Controller {
         }else{
             $this->error("您没有填写手机号");
         }
-    
-    
+        
+        
     }
     
     public function register(){
     
         $m=D('product');
-        $data=$m->field('web,adress,desc,phone,tel,qq,url,record,path,img')->find(1);
-        $_SESSION['Xiuli']=$data;
-        $_SESSION['Xiuli']['img']=$data['path'].$data['img'];
+        $data=$m->field('web,adress,desc,phone,tel,qq,url,record,path,img')->find(4);
+        $_SESSION['Anshun']=$data;
+        $_SESSION['Anshun']['img']=$data['path'].$data['img'];
         $_SESSION['ip']=get_client_ip();
         $_SESSION['browser']=GetBrowser();
-        $_SESSION['os']=GetOs();
-    
+        $_SESSION['os']=GetOs(); 
+        
         $phone=$_GET['phone'];
         $this->assign('phone',$phone);
     
@@ -78,22 +59,34 @@ class CustomerController extends Controller {
         }
         $lastId=$m->add();
         if($lastId){
-            $this->success("注册成功",U('Xiuli/Index'));
+            $this->success("注册成功",U('Anshun/Index'));
         }else{
             $this->error("注册失败");
         }
     
     }
-
- public function set(){
-       /* 接收参数*/
-       $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
-       $pass1= $_POST['pass1'];
-       $pass2= $_POST['pass2'];
-       $pass3= $_POST['pass3'];
-       /* 实例化模型*/
-        $m=M('tc_customer');
-        
+          
+    
+    public function setpass(){
+        /* 接收参数*/
+        $id =  $_SESSION['id'];
+        /* 实例化模型*/
+        $m=M('tp_customer');
+        $user=$m->find($id);
+        $this->assign('user',$user);
+    
+        $this->display();
+    }
+    
+    
+    public function setp(){
+        /* 接收参数*/
+        $id = !empty($_POST['id']) ? $_POST['id'] : $_GET['id'];
+        $pass1= $_POST['pass1'];
+        $pass2= $_POST['pass2'];
+        $pass3= $_POST['pass3'];
+        /* 实例化模型*/
+        $m=M('tp_customer');
         $user=$m->find($id);
         if (md5($pass1)==$user['password']) {
             if ($pass2==$pass3) {
@@ -101,23 +94,19 @@ class CustomerController extends Controller {
                 $arr['password']=md5($pass2);
                 $arr['moder']=$_SESSION['realname'];
                 if ($m->save($arr)){
-                        $this->success("密码修改成功！",U('Tuocai/Index/index'));
+                    $this->success("密码修改成功！");
                 }else{
-                        $this->error("密码修改失败！");
+                    $this->error("密码修改失败！");
                 }
-
             }else{
-                $this->error('新密码和确认面不一致');
+                $this->error('新密码和确认密码不一致');
             }
         }else{
             $this->error('原密码错误');
         }
-
-
- }
-
-
- public function mod(){
+    }
+    
+    public function mod(){
         $id=$_GET['id'];
         /* 实例化模型*/
         $m=M('tp_customer');
@@ -152,10 +141,7 @@ class CustomerController extends Controller {
         $this->assign('arr',$arr);
 
         $this->display();
-       
+
     }  
 
 }
- 
-
-
