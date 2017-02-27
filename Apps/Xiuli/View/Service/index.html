@@ -16,20 +16,33 @@
 				<h4>名称：<{$arr.name}></h4>
 				<switch name="arr.money">
 				    <case value="0"><br></case>				    
-				    <default /><h4>价格：<b>￥<{$arr.money}></b>(市场价：<s><em>￥<{$arr.smoney}></em></s>)</h4>
-								<!--<h4>运费：￥<{$arr.wlmoney}></h4>-->
-								
+				    <default />
+				    	<h4>价格：<b>￥<{$arr.money}></b>(市场价：<s><em>￥<{$arr.smoney}></em></s>)</h4>
+						<!--<h4>运费：￥<{$arr.wlmoney}></h4>-->
 				</switch>
-				<h5>制作周期：<{$arr.weight}></h5>咨询预约:<a href="tel:<{$_SESSION['Xiuli']['tel']}>" ><{$_SESSION['Xiuli']['tel']}></a>
+				<switch name="arr.weight">
+				    <case value="0"><br></case>				    
+				    <default /><h5>制作周期：<{$arr.weight}></h5>			
+				</switch>
+				<a href="tel:<{$_SESSION['Xiuli']['tel']}>" class="btn btn-info btn-xs">咨询预约</a>
 				<span class="hidden-xs hidden-sm">
 					<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=<{$_SESSION['Xiuli']['qq']}>&amp;site=qq&amp;menu=yes" class="btn-xs" target="_blank">
 						<img border="0" title="在线客服" alt="在线客服" style="margin-top:0px;" src="http://wpa.qq.com/pa?p=2:<{$_SESSION['Xiuli']['qq']}>:41">
 					</a>
 				</span>
+				 <hr>
+       			<div id="ckepop" class="col-xs-12 col-md-12">
+					<span class="jiathis_txt">分享到：</span>
+					<a class="jiathis_button_qzone">QQ空间</a>
+					<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>				
+				</div><hr>
 	
 			</div>
 												
 		</div>
+		
+
+		
 		<div class="panel panel-success">
 			<div class="panel-heading"><h3 class="panel-title">详情介绍：</h3></div>
 			<div class="panel-body"><p><{$arr.content}></p></div>			

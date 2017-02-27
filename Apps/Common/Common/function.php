@@ -237,6 +237,7 @@ function getFResult($funcid){
 function getPFCase($funcid){
     $m=D('tp_case');
     $where['funcid']=$funcid;
+    $where['state']='正常';
     $where['fproid']=$_SESSION['proid'];
     $arr=$m->where($where)->order('sn,id')->select();
 
@@ -654,7 +655,7 @@ function getPlan($dateid){
      */
     function countFPCase($funcid){
         $m=M("tp_case");
-        $where=array("funcid"=>$funcid,"fproid"=>$_SESSION['proid']);
+        $where=array("funcid"=>$funcid,"fproid"=>$_SESSION['proid'],"state"=>"正常");
         $count=$m->where($where)->count();
         return $count;
     }

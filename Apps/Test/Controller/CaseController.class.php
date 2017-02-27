@@ -34,7 +34,14 @@ class CaseController extends Controller {
         $data=$m->join('inner JOIN zt_module ON zt_branch.id = zt_module.branch')
         ->join(' inner JOIN zt_tp_func ON zt_module.id = zt_tp_func.pathid')        
         ->where($where)->order('zt_module.branch,zt_module.sn,zt_module.id,zt_tp_func.sn,zt_tp_func.id')->select();
-        $this->assign('data',$data);        
+        $this->assign('data',$data);      
+        
+        $m=D('tp_case');
+        $map['fproid']=$proid;
+        $map['state']='正常';
+        $var=$m->where($map)->field("adder,count(id)")->group('adder')->select();
+//         dump($var);
+        $this->assign('var',$var);
 
         $this->display();
 
